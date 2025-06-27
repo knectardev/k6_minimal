@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Diagonal Lines with Playback & Beat</title>
+  <style>
+    html, body { margin:0; padding:0; overflow:hidden; background:white; }
+    canvas { display:block; }
+    #controls {
+      position:absolute; top:10px; left:10px;
+      background:rgba(255,255,255,0.9); padding:8px; border-radius:4px;
+      font-family:sans-serif; z-index:10; display:flex; align-items:center;
+    }
+    #controls > * { margin-right:12px; }
+    #beatControls {
+      position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+      display:flex; gap:12px;
+    }
+    .beatDot {
+      width:20px; height:20px; border-radius:50%; background:#ccc; cursor:pointer;
+      transition: background 0.2s;
+    }
+    .beatDot.active { background:red; }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <button id="playPauseBtn">Play</button>
+    <label>Pattern:
+      <select id="patternSelect">
+        <option value="1">Pattern 1</option>
+        <option value="2">Pattern 2</option>
+        <option value="3">Pattern 3</option>
+      </select>
+    </label>
+    <label>Key:
+      <select id="keySelect">
+        <option value="0">C</option>
+        <option value="1">C#</option>
+        <option value="2">D</option>
+        <option value="3">D#</option>
+        <option value="4">E</option>
+        <option value="5">F</option>
+        <option value="6">F#</option>
+        <option value="7">G</option>
+        <option value="8">G#</option>
+        <option value="9">A</option>
+        <option value="10">A#</option>
+        <option value="11">B</option>
+      </select>
+    </label>
+    <label>Tempo: <span id="tempoValue">220</span> BPM
+      <input type="range" id="tempoSlider" min="30" max="300" step="1" value="220">
+    </label>
+    <label>Reverse: <input type="checkbox" id="reverseToggle" checked></label>
+    <label>Double Time: <input type="checkbox" id="doubleTimeToggle" checked></label>
+  </div>
+  <div id="beatControls">
+    <div class="beatDot" data-index="0"></div>
+    <div class="beatDot" data-index="1"></div>
+    <div class="beatDot" data-index="2"></div>
+    <div class="beatDot" data-index="3"></div>
+    <div class="beatDot" data-index="4"></div>
+    <div class="beatDot" data-index="5"></div>
+    <div class="beatDot" data-index="6"></div>
+    <div class="beatDot" data-index="7"></div>
+  </div>
+  <canvas id="patternCanvas"></canvas>
+<script>
+  // Canvas & audio context
+  const canvas = document.getElementById('patternCanvas');
+  const ctx = canvas.getContext('2d');
+  let audioCtx;
+
+  // Defaults
+  const DEFAULTS = {
+    maxLength:400, maxSpacing:20, maxStagger:20,
+    duration:600, maxAmplitude:4, vibFreq:20
+  };
+  let pentatonic = [];
+  const C3_FREQ = 130.81;
+  const PENTATONIC_INTERVALS = [0, 2, 4, 7, 9];
+
+  function generatePentatonicScale(rootNoteOffset) {
+    pentatonic = PENTATONIC_INTERVALS.map(interval => {
+      const semitones = rootNoteOffset + interval;
+      return C3_FREQ * Math.pow(2, semitones / 12);
+    });
+  }
+
+  function randomizeKey() {
+    const rootNote = Math.floor(Math.random() * 12);
+    keySelect.value = rootNote;
+    generatePentatonicScale(rootNote);
+  }
+
+  // Playback patterns
+  const patterns = {
+    1:[0,2], 2:[1,0,2, 5, 3], 3:[0,3,2,1,1,4,3,2]
+  };
+  let lines=[], playIdx=0, patOffset=0;
+  let isPlaying=false, patTimer=null, beatTimer=null, beatIdx=0;
+
+  // Controls
+  const playPauseBtn=document.getElementById('playPauseBtn');
+  const patternSelect=document.getElementById('patternSelect');
+  const keySelect = document.getElementById('keySelect');
+  const tempoSlider=document.getElementById('tempoSlider');
+  const tempoValue=document.getElementById('tempoValue');
+  const beatDots=document.querySelectorAll('.beatDot');
+  const reverseToggle = document.getElementById('reverseToggle');
+  const doubleTimeToggle = document.getElementById('doubleTimeToggle');
+  let beatOn=[];
+
+  function randomizeBeats() {
+    beatDots.forEach((dot, i) => {
+      const isOn = Math.random() < 0.5;
+      beatOn[i] = isOn;
+      dot.classList.toggle('active', isOn);
+    });
+  }
+
+  function resizeCanvas(){
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+  }
+
+  function randomRange(min,max){
+    return Math.random()*(max-min)+min;
+  }
+
+  function generateLines(){
+    resizeCanvas();
+    lines=[];
+    const c=DEFAULTS;
+    const lineCount=9;
+    const spacing=randomRange(5,c.maxSpacing);
+    const stagger=randomRange(0,c.maxStagger);
+    const length=randomRange(300,c.maxLength);
+    const angleDeg=(Math.random()<0.5 ? randomRange(45,135) : randomRange(225,315));
+    const a=angleDeg*Math.PI/180;
+    const ca=Math.cos(a), sa=Math.sin(a);
+    const midX=canvas.width/2, midY=canvas.height/2;
+    const half=(lineCount-1)/2;
+    for(let i=0;i<lineCount;i++){
+      const base=(i-half)*spacing;
+      const stag=(i-half)*stagger;
+      const lx1=-length/2+base+stag, ly1=base;
+      const lx2= length/2+base+stag, ly2=base;
+      const x1=midX+lx1*ca-ly1*sa, y1=midY+lx1*sa+ly1*ca;
+      const x2=midX+lx2*ca-ly2*sa, y2=midY+lx2*sa+ly2*ca;
+      lines.push({x1,y1,x2,y2,i,activated:false});
+    }
+    playIdx=0; patOffset=0;
+  }
+
+  function playNote(freq){
+    if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    const now=audioCtx.currentTime;
+    const osc=audioCtx.createOscillator();
+    const gain=audioCtx.createGain();
+    osc.frequency.value=freq;
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    gain.gain.setValueAtTime(0.001,now);
+    gain.gain.exponentialRampToValueAtTime(0.2,now+0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001,now+DEFAULTS.duration/1000);
+    osc.start(now);
+    osc.stop(now+DEFAULTS.duration/1000);
+  }
+
+  function activateLine(baseIndex) {
+    const N = lines.length;
+    // The `+ N` ensures the result of the first `%` is positive if the term is negative
+    const idx = ((baseIndex + patOffset) % N + N) % N;
+    const line = lines[idx];
+    if (line) {
+        line.activated = true;
+        line.time = performance.now();
+        line.duration = DEFAULTS.duration;
+        line.maxAmplitude = DEFAULTS.maxAmplitude;
+        const deg = line.i % pentatonic.length;
+        const oct = Math.floor(line.i / pentatonic.length);
+        playNote(pentatonic[deg] * Math.pow(2, oct));
+    }
+  }
+
+  function playPattern(){
+    const pat = patterns[patternSelect.value];
+    if(!pat||!lines.length) return;
+
+    const fwdBase = pat[playIdx];
+    activateLine(fwdBase);
+
+    if (reverseToggle.checked && pat.length > 0) {
+        const startNote = pat[0];
+        const revBase = (2 * startNote) - fwdBase;
+        
+        if (revBase !== fwdBase) {
+            activateLine(revBase);
+        }
+    }
+
+    playIdx++;
+    if(playIdx>=pat.length){ playIdx=0; patOffset++; }
+  }
+
+  function playBeat(){
+    if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    if(beatOn[beatIdx]){
+      const now=audioCtx.currentTime;
+      const d=0.05;
+      const osc=audioCtx.createOscillator();
+      const gain=audioCtx.createGain();
+      osc.frequency.value=440;
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      gain.gain.setValueAtTime(0.001,now);
+      gain.gain.exponentialRampToValueAtTime(0.5,now+0.005);
+      gain.gain.exponentialRampToValueAtTime(0.001,now+d);
+      osc.start(now);
+      osc.stop(now+d);
+    }
+    beatIdx=(beatIdx+1)%8;
+  }
+
+  function startPlayback(){
+    if(isPlaying) return;
+    isPlaying=true;
+    playPauseBtn.textContent='Pause';
+    const bpm=parseInt(tempoSlider.value,10);
+    const baseInterval=60000/bpm;
+
+    const patInterval = doubleTimeToggle.checked ? baseInterval / 2 : baseInterval;
+
+    patTimer=setInterval(playPattern, patInterval);
+    beatIdx=0;
+    beatTimer=setInterval(playBeat, baseInterval/2);
+  }
+
+  function stopPlayback(){
+    if(!isPlaying) return;
+    isPlaying=false;
+    playPauseBtn.textContent='Play';
+    clearInterval(patTimer);
+    clearInterval(beatTimer);
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const now=performance.now();
+    for(const ln of lines){
+      let col='black', sx=0;
+      if(ln.activated){
+        const e=now-ln.time;
+        if(e<ln.duration){
+          col='red';
+          const t=e/1000;
+          const ang=2*Math.PI*DEFAULTS.vibFreq*t;
+          const damp=1-e/ln.duration;
+          sx=ln.maxAmplitude*damp*Math.sin(ang);
+        } else {
+          ln.activated=false;
+        }
+      }
+      ctx.strokeStyle=col;
+      ctx.lineWidth=0.5;
+      ctx.beginPath();
+      ctx.moveTo(ln.x1+sx,ln.y1);
+      ctx.lineTo(ln.x2+sx,ln.y2);
+      ctx.stroke();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  function onMouseMove(e){
+    const P={x:e.offsetX,y:e.offsetY};
+    for(const ln of lines){
+      if(ln.activated) continue;
+      const A={x:ln.x1,y:ln.y1};
+      const B={x:ln.x2,y:ln.y2};
+      const AB={x:B.x-A.x,y:B.y-A.y};
+      const AP={x:P.x-A.x,y:P.y-A.y};
+      const mag2=AB.x*AB.x+AB.y*AB.y;
+      const t=Math.max(0,Math.min(1,(AP.x*AB.x+AP.y*AB.y)/mag2));
+      const C={x:A.x+AB.x*t,y:A.y+AB.y*t};
+      const dist=Math.hypot(P.x-C.x,P.y-C.y);
+      if(dist<5){
+        ln.activated=true;
+        ln.time=performance.now();
+        ln.duration=DEFAULTS.duration;
+        ln.maxAmplitude=DEFAULTS.maxAmplitude;
+        const deg=ln.i%pentatonic.length;
+        const oct=Math.floor(ln.i/pentatonic.length);
+        playNote(pentatonic[deg]*Math.pow(2,oct));
+        break;
+      }
+    }
+  }
+
+  // Beat controls toggles
+  beatDots.forEach(dot=>{
+    const idx=parseInt(dot.dataset.index,10);
+    dot.addEventListener('click',()=>{
+      beatOn[idx]=!beatOn[idx];
+      dot.classList.toggle('active',beatOn[idx]);
+    });
+  });
+
+  // Events
+  canvas.addEventListener('mousemove',onMouseMove);
+  canvas.addEventListener('click', () => {
+    generateLines();
+    randomizeBeats();
+    randomizeKey();
+  });
+  window.addEventListener('resize',generateLines);
+  playPauseBtn.addEventListener('click',()=>isPlaying?stopPlayback():startPlayback());
+  tempoSlider.addEventListener('input',()=>{
+    tempoValue.textContent=tempoSlider.value;
+    if(isPlaying){stopPlayback();startPlayback();}
+  });
+  patternSelect.addEventListener('change',()=>{playIdx=0;patOffset=0;});
+  reverseToggle.addEventListener('change',()=>{playIdx=0;patOffset=0;});
+  keySelect.addEventListener('change', () => {
+    const rootNote = parseInt(keySelect.value, 10);
+    generatePentatonicScale(rootNote);
+  });
+  doubleTimeToggle.addEventListener('change', () => {
+    if (isPlaying) {
+      stopPlayback();
+      startPlayback();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      e.preventDefault();
+      generateLines();
+      randomizeBeats();
+      randomizeKey();
+    }
+  });
+
+  // Init
+  randomizeKey();
+  generateLines();
+  randomizeBeats();
+  draw();
+</script>
+</body>
+</html>

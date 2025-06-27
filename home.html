@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knectar Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Shared menu loader -->
+    <script src="js/load_menu.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="home.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </header>
+            <section class="home-content">
+                <div class="definition-text">
+                    <h1 class="definition-header">
+                        <span class="node-text">node:</span> 
+                        <span class="pronunciation">/nōd/</span> 
+                        <span class="part-of-speech">noun</span> 
+                        <span class="category">technical</span>
+                    </h1>
+                    <div class="definition-content">
+                        <p>a point at which lines or pathways intersect or branch;</p>
+                        <p>a central or connecting point.</p>
+                    </div>
+                    <div class="intro-text">
+                        <p>As a node, I operate at the intersection of vision, execution, and connection — where product design, engineering, and user needs converge. I bridge disciplines, align teams, and translate complexity into clarity. Whether guiding a cross-functional group through a tight launch or architecting a user-centered experience within a demanding technical landscape, my role is to hold the center — the point where pathways cross and progress begins.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Interactive Lines Section -->
+            <section id="interactive-lines" class="interactive-lines-section">
+                <div id="controls">
+                    <span id="clickPrompt" class="click-prompt">click spacebar to play</span>
+                    <button id="playPauseBtn" aria-label="Play/Pause">
+                        <img src="assets/simple_play.svg" alt="Play icon" class="play-icon">
+                    </button>
+                </div>
+                <div id="beatControls">
+                    <div class="beatDot" data-index="0"></div>
+                    <div class="beatDot" data-index="1"></div>
+                    <div class="beatDot" data-index="2"></div>
+                    <div class="beatDot" data-index="3"></div>
+                    <div class="beatDot" data-index="4"></div>
+                    <div class="beatDot" data-index="5"></div>
+                    <div class="beatDot" data-index="6"></div>
+                    <div class="beatDot" data-index="7"></div>
+                </div>
+                <canvas id="patternCanvas"></canvas>
+            </section>
+        </main>
+    </div>
+    <!-- main site script loaded by loader -->
+    <script src="js/lines.js"></script>
+</body>
+</html> 

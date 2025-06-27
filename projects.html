@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knectar Portfolio – Projects</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Shared menu loader -->
+    <script src="js/load_menu.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- ==== MAIN CONTENT ==== -->
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="home.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <div class="breadcrumbs">
+                    <a href="projects.html" class="breadcrumb-link" id="crumbProjects">Projects</a> &gt; <a href="#" class="breadcrumb-link" id="crumbCategoryLink">All</a>
+                </div>
+            </header>
+
+            <!-- Category filter -->
+            <div style="margin-bottom: var(--spacing-xl); max-width: 250px;" class="select-wrapper custom-select" id="categoryDropdown">
+                <button type="button" class="select-toggle" id="dropdownToggle">
+                    <span class="select-icon" id="dropdownIcon"></span>
+                    <span class="select-label" id="dropdownLabel">All</span>
+                    <span class="select-caret">▼</span>
+                </button>
+                <ul class="select-options" id="dropdownOptions">
+                    <li data-value="All"><span class="option-icon"></span>All</li>
+                    <li data-value="Higher Education"><span class="option-icon" style="background-image:url('assets/grad.svg')"></span>Higher Education</li>
+                    <li data-value="Intranets & Portals"><span class="option-icon" style="background-image:url('assets/intranet.svg')"></span>Intranets & Portals</li>
+                    <li data-value="Web & iOS Apps"><span class="option-icon" style="background-image:url('assets/web.svg')"></span>Web & iOS Apps</li>
+                    <li data-value="Informational"><span class="option-icon" style="background-image:url('assets/info.svg')"></span>Informational</li>
+                    <li data-value="Blog Posts"><span class="option-icon" style="background-image:url('assets/hash.svg')"></span>Blog Posts</li>
+                    <li data-value="Music & Art"><span class="option-icon" style="background-image:url('assets/music.svg')"></span>Music & Art</li>
+                </ul>
+                <!-- Hidden native select for accessibility & existing JS hooks -->
+                <select id="categoryFilter" style="display:none;">
+                    <option value="All">All</option>
+                    <option value="Higher Education">Higher Education</option>
+                    <option value="Intranets & Portals">Intranets & Portals</option>
+                    <option value="Web & iOS Apps">Web & iOS Apps</option>
+                    <option value="Informational">Informational</option>
+                    <option value="Blog Posts">Blog Posts</option>
+                    <option value="Music & Art">Music & Art</option>
+                </select>
+            </div>
+
+            <!-- Project list -->
+            <section class="project-list" id="projectList">
+                <!-- Tile 1 -->
+                <article class="project-tile" data-category="Higher Education">
+                    <div class="project-image">
+                        <img src="project_tiles/sample_tile1.png" alt="Yale Center for British Art site screenshot">
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Higher Education</span>
+                        <h2 class="project-title">Yale Center for British Art</h2>
+                        <p><strong>Role:</strong> Technical Lead, Developer</p>
+                        <p><strong>Technology:</strong> Drupal 9, 10</p>
+                    </div>
+                </article>
+
+                <!-- Tile 2 (image right) -->
+                <article class="project-tile reverse" data-category="Higher Education">
+                    <div class="project-image">
+                        <img src="project_tiles/sample_tile2.png" alt="Isabella Stewart Gardner Museum screenshot">
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Higher Education</span>
+                        <h2 class="project-title">The Isabella Stewart Gardner Museum</h2>
+                        <p><strong>Role:</strong> Technical Lead, Developer</p>
+                        <p><strong>Technology:</strong> Drupal 8, 9</p>
+                    </div>
+                </article>
+
+                <!-- Tile 3 (image left) -->
+                <article class="project-tile" data-category="Higher Education">
+                    <div class="project-image">
+                        <img src="project_tiles/sample_tile1.png" alt="Yale Center for British Art site screenshot duplicate">
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Higher Education</span>
+                        <h2 class="project-title">Yale Center for British Art</h2>
+                        <p><strong>Role:</strong> Technical Lead, Developer</p>
+                        <p><strong>Technology:</strong> Drupal 9, 10</p>
+                    </div>
+                </article>
+
+                <!-- Tile 4 (image right) -->
+                <article class="project-tile reverse" data-category="Informational">
+                    <div class="project-image">
+                        <img src="project_tiles/sample_tile2.png" alt="Sample Informational screenshot">
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Informational</span>
+                        <h2 class="project-title">Informational Site Example</h2>
+                        <p><strong>Role:</strong> UX, Front-End Developer</p>
+                        <p><strong>Technology:</strong> Next.js, React</p>
+                    </div>
+                </article>
+
+                <!-- Tile 5 Blog Posts -->
+                <article class="project-tile" data-category="Blog Posts">
+                    <div class="project-image">
+                        <img src="project_tiles/sample_tile1.png" alt="Sample blog screenshot">
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Blog Posts</span>
+                        <h2 class="project-title">Knectar Engineering Blog</h2>
+                        <p><strong>Role:</strong> Author</p>
+                        <p><strong>Technology:</strong> Markdown, Hugo</p>
+                    </div>
+                </article>
+
+                <!-- Tile 6 Music & Art (image right) -->
+                <article class="project-tile reverse" data-category="Music & Art">
+                    <div class="project-image">
+                        <img src="project_tiles/sample_tile2.png" alt="Sample music artwork">
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Music & Art</span>
+                        <h2 class="project-title">Experimental Soundscapes</h2>
+                        <p><strong>Role:</strong> Composer, Developer</p>
+                        <p><strong>Technology:</strong> Web Audio API, P5.js</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Interactive Lines Section (same as home) -->
+            <section id="interactive-lines" class="interactive-lines-section">
+                <div id="controls">
+                    <span id="clickPrompt" class="click-prompt">click spacebar to play</span>
+                    <button id="playPauseBtn" aria-label="Play/Pause">
+                        <img src="assets/simple_play.svg" alt="Play icon" class="play-icon">
+                    </button>
+                </div>
+                <div id="beatControls">
+                    <div class="beatDot" data-index="0"></div>
+                    <div class="beatDot" data-index="1"></div>
+                    <div class="beatDot" data-index="2"></div>
+                    <div class="beatDot" data-index="3"></div>
+                    <div class="beatDot" data-index="4"></div>
+                    <div class="beatDot" data-index="5"></div>
+                    <div class="beatDot" data-index="6"></div>
+                    <div class="beatDot" data-index="7"></div>
+                </div>
+                <canvas id="patternCanvas"></canvas>
+            </section>
+        </main>
+    </div>
+
+    <!-- main site script loaded by loader -->
+    <script src="js/projects.js"></script>
+    <script src="js/lines.js"></script>
+</body>
+</html> 
