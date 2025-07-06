@@ -1,5 +1,31 @@
 // projects.js – lightweight category filter for the unified project list view
 
+// Helper – normalize technology labels to broader groups
+function canonicalizeTech(raw) {
+    const str = (raw || '').trim();
+    if (!str || /^\d+$/.test(str)) return null;
+
+    const map = [
+        { pattern: /drupal/i, name: 'Drupal' },
+        { pattern: /shopify/i, name: 'Shopify' },
+        { pattern: /magento/i, name: 'Magento' },
+        { pattern: /wordpress/i, name: 'WordPress' },
+        { pattern: /django/i, name: 'Django' },
+        { pattern: /angular/i, name: 'Angular' },
+        { pattern: /javascript|js/i, name: 'JavaScript' },
+        { pattern: /p5\.js/i, name: 'P5.js' },
+        { pattern: /unity/i, name: 'Unity' },
+        { pattern: /c#/i, name: 'C#' },
+        { pattern: /rhino/i, name: 'Rhino 3D' }
+    ];
+    const match = map.find(m => m.pattern.test(str));
+    if (match) return match.name;
+
+    // remove trailing numbers ("Tech 10")
+    const cleaned = str.replace(/\s+\d+.*/, '').trim();
+    return cleaned || str;
+}
+
 document.addEventListener('DOMContentLoaded', initProjects);
 
 function initProjects() {
@@ -19,6 +45,12 @@ function initProjects() {
     const dropdownLabel = document.getElementById('dropdownLabel');
     const dropdownIcon = document.getElementById('dropdownIcon');
 
+    // After building tiles and before referencing filters
+    const techFilterSelect = document.getElementById('technologyFilter');
+    const techDropdownToggle = document.getElementById('techDropdownToggle');
+    const techDropdownOptions = document.getElementById('techDropdownOptions');
+    const techDropdownLabel = document.getElementById('techDropdownLabel');
+
     if (!filterSelect) return; // bail if not on the list view page
 
     // Apply initial filter (from query-string or default value)
@@ -27,10 +59,64 @@ function initProjects() {
     if (initial) {
         filterSelect.value = initial;
     }
+
+    // will hold counts of canonical techs once computed
+    let techCounts = {};
+
+    // Helper to get display label (with counts) for technology dropdown header
+    function getTechLabel(tech) {
+        if (tech === 'All') {
+            return `All (${tiles.length})`;
+        }
+        return `${tech} (${techCounts[tech] || 0})`;
+    }
+
+    // Dynamically populate technology dropdown based on rendered tiles
+    if (techFilterSelect && techDropdownOptions) {
+        tiles.forEach(tile => {
+            const techStr = tile.dataset.technology || '';
+            techStr.split('|').forEach(t => {
+                if (!t) return;
+                techCounts[t] = (techCounts[t] || 0) + 1;
+            });
+        });
+
+        const techArr = Object.keys(techCounts).sort();
+        techArr.forEach(t => {
+            const label = `${t} (${techCounts[t]})`;
+            // native select
+            const opt = document.createElement('option');
+            opt.value = t;
+            opt.textContent = label;
+            techFilterSelect.appendChild(opt);
+            // custom list item
+            const li = document.createElement('li');
+            li.setAttribute('data-value', t);
+            li.textContent = label;
+            techDropdownOptions.appendChild(li);
+        });
+        // Update All label to include total count, keep value as All
+        const totalCount = tiles.length;
+        const firstLi = techDropdownOptions.querySelector('li[data-value="All"]');
+        if (firstLi) firstLi.textContent = `All (${totalCount})`;
+        const firstOpt = techFilterSelect.querySelector('option[value="All"]');
+        if (firstOpt) firstOpt.textContent = `All (${totalCount})`;
+    }
+
+    // Apply initial tech filter from URL if present (e.g., ?technology=Drupal%2010)
+    const initialTech = params.get('technology');
+    if (initialTech && techFilterSelect) {
+        techFilterSelect.value = initialTech;
+    }
+
+    // Now that techCounts populated and initial selection set, apply filter once
     applyFilter();
 
     // Re-filter on dropdown change
     filterSelect.addEventListener('change', applyFilter);
+
+    // Re-filter on tech dropdown change
+    if (techFilterSelect) techFilterSelect.addEventListener('change', applyFilter);
 
     function closeDropdown() {
         dropdownOptions.style.display = 'none';
@@ -58,22 +144,49 @@ function initProjects() {
     // Close on outside click
     document.addEventListener('click', closeDropdown);
 
+    function closeTechDropdown() { if (techDropdownOptions) techDropdownOptions.style.display = 'none'; }
+    function openTechDropdown()  { if (techDropdownOptions) techDropdownOptions.style.display = 'block'; }
+
+    if (techDropdownToggle) {
+        techDropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = techDropdownOptions && techDropdownOptions.style.display === 'block';
+            if (isOpen) { closeTechDropdown(); } else { openTechDropdown(); }
+        });
+    }
+    if (techDropdownOptions) {
+        techDropdownOptions.addEventListener('click', (e) => {
+            const li = e.target.closest('li');
+            if (!li) return;
+            const val = li.getAttribute('data-value');
+            techFilterSelect.value = val;
+            techFilterSelect.dispatchEvent(new Event('change'));
+            closeTechDropdown();
+        });
+    }
+    // Close both dropdowns on outside click
+    document.addEventListener('click', () => { closeDropdown(); closeTechDropdown(); });
+
     function applyFilter() {
-        const current = filterSelect.value;
+        const currentCat = filterSelect.value;
+        const currentTech = techFilterSelect ? techFilterSelect.value : 'All';
         // Update breadcrumb link text + href
         const catLink = document.getElementById('crumbCategoryLink');
         if (catLink) {
-            catLink.textContent = current;
-            const url = current === 'All' ? 'projects.html' : `projects.html?category=${encodeURIComponent(current)}`;
+            catLink.textContent = currentCat;
+            const url = currentCat === 'All' ? 'projects.html' : `projects.html?category=${encodeURIComponent(currentCat)}`;
             catLink.setAttribute('href', url);
         }
 
         // Sync sidebar active state
-        updateSidebarActive(current);
+        updateSidebarActive(currentCat);
 
         tiles.forEach(tile => {
             const cat = tile.dataset.category;
-            const shouldShow = current === 'All' || cat === current;
+            const techData = tile.dataset.technology || '';
+            const techMatch = currentTech === 'All' || techData.toLowerCase().includes(currentTech.toLowerCase());
+            const catMatch = currentCat === 'All' || cat === currentCat;
+            const shouldShow = catMatch && techMatch;
             tile.style.display = shouldShow ? '' : 'none';
         });
 
@@ -81,9 +194,9 @@ function initProjects() {
         animateVisibleTiles();
 
         // Update address bar without reloading page
-        const newUrl = current === 'All'
+        const newUrl = currentCat === 'All'
             ? 'projects.html'
-            : `projects.html?category=${encodeURIComponent(current)}`;
+            : `projects.html?category=${encodeURIComponent(currentCat)}`;
         if (window.location.href.split('#')[0].split('?')[0].endsWith('projects.html')) {
             // Preserve hash (if any)
             const hash = window.location.hash || '';
@@ -91,7 +204,7 @@ function initProjects() {
         }
 
         // Update custom dropdown UI
-        if (dropdownLabel) dropdownLabel.textContent = current;
+        if (dropdownLabel) dropdownLabel.textContent = currentCat;
         if (dropdownIcon) {
             const iconMap = {
                 'Higher Education': 'assets/grad.svg',
@@ -103,8 +216,10 @@ function initProjects() {
                 'Music & Art': 'assets/music.svg',
                 'All': 'assets/360.svg'
             };
-            dropdownIcon.style.backgroundImage = iconMap[current] ? `url('${iconMap[current]}')` : 'none';
+            dropdownIcon.style.backgroundImage = iconMap[currentCat] ? `url('${iconMap[currentCat]}')` : 'none';
         }
+
+        if (techDropdownLabel) techDropdownLabel.textContent = getTechLabel(currentTech);
     }
 
     function updateSidebarActive(category) {
@@ -193,6 +308,16 @@ function buildTilesFromData(menu) {
         article.className = 'project-tile';
         if (Math.random() < 0.5) article.classList.add('reverse');
         article.dataset.category = item.parentLabel || 'Misc';
+
+        // Build canonical technology list for grouping
+        let canonicalList = [];
+        if (item.technology) {
+            item.technology.split(',').forEach(t => {
+                const canon = canonicalizeTech(t);
+                if (canon && !canonicalList.includes(canon)) canonicalList.push(canon);
+            });
+        }
+        article.dataset.technology = canonicalList.join('|');
 
         // link
         const link = item.url;

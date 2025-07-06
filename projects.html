@@ -56,6 +56,23 @@
                 </select>
             </div>
 
+            <!-- Technology filter -->
+            <div style="margin-bottom: var(--spacing-xl); max-width: 250px;" class="select-wrapper custom-select" id="technologyDropdown">
+                <button type="button" class="select-toggle" id="techDropdownToggle">
+                    <span class="select-label" id="techDropdownLabel">All</span>
+                    <span class="select-caret">▼</span>
+                </button>
+                <ul class="select-options" id="techDropdownOptions">
+                    <li data-value="All">All</li>
+                    <!-- Options populated dynamically via JS -->
+                </ul>
+                <!-- Hidden native select for accessibility & existing JS hooks -->
+                <select id="technologyFilter" style="display:none;">
+                    <option value="All">All</option>
+                    <!-- Options populated dynamically via JS -->
+                </select>
+            </div>
+
             <!-- Project list -->
             <section class="project-list" id="projectList">
                 <!-- Tile 1 -->

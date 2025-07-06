@@ -775,6 +775,9 @@ body {
 .project-tile[data-category="Informational"] .project-category::before {
     background-image: url('../assets/info.svg');
 }
+.project-tile[data-category="E-Commerce"] .project-category::before {
+    background-image: url('../assets/money.svg');
+}
 .project-tile[data-category="Blog Posts"] .project-category::before {
     background-image: url('../assets/hash.svg');
 }
@@ -859,6 +862,7 @@ body {
 #categoryFilter option[value="Intranets & Portals"] { background-image: url('../assets/intranet.svg'); }
 #categoryFilter option[value="Web & iOS Apps"] { background-image: url('../assets/web.svg'); }
 #categoryFilter option[value="Informational"] { background-image: url('../assets/info.svg'); }
+#categoryFilter option[value="E-Commerce"] { background-image: url('../assets/money.svg'); }
 #categoryFilter option[value="Blog Posts"] { background-image: url('../assets/hash.svg'); }
 #categoryFilter option[value="Music & Art"] { background-image: url('../assets/music.svg'); }
 
