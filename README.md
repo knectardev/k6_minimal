@@ -21,6 +21,11 @@ K6_MINIMAL/
 │   ├── script.js           # Sidebar, mobile nav, connecting-lines
 │   ├── lines.js            # Generative diagonal-line synth (home-page feature)
 │   └── projects.js         # Category filter for projects list view
+├── data/
+│   ├── menu.json           # Generated navigation + page meta (DO NOT EDIT MANUALLY)
+│   └── project_data.csv    # ← single source-of-truth for all projects
+├── scripts/
+│   └── csv_to_menu.py      # Helper to convert CSV → menu.json
 ├── index.html              # Landing page / definition + lines demo
 ├── lines.html              # Stand-alone playground for the generator (legacy)
 ├── intranets.html          # Section landing – Intranets & Portals
@@ -50,7 +55,7 @@ A lightweight loader (`js/load_menu.js`) injects this markup into every page at 
 
 ### 2. Unified Project List (`projects.html`)
 • A single master list of all portfolio projects rendered as alternating image/text "tiles".
-• A drop-down filter (top-right) lets visitors switch between: **Higher Education**, **Intranets & Portals**, **Web & iOS Apps**, **E-Commerce**, and **Informational**.
+• A drop-down filter (top-right) lets visitors switch between: **Higher Education**, **Intranets & Portals**, **Web & iOS Apps**, **Informational**, **E-Commerce**, and more.
 • Tiles now **slide in** from a random left or right offset (no vertical movement) on first load and after each filter change, adding subtle motion.
 • The sidebar's parent menu links now route to this page and auto-select the relevant filter for seamless navigation.
 • Responsive layout – on desktop the tile images alternate left/right; on mobile the layout stacks vertically.
@@ -99,9 +104,17 @@ Use this file as a blueprint when authoring future blog content – duplicate & 
 
 ### 8. **3D Glow-Edges Demo** (`meshes/dist/index.html`) – an experimental Three.js demo that draws a **steady** (non-flashing) glowing wireframe around a GLB model using CSS-blurred dual canvases. Open the file through a local web-server (e.g. `python -m http.server`) so the model can be fetched without CORS issues.
 
-### 9. **JSON-Driven Content** (NEW)
+### 9. **CSV → JSON Data Pipeline** (Updated)
 
-All page-level metadata and short copy now live inside **`data/menu.json`** so the same file both powers the sidebar navigation *and* serves as a tiny headless CMS.
+Project/content data is maintained in **`data/project_data.csv`**.  A lightweight script
+
+```bash
+python scripts/csv_to_menu.py data/project_data.csv data/menu.json
+```
+
+generates **`data/menu.json`**, which the site consumes at runtime to build the sidebar and inject per-page metadata. **Do not edit `menu.json` directly**—always update the CSV and re-run the script.
+
+This pipeline keeps the data human-editable in spreadsheets while retaining the existing JSON interface used by the JavaScript.
 
 #### Added Optional Fields per page
 - `projectTitle`
@@ -191,7 +204,8 @@ No build tools, bundlers, or package managers are required – it's fully static
 ---
 
 ## 🛠️ Development Notes
-* **Add a new section**: duplicate an existing `*.html` page, update sidebar markup, and content.
+* **Add / edit a project**: append or modify a row in `data/project_data.csv` then run `python scripts/csv_to_menu.py ...` to regenerate `menu.json`.
+* **Add a new section**: update the `ORDER` list inside `scripts/csv_to_menu.py` to include the new top-level category and provide an icon in `assets/`.
 * **Enable a submenu item indicator**: give the `<li>` the class `active-sub`.
 * **Connecting line**: ensure the page contains either `.project-details` with an `<img>` or `.home-content` with `.node-text` for the script to hook.
 * **Interactive lines demo** parameters (tempo, reverse, double-time) are hard-coded in `lines.js` for the embedded version; the full playground with controls lives in `lines.html`.
