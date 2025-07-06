@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'WEB & IOS APPS': 'Web & iOS Apps',
         'INFORMATIONAL': 'Informational',
         'BLOG POSTS': 'Blog Posts',
-        'MUSIC & ART': 'Music & Art'
+        'MUSIC & ART': 'Music & Art',
+        'E-COMMERCE': 'E-Commerce'
     };
 
     menuParents.forEach(parent => {

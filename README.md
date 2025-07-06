@@ -21,7 +21,7 @@ K6_MINIMAL/
 │   ├── script.js           # Sidebar, mobile nav, connecting-lines
 │   ├── lines.js            # Generative diagonal-line synth (home-page feature)
 │   └── projects.js         # Category filter for projects list view
-├── home.html               # Landing page / definition + lines demo
+├── index.html              # Landing page / definition + lines demo
 ├── lines.html              # Stand-alone playground for the generator (legacy)
 ├── intranets.html          # Section landing – Intranets & Portals
 ├── page?-intranets.html    # Example paginated lists (x3)
@@ -33,7 +33,7 @@ K6_MINIMAL/
 └── README.md               # ← you are here
 ```
 
-> **Note**: The historical `index.html` was superseded by `home.html` when the site became multi-page.
+> **Note**: As of 2025-07, the landing page has been consolidated back to `index.html` (previously `home.html`).
 
 ---
 
@@ -50,7 +50,7 @@ A lightweight loader (`js/load_menu.js`) injects this markup into every page at 
 
 ### 2. Unified Project List (`projects.html`)
 • A single master list of all portfolio projects rendered as alternating image/text "tiles".
-• A drop-down filter (top-right) lets visitors switch between: **Higher Education**, **Intranets & Portals**, **Web & iOS Apps**, and **Informational**.
+• A drop-down filter (top-right) lets visitors switch between: **Higher Education**, **Intranets & Portals**, **Web & iOS Apps**, **E-Commerce**, and **Informational**.
 • Tiles now **slide in** from a random left or right offset (no vertical movement) on first load and after each filter change, adding subtle motion.
 • The sidebar's parent menu links now route to this page and auto-select the relevant filter for seamless navigation.
 • Responsive layout – on desktop the tile images alternate left/right; on mobile the layout stacks vertically.
@@ -183,7 +183,7 @@ All tokens are defined as CSS custom properties near the top of `style.css` for 
    cd K6_MINIMAL
    python -m http.server 8000   # or npx serve, php -S, etc.
    ```
-2. Navigate to <http://localhost:8000/home.html>.
+2. Navigate to <http://localhost:8000/index.html>.
 3. Resize the window or open DevTools device toolbar to verify responsive behaviour.
 
 No build tools, bundlers, or package managers are required – it's fully static.
