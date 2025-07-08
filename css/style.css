@@ -1114,3 +1114,103 @@ body {
 .desc-cancel-btn:hover {
     background: #444;
 } 
+
+/* Improved Quill Editor Layout for Inline Editing (high specificity) */
+.description-edit-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    margin-top: 16px !important;
+    width: 100% !important;
+    max-width: 600px !important;
+}
+
+#desc-quill-editor {
+    min-height: 250px !important;
+    background: #fff !important;
+    border-radius: 0 0 8px 8px !important;
+    border: 1px solid #ddd !important;
+    border-top: none !important;
+    box-sizing: border-box !important;
+    margin-bottom: 16px !important;
+    padding: 8px !important;
+}
+
+.ql-toolbar.ql-snow {
+    width: 100% !important;
+    border-radius: 8px 8px 0 0 !important;
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+}
+
+.ql-container.ql-snow {
+    border-radius: 0 0 8px 8px !important;
+    border-top: none !important;
+}
+
+.desc-edit-actions {
+    display: flex !important;
+    gap: 12px !important;
+    margin-top: 12px !important;
+    width: 100% !important;
+    justify-content: flex-end !important;
+}
+
+.desc-save-btn, .desc-cancel-btn {
+    min-width: 80px !important;
+} 
+
+/* In-context Quill editor styling for project description */
+#desc-quill-editor.description,
+#desc-quill-editor .ql-editor {
+    font-family: 'Karla', sans-serif !important;
+    font-size: 1.1em !important;
+    line-height: 1.6 !important;
+    color: var(--color-text-primary) !important;
+    background: none !important;
+    border: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+#desc-quill-editor {
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+}
+
+.ql-toolbar.ql-snow {
+    border-radius: 8px 8px 0 0 !important;
+    border: 1px solid #ddd !important;
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+    background: #fafafa !important;
+}
+
+.ql-container.ql-snow {
+    border-radius: 0 0 8px 8px !important;
+    border: 1px solid #ddd !important;
+    border-top: none !important;
+    background: none !important;
+    min-height: 0 !important;
+}
+
+.description-edit-wrap {
+    max-width: 600px;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.desc-edit-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    width: 100%;
+    justify-content: flex-end;
+} 
