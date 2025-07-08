@@ -305,11 +305,10 @@
         "designPartner": " ",
         "designPartnerUrl": null,
         "projectUrl": null,
-        "pageSummary": "Description goes here",
+        "pageSummary": "Description goes here!!!",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
-     
       {
         "label": "Glassica App",
         "slug": "glassica-app",
@@ -433,7 +432,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.aier.org/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "Description goes here sdsds",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -448,7 +447,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.ezesoft.com/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "Description goes here sdsd",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },

@@ -137,7 +137,8 @@ A secure authentication system allows the site owner to access editing functiona
 - **Secure Authentication**: Uses SHA-256 password hashing with no passwords stored in code
 - **Session Management**: 24-hour sessions stored in localStorage
 - **Edit Banner**: When logged in, a slim red banner appears at the top of all pages with "Editing Mode" text and logout button
-- **Responsive Design**: Banner adjusts layout for both desktop and mobile views
+- **Fork on GitHub Button**: A modern, floating button in the upper right links to the public repo ([knectardev/k6_minimal](https://github.com/knectardev/k6_minimal)) on every page
+- **Responsive Design**: Banner and button adjust layout for both desktop and mobile views
 
 #### Setup Instructions:
 1. Open `js/auth.js` and change the `expectedUsername` and `expectedPasswordHash` variables
