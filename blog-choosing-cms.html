@@ -1,0 +1,37 @@
+<!-- Sample blog post – Choosing the Right CMS for Higher Ed -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choosing the Right CMS – Knectar Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/load_menu.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="index.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button"><span></span><span></span><span></span></button>
+                </div>
+                <div class="breadcrumbs">
+                    <a href="projects.html" class="breadcrumb-link">Projects</a> &gt; <a href="projects.html?category=Blog%20Posts" class="breadcrumb-link">Blog</a> &gt; <span data-field="projectTitle"></span>
+                </div>
+            </header>
+
+            <article class="blog-post placeholder-content">
+                <h1 data-field="projectTitle"></h1>
+                <p class="blog-lead" data-field="pageSummary"></p>
+                <ul class="blog-meta"></ul>
+                <div class="tts-player"><audio id="ttsAudio" controls></audio></div>
+                <p class="blog-summary"><span class="summary-label">TL;DR:</span> </p>
+            </article>
+        </main>
+    </div>
+    <script src="js/blog_tts.js" defer></script>
+</body>
+</html> 

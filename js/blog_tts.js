@@ -2,45 +2,58 @@
 
 (() => {
   const audioEl = document.getElementById('ttsAudio');
-  const summaryEl = document.querySelector('.blog-summary');
+  const articleEl = document.querySelector('.blog-post');
+  if (!audioEl || !articleEl) return; // not on blog page
 
-  // Bail early if player or text is missing (e.g., other pages)
-  if (!audioEl || !summaryEl) return;
+  // Collapse whitespace helper
+  const extractText = el => el.innerText.replace(/\s+/g, ' ').trim();
 
-  // ==== CONFIGURATION ====
-  // All secrets now stored server-side. The front-end calls our secure proxy
-  // at /api/tts which returns an audio/mpeg blob.
+  // Wait until injectPageData has added body copy (or 1s timeout)
+  function waitForContent(attempts = 0) {
+    const txt = extractText(articleEl);
+    if (txt.length > 80 || attempts > 20) { // ~ >10 words
+      startTTS(txt);
+    } else {
+      setTimeout(() => waitForContent(attempts + 1), 50);
+    }
+  }
 
-  // Trim text to a safe length (ElevenLabs hard-limit 5k chars)
-  const textToSpeak = summaryEl.innerText.trim().slice(0, 4900);
+  function startTTS(fullText) {
+    const textToSpeak = fullText.slice(0, 4900); // ElevenLabs limit
 
-  // Provide quick visual feedback while we fetch audio
-  audioEl.setAttribute('disabled', 'disabled');
-  const loadingMsg = document.createElement('span');
-  loadingMsg.textContent = 'Generating audio…';
-  loadingMsg.style.fontStyle = 'italic';
-  loadingMsg.style.marginLeft = '8px';
-  audioEl.parentElement.appendChild(loadingMsg);
+    if (localStorage.getItem('tts_debug')) {
+      console.log(`TTS payload (chars): ${textToSpeak.length}`, textToSpeak.slice(0,120)+'…');
+    }
 
-  // Build request
-  fetch('/api/tts', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: textToSpeak })
-  })
-  .then(res => {
-    if (!res.ok) throw new Error(`TTS request failed (status ${res.status})`);
-    return res.blob();
-  })
-  .then(blob => {
-    // Attach the audio source & enable controls
-    const objectUrl = URL.createObjectURL(blob);
-    audioEl.src = objectUrl;
-    audioEl.removeAttribute('disabled');
-    loadingMsg.remove();
-  })
-  .catch(err => {
-    console.error('ElevenLabs TTS error:', err);
-    loadingMsg.textContent = 'Audio unavailable';
-  });
+    // UI feedback
+    audioEl.setAttribute('disabled', 'disabled');
+    const loadingMsg = document.createElement('span');
+    loadingMsg.textContent = 'Generating audio…';
+    loadingMsg.style.fontStyle = 'italic';
+    loadingMsg.style.marginLeft = '8px';
+    audioEl.parentElement.appendChild(loadingMsg);
+
+    fetch('/api/tts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: textToSpeak })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error(`TTS request failed (status ${res.status})`);
+        return res.blob();
+      })
+      .then(blob => {
+        const objectUrl = URL.createObjectURL(blob);
+        audioEl.src = objectUrl;
+        audioEl.removeAttribute('disabled');
+        loadingMsg.remove();
+      })
+      .catch(err => {
+        console.error('ElevenLabs TTS error:', err);
+        loadingMsg.textContent = 'Audio unavailable';
+      });
+  }
+
+  // Kick off after DOM ready + microtask
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => waitForContent(), 0));
 })(); 

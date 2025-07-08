@@ -423,7 +423,8 @@ function injectPageData() {
 
     if (!pageData) {
         const pagePath = window.location.pathname.split('/').pop();
-        pageData = findPageData(window.__MENU_DATA, pagePath);
+        const res2 = findPageData(window.__MENU_DATA, pagePath);
+        if (res2) pageData = res2.item;
     }
     if (!pageData) return;
 
@@ -577,12 +578,12 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
 (function() {
     const origInject = injectPageData;
     injectPageData = function() {
-        // Load edits from localStorage if present
-        const edits = localStorage.getItem('menu_json_edits');
-        if (edits) {
-            try {
-                window.__MENU_DATA = JSON.parse(edits);
-            } catch (e) {}
+        // Apply local edits only when admin is logged in
+        if (window.authManager && window.authManager.isLoggedIn) {
+            const edits = localStorage.getItem('menu_json_edits');
+            if (edits) {
+                try { window.__MENU_DATA = JSON.parse(edits); } catch (e) {}
+        }
         }
         origInject();
         // If logged in and on project detail, initialize Quill
@@ -634,12 +635,13 @@ function updateProjectDescription(slug, newDesc) {
 (function() {
     const origInject = injectPageData;
     injectPageData = function() {
-        // Load edits from localStorage if present
-        const edits = localStorage.getItem('menu_json_edits');
-        if (edits) {
-            try {
-                window.__MENU_DATA = JSON.parse(edits);
-            } catch (e) {}
+        if (window.authManager && window.authManager.isLoggedIn) {
+            const edits = localStorage.getItem('menu_json_edits');
+            if (edits) {
+                try {
+                    window.__MENU_DATA = JSON.parse(edits);
+                } catch (e) {}
+            }
         }
         origInject();
         // Attach edit icon handler if logged in and on project detail
@@ -676,5 +678,13 @@ function buildBlogPostHTML(articleEl, data) {
     const tldr = articleEl.querySelector('.blog-summary');
     if (tldr && data.pageTLDR) {
         tldr.innerHTML = `<span class="summary-label">TL;DR:</span> ${data.pageTLDR}`;
+    }
+
+    // Inject full body copy if provided
+    if (data.pageBody) {
+        const bodyDiv = document.createElement('div');
+        bodyDiv.className = 'dynamic-body';
+        bodyDiv.innerHTML = data.pageBody;
+        articleEl.appendChild(bodyDiv);
     }
 } 
