@@ -21,7 +21,7 @@
         "designPartner": "Carnegie Dartlet ",
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.cmu.edu/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">Fox Chase Cancer Center, part of the Temple University Health System, needed a website that would be easy for patients to navigate while also showcasing the wealth of groundbreaking research conducted at the Philadelphia hospital. Working with Transit Authority Figures for design and our Drupal partner, Eastern Standard, Knectar created a site that leverages a host of complex technologies to create a flexible, yet easy-to-use system for everyday users.</div></div><p><br></p><p><strong>The Fox Chase site, implemented on Acquia, has unprecedented flexibility. Content creators can effortlessly relate content bet</strong>ween pages thanks to Drupal Paragraph blocks and responsive iFrames. The intuitive and easy-to-use Knectar design features:</p><p><br></p><p>reusable slideshows that can be embedded nearly everywhere on the site</p><p>responsive tables, tabs, and iFrames that thoroughly modernize the site</p><p>integration with Google Search Appliance that allows for a powerful search feature that can also be connected with other Temple University websites</p><p>simple embedding of third party content like Google maps, YouTube videos, etc.</p><p>Technology</p><p>Knectar’s ultimate goal in the Fox Chase site design was ease of use for the Fox Chase content entry team. With that in mind, the Knectar team decided to use Drupal’s Paragraphs feature for the creation of multiple, team-specific list pages that don’t force the user to battle complex rules when creating content. Paragraphs allowed Knectar to create predefined Paragraph types, like text boxes or slideshows, that users can choose between when creating a page. Account administrators can identify which Paragraph entities end users are allowed to have access to.</p><p><br></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Other Knectar Drupal Development projects for universities:</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Temple University: Lewis Katz School Of Medicine</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The Kavli Institute For Brain Science</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>MIT Deshpande Center</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The Forsyth Institute</li></ol>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -253,7 +253,7 @@
         "designPartner": "#N/A",
         "designPartnerUrl": "#N/A",
         "projectUrl": "#N/A",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<p>Description goes heres s </p>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -305,7 +305,7 @@
         "designPartner": " ",
         "designPartnerUrl": null,
         "projectUrl": null,
-        "pageSummary": "Description goes here!!!",
+        "pageSummary": "<p>Description goes here!!!</p><p>Description goes here!!!</p><p>Description goes here!!!</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block ql-syntax language-javascript\" data-language=\"javascript\">                    if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div><p><br></p><p>Description goes here!!!</p><p><br></p><p>Description goes here!!!</p><p><br></p>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -320,7 +320,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": null,
-        "pageSummary": "Description goes here",
+        "pageSummary": "<ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Description goes here</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsds</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsd</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sd</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsds</li></ol><blockquote>sdsd sd sd </blockquote><p>sdsds</p>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -350,7 +350,7 @@
         "designPartner": " ",
         "designPartnerUrl": null,
         "projectUrl": "https://www.drupal.org/project/ps",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<p>Description goes here</p><p>sdlsj dls</p><p>sdsdsdlsjkhd skhd slkdh sl</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block language-javascript\">     saveTimeout = setTimeout(() =&gt; {</div><div class=\"ql-code-block language-python\">            const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block\">                    if (success) {</div></div><p>                        showIndicator('Saved!', 'saved');</p><p>                        originalDesc = newDesc; // Update original for next comparison</p><p>                    } else {lsjdh lskjd </p><p>lsjhd sljdh </p><p>skdjgh s</p>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -380,7 +380,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": null,
-        "pageSummary": "Description goes here",
+        "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">sdsdsdsdoshd sodjg skdhg skhgd skhgd skhgd ksh dkhs s</div><div class=\"ql-code-block\"><br></div><div class=\"ql-code-block\">         const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\" data-language=\"true\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div></div><p>                    if (success) {</p><p>                        showIndicator('Saved!', 'saved');</p><p>                        originalDesc = newDesc; // Update original for next comparison</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">                    } else {</div><div class=\"ql-code-block\">                        showIndicator('</div></div>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -432,7 +432,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.aier.org/",
-        "pageSummary": "Description goes here sdsds",
+        "pageSummary": "<p>hello jsgd skjdgs kdjgs dksjgd skhdfs kdh sdoujd skhgd kshg dkshgd kshd kshdv kshvd skhvd skhv dksjvb dksjd kshvd </p><p><br></p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">skdjgs kdh skdhs ds</div><div class=\"ql-code-block\">d skdhsg ds</div></div><p><br></p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\"> skdhgs kdhgs dkh sds</div></div><p>s</p><p>sdksjgd kshd s</p><p><br></p><p>s</p><p>dksjdg skhgd sds</p><p><br></p>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -447,7 +447,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.ezesoft.com/",
-        "pageSummary": "Description goes here sdsd",
+        "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">     saveTimeout = setTimeout(() =&gt; {</div><div class=\"ql-code-block\">            const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block\">                    if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -477,7 +477,7 @@
         "designPartner": "Aaron Taylor-Waldman",
         "designPartnerUrl": "https://www.taylorwaldman.com/",
         "projectUrl": "https://monadnock.org/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">Descrips tion goes here</div></div>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
@@ -492,7 +492,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://riverbendanimal.com/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<pre data-language=\"javascript\" class=\"language-javascript\"><br></pre>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },

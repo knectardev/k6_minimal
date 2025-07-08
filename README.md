@@ -38,6 +38,9 @@ K6_MINIMAL/
 ├── project.html            # Generic project detail template (populated via ?item=slug)
 ├── blog.html               # Sample blog post page
 ├── edit.html               # Edit mode login page
+├── server.js              # Express API endpoint for menu updates
+├── package.json           # Node dependencies (express, dotenv)
+├── .env                   # Secret values (e.g., EDIT_SECRET)
 └── README.md               # ← you are here
 ```
 
@@ -144,10 +147,33 @@ A secure authentication system allows the site owner to access editing functiona
 1. Open `js/auth.js` and change the `expectedUsername` and `expectedPasswordHash` variables
 2. Generate your password hash by running this in browser console:
    ```javascript
-   crypto.subtle.digest('SHA-256', new TextEncoder().encode('---)')).then(hash => console.log(Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('')))
+   crypto.subtle.digest('SHA-256', new TextEncoder().encode('---)')).then(hash => console.log(Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('')))
    ```
 3. Replace the default hash with your generated hash
 4. Access `edit.html` to log in and test the system
+5. Create a `.env` file in the project root and add your secret key:
+   ```bash
+   EDIT_SECRET=dowhatyouaredoing
+   ```
+6. Install backend dependencies and start the local API so the **Save** button and **TTS proxy** can persist/save edits:
+   ```bash
+   npm install
+   node server.js
+   ```
+
+### ElevenLabs Text-to-Speech (Now Server-Side)
+
+The blog summary audio feature no longer exposes the ElevenLabs API key in the client bundle.  Add the following to your `.env`:
+
+```bash
+ELEVEN_API_KEY=sk_********************************
+# Optional – override default "Rachel" voice
+ELEVEN_VOICE_ID=21m00Tcm4TlvDq8ikWAM
+```
+
+`server.js` now provides a secure `POST /api/tts` proxy that accepts `{ text: "..." }` JSON and returns an `audio/mpeg` stream.  The front-end (`js/blog_tts.js`) was updated to call this endpoint, removing all secrets from the repository.
+
+> **Deployment**: Ensure these environment variables are configured in Vercel / Render / your platform of choice before enabling the blog TTS widget.
 
 **Default credentials**: username: `admin`, password: `---` (CHANGE THESE!)
 
@@ -166,4 +192,14 @@ About Us: Current and former employees
 
 #### backlog
 More content 
+
+## CMS/Editing System
+
+- The project description editor for admins now uses Quill v2 with a full toolbar, and is always editable in-place for authenticated users.
+- The Quill editor is styled with custom CSS to match the site's typography (Karla font, color, spacing), so it appears as normal text rather than a textarea or input.
+- Edits are cached to `localStorage`, letting you refresh the page without losing drafts during development.
+- Clicking **Save** sends a `POST /api/update-menu` request (handled by `server.js`) with an `x-edit-secret` header that must match `EDIT_SECRET` in your `.env`.
+- On success, the server overwrites `data/menu.json`, so updates are version-controlled alongside your code.
+- See `css/style.css` for the relevant Quill overrides.
+- 2025-07-08: Removed verbose secret logging from `server.js` (refactor only, no functional changes).
 

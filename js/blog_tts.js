@@ -8,8 +8,8 @@
   if (!audioEl || !summaryEl) return;
 
   // ==== CONFIGURATION ====
-  const API_KEY = 'sk_e0cc0550547e8292567ff46fe85f9ae24c7f9464443c0d12';
-  const VOICE_ID = '21m00Tcm4TlvDq8ikWAM'; // "Rachel" – reliable default
+  // All secrets now stored server-side. The front-end calls our secure proxy
+  // at /api/tts which returns an audio/mpeg blob.
 
   // Trim text to a safe length (ElevenLabs hard-limit 5k chars)
   const textToSpeak = summaryEl.innerText.trim().slice(0, 4900);
@@ -23,18 +23,10 @@
   audioEl.parentElement.appendChild(loadingMsg);
 
   // Build request
-  fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`, {
+  fetch('/api/tts', {
     method: 'POST',
-    headers: {
-      'xi-api-key': API_KEY,
-      'Content-Type': 'application/json',
-      'Accept': 'audio/mpeg'
-    },
-    body: JSON.stringify({
-      text: textToSpeak,
-      model_id: 'eleven_monolingual_v1',
-      voice_settings: { stability: 0.5, similarity_boost: 0.5 }
-    })
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text: textToSpeak })
   })
   .then(res => {
     if (!res.ok) throw new Error(`TTS request failed (status ${res.status})`);

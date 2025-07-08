@@ -524,55 +524,78 @@ function buildProjectInfoHTML(data) {
     }
     if (rows.length) html += `<ul>${rows.join('\n')}</ul>`;
 
-    // Description with edit icon if logged in
-    if (data.pageSummary) {
-        html += `<div class="description-edit-wrap"><p class="description" id="project-description">${data.pageSummary}</p>`;
-        if (window.authManager && window.authManager.isLoggedIn) {
-            html += `<button class="edit-desc-btn" id="edit-desc-btn" title="Edit Description"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.85 2.85a2.5 2.5 0 0 1 3.54 3.54l-1.09 1.09-3.54-3.54 1.09-1.09Zm-2.12 2.12-9.19 9.19a2 2 0 0 0-.54.96l-1 4a1 1 0 0 0 1.22 1.22l4-1a2 2 0 0 0 .96-.54l9.19-9.19-3.54-3.54Z" fill="#888"/></svg></button>`;
-        }
-        html += `</div>`;
+    // Description: Quill editor if logged in, static text otherwise
+    if (window.authManager && window.authManager.isLoggedIn) {
+        html += `<div class="description-edit-wrap">
+            <div id="desc-quill-editor" class="description"></div>
+            <div class="desc-edit-actions">
+                <button id="desc-save-btn" class="desc-save-btn">Save</button>
+                <button id="desc-cancel-btn" class="desc-cancel-btn">Cancel</button>
+            </div>
+        </div>`;
+    } else if (data.pageSummary) {
+        html += `<p class="description">${data.pageSummary}</p>`;
     }
     if (data.pageBody) html += `<div class="dynamic-body">${data.pageBody}</div>`;
     return html;
 }
 
-// Inline description editor logic for project detail pages
-function enableDescriptionEditing(slug, originalDesc) {
-    const descP = document.getElementById('project-description');
-    if (!descP) return;
-    const wrap = descP.closest('.description-edit-wrap');
-    if (!wrap) return;
-    // Save original for cancel
-    const origHTML = descP.innerHTML;
-    // Replace with textarea and buttons
-    wrap.innerHTML = `
-        <textarea id="desc-editor" class="desc-editor" rows="5">${originalDesc.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</textarea>
-        <div class="desc-edit-actions">
-            <button id="desc-save-btn" class="desc-save-btn">Save</button>
-            <button id="desc-cancel-btn" class="desc-cancel-btn">Cancel</button>
-        </div>
-    `;
-    // Add minimal rich text controls (bold/italic)
-    // (Optional: can be extended later)
-    const editor = document.getElementById('desc-editor');
+// Always-in-place Quill editor for admins
+function setupQuillDescriptionEditor(slug, originalDesc) {
+    const quillDiv = document.getElementById('desc-quill-editor');
+    if (!quillDiv) return;
+    const quill = new Quill('#desc-quill-editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'font': [] }, { 'size': [] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'script': 'super' }, { 'script': 'sub' }],
+                [{ 'header': 1 }, { 'header': 2 }, 'blockquote', 'code-block'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+                [{ 'direction': 'rtl' }, { 'align': [] }],
+                ['link', 'image', 'video', 'formula'],
+                ['clean']
+            ]
+        }
+    });
+    quill.root.innerHTML = originalDesc;
+    // Save button
     document.getElementById('desc-save-btn').onclick = function() {
-        let newDesc = editor.value;
-        // Update in-memory data
+        let newDesc = quill.root.innerHTML;
         updateProjectDescription(slug, newDesc);
-        // Re-render
         injectPageData();
     };
+    // Cancel button
     document.getElementById('desc-cancel-btn').onclick = function() {
-        // Restore original
-        wrap.innerHTML = `<p class="description" id="project-description">${originalDesc}</p>`;
-        if (window.authManager && window.authManager.isLoggedIn) {
-            wrap.innerHTML += `<button class="edit-desc-btn" id="edit-desc-btn" title="Edit Description"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.85 2.85a2.5 2.5 0 0 1 3.54 3.54l-1.09 1.09-3.54-3.54 1.09-1.09Zm-2.12 2.12-9.19 9.19a2 2 0 0 0-.54.96l-1 4a1 1 0 0 0 1.22 1.22l4-1a2 2 0 0 0 .96-.54l9.19-9.19-3.54-3.54Z" fill="#888"/></svg></button>`;
-            document.getElementById('edit-desc-btn').onclick = function() {
-                enableDescriptionEditing(slug, originalDesc);
-            };
-        }
+        injectPageData();
     };
 }
+
+// Patch injectPageData to initialize Quill if logged in
+(function() {
+    const origInject = injectPageData;
+    injectPageData = function() {
+        // Load edits from localStorage if present
+        const edits = localStorage.getItem('menu_json_edits');
+        if (edits) {
+            try {
+                window.__MENU_DATA = JSON.parse(edits);
+            } catch (e) {}
+        }
+        origInject();
+        // If logged in and on project detail, initialize Quill
+        const urlParams = new URLSearchParams(window.location.search);
+        const slugParam = urlParams.get('item');
+        if (slugParam && window.authManager && window.authManager.isLoggedIn) {
+            const pageData = findBySlug(window.__MENU_DATA, slugParam);
+            if (pageData && pageData.item && pageData.item.pageSummary !== undefined) {
+                setupQuillDescriptionEditor(slugParam, pageData.item.pageSummary);
+            }
+        }
+    }
+})();
 
 function updateProjectDescription(slug, newDesc) {
     // Update in-memory menu data
