@@ -33,8 +33,8 @@ K6_MINIMAL/
 ├── web-apps.html           # Section landing – Web & iOS Apps
 ├── informational.html      # Section landing – Informational Sites
 ├── projects.html           # NEW unified list view with category filter
-├── project_detail.html     # Detailed case study – Yale Center for British Art
-├── blog_post.html          # Sample blog post page
+├── project.html            # Generic project detail template (populated via ?item=slug)
+├── blog.html               # Sample blog post page
 └── README.md               # ← you are here
 ```
 
@@ -58,6 +58,8 @@ A lightweight loader (`js/load_menu.js`) injects this markup into every page at 
 • A drop-down filter (top-right) lets visitors switch between: **Higher Education**, **Intranets & Portals**, **Web & iOS Apps**, **Informational**, **E-Commerce**, and more.
 • A second drop-down now filters by **Technology** (e.g., Drupal 10, Shopify, JavaScript). Selecting a technology combines with the category filter so only projects matching *both* criteria appear.
 • Technology options display a live project count: e.g., *Drupal (23)* shows 23 matching projects.
+• Technology option counts now automatically update when a category is selected so numbers always reflect the visible subset.
+• Technology options whose count drops to 0 for a given category are now automatically hidden, keeping the list concise.
 • Tiles now **slide in** from a random left or right offset (no vertical movement) on first load and after each filter change, adding subtle motion.
 • The sidebar's parent menu links now route to this page and auto-select the relevant filter for seamless navigation.
 • Responsive layout – on desktop the tile images alternate left/right; on mobile the layout stacks vertically.
@@ -87,7 +89,7 @@ The paragraph under `.intro-text` on the home page now reacts to the user's curs
 * The effect is calculated in real-time in `js/script.js` (radius 100 px, max displacement 40 px) and eases back to rest on mouse leave.
 * Adds a playful, tactile feel echoing the interactive aesthetic of the [reference demo](https://k6-nu.vercel.app/).
 
-### 6. Case-Study Template (`project_detail.html`)
+### 6. Project Detail Template (`project.html`)
 A sample case study (Yale Center for British Art) demonstrates:
 * Breadcrumb navigation with semantic links & external-link icon treatment.
 * Gallery / details split layout.
@@ -95,7 +97,7 @@ A sample case study (Yale Center for British Art) demonstrates:
 
 Use this file as a blueprint for future projects – duplicate & populate.
 
-### 7. Blog Post Template (`blog_post.html`)
+### 7. Blog Post Template (`blog.html`)
 A sample editorial page that demonstrates:
 * Breadcrumb navigation and metadata list (author, date, tech, domain).
 * Figure with caption styling for inline imagery.

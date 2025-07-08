@@ -62,11 +62,64 @@ function initProjects() {
 
     // will hold counts of canonical techs once computed
     let techCounts = {};
+    let currentVisibleTotal = tiles.length; // updated in refreshTechCounts
+
+    // Helper – recompute tech counts for currently selected category & refresh dropdown labels
+    function refreshTechCounts(currentCat) {
+        if (!techFilterSelect || !techDropdownOptions) return;
+        techCounts = {};
+        let visibleTileTotal = 0;
+        tiles.forEach(tile => {
+            const cat = tile.dataset.category;
+            if (currentCat === 'All' || cat === currentCat) {
+                visibleTileTotal++;
+                const techStr = tile.dataset.technology || '';
+                techStr.split('|').forEach(t => {
+                    if (!t) return;
+                    techCounts[t] = (techCounts[t] || 0) + 1;
+                });
+            }
+        });
+        currentVisibleTotal = visibleTileTotal;
+
+        // Update native select
+        techFilterSelect.querySelectorAll('option').forEach(opt => {
+            const val = opt.value;
+            if (val === 'All') {
+                opt.textContent = `All (${visibleTileTotal})`;
+                opt.hidden = false;
+            } else {
+                const cnt = techCounts[val] || 0;
+                opt.textContent = `${val} (${cnt})`;
+                // Hide/disable options with zero count
+                opt.hidden = cnt === 0;
+                opt.disabled = cnt === 0;
+            }
+        });
+        // Update custom dropdown list items
+        techDropdownOptions.querySelectorAll('li').forEach(li => {
+            const val = li.getAttribute('data-value');
+            if (val === 'All') {
+                li.textContent = `All (${visibleTileTotal})`;
+                li.style.display = '';
+            } else {
+                const cnt = techCounts[val] || 0;
+                li.textContent = `${val} (${cnt})`;
+                li.style.display = cnt === 0 ? 'none' : '';
+            }
+        });
+
+        // Reset technology filter to "All" if current selection now empty
+        const selectedVal = techFilterSelect.value;
+        if (selectedVal !== 'All' && !techCounts[selectedVal]) {
+            techFilterSelect.value = 'All';
+        }
+    }
 
     // Helper to get display label (with counts) for technology dropdown header
     function getTechLabel(tech) {
         if (tech === 'All') {
-            return `All (${tiles.length})`;
+            return `All (${currentVisibleTotal})`;
         }
         return `${tech} (${techCounts[tech] || 0})`;
     }
@@ -169,6 +222,10 @@ function initProjects() {
 
     function applyFilter() {
         const currentCat = filterSelect.value;
+
+        // Recalculate technology counts & labels based on selected category
+        refreshTechCounts(currentCat);
+
         const currentTech = techFilterSelect ? techFilterSelect.value : 'All';
         // Build query params based on current selections
         const queryParts = [];
