@@ -113,6 +113,9 @@ A sample editorial page that demonstrates:
 
 Use this file as a blueprint when authoring future blog content – duplicate & populate.
 
+### 7a. Sample Blog Posts *(restored)*
+Two example posts now live at **`blog-choosing-cms.html`** and **`blog-drupal-10.html`**.  They demonstrate the blog template, metadata injection, and the new server-side TTS flow.  You can duplicate these files and add matching entries in `data/menu.json` to create additional posts.
+
 ### 8. **3D Glow-Edges Demo** (`meshes/dist/index.html`) – an experimental Three.js demo that draws a **steady** (non-flashing) glowing wireframe around a GLB model using CSS-blurred dual canvases. Open the file through a local web-server (e.g. `python -m http.server`) so the model can be fetched without CORS issues.
 
 ### 9. **CSV → JSON Data Pipeline** (Updated)

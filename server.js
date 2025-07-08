@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
+const crypto = require('crypto');
 const path = require('path');
 const app = express();
 const PORT = 8000;
@@ -42,27 +43,45 @@ app.post('/api/tts', async (req, res) => {
 
     const voiceId = process.env.ELEVEN_VOICE_ID || '21m00Tcm4TlvDq8ikWAM'; // Default "Rachel"
 
-    // Call ElevenLabs TTS
-    const upstream = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
-      method: 'POST',
-      headers: {
-        'xi-api-key': apiKey,
-        'Content-Type': 'application/json',
-        'Accept': 'audio/mpeg'
-      },
-      body: JSON.stringify({
-        text,
-        model_id: 'eleven_monolingual_v1',
-        voice_settings: { stability: 0.5, similarity_boost: 0.5 }
-      })
-    });
+    // Compute hash of the text for cache key
+    const hash = crypto.createHash('sha256').update(text).digest('hex');
+    const cacheDir = path.join(__dirname, 'tts_cache');
+    const cachePath = path.join(cacheDir, `${hash}.mp3`);
 
-    if (!upstream.ok) {
-      const errText = await upstream.text();
-      return res.status(500).json({ error: 'ElevenLabs request failed', details: errText });
+    let audioBuffer;
+    if (fs.existsSync(cachePath)) {
+      audioBuffer = fs.readFileSync(cachePath);
+      if (process.env.TTS_DEBUG) console.log('TTS cache hit:', hash);
+    } else {
+      if (process.env.TTS_DEBUG) console.log('TTS cache miss:', hash);
+      // Ensure cache directory exists
+      if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
+
+      // Call ElevenLabs TTS
+      const upstream = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+        method: 'POST',
+        headers: {
+          'xi-api-key': apiKey,
+          'Content-Type': 'application/json',
+          'Accept': 'audio/mpeg'
+        },
+        body: JSON.stringify({
+          text,
+          model_id: 'eleven_monolingual_v1',
+          voice_settings: { stability: 0.5, similarity_boost: 0.5 }
+        })
+      });
+
+      if (!upstream.ok) {
+        const errText = await upstream.text();
+        return res.status(500).json({ error: 'ElevenLabs request failed', details: errText });
+      }
+
+      audioBuffer = Buffer.from(await upstream.arrayBuffer());
+      // Save to cache (fire and forget)
+      fs.writeFile(cachePath, audioBuffer, () => {});
     }
 
-    const audioBuffer = Buffer.from(await upstream.arrayBuffer());
     res.setHeader('Content-Type', 'audio/mpeg');
     res.send(audioBuffer);
   } catch (err) {

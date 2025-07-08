@@ -689,7 +689,36 @@
     "label": "Blog Posts",
     "icon": "hash.svg",
     "more": 0,
-    "submenu": []
+    "submenu": [
+      {
+        "label": "Choosing the Right CMS for Higher Ed",
+        "slug": "choosing-the-right-cms",
+        "url": "blog-choosing-cms.html",
+        "projectTitle": "Choosing the Right CMS for Higher Ed",
+        "author": "Chris Amato",
+        "technology": "CMS Strategy",
+        "pageSummary": "A pragmatic guide to selecting a content management system that balances flexibility, governance, and accessibility.",
+        "pageTLDR": "Drupal and WordPress remain top contenders but governance matters more than features.",
+        "textToAudioWidgetDisplayed": true,
+        "coverImage": "assets/hash.svg",
+        "sub_menu": 1
+      },
+      {
+        "label": "What’s New in Drupal 10",
+        "slug": "whats-new-drupal-10",
+        "url": "blog-drupal-10.html",
+        "projectTitle": "What’s New in Drupal 10",
+        "author": "Chris Amato",
+        "technology": "Drupal 10",
+        "projectUrl": "https://www.drupal.org/project/drupal",
+        "pageSummary": "An overview of the key improvements, from CKEditor 5 to the new Claro admin theme, that ship with the latest major release.",
+        "pageTLDR": "CKEditor 5 + decoupled menu APIs are worth the upgrade.",
+        "textToAudioWidgetDisplayed": true,
+        "coverImage": "assets/hash.svg",
+        "pageBody": "<h2>Key Highlights</h2>\n<p>Drupal 10 is more than a cosmetic update&mdash;it lays the foundation for the next decade of site-building. Below is a quick tour of the features we are most excited about.</p>\n<h3>1. CKEditor 5</h3>\n<p>The new WYSIWYG brings a modern editing experience out-of-the-box&mdash;think real-time collaborative editing, Markdown shortcuts, better paste-from-Word, and a <em>massive</em> plugin ecosystem.</p>\n<blockquote><strong>Tip&nbsp;for site builders:</strong> The Classic build is enabled by default; switch to the Balloon build for inline toolbars in long-form content.</blockquote>\n<h3>2. Starterkit Themes</h3>\n<p>Goodbye sub-theme inheritance headaches. The new starterkit generator copies a <code>base</code> theme into your project so you can safely override anything without being surprised by upstream changes.</p>\n<pre><code class=\"language-bash\">php core/scripts/drupal generate-theme mytheme --starterkit=claro</code></pre>\n<h3>3. Decoupled Menus API</h3>\n<p>Headless projects rejoice! You can now query menus via JSON:API without additional contrib modules:</p>\n<pre><code class=\"language-http\">GET /jsonapi/menu_items/main</code></pre>\n<h3>4. Symfony 6 &amp; PHP 8.2</h3>\n<p>Under the hood Drupal 10 ships on Symfony&nbsp;6, embracing modern PHP features like readonly properties, enums, and attributes. You <em>will</em> need PHP 8.1+ to run it.</p>\n<ul>\n<li>Minimum PHP: <strong>8.1</strong></li>\n<li>End of life for jQuery UI (finally) 🎉</li>\n<li>Automatic updates module in beta</li>\n</ul>\n<h2>Should You Upgrade?</h2>\n<p>If you are already on Drupal&nbsp;9, the move to 10 is straightforward: update contrib modules, ensure custom code is PHP 8 ready, then run <code>composer require drupal/core:^10</code>. Expect most projects to budget 8-24&nbsp;hours.</p>\n<p>Coming from Drupal 7? You’ll still need a migration&mdash;but you can now target a version with longer runway.</p>\n<img src=\"project_tiles/sample_tile2.png\" alt=\"Screenshot of Claro admin theme\" style=\"max-width:100%;border-radius:8px;margin:24px 0;\">\n<p class=\"caption\">Figure&nbsp;1. The new Claro admin theme in dark-mode.</p>",
+        "sub_menu": 1
+      }
+    ]
   },
   {
     "label": "Music & Art",
