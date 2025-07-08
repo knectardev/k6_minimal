@@ -170,12 +170,17 @@ function initProjects() {
     function applyFilter() {
         const currentCat = filterSelect.value;
         const currentTech = techFilterSelect ? techFilterSelect.value : 'All';
+        // Build query params based on current selections
+        const queryParts = [];
+        if (currentCat !== 'All') queryParts.push(`category=${encodeURIComponent(currentCat)}`);
+        if (currentTech !== 'All') queryParts.push(`technology=${encodeURIComponent(currentTech)}`);
+        const queryString = queryParts.length ? `?${queryParts.join('&')}` : '';
+
         // Update breadcrumb link text + href
         const catLink = document.getElementById('crumbCategoryLink');
         if (catLink) {
             catLink.textContent = currentCat;
-            const url = currentCat === 'All' ? 'projects.html' : `projects.html?category=${encodeURIComponent(currentCat)}`;
-            catLink.setAttribute('href', url);
+            catLink.setAttribute('href', `projects.html${queryString}`);
         }
 
         // Sync sidebar active state
@@ -194,9 +199,7 @@ function initProjects() {
         animateVisibleTiles();
 
         // Update address bar without reloading page
-        const newUrl = currentCat === 'All'
-            ? 'projects.html'
-            : `projects.html?category=${encodeURIComponent(currentCat)}`;
+        const newUrl = `projects.html${queryString}`;
         if (window.location.href.split('#')[0].split('?')[0].endsWith('projects.html')) {
             // Preserve hash (if any)
             const hash = window.location.hash || '';
