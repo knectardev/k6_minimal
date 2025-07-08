@@ -309,21 +309,7 @@
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
-      {
-        "label": "Crocker",
-        "slug": "crocker",
-        "url": "project.html?item=crocker",
-        "projectTitle": "Crocker",
-        "role": "Technical Lead, Developer",
-        "budget": "$25,000 - $50,000",
-        "technology": "Drupal 7",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://crocker.com/",
-        "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
-        "sub_menu": 1
-      },
+     
       {
         "label": "Glassica App",
         "slug": "glassica-app",
@@ -507,6 +493,21 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://riverbendanimal.com/",
+        "pageSummary": "Description goes here",
+        "coverImage": "assets/ycba.png",
+        "sub_menu": 1
+      },
+      {
+        "label": "Crocker",
+        "slug": "crocker",
+        "url": "project.html?item=crocker",
+        "projectTitle": "Crocker",
+        "role": "Technical Lead, Developer",
+        "budget": "$25,000 - $50,000",
+        "technology": "Drupal 7",
+        "designPartner": null,
+        "designPartnerUrl": null,
+        "projectUrl": "https://crocker.com/",
         "pageSummary": "Description goes here",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1

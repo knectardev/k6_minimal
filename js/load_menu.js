@@ -135,13 +135,20 @@
     window.__MENU_DATA = menuData;
     buildMenu(menuData);
   }).then(() => {
-    // dynamically load main site script
-    const s = document.createElement('script');
-    s.src = 'js/script.js';
-    document.body.appendChild(s);
-    s.onload = () => {
-      const evt = new Event('DOMContentLoaded', { bubbles: true, cancelable: true });
-      document.dispatchEvent(evt);
+    // dynamically load auth script first, then main site script
+    const authScript = document.createElement('script');
+    authScript.src = 'js/auth.js';
+    document.body.appendChild(authScript);
+    
+    authScript.onload = () => {
+      // Load main site script after auth script
+      const mainScript = document.createElement('script');
+      mainScript.src = 'js/script.js';
+      document.body.appendChild(mainScript);
+      mainScript.onload = () => {
+        const evt = new Event('DOMContentLoaded', { bubbles: true, cancelable: true });
+        document.dispatchEvent(evt);
+      };
     };
   });
 })(); 

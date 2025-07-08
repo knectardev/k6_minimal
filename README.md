@@ -20,7 +20,9 @@ K6_MINIMAL/
 ├── js/
 │   ├── script.js           # Sidebar, mobile nav, connecting-lines
 │   ├── lines.js            # Generative diagonal-line synth (home-page feature)
-│   └── projects.js         # Category filter for projects list view
+│   ├── projects.js         # Category filter for projects list view
+│   ├── auth.js             # Authentication system and edit mode management
+│   └── load_menu.js        # Dynamic menu loader and script orchestrator
 ├── data/
 │   ├── menu.json           # Generated navigation + page meta (DO NOT EDIT MANUALLY)
 │   └── project_data.csv    # ← single source-of-truth for all projects
@@ -35,6 +37,7 @@ K6_MINIMAL/
 ├── projects.html           # NEW unified list view with category filter
 ├── project.html            # Generic project detail template (populated via ?item=slug)
 ├── blog.html               # Sample blog post page
+├── edit.html               # Edit mode login page
 └── README.md               # ← you are here
 ```
 
@@ -60,6 +63,7 @@ A lightweight loader (`js/load_menu.js`) injects this markup into every page at 
 • Technology options display a live project count: e.g., *Drupal (23)* shows 23 matching projects.
 • Technology option counts now automatically update when a category is selected so numbers always reflect the visible subset.
 • Technology options whose count drops to 0 for a given category are now automatically hidden, keeping the list concise.
+• The “All” technology option now shows the number of projects in the active category rather than the site-wide total.
 • Tiles now **slide in** from a random left or right offset (no vertical movement) on first load and after each filter change, adding subtle motion.
 • The sidebar's parent menu links now route to this page and auto-select the relevant filter for seamless navigation.
 • Responsive layout – on desktop the tile images alternate left/right; on mobile the layout stacks vertically.
@@ -124,4 +128,41 @@ This pipeline keeps the data human-editable in spreadsheets while retaining the 
 - `projectTitle`
 - `role`
 - `budget`
-- `
+
+### 10. **Edit Mode Authentication** *(new)*
+
+A secure authentication system allows the site owner to access editing functionality:
+
+- **Login Page**: Navigate to `edit.html` to access the login form
+- **Secure Authentication**: Uses SHA-256 password hashing with no passwords stored in code
+- **Session Management**: 24-hour sessions stored in localStorage
+- **Edit Banner**: When logged in, a slim red banner appears at the top of all pages with "Editing Mode" text and logout button
+- **Responsive Design**: Banner adjusts layout for both desktop and mobile views
+
+#### Setup Instructions:
+1. Open `js/auth.js` and change the `expectedUsername` and `expectedPasswordHash` variables
+2. Generate your password hash by running this in browser console:
+   ```javascript
+   crypto.subtle.digest('SHA-256', new TextEncoder().encode('---)')).then(hash => console.log(Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('')))
+   ```
+3. Replace the default hash with your generated hash
+4. Access `edit.html` to log in and test the system
+
+**Default credentials**: username: `admin`, password: `---` (CHANGE THESE!)
+
+#### Todos: 
+
+#### MVP
+Minimal Content 
+Calendly (form?) - 
+API https://developer.calendly.com/how-to-display-the-scheduling-page-for-users-of-your-app 
+Embed options: 
+https://help.calendly.com/hc/en-us/articles/4409838727703-How-to-add-Calendly-to-your-website#h_01JXFNNPH36B2K3DB6TYWSFZ79
+https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview?tab=general#h_01JSCFZS5Q3X3DA0QD5JX11SCS 
+
+Fork on GitHub logo
+About Us: Current and former employees
+
+#### backlog
+More content 
+
