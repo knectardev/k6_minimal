@@ -524,10 +524,115 @@ function buildProjectInfoHTML(data) {
     }
     if (rows.length) html += `<ul>${rows.join('\n')}</ul>`;
 
-    if (data.pageSummary) html += `<p class="description">${data.pageSummary}</p>`;
+    // Description with edit icon if logged in
+    if (data.pageSummary) {
+        html += `<div class="description-edit-wrap"><p class="description" id="project-description">${data.pageSummary}</p>`;
+        if (window.authManager && window.authManager.isLoggedIn) {
+            html += `<button class="edit-desc-btn" id="edit-desc-btn" title="Edit Description"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.85 2.85a2.5 2.5 0 0 1 3.54 3.54l-1.09 1.09-3.54-3.54 1.09-1.09Zm-2.12 2.12-9.19 9.19a2 2 0 0 0-.54.96l-1 4a1 1 0 0 0 1.22 1.22l4-1a2 2 0 0 0 .96-.54l9.19-9.19-3.54-3.54Z" fill="#888"/></svg></button>`;
+        }
+        html += `</div>`;
+    }
     if (data.pageBody) html += `<div class="dynamic-body">${data.pageBody}</div>`;
     return html;
 }
+
+// Inline description editor logic for project detail pages
+function enableDescriptionEditing(slug, originalDesc) {
+    const descP = document.getElementById('project-description');
+    if (!descP) return;
+    const wrap = descP.closest('.description-edit-wrap');
+    if (!wrap) return;
+    // Save original for cancel
+    const origHTML = descP.innerHTML;
+    // Replace with textarea and buttons
+    wrap.innerHTML = `
+        <textarea id="desc-editor" class="desc-editor" rows="5">${originalDesc.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</textarea>
+        <div class="desc-edit-actions">
+            <button id="desc-save-btn" class="desc-save-btn">Save</button>
+            <button id="desc-cancel-btn" class="desc-cancel-btn">Cancel</button>
+        </div>
+    `;
+    // Add minimal rich text controls (bold/italic)
+    // (Optional: can be extended later)
+    const editor = document.getElementById('desc-editor');
+    document.getElementById('desc-save-btn').onclick = function() {
+        let newDesc = editor.value;
+        // Update in-memory data
+        updateProjectDescription(slug, newDesc);
+        // Re-render
+        injectPageData();
+    };
+    document.getElementById('desc-cancel-btn').onclick = function() {
+        // Restore original
+        wrap.innerHTML = `<p class="description" id="project-description">${originalDesc}</p>`;
+        if (window.authManager && window.authManager.isLoggedIn) {
+            wrap.innerHTML += `<button class="edit-desc-btn" id="edit-desc-btn" title="Edit Description"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.85 2.85a2.5 2.5 0 0 1 3.54 3.54l-1.09 1.09-3.54-3.54 1.09-1.09Zm-2.12 2.12-9.19 9.19a2 2 0 0 0-.54.96l-1 4a1 1 0 0 0 1.22 1.22l4-1a2 2 0 0 0 .96-.54l9.19-9.19-3.54-3.54Z" fill="#888"/></svg></button>`;
+            document.getElementById('edit-desc-btn').onclick = function() {
+                enableDescriptionEditing(slug, originalDesc);
+            };
+        }
+    };
+}
+
+function updateProjectDescription(slug, newDesc) {
+    // Update in-memory menu data
+    function updateInMenu(arr) {
+        for (const entry of arr) {
+            if (entry.slug === slug) {
+                entry.pageSummary = newDesc;
+                return true;
+            }
+            if (entry.submenu && updateInMenu(entry.submenu)) return true;
+        }
+        return false;
+    }
+    updateInMenu(window.__MENU_DATA);
+    // Save to localStorage for dev persistence
+    localStorage.setItem('menu_json_edits', JSON.stringify(window.__MENU_DATA));
+
+    // Send to backend for permanent save
+    fetch('/api/update-menu', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-edit-secret': 'dowhatyouaredoing' // match EDIT_SECRET in .env
+        },
+        body: JSON.stringify(window.__MENU_DATA)
+    }).then(res => res.json()).then(data => {
+        if (!data.success) {
+            alert('Failed to save to server: ' + (data.error || 'Unknown error'));
+        }
+    }).catch(err => {
+        alert('Failed to save to server: ' + err.message);
+    });
+}
+
+// Patch injectPageData to load edits from localStorage if present
+(function() {
+    const origInject = injectPageData;
+    injectPageData = function() {
+        // Load edits from localStorage if present
+        const edits = localStorage.getItem('menu_json_edits');
+        if (edits) {
+            try {
+                window.__MENU_DATA = JSON.parse(edits);
+            } catch (e) {}
+        }
+        origInject();
+        // Attach edit icon handler if logged in and on project detail
+        const urlParams = new URLSearchParams(window.location.search);
+        const slugParam = urlParams.get('item');
+        if (slugParam && window.authManager && window.authManager.isLoggedIn) {
+            const editBtn = document.getElementById('edit-desc-btn');
+            const descP = document.getElementById('project-description');
+            if (editBtn && descP) {
+                editBtn.onclick = function() {
+                    enableDescriptionEditing(slugParam, descP.innerHTML);
+                };
+            }
+        }
+    }
+})();
 
 function buildBlogPostHTML(articleEl, data) {
     const title = articleEl.querySelector('h1');

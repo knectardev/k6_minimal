@@ -1011,3 +1011,106 @@ body {
         display: block;
     }
 } 
+
+/* GitHub Fork Button Styles */
+.github-fork-btn {
+    position: fixed;
+    left: 32px;
+    bottom: 32px;
+    z-index: 12000;
+    display: flex;
+    align-items: center;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: 'Karla', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 8px 16px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+    opacity: 0.82;
+}
+.github-fork-btn:hover, .github-fork-btn:focus {
+    background: #614040; /* darker red for hover */
+    color: #fff;
+    opacity: 1;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+@media (max-width: 900px) {
+    .github-fork-btn {
+        left: 10px;
+        bottom: 10px;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    .github-fork-btn svg {
+        margin-right: 4px !important;
+    }
+}
+@media (max-width: 768px) {
+    .github-fork-btn {
+        left: 10px;
+        bottom: 10px;
+        border-radius: 6px;
+        font-size: 12px;
+    }
+} 
+
+/* Project Description Edit UI */
+.description-edit-wrap {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.edit-desc-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.edit-desc-btn:hover svg path {
+    fill: var(--color-primary);
+}
+.desc-editor {
+    width: 100%;
+    min-width: 220px;
+    max-width: 600px;
+    min-height: 80px;
+    font-family: inherit;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 8px;
+    resize: vertical;
+}
+.desc-edit-actions {
+    display: flex;
+    gap: 8px;
+}
+.desc-save-btn, .desc-cancel-btn {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.desc-cancel-btn {
+    background: #888;
+}
+.desc-save-btn:hover {
+    background: #b30000;
+}
+.desc-cancel-btn:hover {
+    background: #444;
+} 

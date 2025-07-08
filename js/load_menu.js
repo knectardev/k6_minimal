@@ -146,6 +146,11 @@
       mainScript.src = 'js/script.js';
       document.body.appendChild(mainScript);
       mainScript.onload = () => {
+        // Load GitHub fork button after main script
+        const githubForkScript = document.createElement('script');
+        githubForkScript.src = 'js/github_fork.js';
+        document.body.appendChild(githubForkScript);
+        
         const evt = new Event('DOMContentLoaded', { bubbles: true, cancelable: true });
         document.dispatchEvent(evt);
       };
