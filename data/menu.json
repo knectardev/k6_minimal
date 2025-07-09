@@ -13,6 +13,7 @@
       {
         "label": "Carnegie Mellon University",
         "slug": "carnegie-mellon-university",
+        "menuDisplayName": "CMU",
         "url": "project.html?item=carnegie-mellon-university",
         "projectTitle": "Carnegie Mellon University",
         "role": "Technical Lead, Developer",
@@ -28,6 +29,7 @@
       {
         "label": "Clarkson University",
         "slug": "clarkson-university",
+        "menuDisplayName": "Clarkson",
         "url": "project.html?item=clarkson-university",
         "projectTitle": "Clarkson University",
         "role": "Technical Lead, Developer",
@@ -43,6 +45,7 @@
       {
         "label": "Deshpande Center for Technological Innovation",
         "slug": "deshpande-center-for-technological-innovation",
+        "menuDisplayName": "Deshpande",
         "url": "project.html?item=deshpande-center-for-technological-innovation",
         "projectTitle": "Deshpande Center for Technological Innovation",
         "role": "Technical Lead, Developer",
@@ -58,6 +61,7 @@
       {
         "label": "Fox Chase Cancer Research",
         "slug": "fox-chase-cancer-research",
+        "menuDisplayName": "Fox Chase",
         "url": "project.html?item=fox-chase-cancer-research",
         "projectTitle": "Fox Chase Cancer Research",
         "role": "Technical Lead, Developer",
@@ -73,6 +77,7 @@
       {
         "label": "Kavli Institute for Brain Science",
         "slug": "kavli-institute-for-brain-science",
+        "menuDisplayName": "Kavli",
         "url": "project.html?item=kavli-institute-for-brain-science",
         "projectTitle": "Kavli Institute for Brain Science",
         "role": "Technical Lead, Developer",
@@ -88,6 +93,7 @@
       {
         "label": "Kettering University",
         "slug": "kettering-university",
+        "menuDisplayName": "Kettering",
         "url": "project.html?item=kettering-university",
         "projectTitle": "Kettering University",
         "role": "Technical Lead, Developer",
@@ -103,6 +109,7 @@
       {
         "label": "La Jolla Country Day School",
         "slug": "la-jolla-country-day-school",
+        "menuDisplayName": "La Jolla",
         "url": "project.html?item=la-jolla-country-day-school",
         "projectTitle": "La Jolla Country Day School",
         "role": "Technical Lead, Developer",
@@ -118,6 +125,7 @@
       {
         "label": "Lewis Katz School of Medicine - Temple University",
         "slug": "lewis-katz-school-of-medicine-temple-university",
+        "menuDisplayName": "Temple Med",
         "url": "project.html?item=lewis-katz-school-of-medicine-temple-university",
         "projectTitle": "Lewis Katz School of Medicine - Temple University",
         "role": "Technical Lead, Developer",
@@ -133,6 +141,7 @@
       {
         "label": "LIM College",
         "slug": "lim-college",
+        "menuDisplayName": "LIM",
         "url": "project.html?item=lim-college",
         "projectTitle": "LIM College",
         "role": "Technical Lead, Developer",
@@ -148,6 +157,7 @@
       {
         "label": "Madison Country Day School",
         "slug": "madison-country-day-school",
+        "menuDisplayName": "Madison",
         "url": "project.html?item=madison-country-day-school",
         "projectTitle": "Madison Country Day School",
         "role": "Technical Lead, Developer",
@@ -163,6 +173,7 @@
       {
         "label": "MIT",
         "slug": "mit",
+        "menuDisplayName": "MIT",
         "url": "project.html?item=mit",
         "projectTitle": "MIT",
         "role": "Technical Lead, Developer",
@@ -178,6 +189,7 @@
       {
         "label": "Northeastern Illinois University",
         "slug": "northeastern-illinois-university",
+        "menuDisplayName": "NEIU",
         "url": "project.html?item=northeastern-illinois-university",
         "projectTitle": "Northeastern Illinois University",
         "role": "Technical Lead, Developer",
@@ -193,6 +205,7 @@
       {
         "label": "The ADA Forsyth Institute",
         "slug": "the-ada-forsyth-institute",
+        "menuDisplayName": "Forsyth",
         "url": "project.html?item=the-ada-forsyth-institute",
         "projectTitle": "The ADA Forsyth Institute",
         "role": "Technical Lead, Developer",
@@ -208,6 +221,7 @@
       {
         "label": "University of Massachusetts Amherst, Humanities and Fine Arts",
         "slug": "university-of-massachusetts-amherst-humanities-and-fine-arts",
+        "menuDisplayName": "UMass",
         "url": "project.html?item=university-of-massachusetts-amherst-humanities-and-fine-arts",
         "projectTitle": "University of Massachusetts Amherst, Humanities and Fine Arts",
         "role": "Technical Lead, Developer",
@@ -230,6 +244,7 @@
       {
         "label": "Massachusetts Municipal Wholesale Electric Company",
         "slug": "massachusetts-municipal-wholesale-electric-company",
+        "menuDisplayName": "MMWEC",
         "url": "project.html?item=massachusetts-municipal-wholesale-electric-company",
         "projectTitle": "Massachusetts Municipal Wholesale Electric Company",
         "role": "Technical Lead, Developer",
@@ -245,6 +260,7 @@
       {
         "label": "MMWEC Nextzero Rebate Web Application",
         "slug": "mmwec-nextzero-rebate-web-application",
+        "menuDisplayName": "MMWEC Rebate",
         "url": "project.html?item=mmwec-nextzero-rebate-web-application",
         "projectTitle": "MMWEC Nextzero Rebate Web Application",
         "role": "Technical Lead, Developer",
@@ -260,6 +276,7 @@
       {
         "label": "Modelo",
         "slug": "modelo",
+        "menuDisplayName": "Modelo",
         "url": "project.html?item=modelo",
         "projectTitle": "Modelo",
         "role": "Technical Lead, Developer",
@@ -275,6 +292,7 @@
       {
         "label": "SmartLabs",
         "slug": "smartlabs",
+        "menuDisplayName": "SmartLabs",
         "url": "project.html?item=smartlabs",
         "projectTitle": "SmartLabs",
         "role": "Technical Lead, Developer",
@@ -297,6 +315,7 @@
       {
         "label": "Carv Resource Management",
         "slug": "carv-resource-management",
+        "menuDisplayName": "Carv",
         "url": "project.html?item=carv-resource-management",
         "projectTitle": "Carv Resource Management",
         "role": "Concept, Design, Developer",
@@ -305,13 +324,14 @@
         "designPartner": " ",
         "designPartnerUrl": null,
         "projectUrl": null,
-        "pageSummary": "<p>Description goes here!!!</p><p>Description goes ssshere!!! ssdsd</p><p>Descrisdsdsdsdption goes here!!!</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block ql-syntax language-javascript\" data-language=\"javascript\">                    if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div><p><br></p><p>Description goes here!!!</p><p><br></p><p>Description goes here!!!</p><p><br></p>",
+        "pageSummary": "<p>Description goess222s here!!!</p><p>Description goes ssshere!!! ssdsd</p><p>Descrisdsdsdsdption goes here!!!</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block ql-syntax language-javascript\" data-language=\"javascript\">                    if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div><p><br></p><p>Description goes here!!!</p><p><br></p><p>Description goes here!!!</p><p><br></p>",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
       },
       {
         "label": "Glassica App",
         "slug": "glassica-app",
+        "menuDisplayName": "Glassica",
         "url": "project.html?item=glassica-app",
         "projectTitle": "Glassica App",
         "role": "Concept, Design, Developer",
@@ -327,6 +347,7 @@
       {
         "label": "Oxform PM",
         "slug": "oxform-pm",
+        "menuDisplayName": "Oxform",
         "url": "project.html?item=oxform-pm",
         "projectTitle": "Oxform PM",
         "role": "Technical Lead, Developer",
@@ -342,6 +363,7 @@
       {
         "label": "Paragraphs Stats Module",
         "slug": "paragraphs-stats-module",
+        "menuDisplayName": "Paragraphs Stats",
         "url": "project.html?item=paragraphs-stats-module",
         "projectTitle": "Paragraphs Stats Module",
         "role": "Concept, Design, Developer",
@@ -357,6 +379,7 @@
       {
         "label": "SMMA Architecture",
         "slug": "smma-architecture",
+        "menuDisplayName": "SMMA",
         "url": "project.html?item=smma-architecture",
         "projectTitle": "SMMA Architecture",
         "role": "Technical Lead, Developer",
@@ -372,6 +395,7 @@
       {
         "label": "Call and response app",
         "slug": "call-and-response-app",
+        "menuDisplayName": "Call and Response",
         "url": "project.html?item=call-and-response-app",
         "projectTitle": "Call and response app",
         "role": "Concept, Design, Developer",
@@ -387,6 +411,7 @@
       {
         "label": "Strudelizer",
         "slug": "strudelizer",
+        "menuDisplayName": "Strudelizer",
         "url": "project.html?item=strudelizer",
         "projectTitle": "Strudelizer",
         "role": "Concept, Design, Developer",
@@ -402,6 +427,7 @@
       {
         "label": "Strudel Bach",
         "slug": "strudel-bach",
+        "menuDisplayName": "Strudel Bach",
         "url": "project.html?item=strudel-bach",
         "projectTitle": "Strudel Bach",
         "role": "Concept, Design, Developer",
@@ -424,6 +450,7 @@
       {
         "label": "AIER:  American Institute for Economic Research.",
         "slug": "aier-american-institute-for-economic-research",
+        "menuDisplayName": "AIER",
         "url": "project.html?item=aier-american-institute-for-economic-research",
         "projectTitle": "AIER:  American Institute for Economic Research.",
         "role": "Technical Lead, Developer",
@@ -439,6 +466,7 @@
       {
         "label": "Eze Soft",
         "slug": "eze-soft",
+        "menuDisplayName": "Eze Soft",
         "url": "project.html?item=eze-soft",
         "projectTitle": "Eze Soft",
         "role": "Technical Lead, Developer",
@@ -454,6 +482,7 @@
       {
         "label": "Glenmede",
         "slug": "glenmede",
+        "menuDisplayName": "Glenmede",
         "url": "project.html?item=glenmede",
         "projectTitle": "Glenmede",
         "role": "Technical Lead, Developer",
@@ -469,6 +498,7 @@
       {
         "label": "Monadnock Media",
         "slug": "monadnock-media",
+        "menuDisplayName": "Monadnock",
         "url": "project.html?item=monadnock-media",
         "projectTitle": "Monadnock Media",
         "role": "Technical Lead, Developer",
@@ -484,6 +514,7 @@
       {
         "label": "Riverbend Animal Hospital",
         "slug": "riverbend-animal-hospital",
+        "menuDisplayName": "Riverbend",
         "url": "project.html?item=riverbend-animal-hospital",
         "projectTitle": "Riverbend Animal Hospital",
         "role": "Technical Lead, Developer",
@@ -499,6 +530,7 @@
       {
         "label": "Crocker",
         "slug": "crocker",
+        "menuDisplayName": "Crocker",
         "url": "project.html?item=crocker",
         "projectTitle": "Crocker",
         "role": "Technical Lead, Developer",
@@ -514,6 +546,7 @@
       {
         "label": "Robert Rauschenberg Foundation",
         "slug": "robert-rauschenberg-foundation",
+        "menuDisplayName": "Rauschenberg",
         "url": "project.html?item=robert-rauschenberg-foundation",
         "projectTitle": "Robert Rauschenberg Foundation",
         "role": "Technical Lead, Developer",
@@ -529,6 +562,7 @@
       {
         "label": "Studio Arts Consortium International (SACI), Florence",
         "slug": "studio-arts-consortium-international-saci-florence",
+        "menuDisplayName": "SACI",
         "url": "project.html?item=studio-arts-consortium-international-saci-florence",
         "projectTitle": "Studio Arts Consortium International (SACI), Florence",
         "role": "Technical Lead, Developer",
@@ -544,6 +578,7 @@
       {
         "label": "The Isabella Stewart Gardner Museum",
         "slug": "the-isabella-stewart-gardner-museum",
+        "menuDisplayName": "Gardner",
         "url": "project.html?item=the-isabella-stewart-gardner-museum",
         "projectTitle": "The Isabella Stewart Gardner Museum",
         "role": "Technical Lead, Developer",
@@ -559,6 +594,7 @@
       {
         "label": "Way Finders",
         "slug": "way-finders",
+        "menuDisplayName": "Way Finders",
         "url": "project.html?item=way-finders",
         "projectTitle": "Way Finders",
         "role": "Technical Lead, Developer",
@@ -581,6 +617,7 @@
       {
         "label": "Chemex Coffee Maker",
         "slug": "chemex-coffee-maker",
+        "menuDisplayName": "Chemex",
         "url": "project.html?item=chemex-coffee-maker",
         "projectTitle": "Chemex Coffee Maker",
         "role": "Technical Lead, Developer",
@@ -596,6 +633,7 @@
       {
         "label": "Deans Beans",
         "slug": "deans-beans",
+        "menuDisplayName": "Deans Beans",
         "url": "project.html?item=deans-beans",
         "projectTitle": "Deans Beans",
         "role": "Technical Lead, Developer",
@@ -611,6 +649,7 @@
       {
         "label": "Guardair",
         "slug": "guardair",
+        "menuDisplayName": "Guardair",
         "url": "project.html?item=guardair",
         "projectTitle": "Guardair",
         "role": "Technical Lead, Developer",
@@ -626,6 +665,7 @@
       {
         "label": "Pioneer Valley Books",
         "slug": "pioneer-valley-books",
+        "menuDisplayName": "Pioneer Valley",
         "url": "project.html?item=pioneer-valley-books",
         "projectTitle": "Pioneer Valley Books",
         "role": "Technical Lead, Developer",
@@ -641,6 +681,7 @@
       {
         "label": "Sleep Studio",
         "slug": "sleep-studio",
+        "menuDisplayName": "Sleep Studio",
         "url": "project.html?item=sleep-studio",
         "projectTitle": "Sleep Studio",
         "role": "Technical Lead, Developer",
@@ -656,6 +697,7 @@
       {
         "label": "Sparx Hockey",
         "slug": "sparx-hockey",
+        "menuDisplayName": "Sparx Hockey",
         "url": "project.html?item=sparx-hockey",
         "projectTitle": "Sparx Hockey",
         "role": "Technical Lead, Developer",
@@ -671,6 +713,7 @@
       {
         "label": "Trillium Brewing",
         "slug": "trillium-brewing",
+        "menuDisplayName": "Trillium",
         "url": "project.html?item=trillium-brewing",
         "projectTitle": "Trillium Brewing",
         "role": "Technical Lead, Developer",
@@ -699,6 +742,7 @@
       {
         "label": "Bezier Controls",
         "slug": "bezier-controls",
+        "menuDisplayName": "Bezier",
         "url": "project.html?item=bezier-controls",
         "projectTitle": "Bezier Controls",
         "role": "Concept, Design, Developer",
@@ -714,6 +758,7 @@
       {
         "label": "Glassica Analog",
         "slug": "glassica-analog",
+        "menuDisplayName": "Glassica Analog",
         "url": "project.html?item=glassica-analog",
         "projectTitle": "Glassica Analog",
         "role": "Concept, Design, Developer",
@@ -729,6 +774,7 @@
       {
         "label": "Jazz Hero",
         "slug": "jazz-hero",
+        "menuDisplayName": "Jazz Hero",
         "url": "project.html?item=jazz-hero",
         "projectTitle": "Jazz Hero",
         "role": "Concept, Design, Developer",
@@ -744,6 +790,7 @@
       {
         "label": "P5 Projects",
         "slug": "p5-projects",
+        "menuDisplayName": "P5 Projects",
         "url": "project.html?item=p5-projects",
         "projectTitle": "P5 Projects",
         "role": "Concept, Design, Developer",
@@ -759,6 +806,7 @@
       {
         "label": "Pen plotting works",
         "slug": "pen-plotting-works",
+        "menuDisplayName": "Pen Plotting",
         "url": "project.html?item=pen-plotting-works",
         "projectTitle": "Pen plotting works",
         "role": "Concept, Design, Developer",
@@ -774,6 +822,7 @@
       {
         "label": "Sculpture works",
         "slug": "sculpture-works",
+        "menuDisplayName": "Sculpture",
         "url": "project.html?item=sculpture-works",
         "projectTitle": "Sculpture works",
         "role": "Concept, Design, Developer",
@@ -789,6 +838,7 @@
       {
         "label": "Thing Y",
         "slug": "thing-y",
+        "menuDisplayName": "Thing Y",
         "url": "project.html?item=thing-y",
         "projectTitle": "Thing Y",
         "role": "Concept, Design, Developer",
@@ -804,6 +854,7 @@
       {
         "label": "Vases",
         "slug": "vases",
+        "menuDisplayName": "Vases",
         "url": "project.html?item=vases",
         "projectTitle": "Vases",
         "role": "Concept, Design, Developer",
@@ -819,6 +870,7 @@
       {
         "label": "Choosroozy",
         "slug": "choosroozy",
+        "menuDisplayName": "Choosroozy",
         "url": "project.html?item=choosroozy",
         "projectTitle": "Choosroozy",
         "role": "Concept, Design, Developer",
@@ -834,6 +886,7 @@
       {
         "label": "Dog Door",
         "slug": "dog-door",
+        "menuDisplayName": "Dog Door",
         "url": "project.html?item=dog-door",
         "projectTitle": "Dog Door",
         "role": "Concept, Design, Developer",

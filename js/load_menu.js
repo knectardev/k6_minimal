@@ -106,7 +106,8 @@
         const subLi = document.createElement('li');
         const subA = document.createElement('a');
         subA.href = sub.url;
-        subA.textContent = sub.label;
+        // Use menuDisplayName if present, else label, else projectTitle
+        subA.textContent = sub.menuDisplayName || sub.label || sub.projectTitle || '';
         subLi.appendChild(subA);
         subUl.appendChild(subLi);
       });
