@@ -356,7 +356,8 @@ function buildTilesFromData(menu) {
         arr.forEach(item => {
             if (item.submenu) {
                 traverse(item.submenu, item.label);
-            } else if (item.sub_menu !== 0) {
+            } else {
+                // Always include all projects in the list view, regardless of sub_menu
                 leafItems.push({ ...item, parentLabel });
             }
         });
