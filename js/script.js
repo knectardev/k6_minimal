@@ -507,13 +507,15 @@ function buildProjectInfoHTML(data) {
     let html = "";
     // Add the Display in menu checkbox above the project title, left-aligned
     if (data.projectTitle) {
-        const checked = (data.sub_menu === 1 || data.sub_menu === '1') ? 'checked' : '';
-        const disabled = (window.authManager && window.authManager.isLoggedIn) ? '' : 'disabled';
-        html += `<div class="display-in-menu-wrap" style="display: flex; align-items: flex-start; margin-bottom: 8px;">
-            <label style="display: flex; align-items: center; font-size: 15px; font-weight: 500; cursor: pointer;">
-                <input type="checkbox" id="displayInMenuCheckbox" ${checked} ${disabled} style="margin-right: 6px; accent-color: #FF0000;">Display in menu
-            </label>
-        </div>`;
+        // Only show the checkbox if admin is logged in
+        if (window.authManager && window.authManager.isLoggedIn) {
+            const checked = (data.sub_menu === 1 || data.sub_menu === '1') ? 'checked' : '';
+            html += `<div class="display-in-menu-wrap" style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+                <label style="display: flex; align-items: center; font-size: 15px; font-weight: 500; cursor: pointer;">
+                    <input type="checkbox" id="displayInMenuCheckbox" ${checked} style="margin-right: 6px; accent-color: #FF0000;">Display in menu
+                </label>
+            </div>`;
+        }
         // Save button in upper right if admin (Cancel removed)
         if (window.authManager && window.authManager.isLoggedIn) {
             html += `<div class="desc-edit-actions" style="display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-bottom: 8px;">
