@@ -1095,8 +1095,8 @@ body {
     display: flex;
     gap: 8px;
 }
-.desc-save-btn, .desc-cancel-btn {
-    background: var(--color-primary);
+.desc-save-btn {
+    background: #FF0000;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -1104,15 +1104,15 @@ body {
     font-size: 1em;
     cursor: pointer;
     transition: background 0.2s;
+    min-width: 80px !important;
 }
-.desc-cancel-btn {
-    background: #888;
+.desc-save-btn:disabled {
+    background: #888 !important;
+    cursor: not-allowed !important;
+    color: #fff !important;
 }
-.desc-save-btn:hover {
+.desc-save-btn:not(:disabled):hover {
     background: #b30000;
-}
-.desc-cancel-btn:hover {
-    background: #444;
 } 
 
 /* Improved Quill Editor Layout for Inline Editing (high specificity) */
@@ -1214,3 +1214,23 @@ body {
     width: 100%;
     justify-content: flex-end;
 } 
+
+/* Development login link */
+.dev-login-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+.dev-login-link:hover {
+    background-color: #cc0000;
+}

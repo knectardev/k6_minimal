@@ -206,3 +206,8 @@ More content
 - See `css/style.css` for the relevant Quill overrides.
 - 2025-07-08: Removed verbose secret logging from `server.js` (refactor only, no functional changes).
 
+``` notes chris DO NOT DELETE!!!
+
+TO delete local storage: localStorage.clear();
+To run local node server: node server.js
+ 

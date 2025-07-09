@@ -505,7 +505,23 @@ function findBySlug(arr, slug, parentLabel = null) {
 
 function buildProjectInfoHTML(data) {
     let html = "";
-    if (data.projectTitle) html += `<h1>${data.projectTitle}</h1>`;
+    // Add the Display in menu checkbox above the project title, left-aligned
+    if (data.projectTitle) {
+        const checked = (data.sub_menu === 1 || data.sub_menu === '1') ? 'checked' : '';
+        const disabled = (window.authManager && window.authManager.isLoggedIn) ? '' : 'disabled';
+        html += `<div class="display-in-menu-wrap" style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+            <label style="display: flex; align-items: center; font-size: 15px; font-weight: 500; cursor: pointer;">
+                <input type="checkbox" id="displayInMenuCheckbox" ${checked} ${disabled} style="margin-right: 6px; accent-color: #FF0000;">Display in menu
+            </label>
+        </div>`;
+        // Save button in upper right if admin (Cancel removed)
+        if (window.authManager && window.authManager.isLoggedIn) {
+            html += `<div class="desc-edit-actions" style="display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-bottom: 8px;">
+                <button id="desc-save-btn" class="desc-save-btn" disabled style="background: #888; cursor: not-allowed;">Save</button>
+            </div>`;
+        }
+        html += `<h1 style="margin: 0;">${data.projectTitle}</h1>`;
+    }
 
     const rows = [];
     if (data.role) rows.push(`<li><strong>ROLE:</strong> ${data.role}</li>`);
@@ -529,10 +545,6 @@ function buildProjectInfoHTML(data) {
     if (window.authManager && window.authManager.isLoggedIn) {
         html += `<div class="description-edit-wrap">
             <div id="desc-quill-editor" class="description"></div>
-            <div class="desc-edit-actions">
-                <button id="desc-save-btn" class="desc-save-btn">Save</button>
-                <button id="desc-cancel-btn" class="desc-cancel-btn">Cancel</button>
-            </div>
         </div>`;
     } else if (data.pageSummary) {
         html += `<p class="description">${data.pageSummary}</p>`;
@@ -562,31 +574,77 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
         }
     });
     quill.root.innerHTML = originalDesc;
+    const saveBtn = document.getElementById('desc-save-btn');
+    let lastDesc = originalDesc;
+    let descChanged = false;
+    let menuChanged = false;
+    const menuCheckbox = document.getElementById('displayInMenuCheckbox');
+    let origChecked = menuCheckbox ? menuCheckbox.checked : null;
+    // Helper to update Save button state
+    function updateSaveBtnState() {
+        if (descChanged || menuChanged) {
+            saveBtn.disabled = false;
+            saveBtn.style.background = '#FF0000';
+            saveBtn.style.cursor = 'pointer';
+        } else {
+            saveBtn.disabled = true;
+            saveBtn.style.background = '#888';
+            saveBtn.style.cursor = 'not-allowed';
+        }
+    }
+    // Listen for Quill changes
+    quill.on('text-change', function() {
+        descChanged = (quill.root.innerHTML !== lastDesc);
+        updateSaveBtnState();
+    });
+    // Listen for menu checkbox changes
+    if (menuCheckbox) {
+        menuCheckbox.addEventListener('change', function() {
+            menuChanged = (menuCheckbox.checked !== origChecked);
+            // Update sub_menu in menu data, but do not re-render UI
+            function updateSubMenu(arr) {
+                for (const entry of arr) {
+                    if (entry.slug === slug) {
+                        entry.sub_menu = menuCheckbox.checked ? 1 : 0;
+                        return true;
+                    }
+                    if (entry.submenu && updateSubMenu(entry.submenu)) return true;
+                }
+                return false;
+            }
+            updateSubMenu(window.__MENU_DATA);
+            // Persist to localStorage for dev persistence
+            localStorage.setItem('menu_json_edits', JSON.stringify(window.__MENU_DATA));
+            updateSaveBtnState();
+        });
+    }
     // Save button
-    document.getElementById('desc-save-btn').onclick = function() {
+    saveBtn.onclick = function() {
+        if (saveBtn.disabled) return;
         let newDesc = quill.root.innerHTML;
+        lastDesc = newDesc;
+        descChanged = false;
+        if (menuCheckbox) {
+            origChecked = menuCheckbox.checked;
+            menuChanged = false;
+        }
         updateProjectDescription(slug, newDesc);
-        injectPageData();
-    };
-    // Cancel button
-    document.getElementById('desc-cancel-btn').onclick = function() {
         injectPageData();
     };
 }
 
-// Patch injectPageData to initialize Quill if logged in
+// Add event handler after rendering project info
 (function() {
     const origInject = injectPageData;
     injectPageData = function() {
-        // Apply local edits only when admin is logged in
         if (window.authManager && window.authManager.isLoggedIn) {
             const edits = localStorage.getItem('menu_json_edits');
             if (edits) {
                 try { window.__MENU_DATA = JSON.parse(edits); } catch (e) {}
-        }
+            }
         }
         origInject();
-        // If logged in and on project detail, initialize Quill
+        // If logged in and on project detail, initialize Quill and checkbox handler
         const urlParams = new URLSearchParams(window.location.search);
         const slugParam = urlParams.get('item');
         if (slugParam && window.authManager && window.authManager.isLoggedIn) {
@@ -594,6 +652,8 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
             if (pageData && pageData.item && pageData.item.pageSummary !== undefined) {
                 setupQuillDescriptionEditor(slugParam, pageData.item.pageSummary);
             }
+            // REMOVE: Add event handler for the Display in menu checkbox
+            // (All logic now handled in setupQuillDescriptionEditor)
         }
     }
 })();
