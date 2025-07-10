@@ -39,7 +39,7 @@
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.clarkson.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/clarkson.png",
         "sub_menu": 1
       },
       {
@@ -55,7 +55,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://deshpande.mit.edu/",
         "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/deshpande.png",
         "sub_menu": 0
       },
       {
@@ -71,7 +71,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.foxchase.org/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/fox.png",
         "sub_menu": 1
       },
       {
@@ -87,7 +87,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://kavli.columbia.edu/",
         "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/kavli.png",
         "sub_menu": 0
       },
       {
@@ -103,7 +103,7 @@
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.kettering.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/kettering.webp",
         "sub_menu": 1
       },
       {
@@ -119,7 +119,7 @@
         "designPartnerUrl": "https://www.versodesign.co/",
         "projectUrl": "https://www.ljcds.org/",
         "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/lajolla.jpg",
         "sub_menu": 0
       },
       {
@@ -135,7 +135,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://medicine.temple.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/temple.png",
         "sub_menu": 1
       },
       {
@@ -151,7 +151,7 @@
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.limcollege.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/lim.png",
         "sub_menu": 1
       },
       {
@@ -167,7 +167,7 @@
         "designPartnerUrl": "https://www.versodesign.co/",
         "projectUrl": "https://www.madisoncountryday.org/",
         "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/mad2.png",
         "sub_menu": 0
       },
       {
@@ -183,7 +183,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://solve.mit.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/mit.png",
         "sub_menu": 1
       },
       {
@@ -199,7 +199,7 @@
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.neiu.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/neiu.png",
         "sub_menu": 1
       },
       {
@@ -215,7 +215,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://forsyth.org/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/fill.png",
         "sub_menu": 1
       },
       {
@@ -231,7 +231,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.umass.edu/uww/programs/pre-college",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/umass.png",
         "sub_menu": 1
       }
     ]
@@ -254,7 +254,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://webportal.mmwec.org/",
         "pageSummary": "<p>Description goes hesdsdresdsdsdsd</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/mmwec.jpg",
         "sub_menu": 1
       },
       {
@@ -270,7 +270,7 @@
         "designPartnerUrl": "#N/A",
         "projectUrl": "#N/A",
         "pageSummary": "<p>Description goes heres s </p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/mmwec.jpg",
         "sub_menu": 1
       },
       {
@@ -286,7 +286,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.mimodelo.com.mx/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/monad.png",
         "sub_menu": 1
       },
       {
@@ -302,7 +302,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://smartlabs.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/smart.jpeg",
         "sub_menu": 1
       }
     ]
@@ -325,7 +325,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "<p>Description goess222s here!!!</p><p>Description goes ssshere!!! ssdsd</p><p>Descrisdsdsdsdption goes here!!!</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block ql-syntax language-javascript\" data-language=\"javascript\">                    if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div><p><br></p><p>Description goes here!!!</p><p><br></p><p>Description goes here!!!</p><p><br></p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/carv.png",
         "sub_menu": 1
       },
       {
@@ -341,7 +341,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "<ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Description goes here</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsds</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsd</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sd</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsds</li></ol><blockquote>sdsd sd sd </blockquote><p>sdsds</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/glass.png",
         "sub_menu": 1
       },
       {
@@ -357,7 +357,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.oxfordpm.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/ox.png",
         "sub_menu": 1
       },
       {
@@ -373,7 +373,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.drupal.org/project/ps",
         "pageSummary": "<p>Description goes here</p><p>sdlsj dls</p><p>sdsdsdlsjkhd skhd slkdh sl</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block language-javascript\">     saveTimeout = setTimeout(() =&gt; {</div><div class=\"ql-code-block language-python\">            const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block\">                    if (success) {</div></div><p>                        showIndicator('Saved!', 'saved');</p><p>                        originalDesc = newDesc; // Update original for next comparison</p><p>                    } else {lsjdh lskjd </p><p>lsjhd sljdh </p><p>skdjgh s</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/stats.png",
         "sub_menu": 1
       },
       {
@@ -389,7 +389,7 @@
         "designPartnerUrl": "https://toky.com/",
         "projectUrl": "https://smma.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/smma.jpg",
         "sub_menu": 1
       }
     ]
@@ -412,7 +412,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.aier.org/",
         "pageSummary": "<p>sxsdsdsd ss</p><p>sdsdsdsdsds</p><p>sdsd  2w222</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">skdjgs kdh skdhs ds</div><div class=\"ql-code-block\">d skdhsg ds</div></div><p><br></p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\"> skdhgs kdhgs dkh sds</div></div><p>s</p><p>sdksjgd kshd s</p><p><br></p><p>s</p><p>dksjdg skhgd sds</p><p><br></p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/aier.png",
         "sub_menu": 0
       },
       {
@@ -427,8 +427,8 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.ezesoft.com/",
-        "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">     saveTimeout = setTimeout(() =&gt; {</div><div class=\"ql-code-block\">            const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block\">                    if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div>",
-        "coverImage": "assets/ycba.png",
+        "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">     saveTimeout = setTimeout(() =&gt; {</div><div class=\"ql-code-block\">            const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block\">            if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div>",
+        "coverImage": "project_tiles/eze.webp",
         "sub_menu": 1
       },
       {
@@ -444,7 +444,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.glenmede.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/glen.png",
         "sub_menu": 1
       },
       {
@@ -460,7 +460,7 @@
         "designPartnerUrl": "https://www.taylorwaldman.com/",
         "projectUrl": "https://monadnock.org/",
         "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">Descrips tion goes sdsdsd </div></div>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/monad2.png",
         "sub_menu": 1
       },
       {
@@ -476,7 +476,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://riverbendanimal.com/",
         "pageSummary": "<pre data-language=\"javascript\" class=\"language-javascript\"><br></pre>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/riverbend.png",
         "sub_menu": 1
       },
       {
@@ -492,7 +492,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://crocker.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/crocker.jpg",
         "sub_menu": 1
       },
       {
@@ -508,7 +508,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.rauschenbergfoundation.org/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/rrf.png",
         "sub_menu": 1
       },
       {
@@ -524,7 +524,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://saci-florence.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/saci.png",
         "sub_menu": 1
       },
       {
@@ -540,7 +540,7 @@
         "designPartnerUrl": "https://www.fabrique.com/",
         "projectUrl": "https://www.gardnermuseum.org/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/isgm.png",
         "sub_menu": 1
       },
       {
@@ -556,7 +556,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.wayfinders.org/",
         "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/wayfinders.jpg",
         "sub_menu": 0
       }
     ]
@@ -579,7 +579,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.chemexcoffeemaker.com/",
         "pageSummary": "<p>This is such a great website I can't even believe it!</p>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/chemex.webp",
         "sub_menu": 1
       },
       {
@@ -595,7 +595,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://deansbeans.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/dean.webp",
         "sub_menu": 1
       },
       {
@@ -611,7 +611,7 @@
         "designPartnerUrl": "https://tunnel7.com/",
         "projectUrl": "https://guardair.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/guard.webp",
         "sub_menu": 1
       },
       {
@@ -627,7 +627,7 @@
         "designPartnerUrl": "https://tunnel7.com/",
         "projectUrl": "https://pioneervalleybooks.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/pvb.jpg",
         "sub_menu": 1
       },
       {
@@ -643,7 +643,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://sleepstudio.com/ ",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/sleep.png",
         "sub_menu": 1
       },
       {
@@ -659,7 +659,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://sparxhockey.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/sparx.png",
         "sub_menu": 1
       },
       {
@@ -675,7 +675,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.trilliumbrewing.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/trillium.webp",
         "sub_menu": 1
       }
     ]
@@ -698,7 +698,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://editor.p5js.org/knectar/full/bLcZrlqt_",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/bezier.png",
         "sub_menu": 1
       },
       {
@@ -714,7 +714,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">sdsdsdsdoshd sodjg skdhg skhgd skhgd skhgd ksh dkhs s</div><div class=\"ql-code-block\"><br></div><div class=\"ql-code-block\">         const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\" data-language=\"true\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div></div><p>                    if (success) {</p><p>                        showIndicator('Saved!', 'saved');</p><p>                        originalDesc = newDesc; // Update original for next comparison</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">                    } else {</div><div class=\"ql-code-block\">                        showIndicator('</div></div>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/jazz.png",
         "sub_menu": 1
       },
       {
@@ -730,7 +730,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://midi-strudel-dash.vercel.app/",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/fill.png",
         "sub_menu": 1
       },
       {
@@ -746,7 +746,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/fill.png",
         "sub_menu": 1
       },
       {
@@ -762,7 +762,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/glassA.png",
         "sub_menu": 1
       },
       {
@@ -778,7 +778,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://k-os-theory-a8ad68407a91.herokuapp.com/generate-line",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/jazz.png",
         "sub_menu": 1
       },
       {
@@ -794,7 +794,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/fill.png",
         "sub_menu": 1
       },
       {
@@ -810,7 +810,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/pen.mp4",
         "sub_menu": 1
       },
       {
@@ -826,7 +826,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/cnc.mp4",
         "sub_menu": 1
       },
       {
@@ -842,7 +842,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/thingy.mp4",
         "sub_menu": 1
       },
       {
@@ -858,7 +858,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/vase.png",
         "sub_menu": 1
       },
       {
@@ -874,7 +874,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://editor.p5js.org/knectar/full/fIJ2pBpyz",
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/fill.png",
         "sub_menu": 1
       },
       {
@@ -890,7 +890,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/door_open.svg",
         "sub_menu": 1
       }
     ]
