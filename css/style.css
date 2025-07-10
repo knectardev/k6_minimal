@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
 
 /* CSS Custom Properties for consistent theming */
 :root {
@@ -311,10 +312,7 @@ body {
 }
 
 .definition-text {
-    max-width: 600px;
-    text-align: left;
-    margin-left: 50px; /* Position to the right of where logo connects */
-    margin-top: 0; /* Remove any top margin to align precisely */
+    font-family: 'Benne', serif;
 }
 
 .definition-header {
@@ -360,7 +358,7 @@ body {
 
 .definition-content p {
     margin: 0 0 var(--spacing-sm) 0;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.0;
 }
 
@@ -528,6 +526,16 @@ body {
     }
 }
 
+@media (min-width: 769px) {
+  .home-content {
+    margin-top: 120px;
+  }
+  .definition-text {
+    margin-top: 40px;
+    margin-left: -300px; /* Move node text 300px left from previous +200px */
+  }
+}
+
 /* Placeholder Content Styles */
 .placeholder-content {
     padding: var(--spacing-xl);
@@ -679,11 +687,34 @@ body {
 /* Intro narrative block on home */
 .intro-text {
     margin-top: 100px;
-    margin-left: -300px; /* pull left to align with mockup */
+    margin-left: 0px; /* pull left to align with mockup */
     max-width: 650px;
     font-size: 20px;
     line-height: 1.6;
     color: var(--color-text-primary);
+}
+
+/* Highlight styling for specific words in intro text */
+.intro-text .highlight-red {
+    color: var(--color-primary) !important;
+    font-weight: bold !important;
+}
+
+/* Ensure highlight-red maintains its color on hover */
+.intro-text .highlight-red:hover {
+    color: var(--color-primary) !important;
+    font-weight: bold !important;
+}
+
+.intro-text strong.highlight-red,
+.intro-text .highlight-red,
+.intro-text .highlight-red:hover,
+.intro-text .highlight-red:focus,
+.intro-text .highlight-red:active {
+    color: var(--color-primary) !important;
+    font-weight: bold !important;
+    background: none !important;
+    text-shadow: none !important;
 }
 
 @media (max-width: 768px) {

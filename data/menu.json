@@ -391,55 +391,7 @@
         "pageSummary": "Description goes here",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
-      },
-      {
-        "label": "Call and response app",
-        "slug": "call-and-response-app",
-        "menuDisplayName": "Call and Response",
-        "url": "project.html?item=call-and-response-app",
-        "projectTitle": "Call and response app",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "Cursor, Javascript",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": null,
-        "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">sdsdsdsdoshd sodjg skdhg skhgd skhgd skhgd ksh dkhs s</div><div class=\"ql-code-block\"><br></div><div class=\"ql-code-block\">         const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\" data-language=\"true\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div></div><p>                    if (success) {</p><p>                        showIndicator('Saved!', 'saved');</p><p>                        originalDesc = newDesc; // Update original for next comparison</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">                    } else {</div><div class=\"ql-code-block\">                        showIndicator('</div></div>",
-        "coverImage": "assets/ycba.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Strudelizer",
-        "slug": "strudelizer",
-        "menuDisplayName": "Strudelizer",
-        "url": "project.html?item=strudelizer",
-        "projectTitle": "Strudelizer",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "Cursor, Javascript",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://midi-strudel-dash.vercel.app/",
-        "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Strudel Bach",
-        "slug": "strudel-bach",
-        "menuDisplayName": "Strudel Bach",
-        "url": "project.html?item=strudel-bach",
-        "projectTitle": "Strudel Bach",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "Strudel",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": null,
-        "pageSummary": "Description goes here",
-        "coverImage": "assets/ycba.png",
-        "sub_menu": 1
-      }
+      }      
     ]
   },
   {
@@ -729,12 +681,6 @@
     ]
   },
   {
-    "label": "Blog Posts",
-    "icon": "hash.svg",
-    "more": 0,
-    "submenu": []
-  },
-  {
     "label": "Music & Art",
     "icon": "music.svg",
     "more": 1,
@@ -751,6 +697,54 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://editor.p5js.org/knectar/full/bLcZrlqt_",
+        "pageSummary": "Description goes here",
+        "coverImage": "assets/ycba.png",
+        "sub_menu": 1
+      },
+      {
+        "label": "Call and response app",
+        "slug": "call-and-response-app",
+        "menuDisplayName": "Call and Response",
+        "url": "project.html?item=call-and-response-app",
+        "projectTitle": "Call and response app",
+        "role": "Concept, Design, Developer",
+        "budget": "< $10,000",
+        "technology": "Cursor, Javascript",
+        "designPartner": null,
+        "designPartnerUrl": null,
+        "projectUrl": null,
+        "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">sdsdsdsdoshd sodjg skdhg skhgd skhgd skhgd ksh dkhs s</div><div class=\"ql-code-block\"><br></div><div class=\"ql-code-block\">         const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\" data-language=\"true\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div></div><p>                    if (success) {</p><p>                        showIndicator('Saved!', 'saved');</p><p>                        originalDesc = newDesc; // Update original for next comparison</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">                    } else {</div><div class=\"ql-code-block\">                        showIndicator('</div></div>",
+        "coverImage": "assets/ycba.png",
+        "sub_menu": 1
+      },
+      {
+        "label": "Strudelizer",
+        "slug": "strudelizer",
+        "menuDisplayName": "Strudelizer",
+        "url": "project.html?item=strudelizer",
+        "projectTitle": "Strudelizer",
+        "role": "Concept, Design, Developer",
+        "budget": "< $10,000",
+        "technology": "Cursor, Javascript",
+        "designPartner": null,
+        "designPartnerUrl": null,
+        "projectUrl": "https://midi-strudel-dash.vercel.app/",
+        "pageSummary": "Description goes here",
+        "coverImage": "assets/ycba.png",
+        "sub_menu": 1
+      },
+      {
+        "label": "Strudel Bach",
+        "slug": "strudel-bach",
+        "menuDisplayName": "Strudel Bach",
+        "url": "project.html?item=strudel-bach",
+        "projectTitle": "Strudel Bach",
+        "role": "Concept, Design, Developer",
+        "budget": "< $10,000",
+        "technology": "Strudel",
+        "designPartner": null,
+        "designPartnerUrl": null,
+        "projectUrl": null,
         "pageSummary": "Description goes here",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
@@ -900,6 +894,12 @@
         "sub_menu": 1
       }
     ]
+  },
+  {
+    "label": "Blog Posts",
+    "icon": "hash.svg",
+    "more": 0,
+    "submenu": []
   },
   {
     "label": "Resume",

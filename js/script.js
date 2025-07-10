@@ -111,10 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const existingLine = document.getElementById('dynamic-connecting-line');
         const existingDot = document.getElementById('dynamic-dot');
         const existingStyle = document.querySelector('style[data-dynamic-line]');
+        const existingArc = document.getElementById('dynamic-connecting-arc');
         
         if (existingLine) existingLine.remove();
         if (existingDot) existingDot.remove();
         if (existingStyle) existingStyle.remove();
+        if (existingArc) existingArc.remove();
     }
 
     // Dynamic connecting line functionality
@@ -228,77 +230,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Home page line functionality
     function createHomeConnectingLine() {
-        // Always remove existing line first
         removeConnectingLine();
 
         // Check if we're on the home page and elements exist
         const logoActive = document.querySelector('.logo-active');
         const nodeText = document.querySelector('.node-text');
         const homeContent = document.querySelector('.home-content');
-        
-        // Only create line on home page with definition text
-        if (!logoActive || !nodeText || !homeContent) {
-            return;
-        }
+        if (!logoActive || !nodeText || !homeContent) return;
 
-        // Get positions - more precise targeting
+        // Get positions
         const logoLink = logoActive.querySelector('a');
         const logoLinkRect = logoLink.getBoundingClientRect();
         const nodeTextRect = nodeText.getBoundingClientRect();
-        
-        // Calculate line start (right edge of "KNECTAR" text)
-        const lineStartX = logoLinkRect.right + 5; // Small gap after "R"
-        const lineStartY = logoLinkRect.top + (logoLinkRect.height / 2); // Center on logo text
-        
-        // Calculate line end (left edge of "node" text)
-        const lineEndX = nodeTextRect.left - 5; // Small gap before "n"
-        const lineWidth = lineEndX - lineStartX;
-        
-        // Only create line if there's positive width and we're on desktop
-        if (lineWidth > 0 && window.innerWidth > 768) {
-            // Create the connecting line
-            const line = document.createElement('div');
-            line.id = 'dynamic-connecting-line';
-            line.style.cssText = `
-                position: fixed;
-                left: ${lineStartX}px;
-                top: ${lineStartY - 0.5}px;
-                width: ${lineWidth}px;
-                height: 1px;
-                background-color: #eee;
-                z-index: 1000;
-                pointer-events: none;
-            `;
-            document.body.appendChild(line);
 
-            // Create the animated dot
-            const dot = document.createElement('div');
-            dot.id = 'dynamic-dot';
-            dot.style.cssText = `
-                position: fixed;
-                left: ${lineStartX + 20}px;
-                top: ${lineStartY}px;
-                width: 8px;
-                height: 8px;
-                background-color: #FF0000;
-                border-radius: 50%;
-                z-index: 1001;
-                pointer-events: none;
-                animation: homeDynamicDrift 4s ease-in-out infinite alternate;
-                transform: translate(-50%, -50%);
-            `;
-            document.body.appendChild(dot);
+        // Start: right edge of logo text, center vertically
+        const startX = logoLinkRect.right + window.scrollX;
+        const startY = logoLinkRect.top + logoLinkRect.height / 2 + window.scrollY;
+        // End: left edge of node text, center vertically
+        const endX = nodeTextRect.left + window.scrollX;
+        const endY = nodeTextRect.top + nodeTextRect.height / 2 + window.scrollY;
 
-            // Add animation for the dot
-            const style = document.createElement('style');
-            style.setAttribute('data-dynamic-line', 'true');
-            style.textContent = `
-                @keyframes homeDynamicDrift {
-                    from { left: ${lineStartX + 3}px; }
-                    to { left: ${lineEndX - 3}px; }
-                }
-            `;
-            document.head.appendChild(style);
+        // Only create arc if on desktop and arc is visible
+        if (window.innerWidth > 768 && (endX - startX > 60) && (Math.abs(endY - startY) > 40)) {
+            // Calculate radius for a true quarter circle
+            const radius = Math.min(endX - startX, endY - startY);
+            // SVG container covers bounding box of arc
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('id', 'dynamic-connecting-arc');
+            svg.style.position = 'fixed';
+            svg.style.left = `${startX}px`;
+            svg.style.top = `${startY}px`;
+            svg.style.width = `${radius}px`;
+            svg.style.height = `${radius}px`;
+            svg.style.overflow = 'visible';
+            svg.style.zIndex = 1000;
+            svg.style.pointerEvents = 'none';
+
+            // Arc path: true quarter circle from (0,0) to (radius, radius)
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', `M 0 0 A ${radius} ${radius} 0 0 1 ${radius} ${radius}`);
+            path.setAttribute('stroke', '#eee');
+            path.setAttribute('stroke-width', '1');
+            path.setAttribute('fill', 'none');
+            svg.appendChild(path);
+
+            // Remove any existing dot with id 'dynamic-dot' before creating a new one
+            const existingDot = document.getElementById('dynamic-dot');
+            if (existingDot) existingDot.remove();
+
+            // Red dot (only one)
+            const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            dot.setAttribute('id', 'dynamic-dot');
+            dot.setAttribute('r', '4');
+            dot.setAttribute('fill', '#FF0000');
+            svg.appendChild(dot);
+
+            document.body.appendChild(svg);
+
+            // Animate dot along arc using getPointAtLength
+            const pathLength = path.getTotalLength();
+            let direction = 1;
+            let t = 0;
+            const duration = 2000; // ms for full sweep
+            function animateDot() {
+                t += direction * (16 / duration);
+                if (t > 1) { t = 1; direction = -1; }
+                if (t < 0) { t = 0; direction = 1; }
+                const pos = path.getPointAtLength(pathLength * t);
+                dot.setAttribute('cx', pos.x);
+                dot.setAttribute('cy', pos.y);
+                requestAnimationFrame(animateDot);
+            }
+            animateDot();
         }
     }
 
@@ -359,14 +362,32 @@ document.addEventListener('DOMContentLoaded', () => {
         introText.querySelectorAll('p').forEach(paragraph => {
             const words = paragraph.innerText.split(' ');
             paragraph.innerHTML = '';
-            words.forEach((word, idx) => {
-                const span = document.createElement('span');
-                span.textContent = word;
-                span.style.display = 'inline-block';
-                span.style.transition = 'transform 0.25s ease-out';
-                paragraph.appendChild(span);
+            for (let idx = 0; idx < words.length; idx++) {
+                let word = words[idx];
+                // Remove punctuation for matching
+                const cleanWord = word.replace(/[.,'\"!?]/g, '').toLowerCase();
+                // Check for 'align teams' sequence
+                if (cleanWord === 'align' && words[idx + 1] && words[idx + 1].replace(/[.,'\"!?]/g, '').toLowerCase() === 'teams') {
+                    // Create a span for 'align teams'
+                    const span = document.createElement('span');
+                    span.textContent = word + ' ' + words[idx + 1];
+                    span.classList.add('highlight-red');
+                    span.style.display = 'inline-block';
+                    span.style.transition = 'transform 0.25s ease-out';
+                    paragraph.appendChild(span);
+                    idx++; // Skip next word
+                } else {
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    if (cleanWord === 'node' || cleanWord === 'knectar') {
+                        span.classList.add('highlight-red');
+                    }
+                    span.style.display = 'inline-block';
+                    span.style.transition = 'transform 0.25s ease-out';
+                    paragraph.appendChild(span);
+                }
                 if (idx < words.length - 1) paragraph.append(' ');
-            });
+            }
         });
 
         const radius = 100;   // influence radius in pixels
