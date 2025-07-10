@@ -13,7 +13,7 @@
       {
         "label": "Carnegie Mellon University",
         "slug": "carnegie-mellon-university",
-        "menuDisplayName": "CMU",
+        "menuDisplayName": "Carnegie Mellon",
         "url": "project.html?item=carnegie-mellon-university",
         "projectTitle": "Carnegie Mellon University",
         "role": "Technical Lead, Developer",
@@ -54,9 +54,9 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://deshpande.mit.edu/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<p>Description goes here</p>",
         "coverImage": "assets/ycba.png",
-        "sub_menu": 1
+        "sub_menu": 0
       },
       {
         "label": "Fox Chase Cancer Research",
@@ -86,14 +86,14 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://kavli.columbia.edu/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<p>Description goes here</p>",
         "coverImage": "assets/ycba.png",
-        "sub_menu": 1
+        "sub_menu": 0
       },
       {
         "label": "Kettering University",
         "slug": "kettering-university",
-        "menuDisplayName": "Kettering",
+        "menuDisplayName": "Kettering University",
         "url": "project.html?item=kettering-university",
         "projectTitle": "Kettering University",
         "role": "Technical Lead, Developer",
@@ -118,14 +118,14 @@
         "designPartner": "Verso Design",
         "designPartnerUrl": "https://www.versodesign.co/",
         "projectUrl": "https://www.ljcds.org/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<p>Description goes here</p>",
         "coverImage": "assets/ycba.png",
-        "sub_menu": 1
+        "sub_menu": 0
       },
       {
         "label": "Lewis Katz School of Medicine - Temple University",
         "slug": "lewis-katz-school-of-medicine-temple-university",
-        "menuDisplayName": "Temple Med",
+        "menuDisplayName": "Temple Medicine",
         "url": "project.html?item=lewis-katz-school-of-medicine-temple-university",
         "projectTitle": "Lewis Katz School of Medicine - Temple University",
         "role": "Technical Lead, Developer",
@@ -166,9 +166,9 @@
         "designPartner": "Verso Design",
         "designPartnerUrl": "https://www.versodesign.co/",
         "projectUrl": "https://www.madisoncountryday.org/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<p>Description goes here</p>",
         "coverImage": "assets/ycba.png",
-        "sub_menu": 1
+        "sub_menu": 0
       },
       {
         "label": "MIT",
@@ -391,7 +391,7 @@
         "pageSummary": "Description goes here",
         "coverImage": "assets/ycba.png",
         "sub_menu": 1
-      }      
+      }
     ]
   },
   {
