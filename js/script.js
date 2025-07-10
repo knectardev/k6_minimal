@@ -126,34 +126,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Find the active menu item (only appears when a child item is selected)
         const activeItem = document.querySelector('.main-nav .submenu li.active-sub');
-        const projectImage = document.querySelector('.project-gallery img');
+        const projectInfo = document.querySelector('.project-info');
         const projectDetails = document.querySelector('.project-details');
         
         // Only show line if ALL conditions are met:
         // 1. There's an active-sub menu item
-        // 2. There's a project image to connect to  
+        // 2. There's a project info section to connect to
         // 3. We're on a project details page (not a placeholder/category page)
-        if (!activeItem || !projectImage || !projectDetails) {
+        if (!activeItem || !projectInfo || !projectDetails) {
             // Explicitly ensure line is hidden - don't create anything
             return;
         }
         
-        // Remove the broken double-check that was preventing valid lines from showing
-        
-        // Wait for image to load if it hasn't yet
-        if (!projectImage.complete) {
-            projectImage.onload = () => setTimeout(createConnectingLine, 50);
-            return;
-        }
-
-        // Get positions
-        const activeRect = activeItem.getBoundingClientRect();
-        const imageRect = projectImage.getBoundingClientRect();
-        
         // Find the actual text element (the link) for more precise positioning
         const activeLink = activeItem.querySelector('a');
-        const activeLinkRect = activeLink ? activeLink.getBoundingClientRect() : activeRect;
-        
+        const activeLinkRect = activeLink ? activeLink.getBoundingClientRect() : activeItem.getBoundingClientRect();
+        const projectInfoRect = projectInfo.getBoundingClientRect();
+
         // If the active link hasn't been laid out yet (width==0), wait and retry
         if (activeLinkRect.width === 0 || activeLinkRect.height === 0) {
             setTimeout(createConnectingLine, 50);
@@ -163,11 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculate line start (right edge of active menu text)
         const lineStartX = activeLinkRect.right + 5; // Small gap after text
         const lineStartY = activeLinkRect.top + (activeLinkRect.height / 2); // Center on text
-        
-        // Calculate line end (left edge of image)
-        const lineEndX = imageRect.left;
+        // Calculate line end (left edge of project-info)
+        const lineEndX = projectInfoRect.left;
         const lineWidth = lineEndX - lineStartX;
-        
+
         // Only create line if there's positive width
         if (lineWidth > 0) {
             // Create the connecting line
@@ -217,13 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Only create line on page load if there's actually an active-sub item
-    // (for pages that load with a pre-selected child item)
     function initializeConnectingLine() {
         const activeItem = document.querySelector('.main-nav .submenu li.active-sub');
         const projectDetails = document.querySelector('.project-details');
-        const projectImage = document.querySelector('.project-gallery img');
+        const projectInfo = document.querySelector('.project-info');
         
-        if (activeItem && projectDetails && projectImage) {
+        if (activeItem && projectDetails && projectInfo) {
             createConnectingLine();
         }
     }
@@ -317,9 +304,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         const activeItem = document.querySelector('.main-nav .submenu li.active-sub');
         const projectDetails = document.querySelector('.project-details');
-        const projectImage = document.querySelector('.project-gallery img');
+        const projectInfo = document.querySelector('.project-info');
         
-        if (activeItem && projectDetails && projectImage) {
+        if (activeItem && projectDetails && projectInfo) {
             createConnectingLine();
         } else if (document.querySelector('.logo-active')) {
             createHomeConnectingLine();
@@ -330,9 +317,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', () => {
         const activeItem = document.querySelector('.main-nav .submenu li.active-sub');
         const projectDetails = document.querySelector('.project-details');
-        const projectImage = document.querySelector('.project-gallery img');
+        const projectInfo = document.querySelector('.project-info');
         
-        if (activeItem && projectDetails && projectImage) {
+        if (activeItem && projectDetails && projectInfo) {
             createConnectingLine();
         } else if (document.querySelector('.logo-active')) {
             createHomeConnectingLine();
