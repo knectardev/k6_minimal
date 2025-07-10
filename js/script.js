@@ -528,7 +528,12 @@ function buildProjectInfoHTML(data) {
     const rows = [];
     if (data.role) rows.push(`<li><strong>ROLE:</strong> ${data.role}</li>`);
     if (data.budget) rows.push(`<li><strong>BUDGET:</strong> ${data.budget}</li>`);
-    if (data.technology) rows.push(`<li><strong>TECHNOLOGY:</strong> ${data.technology}</li>`);
+    if (data.technology) {
+        // Support multiple technologies separated by comma
+        const techs = data.technology.split(',').map(t => t.trim()).filter(Boolean);
+        const techLinks = techs.map(t => `<a href="projects.html?technology=${encodeURIComponent(t)}" class="tech-link">${t}</a>`).join(', ');
+        rows.push(`<li><strong>TECHNOLOGY:</strong> ${techLinks}</li>`);
+    }
     if (data.years) rows.push(`<li><strong>YEARS:</strong> ${data.years}</li>`);
     if (data.designPartner) {
         if (data.designPartnerUrl) {
