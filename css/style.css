@@ -227,8 +227,10 @@ body {
 
 /* Project Content */
 .project-details {
-    display: flex;
-    gap: 47px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .project-gallery {
@@ -244,8 +246,10 @@ body {
 }
 
 .project-info {
-    flex: 1;
-    max-width: 475px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .project-info h1 {
