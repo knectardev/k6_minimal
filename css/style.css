@@ -740,10 +740,13 @@ body {
     align-items: stretch;
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
-    overflow: hidden;
+    overflow: visible;
     background: var(--color-background);
     max-width: 900px;
     width: fit-content;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s;
+    transform-origin: center;
+    position: relative;
 }
 
 /* Reverse orientation */
@@ -751,11 +754,33 @@ body {
     flex-direction: row-reverse;
 }
 
+.project-tile.reverse .project-image {
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.project-tile:hover,
+.project-tile.slide-in-left:hover,
+.project-tile.slide-in-right:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.project-image {
+    overflow: hidden;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
 .project-image img {
     width: 300px;
     height: 200px; /* further reduced */
     object-fit: cover;
     display: block;
+    filter: grayscale(100%);
+    transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-tile:hover .project-image img {
+    filter: grayscale(0%);
 }
 
 .project-text {
@@ -843,11 +868,25 @@ body {
     .project-tile.reverse {
         flex-direction: column;
         width: 100%;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s;
+    }
+
+    .project-image,
+    .project-tile.reverse .project-image {
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
 
     .project-image img {
         width: 100%;
         height: auto;
+    }
+    
+    /* Ensure hover effects work on touch devices */
+    .project-tile:active,
+    .project-tile.slide-in-left:active,
+    .project-tile.slide-in-right:active {
+        transform: scale(1.05);
+        z-index: 10;
     }
 }
 
@@ -991,8 +1030,14 @@ body {
     100% { opacity: 1; transform: translateX(0)    scale(1); }
 }
 
-.project-tile.slide-in-left  { animation: tileSlideInLeft 0.6s cubic-bezier(0.25,0.46,0.45,0.94) forwards; }
-.project-tile.slide-in-right { animation: tileSlideInRight 0.6s cubic-bezier(0.25,0.46,0.45,0.94) forwards; }
+.project-tile.slide-in-left  { 
+    animation: tileSlideInLeft 0.6s cubic-bezier(0.25,0.46,0.45,0.94) forwards; 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s;
+}
+.project-tile.slide-in-right { 
+    animation: tileSlideInRight 0.6s cubic-bezier(0.25,0.46,0.45,0.94) forwards; 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s;
+}
 
 /* === Blog Post Styles === */
 .blog-post {
