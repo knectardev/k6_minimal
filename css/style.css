@@ -104,7 +104,7 @@ body {
     align-items: center;
     gap: var(--spacing-sm);
     padding: 8px 0;
-    color: var(--color-text-secondary);
+    color: #000000;
     text-decoration: none;
     font-size: 14.5px;
 }
@@ -153,6 +153,7 @@ body {
     font-weight: normal;
     padding: 5px 0;
     font-size: 14px;
+    color: #222;
 }
 
 /* Hover state for sub-menu items */
@@ -447,6 +448,8 @@ body {
         transform: translateX(-100%);
         transition: transform var(--transition-duration) ease-in-out;
         z-index: var(--z-index-sidebar);
+        width: 65vw;
+        opacity: 0.9;
     }
 
     .sidebar.is-open {
@@ -880,6 +883,32 @@ body {
     font-weight: normal;
     font-size: 13px;
     margin-right: 4px;
+}
+
+.project-category-description {
+    font-family: 'Benne', serif;
+    font-size: 20px;
+    line-height: 28px;
+    max-width: 720px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+
+}
+
+@media (max-width: 768px) {
+    .project-category-description {
+        max-width: 100%;
+        margin-left: var(--spacing-md);
+    }
+    .project-category[data-category] {
+        margin-left: var(--spacing-md);
+    }
+    .select-wrapper + .select-wrapper {
+        margin-top: -10px;
+    }
+    .breadcrumbs {
+        line-height: 1.5;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1345,4 +1374,43 @@ body {
 
 .tech-select-options li {
     padding-left: 12px !important;
+}
+
+/* Show category icon for standalone .project-category (not just inside .project-tile) */
+.project-category[data-category] {
+    position: relative;
+    padding-left: 18px; /* space for icon */
+}
+.project-category[data-category]::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(7493%) hue-rotate(359deg) brightness(98%) contrast(118%);
+}
+.project-category[data-category="Higher Education"]::before {
+    background-image: url('../assets/grad.svg');
+}
+.project-category[data-category="Intranets & Portals"]::before {
+    background-image: url('../assets/intranet.svg');
+}
+.project-category[data-category="Web & iOS Apps"]::before {
+    background-image: url('../assets/web.svg');
+}
+.project-category[data-category="Informational"]::before {
+    background-image: url('../assets/info.svg');
+}
+.project-category[data-category="E-Commerce"]::before {
+    background-image: url('../assets/money.svg');
+}
+.project-category[data-category="Blog Posts"]::before {
+    background-image: url('../assets/hash.svg');
+}
+.project-category[data-category="Music & Art"]::before {
+    background-image: url('../assets/music.svg');
 }

@@ -8,6 +8,7 @@
   {
     "label": "Higher Education",
     "icon": "grad.svg",
+    "categoryDescription": "Knectar partners with leading educational institutions to deliver digital solutions that empower learning, collaboration, and innovation. Knectar partners with leading educational institutions to deliver digital solutions that empower learning, collaboration, and innovation.",
     "more": 1,
     "submenu": [
       {
@@ -55,7 +56,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://deshpande.mit.edu/",
         "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "project_tiles/deshpande.png",
+        "coverImage": "project_tiles/deshpande_mit.jpg",
         "sub_menu": 0
       },
       {
@@ -103,7 +104,7 @@
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.kettering.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/kettering.webp",
+        "coverImage": "project_tiles/kettering.mp4",
         "sub_menu": 1
       },
       {
@@ -135,7 +136,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://medicine.temple.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/temple.png",
+        "coverImage": "project_tiles/temple.jpg",
         "sub_menu": 1
       },
       {
@@ -151,7 +152,7 @@
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.limcollege.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/lim.png",
+        "coverImage": "project_tiles/lim.mp4",
         "sub_menu": 1
       },
       {
@@ -183,7 +184,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://solve.mit.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/mit.png",
+        "coverImage": "project_tiles/mit.jpg",
         "sub_menu": 1
       },
       {
@@ -199,7 +200,7 @@
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.neiu.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/neiu.png",
+        "coverImage": "project_tiles/neiu.webp",
         "sub_menu": 1
       },
       {
@@ -215,7 +216,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://forsyth.org/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/forsyth.png",
         "sub_menu": 1
       },
       {
@@ -239,6 +240,7 @@
   {
     "label": "Intranets & Portals",
     "icon": "intranet.svg",
+    "categoryDescription": "From robust intranets to dynamic portals, Knectar builds secure, scalable platforms that streamline communication and collaboration for organizations of all sizes.",
     "more": 1,
     "submenu": [
       {
@@ -310,6 +312,7 @@
   {
     "label": "Web & iOS Apps",
     "icon": "web.svg",
+    "categoryDescription": "We design and develop custom web and iOS applications that delight users and drive results. Our apps are crafted for performance, accessibility, and seamless integration.",
     "more": 1,
     "submenu": [
       {
@@ -397,6 +400,7 @@
   {
     "label": "Informational",
     "icon": "info.svg",
+    "categoryDescription": "Knectar specializes in creating engaging informational sites that inform, inspire, and connect audiences. We turn complex ideas into clear, accessible digital experiences.",
     "more": 1,
     "submenu": [
       {
@@ -564,6 +568,7 @@
   {
     "label": "E-Commerce",
     "icon": "money.svg",
+    "categoryDescription": "Our e-commerce solutions empower businesses to grow online. From custom storefronts to seamless integrations, we help brands reach new customers and maximize sales.",
     "more": 1,
     "submenu": [
       {
@@ -683,6 +688,7 @@
   {
     "label": "Music & Art",
     "icon": "music.svg",
+    "categoryDescription": "We celebrate creativity through digital projects in music and art. Discover how Knectar brings artistic visions to life with technology.",
     "more": 1,
     "submenu": [
       {
@@ -898,6 +904,7 @@
   {
     "label": "Blog Posts",
     "icon": "hash.svg",
+    "categoryDescription": "Explore our insights, stories, and technical deep-dives. The Knectar blog is where we share our expertise and passion for digital innovation.",
     "more": 0,
     "submenu": []
   },
