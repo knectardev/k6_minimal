@@ -244,10 +244,8 @@ body {
     right: 20px;
     left: auto;
     width: 340px;
-    border-radius: 8px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.52), 0 2px 8px rgba(0,0,0,0.40);
     display: block;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, --tilt 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), --tilt 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-gallery .detail-stack-image.detail-stack-image-base {
     transform: translateX(-50%) rotate(var(--tilt));
@@ -257,7 +255,7 @@ body {
 .project-gallery .detail-stack-image:nth-of-type(4) { top: 700px; }
 .project-gallery .detail-stack-image:hover {
     --tilt: 0deg;
-    transform: translateX(-50%) rotate(var(--tilt)) scale(1.2);
+    transform: translateX(-40%) rotate(var(--tilt)) scale(1.2);
     z-index: 10;
 }
 
