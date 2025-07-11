@@ -536,6 +536,16 @@ body {
     .project-tile.slide-in-right:hover {
         transform: translateX(0); /* Disable scale on mobile */
     }
+
+    .project-tile,
+    .project-tile.reverse,
+    .select-wrapper,
+    .custom-select {
+        margin-left: var(--spacing-md);
+        margin-right: var(--spacing-md);
+        width: auto;
+        box-sizing: border-box;
+    }
 }
 
 @media (min-width: 769px) {
@@ -878,6 +888,11 @@ body {
         flex-direction: column;
         width: 100%;
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s;
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+        margin-left: 0;
+        margin-right: 0;
+        box-sizing: border-box;
     }
 
     .project-image,
