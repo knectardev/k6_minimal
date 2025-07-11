@@ -282,6 +282,9 @@ function initProjects() {
         }
 
         if (techDropdownLabel) techDropdownLabel.textContent = getTechLabel(currentTech);
+
+        // Render category description block
+        renderCategoryDescription(window.__MENU_DATA, currentCat);
     }
 
     function updateSidebarActive(category) {
@@ -415,4 +418,38 @@ function buildTilesFromData(menu) {
         article.style.cursor = 'pointer';
         container.appendChild(article);
     });
+}
+
+function renderCategoryDescription(menu, currentCat) {
+    if (!currentCat || currentCat === 'All') return;
+    const cat = menu.find(item => item.label === currentCat);
+    if (!cat || !cat.categoryDescription) return;
+    const container = document.getElementById('projectList');
+    if (!container) return;
+    // Remove any previous description
+    const prev = document.getElementById('category-description-block');
+    if (prev) prev.remove();
+    // Create block
+    const block = document.createElement('div');
+    block.id = 'category-description-block';
+    block.style.display = 'flex';
+    block.style.flexDirection = 'column';
+    block.style.gap = '8px';
+    // Category label (same markup as .project-category, with icon)
+    const label = document.createElement('span');
+    label.className = 'project-category';
+    label.setAttribute('data-category', cat.label);
+    label.textContent = cat.label;
+    label.style.marginTop = '20px';
+
+    //    label.style.marginBottom = '-20px';
+    // Description text (use project-category-description style)
+    const desc = document.createElement('div');
+    desc.className = 'project-category-description';
+    const p = document.createElement('p');
+    p.textContent = cat.categoryDescription;
+    desc.appendChild(p);
+    block.appendChild(label);
+    block.appendChild(desc);
+    container.prepend(block);
 } 
