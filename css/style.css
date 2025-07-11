@@ -599,7 +599,7 @@ body {
     overflow: hidden;
     background: transparent;
     margin: 0;
-    z-index: 0; /* behind sidebar via its high z-index */
+    z-index: -1; /* behind sidebar via its high z-index */
     pointer-events: none;
 }
 
