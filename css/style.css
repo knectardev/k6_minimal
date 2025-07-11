@@ -528,6 +528,14 @@ body {
         width: 100%;
         height: auto;
     }
+    
+    /* Ensure hover effects work on touch devices */
+    .project-tile:hover,
+    .project-tile:active,
+    .project-tile.slide-in-left:hover,
+    .project-tile.slide-in-right:hover {
+        transform: translateX(0); /* Disable scale on mobile */
+    }
 }
 
 @media (min-width: 769px) {
