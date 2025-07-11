@@ -328,6 +328,13 @@ function initProjects() {
                 tile.style.animationDelay = `${delay}s`;
                 tile.classList.add(useLeft ? leftClass : rightClass);
                 delay += 0.075;
+
+                // Remove any inline transform after animation ends
+                tile.addEventListener('animationend', function handler() {
+                    tile.style.transform = '';
+                    tile.classList.remove(leftClass, rightClass);
+                    tile.removeEventListener('animationend', handler);
+                });
             }
         });
     }
