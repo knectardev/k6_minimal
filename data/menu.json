@@ -23,7 +23,7 @@
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.cmu.edu/",
         "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">Fox Chase Cancer Center, part of the Temple University Health System, needed a website that would be easy for patients to navigate while also showcasing the wealth of groundbreaking research conducted at the Philadelphia hospital. Working with Transit Authority Figures for design and our Drupal partner, Eastern Standard, Knectar created a site that leverages a host of complex technologies to create a flexible, yet easy-to-use system for everyday users.</div></div><p><br></p><p><strong>The Fox Chase site, implemented on Acquia, has unprecedented flexibility. Content creators can effortlessly relate content bet</strong>ween pages thanks to Drupal Paragraph blocks and responsive iFrames. The intuitive and easy-to-use Knectar design features:</p><p><br></p><p>reusable slideshows that can be embedded nearly everywhere on the site</p><p>responsive tables, tabs, and iFrames that thoroughly modernize the site</p><p>integration with Google Search Appliance that allows for a powerful search feature that can also be connected with other Temple University websites</p><p>simple embedding of third party content like Google maps, YouTube videos, etc.</p><p>Technology</p><p>Knectar’s ultimate goal in the Fox Chase site design was ease of use for the Fox Chase content entry team. With that in mind, the Knectar team decided to use Drupal’s Paragraphs feature for the creation of multiple, team-specific list pages that don’t force the user to battle complex rules when creating content. Paragraphs allowed Knectar to create predefined Paragraph types, like text boxes or slideshows, that users can choose between when creating a page. Account administrators can identify which Paragraph entities end users are allowed to have access to.</p><p><br></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Other Knectar Drupal Development projects for universities:</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Temple University: Lewis Katz School Of Medicine</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The Kavli Institute For Brain Science</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>MIT Deshpande Center</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The Forsyth Institute</li></ol>",
-        "coverImage": "assets/ycba.png",
+        "coverImage": "project_tiles/cmu.png",
         "sub_menu": 1
       },
       {
@@ -698,7 +698,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://editor.p5js.org/knectar/full/bLcZrlqt_",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/bezier.png",
+        "coverImage": "project_tiles/bezier.mp4",
         "sub_menu": 1
       },
       {
@@ -730,7 +730,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://midi-strudel-dash.vercel.app/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/strudelizer.png",
         "sub_menu": 1
       },
       {
@@ -746,7 +746,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/strudel_bach.png",
         "sub_menu": 1
       },
       {
@@ -794,7 +794,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/blobby.mp4",
         "sub_menu": 1
       },
       {
@@ -874,7 +874,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://editor.p5js.org/knectar/full/fIJ2pBpyz",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/choosroozy.png",
         "sub_menu": 1
       },
       {
@@ -890,7 +890,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/door_open.svg",
+        "coverImage": "project_tiles/dog.png",
         "sub_menu": 1
       }
     ]

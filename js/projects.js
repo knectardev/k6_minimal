@@ -201,6 +201,7 @@ function initProjects() {
     function openTechDropdown()  { if (techDropdownOptions) techDropdownOptions.style.display = 'block'; }
 
     if (techDropdownToggle) {
+        techDropdownToggle.classList.add('tech-select-toggle');
         techDropdownToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             const isOpen = techDropdownOptions && techDropdownOptions.style.display === 'block';
@@ -208,6 +209,7 @@ function initProjects() {
         });
     }
     if (techDropdownOptions) {
+        techDropdownOptions.classList.add('tech-select-options');
         techDropdownOptions.addEventListener('click', (e) => {
             const li = e.target.closest('li');
             if (!li) return;
@@ -390,8 +392,16 @@ function buildTilesFromData(menu) {
         // link
         const link = item.url;
 
+        // --- Video or Image logic ---
+        let mediaHTML = '';
+        if (item.coverImage && item.coverImage.match(/\.mp4$/i)) {
+            mediaHTML = `<video src="${item.coverImage}" autoplay loop muted playsinline style="width:100%;height:200px;object-fit:cover;border-radius:var(--border-radius) 0 0 var(--border-radius);"></video>`;
+        } else {
+            mediaHTML = `<img src="${item.coverImage || 'project_tiles/sample_tile1.png'}" alt="${item.projectTitle || item.label} image">`;
+        }
+
         article.innerHTML = `
-            <div class="project-image"><img src="${item.coverImage || 'project_tiles/sample_tile1.png'}" alt="${item.projectTitle || item.label} image"></div>
+            <div class="project-image">${mediaHTML}</div>
             <div class="project-text">
                 <span class="project-category">${item.parentLabel || ''}</span>
                 <h2 class="project-title">${item.projectTitle || item.label}</h2>
