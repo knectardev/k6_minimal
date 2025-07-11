@@ -1338,3 +1338,11 @@ body {
 .dev-login-link:hover {
     background-color: #cc0000;
 }
+
+.tech-select-toggle {
+    padding-left: 12px !important;
+}
+
+.tech-select-options li {
+    padding-left: 12px !important;
+}
