@@ -27,9 +27,113 @@
                 </div>
             </header>
             <section class="project-details">
+                <div class="project-gallery">
+                    <!-- Existing image logic -->
+                    <img id="project-main-image" src="" alt="Project image" style="display:none;" />
+                    <img id="project-detail-image" src="" alt="Project detail image" style="display:none; position:absolute; top:80px; width:340px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.10);" />
+                </div>
                 <div class="project-info"><!-- populated dynamically --></div>
             </section>
         </main>
     </div>
+    <script>
+        // Data-driven detail images logic (multiple images, random tilt)
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.__MENU_DATA) return;
+            const urlParams = new URLSearchParams(window.location.search);
+            const slugParam = urlParams.get('item');
+            let pageData;
+            if (slugParam) {
+                const findBySlug = (arr, slug) => {
+                    for (const entry of arr) {
+                        if (entry.url && entry.url.includes(slug)) return entry;
+                        if (entry.submenu) {
+                            const found = findBySlug(entry.submenu, slug);
+                            if (found) return found;
+                        }
+                    }
+                    return null;
+                };
+                pageData = findBySlug(window.__MENU_DATA, slugParam);
+            }
+            // Remove old single image
+            const oldImg = document.getElementById('project-detail-image');
+            if (oldImg) oldImg.remove();
+            // Add multiple images if present
+            if (pageData && Array.isArray(pageData.detailImages)) {
+                const gallery = document.querySelector('.project-gallery');
+                pageData.detailImages.forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = 'Project detail image';
+                    img.className = 'detail-stack-image detail-stack-image-base';
+                    img.style.display = 'block';
+                    img.style.position = 'absolute';
+                    img.style.width = '340px';
+                    img.style.borderRadius = '8px';
+                    img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.10)';
+                    // Random tilt between -15 and +15 degrees
+                    const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
+                    img.style.setProperty('--tilt', tilt);
+                    img.dataset.origTilt = parseFloat(tilt);
+                    img.style.left = '50%';
+                    gallery.appendChild(img);
+                });
+            }
+        });
+        // Animate tilt on hover for detail-stack-image
+        document.addEventListener('mouseover', function(e) {
+            const img = e.target.closest('.detail-stack-image');
+            if (!img) return;
+            // Cancel any running animation
+            if (img._tiltFrame) cancelAnimationFrame(img._tiltFrame);
+            img._tiltAnimating = true;
+            const origTilt = img.style.getPropertyValue('--tilt') || '0deg';
+            const origTiltNum = parseFloat(origTilt);
+            const duration = 300;
+            const start = performance.now();
+            function animateTilt(now) {
+                const elapsed = now - start;
+                const t = Math.min(elapsed / duration, 1);
+                const newTilt = origTiltNum * (1 - t);
+                img.style.setProperty('--tilt', `${newTilt}deg`);
+                if (t < 1) {
+                    img._tiltFrame = requestAnimationFrame(animateTilt);
+                } else {
+                    img.style.setProperty('--tilt', '0deg');
+                    img._tiltAnimating = false;
+                    img._tiltFrame = null;
+                }
+            }
+            img._tiltFrame = requestAnimationFrame(animateTilt);
+        }, true);
+        document.addEventListener('mouseout', function(e) {
+            const img = e.target.closest('.detail-stack-image');
+            if (!img) return;
+            // Cancel any running animation
+            if (img._tiltFrame) cancelAnimationFrame(img._tiltFrame);
+            img._tiltAnimating = true;
+            const origTilt = img.dataset.origTilt;
+            if (!origTilt) return;
+            const startTilt = parseFloat(img.style.getPropertyValue('--tilt') || '0');
+            const endTilt = parseFloat(origTilt);
+            const duration = 300;
+            const start = performance.now();
+            function animateTiltBack(now) {
+                const elapsed = now - start;
+                const t = Math.min(elapsed / duration, 1);
+                const newTilt = startTilt + (endTilt - startTilt) * t;
+                img.style.setProperty('--tilt', `${newTilt}deg`);
+                if (t < 1) {
+                    img._tiltFrame = requestAnimationFrame(animateTiltBack);
+                } else {
+                    img.style.setProperty('--tilt', `${endTilt}deg`);
+                    img._tiltAnimating = false;
+                    img._tiltFrame = null;
+                }
+            }
+            img._tiltFrame = requestAnimationFrame(animateTiltBack);
+        }, true);
+    </script>
 </body>
 </html> 
