@@ -32,6 +32,7 @@
                     <img id="project-main-image" src="" alt="Project image" style="display:none;" />
                     <img id="project-detail-image" src="" alt="Project detail image" style="display:none; position:absolute; top:80px; width:340px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.10);" />
                 </div>
+                <!-- Removed static .mobile-gallery -->
                 <div class="project-info"><!-- populated dynamically --></div>
             </section>
         </main>
@@ -59,10 +60,11 @@
             // Remove old single image
             const oldImg = document.getElementById('project-detail-image');
             if (oldImg) oldImg.remove();
-            // Add multiple images if present
+            // Always populate .project-gallery with stacked images
+            const gallery = document.querySelector('.project-gallery');
+            if (gallery) gallery.innerHTML = '';
             if (pageData && Array.isArray(pageData.detailImages)) {
-                const gallery = document.querySelector('.project-gallery');
-                pageData.detailImages.forEach(src => {
+                pageData.detailImages.forEach((src, i) => {
                     const img = document.createElement('img');
                     img.src = src;
                     img.alt = 'Project detail image';
@@ -77,8 +79,93 @@
                     img.style.setProperty('--tilt', tilt);
                     img.dataset.origTilt = parseFloat(tilt);
                     img.style.left = '50%';
+                    // Stagger vertical position for up to 4 images
+                    if (i === 0) img.style.top = '100px';
+                    if (i === 1) img.style.top = '450px';
+                    if (i === 2) img.style.top = '800px';
+                    if (i === 3) img.style.top = '1150px';
                     gallery.appendChild(img);
                 });
+            }
+            // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile && pageData && Array.isArray(pageData.detailImages)) {
+                // Wait for .project-info to be populated
+                setTimeout(() => {
+                    const projectInfo = document.querySelector('.project-info');
+                    if (!projectInfo) return;
+                    // Remove any previous .mobile-gallery
+                    const oldMobileGallery = projectInfo.querySelector('.mobile-gallery');
+                    if (oldMobileGallery) oldMobileGallery.remove();
+                    // Create new .mobile-gallery
+                    const mobileGallery = document.createElement('div');
+                    mobileGallery.className = 'mobile-gallery';
+                    // Find the meta-data <ul> (or fallback to first <p.description> or .dynamic-body)
+                    let insertAfter = projectInfo.querySelector('ul');
+                    if (!insertAfter) {
+                        // Try to find the first .description or .dynamic-body
+                        insertAfter = projectInfo.querySelector('.description') || projectInfo.querySelector('.dynamic-body');
+                        if (insertAfter) insertAfter = insertAfter.previousElementSibling;
+                    }
+                    // Insert .mobile-gallery after meta-data <ul>
+                    if (insertAfter && insertAfter.parentNode === projectInfo) {
+                        insertAfter.after(mobileGallery);
+                    } else {
+                        // Fallback: insert at the top
+                        projectInfo.prepend(mobileGallery);
+                    }
+                    // Build simple slideshow
+                    let currentIdx = 0;
+                    function renderMobileSlide(idx) {
+                        mobileGallery.innerHTML = '';
+                        const img = document.createElement('img');
+                        img.src = pageData.detailImages[idx];
+                        img.alt = 'Project detail image';
+                        img.style.width = '100%';
+                        img.style.maxWidth = '420px';
+                        img.style.display = 'block';
+                        img.style.margin = '0 auto 12px auto';
+                        img.style.borderRadius = '8px';
+                        img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                        // Navigation controls
+                        const nav = document.createElement('div');
+                        nav.style.display = 'flex';
+                        nav.style.justifyContent = 'center';
+                        nav.style.alignItems = 'center';
+                        nav.style.gap = '18px';
+                        nav.style.marginBottom = '8px';
+                        const prevBtn = document.createElement('button');
+                        prevBtn.textContent = '◀';
+                        prevBtn.style.fontSize = '22px';
+                        prevBtn.style.background = 'none';
+                        prevBtn.style.border = 'none';
+                        prevBtn.style.cursor = 'pointer';
+                        prevBtn.style.color = '#FF0000';
+                        prevBtn.disabled = idx === 0;
+                        prevBtn.onclick = () => { if (currentIdx > 0) { currentIdx--; renderMobileSlide(currentIdx); } };
+                        const nextBtn = document.createElement('button');
+                        nextBtn.textContent = '▶';
+                        nextBtn.style.fontSize = '22px';
+                        nextBtn.style.background = 'none';
+                        nextBtn.style.border = 'none';
+                        nextBtn.style.cursor = 'pointer';
+                        nextBtn.style.color = '#FF0000';
+                        nextBtn.disabled = idx === pageData.detailImages.length - 1;
+                        nextBtn.onclick = () => { if (currentIdx < pageData.detailImages.length - 1) { currentIdx++; renderMobileSlide(currentIdx); } };
+                        nav.appendChild(prevBtn);
+                        nav.appendChild(img);
+                        nav.appendChild(nextBtn);
+                        mobileGallery.appendChild(nav);
+                        // Optional: show image count
+                        const count = document.createElement('div');
+                        count.style.textAlign = 'center';
+                        count.style.fontSize = '13px';
+                        count.style.color = '#888';
+                        count.textContent = `${idx + 1} / ${pageData.detailImages.length}`;
+                        mobileGallery.appendChild(count);
+                    }
+                    renderMobileSlide(currentIdx);
+                }, 0);
             }
         });
         // Animate tilt on hover for detail-stack-image
