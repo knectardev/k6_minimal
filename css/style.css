@@ -1228,16 +1228,8 @@ body {
 }
 .desc-editor {
     width: 100%;
-    min-width: 220px;
     max-width: 600px;
-    min-height: 80px;
-    font-family: inherit;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 8px;
     margin-bottom: 8px;
-    resize: vertical;
 }
 .desc-edit-actions {
     display: flex;
@@ -1263,89 +1255,59 @@ body {
     background: #b30000;
 } 
 
-/* Improved Quill Editor Layout for Inline Editing (high specificity) */
-.description-edit-wrap {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0 !important;
-    margin-top: 16px !important;
-    width: 100% !important;
-    max-width: 600px !important;
+/* Simple textarea editor styling */
+.desc-editor {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 600px;
 }
 
-#desc-quill-editor {
-    min-height: 250px !important;
-    background: #fff !important;
-    border-radius: 0 0 8px 8px !important;
-    border: 1px solid #ddd !important;
-    border-top: none !important;
-    box-sizing: border-box !important;
-    margin-bottom: 16px !important;
-    padding: 8px !important;
+#desc-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 200px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
 }
 
-.ql-toolbar.ql-snow {
-    width: 100% !important;
-    border-radius: 8px 8px 0 0 !important;
-    border-bottom: none !important;
-    margin-bottom: 0 !important;
-}
-
-.ql-container.ql-snow {
-    border-radius: 0 0 8px 8px !important;
-    border-top: none !important;
+#desc-textarea:focus {
+    outline: none;
+    border-color: #FF0000;
 }
 
 .desc-edit-actions {
-    display: flex !important;
-    gap: 12px !important;
-    margin-top: 12px !important;
-    width: 100% !important;
-    justify-content: flex-end !important;
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    width: 100%;
+    justify-content: flex-end;
 }
 
 .desc-save-btn, .desc-cancel-btn {
-    min-width: 80px !important;
-} 
-
-/* In-context Quill editor styling for project description */
-#desc-quill-editor.description,
-#desc-quill-editor .ql-editor {
-    font-family: 'Karla', sans-serif !important;
-    font-size: 1.1em !important;
-    line-height: 1.6 !important;
-    color: var(--color-text-primary) !important;
-    background: none !important;
-    border: none !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    box-shadow: none !important;
+    min-width: 80px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#desc-quill-editor {
-    border: none !important;
-    background: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    min-height: 0 !important;
-    box-shadow: none !important;
+.desc-cancel-btn {
+    background: #6c757d;
+    color: white;
 }
 
-.ql-toolbar.ql-snow {
-    border-radius: 8px 8px 0 0 !important;
-    border: 1px solid #ddd !important;
-    border-bottom: none !important;
-    margin-bottom: 0 !important;
-    background: #fafafa !important;
-}
-
-.ql-container.ql-snow {
-    border-radius: 0 0 8px 8px !important;
-    border: 1px solid #ddd !important;
-    border-top: none !important;
-    background: none !important;
-    min-height: 0 !important;
+.desc-cancel-btn:hover {
+    background: #5a6268;
 }
 
 .description-edit-wrap {

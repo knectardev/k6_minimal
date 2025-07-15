@@ -511,6 +511,24 @@ function findBySlug(arr, slug, parentLabel = null) {
     return null;
 }
 
+// Helper function to clean legacy Quill editor content for display
+function cleanLegacyContent(content) {
+    if (!content) return '';
+    
+    // Clean up legacy Quill editor HTML and convert to readable text
+    let cleanText = content
+        .replace(/<div[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor divs
+        .replace(/<span[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor spans
+        .replace(/<pre[^>]*>/gi, '') // Remove pre tags
+        .replace(/<br\s*\/?>/gi, ' ') // Convert br tags to spaces
+        .replace(/<\/p>/gi, ' ') // Convert paragraph ends to spaces
+        .replace(/<[^>]*>/g, '') // Strip remaining HTML tags
+        .replace(/\s+/g, ' ') // Clean up excessive whitespace
+        .trim(); // Remove leading/trailing whitespace
+    
+    return cleanText;
+}
+
 function buildProjectInfoHTML(data) {
     let html = "";
     // Add the Display in menu checkbox above the project title, left-aligned
@@ -556,62 +574,94 @@ function buildProjectInfoHTML(data) {
     }
     if (rows.length) html += `<ul>${rows.join('\n')}</ul>`;
 
-    // Description: Quill editor if logged in, static text otherwise
+    // Description: Simple textarea editor if logged in, static text otherwise
     if (window.authManager && window.authManager.isLoggedIn) {
+        // For logged-in users, show the raw content in a hidden element for editing
         html += `<div class="description-edit-wrap">
-            <div id="desc-quill-editor" class="description"></div>
+            <div id="project-description" class="description" style="display: none;">${data.pageSummary || ''}</div>
+            <p class="description-display">${cleanLegacyContent(data.pageSummary || '')}</p>
+            <button id="edit-desc-btn" class="edit-desc-btn" style="background: none; border: none; cursor: pointer; padding: 4px; margin-top: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+            </button>
         </div>`;
     } else if (data.pageSummary) {
-        html += `<p class="description">${data.pageSummary}</p>`;
+        html += `<p class="description">${cleanLegacyContent(data.pageSummary)}</p>`;
     }
     if (data.pageBody) html += `<div class="dynamic-body">${data.pageBody}</div>`;
     return html;
 }
 
-// Always-in-place Quill editor for admins
-function setupQuillDescriptionEditor(slug, originalDesc) {
-    const quillDiv = document.getElementById('desc-quill-editor');
-    if (!quillDiv) return;
-    const quill = new Quill('#desc-quill-editor', {
-        theme: 'snow',
-        modules: {
-            toolbar: [
-                [{ 'font': [] }, { 'size': [] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ 'color': [] }, { 'background': [] }],
-                [{ 'script': 'super' }, { 'script': 'sub' }],
-                [{ 'header': 1 }, { 'header': 2 }, 'blockquote', 'code-block'],
-                [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-                [{ 'direction': 'rtl' }, { 'align': [] }],
-                ['link', 'image', 'video', 'formula'],
-                ['clean']
-            ]
-        }
-    });
-    quill.root.innerHTML = originalDesc;
-    const saveBtn = document.getElementById('desc-save-btn');
-    let lastDesc = originalDesc;
+// Simple textarea editor for admins
+function setupSimpleDescriptionEditor(slug, originalDesc) {
+    const descDiv = document.getElementById('project-description');
+    const editBtn = document.getElementById('edit-desc-btn');
+    const menuCheckbox = document.getElementById('displayInMenuCheckbox');
+    
+    if (!descDiv || !editBtn) return;
+    
+    // Store original state
+    let origChecked = menuCheckbox ? menuCheckbox.checked : null;
+    
+    // Replace display with simple textarea editor (no outer modal wrapper)
+    const descEditor = document.createElement('div');
+    descEditor.className = 'desc-editor';
+    descEditor.innerHTML = `
+        <textarea id="desc-textarea" placeholder="Enter project description..." rows="10" style="width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; font-family: inherit; font-size: 14px; resize: vertical; margin-bottom: 12px;"></textarea>
+        <div class="desc-edit-actions" style="text-align: right; margin-top: 8px;">
+            <button id="desc-cancel-btn" style="background: #f5f5f5; border: 1px solid #ddd; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Cancel</button>
+        </div>
+    `;
+    
+    // Insert editor after the description-edit-wrap div
+    const editWrap = descDiv.closest('.description-edit-wrap');
+    if (editWrap) {
+        editWrap.appendChild(descEditor);
+        // Hide the display text and edit button
+        const displayText = editWrap.querySelector('.description-display');
+        if (displayText) displayText.style.display = 'none';
+        editBtn.style.display = 'none';
+    }
+    
+    // Initialize textarea
+    const textarea = document.getElementById('desc-textarea');
+    // Clean up legacy Quill editor HTML and convert to plain text
+    let cleanText = originalDesc
+        .replace(/<div[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor divs
+        .replace(/<span[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor spans
+        .replace(/<pre[^>]*>/gi, '') // Remove pre tags
+        .replace(/<br\s*\/?>/gi, '\n') // Convert br tags to newlines
+        .replace(/<\/p>/gi, '\n\n') // Convert paragraph ends to double newlines
+        .replace(/<[^>]*>/g, '') // Strip remaining HTML tags
+        .replace(/\n\s*\n\s*\n/g, '\n\n') // Clean up excessive newlines
+        .trim(); // Remove leading/trailing whitespace
+    
+    textarea.value = cleanText;
+    
+    let lastDesc = textarea.value;
     let descChanged = false;
     let menuChanged = false;
-    const menuCheckbox = document.getElementById('displayInMenuCheckbox');
-    let origChecked = menuCheckbox ? menuCheckbox.checked : null;
-    // Helper to update Save button state
-    function updateSaveBtnState() {
-        if (descChanged || menuChanged) {
-            saveBtn.disabled = false;
-            saveBtn.style.background = '#FF0000';
-            saveBtn.style.cursor = 'pointer';
-        } else {
-            saveBtn.disabled = true;
-            saveBtn.style.background = '#888';
-            saveBtn.style.cursor = 'not-allowed';
+    
+    // Listen for textarea changes to update the main save button state
+    textarea.addEventListener('input', function() {
+        descChanged = (textarea.value !== lastDesc);
+        // Update the main save button state
+        const mainSaveBtn = document.getElementById('desc-save-btn');
+        if (mainSaveBtn) {
+            if (descChanged || menuChanged) {
+                mainSaveBtn.disabled = false;
+                mainSaveBtn.style.background = '#FF0000';
+                mainSaveBtn.style.cursor = 'pointer';
+            } else {
+                mainSaveBtn.disabled = true;
+                mainSaveBtn.style.background = '#888';
+                mainSaveBtn.style.cursor = 'not-allowed';
+            }
         }
-    }
-    // Listen for Quill changes
-    quill.on('text-change', function() {
-        descChanged = (quill.root.innerHTML !== lastDesc);
-        updateSaveBtnState();
     });
+    
     // Listen for menu checkbox changes
     if (menuCheckbox) {
         menuCheckbox.addEventListener('change', function() {
@@ -649,7 +699,19 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
                     localStorage.setItem('menu_json_edits', JSON.stringify(serverData));
                 }
                 
-                updateSaveBtnState();
+                // Update the main save button state
+                const mainSaveBtn = document.getElementById('desc-save-btn');
+                if (mainSaveBtn) {
+                    if (descChanged || menuChanged) {
+                        mainSaveBtn.disabled = false;
+                        mainSaveBtn.style.background = '#FF0000';
+                        mainSaveBtn.style.cursor = 'pointer';
+                    } else {
+                        mainSaveBtn.disabled = true;
+                        mainSaveBtn.style.background = '#888';
+                        mainSaveBtn.style.cursor = 'not-allowed';
+                    }
+                }
             })
             .catch(err => {
                 console.error('Failed to update menu checkbox:', err);
@@ -666,24 +728,35 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
                     return false;
                 }
                 updateSubMenu(currentData);
-                updateSaveBtnState();
+                
+                // Update the main save button state
+                const mainSaveBtn = document.getElementById('desc-save-btn');
+                if (mainSaveBtn) {
+                    if (descChanged || menuChanged) {
+                        mainSaveBtn.disabled = false;
+                        mainSaveBtn.style.background = '#FF0000';
+                        mainSaveBtn.style.cursor = 'pointer';
+                    } else {
+                        mainSaveBtn.disabled = true;
+                        mainSaveBtn.style.background = '#888';
+                        mainSaveBtn.style.cursor = 'not-allowed';
+                    }
+                }
             });
         });
     }
-    // Save button
-    saveBtn.onclick = function() {
-        if (saveBtn.disabled) return;
-        let newDesc = quill.root.innerHTML;
-        lastDesc = newDesc;
-        descChanged = false;
-        if (menuCheckbox) {
-            origChecked = menuCheckbox.checked;
-            menuChanged = false;
-        }
-        // Update both description and menu checkbox state
-        updateProjectDescription(slug, newDesc, menuCheckbox ? menuCheckbox.checked : null);
-        // Don't call injectPageData() here - let the update function handle the refresh
-    };
+    
+    // Cancel button
+    const cancelBtn = document.getElementById('desc-cancel-btn');
+    if (cancelBtn) {
+        cancelBtn.onclick = function() {
+            // Remove editor and show original content
+            descEditor.remove();
+            const displayText = editWrap.querySelector('.description-display');
+            if (displayText) displayText.style.display = 'block';
+            editBtn.style.display = 'block';
+        };
+    }
 }
 
 // Add event handler after rendering project info
@@ -697,16 +770,14 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
             }
         }
         origInject();
-        // If logged in and on project detail, initialize Quill and checkbox handler
+        // If logged in and on project detail, initialize simple editor and checkbox handler
         const urlParams = new URLSearchParams(window.location.search);
         const slugParam = urlParams.get('item');
         if (slugParam && window.authManager && window.authManager.isLoggedIn) {
             const pageData = findBySlug(window.__MENU_DATA, slugParam);
             if (pageData && pageData.item && pageData.item.pageSummary !== undefined) {
-                setupQuillDescriptionEditor(slugParam, pageData.item.pageSummary);
+                setupSimpleDescriptionEditor(slugParam, pageData.item.pageSummary);
             }
-            // REMOVE: Add event handler for the Display in menu checkbox
-            // (All logic now handled in setupQuillDescriptionEditor)
         }
     }
 })();
@@ -726,8 +797,11 @@ function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
         function updateInMenu(arr) {
             for (const entry of arr) {
                 if (entry.slug === slug) {
-                    // Update the pageSummary
-                    entry.pageSummary = newDesc;
+                    // Update the pageSummary if new description is provided
+                    if (newDesc !== null) {
+                        const htmlDesc = newDesc.replace(/\n/g, '<br>');
+                        entry.pageSummary = htmlDesc;
+                    }
                     
                     // Update sub_menu if checkbox state is provided
                     if (menuCheckboxState !== null) {
@@ -824,10 +898,36 @@ function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
         const slugParam = urlParams.get('item');
         if (slugParam && window.authManager && window.authManager.isLoggedIn) {
             const editBtn = document.getElementById('edit-desc-btn');
-            const descP = document.getElementById('project-description');
-            if (editBtn && descP) {
+            const descDiv = document.getElementById('project-description');
+            const saveBtn = document.getElementById('desc-save-btn');
+            
+            if (editBtn && descDiv) {
                 editBtn.onclick = function() {
-                    enableDescriptionEditing(slugParam, descP.innerHTML);
+                    setupSimpleDescriptionEditor(slugParam, descDiv.innerHTML);
+                };
+            }
+            
+            // Add click handler for the main save button
+            if (saveBtn) {
+                saveBtn.onclick = function() {
+                    if (saveBtn.disabled) return;
+                    
+                    // Get the current textarea content if editor is open
+                    const textarea = document.getElementById('desc-textarea');
+                    const menuCheckbox = document.getElementById('displayInMenuCheckbox');
+                    
+                    if (textarea) {
+                        // Editor is open, save the textarea content
+                        const newDesc = textarea.value;
+                        const menuState = menuCheckbox ? menuCheckbox.checked : null;
+                        updateProjectDescription(slugParam, newDesc, menuState);
+                    } else {
+                        // Editor is not open, just save menu checkbox state if changed
+                        const menuState = menuCheckbox ? menuCheckbox.checked : null;
+                        if (menuState !== null) {
+                            updateProjectDescription(slugParam, null, menuState);
+                        }
+                    }
                 };
             }
         }
