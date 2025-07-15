@@ -2,17 +2,167 @@
 
 (function() {
   const MENU_JSON = 'data/menu.json';
+  const CACHE_KEY = 'menu_json_cache';
+  const CACHE_VERSION_KEY = 'menu_cache_version';
+  const CACHE_TIMESTAMP_KEY = 'menu_cache_timestamp';
+  const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache
+
+  // Cache management utilities
+  const cacheManager = {
+    getCache() {
+      try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        const version = localStorage.getItem(CACHE_VERSION_KEY);
+        const timestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+        
+        if (!cached || !version || !timestamp) return null;
+        
+        const age = Date.now() - parseInt(timestamp);
+        if (age > CACHE_DURATION) {
+          this.clearCache();
+          return null;
+        }
+        
+        return {
+          data: JSON.parse(cached),
+          version: version,
+          timestamp: parseInt(timestamp)
+        };
+      } catch (e) {
+        console.warn('Cache read error:', e);
+        this.clearCache();
+        return null;
+      }
+    },
+
+    setCache(data, version) {
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+        localStorage.setItem(CACHE_VERSION_KEY, version);
+        localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
+      } catch (e) {
+        console.warn('Cache write error:', e);
+      }
+    },
+
+    clearCache() {
+      localStorage.removeItem(CACHE_KEY);
+      localStorage.removeItem(CACHE_VERSION_KEY);
+      localStorage.removeItem(CACHE_TIMESTAMP_KEY);
+    },
+
+    // Get server version without downloading full data
+    async getServerVersion() {
+      try {
+        const response = await fetch(MENU_JSON, { 
+          method: 'HEAD',
+          cache: 'no-cache'
+        });
+        if (!response.ok) return null;
+        
+        // Use ETag or Last-Modified as version
+        const etag = response.headers.get('etag');
+        const lastModified = response.headers.get('last-modified');
+        return etag || lastModified || response.headers.get('content-length');
+      } catch (e) {
+        console.warn('Server version check failed:', e);
+        return null;
+      }
+    }
+  };
 
   async function fetchMenuData() {
     try {
-      const res = await fetch(MENU_JSON);
-      if (!res.ok) throw new Error('Menu JSON fetch failed');
-      return await res.json();
+      // Check if we have valid cached data
+      const cached = cacheManager.getCache();
+      const serverVersion = await cacheManager.getServerVersion();
+      
+      // If we have cached data and server version matches, use cache
+      if (cached && cached.version === serverVersion) {
+        console.log('Using cached menu data');
+        return cached.data;
+      }
+      
+      // Fetch fresh data from server
+      console.log('Fetching fresh menu data from server');
+      const response = await fetch(MENU_JSON, { 
+        cache: 'no-cache',
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
+        }
+      });
+      
+      if (!response.ok) throw new Error('Menu JSON fetch failed');
+      
+      const data = await response.json();
+      
+      // Cache the fresh data
+      cacheManager.setCache(data, serverVersion);
+      
+      return data;
     } catch (err) {
-      console.warn('Menu JSON unavailable, using inline data');
+      console.warn('Menu JSON unavailable, using fallback data');
+      
+      // Try to use cached data even if server is down
+      const cached = cacheManager.getCache();
+      if (cached) {
+        console.log('Server unavailable, using cached data');
+        return cached.data;
+      }
+      
       return window.__MENU_FALLBACK;
     }
   }
+
+  // Enhanced menu data management for CMS
+  window.menuDataManager = {
+    // Get current menu data (prioritizing CMS edits)
+    getCurrentData() {
+      // If user is logged in and has edits, use those
+      if (window.authManager && window.authManager.isLoggedIn) {
+        const edits = localStorage.getItem('menu_json_edits');
+        if (edits) {
+          try {
+            return JSON.parse(edits);
+          } catch (e) {
+            console.warn('Invalid edit cache, clearing');
+            localStorage.removeItem('menu_json_edits');
+          }
+        }
+      }
+      
+      // Otherwise use the main menu data
+      return window.__MENU_DATA;
+    },
+
+    // Update menu data (both in memory and cache)
+    updateData(newData) {
+      window.__MENU_DATA = newData;
+      
+      // Update edit cache if logged in
+      if (window.authManager && window.authManager.isLoggedIn) {
+        localStorage.setItem('menu_json_edits', JSON.stringify(newData));
+      }
+      
+      // Clear main cache to force refresh
+      cacheManager.clearCache();
+    },
+
+    // Clear all caches
+    clearAllCaches() {
+      cacheManager.clearCache();
+      localStorage.removeItem('menu_json_edits');
+    },
+
+    // Force refresh from server
+    async refreshFromServer() {
+      cacheManager.clearCache();
+      const freshData = await fetchMenuData();
+      window.__MENU_DATA = freshData;
+      return freshData;
+    }
+  };
 
   function buildMenu(menu) {
     const overlay = document.createElement('div');

@@ -616,21 +616,58 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
     if (menuCheckbox) {
         menuCheckbox.addEventListener('change', function() {
             menuChanged = (menuCheckbox.checked !== origChecked);
-            // Update sub_menu in menu data, but do not re-render UI
-            function updateSubMenu(arr) {
-                for (const entry of arr) {
-                    if (entry.slug === slug) {
-                        entry.sub_menu = menuCheckbox.checked ? 1 : 0;
-                        return true;
-                    }
-                    if (entry.submenu && updateSubMenu(entry.submenu)) return true;
+            
+            // Get fresh data from server to avoid corruption
+            fetch('/data/menu.json', { 
+                cache: 'no-cache',
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache'
                 }
-                return false;
-            }
-            updateSubMenu(window.__MENU_DATA);
-            // Persist to localStorage for dev persistence
-            localStorage.setItem('menu_json_edits', JSON.stringify(window.__MENU_DATA));
-            updateSaveBtnState();
+            })
+            .then(res => res.json())
+            .then(serverData => {
+                // Update sub_menu in server data
+                function updateSubMenu(arr) {
+                    for (const entry of arr) {
+                        if (entry.slug === slug) {
+                            entry.sub_menu = menuCheckbox.checked ? 1 : 0;
+                            return true;
+                        }
+                        if (entry.submenu && updateSubMenu(entry.submenu)) return true;
+                    }
+                    return false;
+                }
+                
+                updateSubMenu(serverData);
+                
+                // Update local data to match
+                if (window.menuDataManager) {
+                    window.menuDataManager.updateData(serverData);
+                } else {
+                    window.__MENU_DATA = serverData;
+                    localStorage.setItem('menu_json_edits', JSON.stringify(serverData));
+                }
+                
+                updateSaveBtnState();
+            })
+            .catch(err => {
+                console.error('Failed to update menu checkbox:', err);
+                // Fallback to local update if server fetch fails
+                const currentData = window.menuDataManager ? window.menuDataManager.getCurrentData() : window.__MENU_DATA;
+                function updateSubMenu(arr) {
+                    for (const entry of arr) {
+                        if (entry.slug === slug) {
+                            entry.sub_menu = menuCheckbox.checked ? 1 : 0;
+                            return true;
+                        }
+                        if (entry.submenu && updateSubMenu(entry.submenu)) return true;
+                    }
+                    return false;
+                }
+                updateSubMenu(currentData);
+                updateSaveBtnState();
+            });
         });
     }
     // Save button
@@ -643,8 +680,9 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
             origChecked = menuCheckbox.checked;
             menuChanged = false;
         }
-        updateProjectDescription(slug, newDesc);
-        injectPageData();
+        // Update both description and menu checkbox state
+        updateProjectDescription(slug, newDesc, menuCheckbox ? menuCheckbox.checked : null);
+        // Don't call injectPageData() here - let the update function handle the refresh
     };
 }
 
@@ -673,52 +711,114 @@ function setupQuillDescriptionEditor(slug, originalDesc) {
     }
 })();
 
-function updateProjectDescription(slug, newDesc) {
-    // Update in-memory menu data
-    function updateInMenu(arr) {
-        for (const entry of arr) {
-            if (entry.slug === slug) {
-                entry.pageSummary = newDesc;
-                return true;
-            }
-            if (entry.submenu && updateInMenu(entry.submenu)) return true;
-        }
-        return false;
-    }
-    updateInMenu(window.__MENU_DATA);
-    // Save to localStorage for dev persistence
-    localStorage.setItem('menu_json_edits', JSON.stringify(window.__MENU_DATA));
-
-    // Send to backend for permanent save
-    fetch('/api/update-menu', {
-        method: 'POST',
+function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
+    // First, get the original data from the server to ensure we don't lose any fields
+    fetch('/data/menu.json', { 
+        cache: 'no-cache',
         headers: {
-            'Content-Type': 'application/json',
-            'x-edit-secret': 'dowhatyouaredoing' // match EDIT_SECRET in .env
-        },
-        body: JSON.stringify(window.__MENU_DATA)
-    }).then(res => res.json()).then(data => {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+        }
+    })
+    .then(res => res.json())
+    .then(serverData => {
+        // Find and update the specific project in the server data
+        function updateInMenu(arr) {
+            for (const entry of arr) {
+                if (entry.slug === slug) {
+                    // Update the pageSummary
+                    entry.pageSummary = newDesc;
+                    
+                    // Update sub_menu if checkbox state is provided
+                    if (menuCheckboxState !== null) {
+                        entry.sub_menu = menuCheckboxState ? 1 : 0;
+                        console.log(`Updated sub_menu for ${slug} to: ${entry.sub_menu}`);
+                    }
+                    
+                    return true;
+                }
+                if (entry.submenu && updateInMenu(entry.submenu)) return true;
+            }
+            return false;
+        }
+        
+        // Update the server data
+        updateInMenu(serverData);
+        
+        // Update local data to match
+        if (window.menuDataManager) {
+            window.menuDataManager.updateData(serverData);
+        } else {
+            window.__MENU_DATA = serverData;
+            localStorage.setItem('menu_json_edits', JSON.stringify(serverData));
+        }
+
+        // Log the data being sent for debugging
+        console.log('Sending updated data for project:', slug);
+        console.log('Description updated:', !!newDesc);
+        console.log('Menu checkbox state:', menuCheckboxState);
+        console.log('Data structure preserved:', serverData.some(item => 
+            item.submenu && item.submenu.some(sub => 
+                sub.slug === slug && sub.detailImages && sub.coverImage
+            )
+        ));
+        
+        // Send the complete, updated data to the server
+        return fetch('/api/update-menu', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-edit-secret': 'dowhatyouaredoing' // match EDIT_SECRET in .env
+            },
+            body: JSON.stringify(serverData)
+        });
+    })
+    .then(res => res.json())
+    .then(data => {
         if (!data.success) {
             alert('Failed to save to server: ' + (data.error || 'Unknown error'));
+        } else {
+            // Clear edit cache after successful server save
+            if (window.menuDataManager) {
+                window.menuDataManager.clearAllCaches();
+            }
+            console.log('Project updated successfully');
+            if (menuCheckboxState !== null) {
+                console.log(`Menu visibility set to: ${menuCheckboxState ? 'visible' : 'hidden'}`);
+            }
+            
+            // Show success message
+            const saveBtn = document.getElementById('desc-save-btn');
+            if (saveBtn) {
+                const originalText = saveBtn.textContent;
+                saveBtn.textContent = 'Saved!';
+                saveBtn.style.background = '#28a745';
+                saveBtn.disabled = true;
+            }
+            
+            // Reload the page to show the updated content immediately
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000); // Give user time to see the success message
         }
-    }).catch(err => {
+    })
+    .catch(err => {
+        console.error('Update failed:', err);
         alert('Failed to save to server: ' + err.message);
     });
 }
 
-// Patch injectPageData to load edits from localStorage if present
+// Enhanced page data injection with proper cache management
 (function() {
     const origInject = injectPageData;
     injectPageData = function() {
-        if (window.authManager && window.authManager.isLoggedIn) {
-            const edits = localStorage.getItem('menu_json_edits');
-            if (edits) {
-                try {
-                    window.__MENU_DATA = JSON.parse(edits);
-                } catch (e) {}
-            }
+        // Use menu data manager to get the correct data source
+        if (window.menuDataManager) {
+            window.__MENU_DATA = window.menuDataManager.getCurrentData();
         }
+        
         origInject();
+        
         // Attach edit icon handler if logged in and on project detail
         const urlParams = new URLSearchParams(window.location.search);
         const slugParam = urlParams.get('item');

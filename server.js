@@ -48,10 +48,28 @@ const validateMenuData = (data) => {
     throw new Error('Menu data must be an array');
   }
   
-  // Basic structure validation
+  // Enhanced structure validation
   for (const item of data) {
     if (!item.label || typeof item.label !== 'string') {
       throw new Error('Each menu item must have a valid label');
+    }
+    
+    // Validate submenu structure if present
+    if (item.submenu && Array.isArray(item.submenu)) {
+      for (const subItem of item.submenu) {
+        if (!subItem.slug || typeof subItem.slug !== 'string') {
+          throw new Error('Each submenu item must have a valid slug');
+        }
+        
+        // Ensure required fields are present for project items
+        if (subItem.projectTitle && !subItem.coverImage) {
+          console.warn(`Project ${subItem.slug} missing coverImage`);
+        }
+        
+        if (subItem.projectTitle && !subItem.pageSummary) {
+          console.warn(`Project ${subItem.slug} missing pageSummary`);
+        }
+      }
     }
   }
   
@@ -88,6 +106,17 @@ app.post('/api/update-menu', (req, res) => {
       fs.mkdirSync(dataDir, { recursive: true });
     }
     
+    // Create backup before writing
+    const backupPath = path.join(__dirname, 'data', `menu_backup_${Date.now()}.json`);
+    try {
+      if (fs.existsSync(menuPath)) {
+        fs.copyFileSync(menuPath, backupPath);
+        console.log('Backup created:', backupPath);
+      }
+    } catch (backupError) {
+      console.warn('Backup creation failed:', backupError);
+    }
+    
     // Write file with error handling
     try {
       fs.writeFileSync(menuPath, JSON.stringify(req.body, null, 2), 'utf8');
@@ -102,6 +131,30 @@ app.post('/api/update-menu', (req, res) => {
     }
   } catch (err) {
     handleError(err, 'menu update endpoint', res);
+  }
+});
+
+// API endpoint to get menu.json with cache headers
+app.get('/data/menu.json', (req, res) => {
+  try {
+    const menuPath = path.join(__dirname, 'data', 'menu.json');
+    
+    if (!fs.existsSync(menuPath)) {
+      return res.status(404).json({ error: 'Menu file not found' });
+    }
+    
+    const stats = fs.statSync(menuPath);
+    const content = fs.readFileSync(menuPath, 'utf8');
+    
+    // Set cache headers for better versioning
+    res.setHeader('ETag', `"${stats.size}-${stats.mtime.getTime()}"`);
+    res.setHeader('Last-Modified', stats.mtime.toUTCString());
+    res.setHeader('Cache-Control', 'public, max-age=300'); // 5 minutes
+    
+    res.setHeader('Content-Type', 'application/json');
+    res.send(content);
+  } catch (err) {
+    handleError(err, 'menu.json serve', res);
   }
 });
 

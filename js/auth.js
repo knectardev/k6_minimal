@@ -139,7 +139,11 @@ class AuthManager {
         banner.innerHTML = `
             <div class="edit-banner-content">
                 <span>Editing Mode</span>
-                <button id="logoutBtn" class="logout-btn">Logout</button>
+                <div class="edit-controls">
+                    <button id="refreshCacheBtn" class="cache-btn" title="Refresh from server">🔄</button>
+                    <button id="clearCacheBtn" class="cache-btn" title="Clear all caches">🗑️</button>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
             </div>
         `;
 
@@ -166,6 +170,33 @@ class AuthManager {
                 padding: 8px 20px;
                 max-width: 1200px;
                 margin: 0 auto;
+            }
+            
+            .edit-controls {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .cache-btn {
+                background: none;
+                border: 1px solid white;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: all 0.3s;
+                width: 32px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .cache-btn:hover {
+                background: white;
+                color: #FF0000;
             }
             
             .logout-btn {
@@ -206,6 +237,53 @@ class AuthManager {
         if (logoutBtn) {
             logoutBtn.addEventListener('click', () => {
                 this.logout();
+            });
+        }
+
+        // Add cache management functionality
+        const refreshCacheBtn = document.getElementById('refreshCacheBtn');
+        if (refreshCacheBtn) {
+            refreshCacheBtn.addEventListener('click', async () => {
+                try {
+                    refreshCacheBtn.disabled = true;
+                    refreshCacheBtn.textContent = '⏳';
+                    
+                    if (window.menuDataManager) {
+                        await window.menuDataManager.refreshFromServer();
+                        // Reload the page to show fresh data
+                        window.location.reload();
+                    } else {
+                        // Fallback: clear cache and reload
+                        localStorage.removeItem('menu_json_cache');
+                        localStorage.removeItem('menu_cache_version');
+                        localStorage.removeItem('menu_cache_timestamp');
+                        window.location.reload();
+                    }
+                } catch (error) {
+                    console.error('Cache refresh failed:', error);
+                    alert('Failed to refresh cache: ' + error.message);
+                } finally {
+                    refreshCacheBtn.disabled = false;
+                    refreshCacheBtn.textContent = '🔄';
+                }
+            });
+        }
+
+        const clearCacheBtn = document.getElementById('clearCacheBtn');
+        if (clearCacheBtn) {
+            clearCacheBtn.addEventListener('click', () => {
+                if (confirm('Clear all cached data? This will force a fresh load from the server.')) {
+                    if (window.menuDataManager) {
+                        window.menuDataManager.clearAllCaches();
+                    } else {
+                        // Fallback: clear all cache keys
+                        localStorage.removeItem('menu_json_cache');
+                        localStorage.removeItem('menu_cache_version');
+                        localStorage.removeItem('menu_cache_timestamp');
+                        localStorage.removeItem('menu_json_edits');
+                    }
+                    alert('Cache cleared. Reload the page to see fresh data.');
+                }
             });
         }
     }

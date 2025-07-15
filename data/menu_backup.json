@@ -8,6 +8,7 @@
   {
     "label": "Higher Education",
     "icon": "grad.svg",
+    "categoryDescription": "Knectar partners with leading educational institutions to deliver digital solutions that empower learning, collaboration, and innovation. Knectar partners with leading educational institutions to deliver digital solutions that empower learning, collaboration, and innovation.",
     "more": 1,
     "submenu": [
       {
@@ -18,13 +19,18 @@
         "projectTitle": "Carnegie Mellon University",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "Carnegie Dartlet ",
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.cmu.edu/",
         "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">Fox Chase Cancer Center, part of the Temple University Health System, needed a website that would be easy for patients to navigate while also showcasing the wealth of groundbreaking research conducted at the Philadelphia hospital. Working with Transit Authority Figures for design and our Drupal partner, Eastern Standard, Knectar created a site that leverages a host of complex technologies to create a flexible, yet easy-to-use system for everyday users.</div></div><p><br></p><p><strong>The Fox Chase site, implemented on Acquia, has unprecedented flexibility. Content creators can effortlessly relate content bet</strong>ween pages thanks to Drupal Paragraph blocks and responsive iFrames. The intuitive and easy-to-use Knectar design features:</p><p><br></p><p>reusable slideshows that can be embedded nearly everywhere on the site</p><p>responsive tables, tabs, and iFrames that thoroughly modernize the site</p><p>integration with Google Search Appliance that allows for a powerful search feature that can also be connected with other Temple University websites</p><p>simple embedding of third party content like Google maps, YouTube videos, etc.</p><p>Technology</p><p>Knectar’s ultimate goal in the Fox Chase site design was ease of use for the Fox Chase content entry team. With that in mind, the Knectar team decided to use Drupal’s Paragraphs feature for the creation of multiple, team-specific list pages that don’t force the user to battle complex rules when creating content. Paragraphs allowed Knectar to create predefined Paragraph types, like text boxes or slideshows, that users can choose between when creating a page. Account administrators can identify which Paragraph entities end users are allowed to have access to.</p><p><br></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Other Knectar Drupal Development projects for universities:</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Temple University: Lewis Katz School Of Medicine</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The Kavli Institute For Brain Science</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>MIT Deshpande Center</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The Forsyth Institute</li></ol>",
-        "coverImage": "assets/ycba.png",
-        "sub_menu": 1
+        "coverImage": "project_tiles/cmu.png",
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/cmu.webp",
+          "project_images/cmu.webp",
+          "project_images/cmu.webp"
+        ]
       },
       {
         "label": "Clarkson University",
@@ -34,7 +40,7 @@
         "projectTitle": "Clarkson University",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "Carnegie Dartlet ",
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.clarkson.edu/",
@@ -50,12 +56,12 @@
         "projectTitle": "Deshpande Center for Technological Innovation",
         "role": "Technical Lead, Developer",
         "budget": "$25,000 - $50,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://deshpande.mit.edu/",
         "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "project_tiles/deshpande.png",
+        "coverImage": "project_tiles/deshpande_mit.jpg",
         "sub_menu": 0
       },
       {
@@ -66,7 +72,7 @@
         "projectTitle": "Fox Chase Cancer Research",
         "role": "Technical Lead, Developer",
         "budget": "$100,000 - $250,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.foxchase.org/",
@@ -82,7 +88,7 @@
         "projectTitle": "Kavli Institute for Brain Science",
         "role": "Technical Lead, Developer",
         "budget": "$10,000 - $20,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://kavli.columbia.edu/",
@@ -98,12 +104,12 @@
         "projectTitle": "Kettering University",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "Carnegie Dartlet ",
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.kettering.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/kettering.webp",
+        "coverImage": "project_tiles/kettering.mp4",
         "sub_menu": 1
       },
       {
@@ -130,12 +136,12 @@
         "projectTitle": "Lewis Katz School of Medicine - Temple University",
         "role": "Technical Lead, Developer",
         "budget": "$100,000 - $250,000",
-        "technology": "Drupal 11",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://medicine.temple.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/temple.png",
+        "coverImage": "project_tiles/temple.jpg",
         "sub_menu": 1
       },
       {
@@ -146,12 +152,12 @@
         "projectTitle": "LIM College",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "Carnegie Dartlet ",
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.limcollege.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/lim.png",
+        "coverImage": "project_tiles/lim.mp4",
         "sub_menu": 1
       },
       {
@@ -162,7 +168,7 @@
         "projectTitle": "Madison Country Day School",
         "role": "Technical Lead, Developer",
         "budget": "$25,000 - $50,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "Verso Design",
         "designPartnerUrl": "https://www.versodesign.co/",
         "projectUrl": "https://www.madisoncountryday.org/",
@@ -178,12 +184,12 @@
         "projectTitle": "MIT",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://solve.mit.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/mit.png",
+        "coverImage": "project_tiles/mit.jpg",
         "sub_menu": 1
       },
       {
@@ -194,12 +200,12 @@
         "projectTitle": "Northeastern Illinois University",
         "role": "Technical Lead, Developer",
         "budget": "$25,000 - $50,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "Carnegie Dartlet ",
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.neiu.edu/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/neiu.png",
+        "coverImage": "project_tiles/neiu.webp",
         "sub_menu": 1
       },
       {
@@ -210,12 +216,12 @@
         "projectTitle": "The ADA Forsyth Institute",
         "role": "Technical Lead, Developer",
         "budget": "$25,000 - $50,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://forsyth.org/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/forsyth.png",
         "sub_menu": 1
       },
       {
@@ -226,7 +232,7 @@
         "projectTitle": "University of Massachusetts Amherst, Humanities and Fine Arts",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.umass.edu/uww/programs/pre-college",
@@ -239,6 +245,7 @@
   {
     "label": "Intranets & Portals",
     "icon": "intranet.svg",
+    "categoryDescription": "From robust intranets to dynamic portals, Knectar builds secure, scalable platforms that streamline communication and collaboration for organizations of all sizes.",
     "more": 1,
     "submenu": [
       {
@@ -249,12 +256,12 @@
         "projectTitle": "Massachusetts Municipal Wholesale Electric Company",
         "role": "Technical Lead, Developer",
         "budget": "> $250,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "In-house",
         "designPartnerUrl": null,
         "projectUrl": "https://webportal.mmwec.org/",
         "pageSummary": "<p>Description goes hesdsdresdsdsdsd</p>",
-        "coverImage": "project_tiles/mmwec.jpg",
+        "coverImage": "project_tiles/mmwec.png",
         "sub_menu": 1
       },
       {
@@ -265,12 +272,12 @@
         "projectTitle": "MMWEC Nextzero Rebate Web Application",
         "role": "Technical Lead, Developer",
         "budget": "$100,000 - $250,000",
-        "technology": "Drupal 10",
-        "designPartner": "#N/A",
+        "technology": "Drupal",
+        "designPartner": "",
         "designPartnerUrl": "#N/A",
-        "projectUrl": "#N/A",
+        "projectUrl": "https://rebates.nextzero.org/",
         "pageSummary": "<p>Description goes heres s </p>",
-        "coverImage": "project_tiles/mmwec.jpg",
+        "coverImage": "project_tiles/rebates.png",
         "sub_menu": 1
       },
       {
@@ -281,12 +288,12 @@
         "projectTitle": "Modelo",
         "role": "Technical Lead, Developer",
         "budget": "> $250,000",
-        "technology": "Magento Enterprise",
+        "technology": "Magento",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.mimodelo.com.mx/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/monad.png",
+        "coverImage": "project_tiles/ab.png",
         "sub_menu": 1
       },
       {
@@ -297,7 +304,7 @@
         "projectTitle": "SmartLabs",
         "role": "Technical Lead, Developer",
         "budget": "> $250,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "n/a",
         "designPartnerUrl": null,
         "projectUrl": "https://smartlabs.com/",
@@ -310,6 +317,7 @@
   {
     "label": "Web & iOS Apps",
     "icon": "web.svg",
+    "categoryDescription": "We design and develop custom web and iOS applications that delight users and drive results. Our apps are crafted for performance, accessibility, and seamless integration.",
     "more": 1,
     "submenu": [
       {
@@ -352,7 +360,7 @@
         "projectTitle": "Oxform PM",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.oxfordpm.com/",
@@ -368,7 +376,7 @@
         "projectTitle": "Paragraphs Stats Module",
         "role": "Concept, Design, Developer",
         "budget": "< $10,000",
-        "technology": "Drupal 11",
+        "technology": "Drupal",
         "designPartner": " ",
         "designPartnerUrl": null,
         "projectUrl": "https://www.drupal.org/project/ps",
@@ -397,6 +405,7 @@
   {
     "label": "Informational",
     "icon": "info.svg",
+    "categoryDescription": "Knectar specializes in creating engaging informational sites that inform, inspire, and connect audiences. We turn complex ideas into clear, accessible digital experiences.",
     "more": 1,
     "submenu": [
       {
@@ -407,7 +416,7 @@
         "projectTitle": "AIER:  American Institute for Economic Research.",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.aier.org/",
@@ -423,7 +432,7 @@
         "projectTitle": "Eze Soft",
         "role": "Technical Lead, Developer",
         "budget": "$25,000 - $50,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.ezesoft.com/",
@@ -439,7 +448,7 @@
         "projectTitle": "Glenmede",
         "role": "Technical Lead, Developer",
         "budget": "$100,000 - $250,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.glenmede.com/",
@@ -471,7 +480,7 @@
         "projectTitle": "Riverbend Animal Hospital",
         "role": "Technical Lead, Developer",
         "budget": "$10,000 - $20,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://riverbendanimal.com/",
@@ -487,7 +496,7 @@
         "projectTitle": "Crocker",
         "role": "Technical Lead, Developer",
         "budget": "$25,000 - $50,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://crocker.com/",
@@ -503,7 +512,7 @@
         "projectTitle": "Robert Rauschenberg Foundation",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "n/a",
         "designPartnerUrl": null,
         "projectUrl": "https://www.rauschenbergfoundation.org/",
@@ -519,7 +528,7 @@
         "projectTitle": "Studio Arts Consortium International (SACI), Florence",
         "role": "Technical Lead, Developer",
         "budget": "$25,000 - $50,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://saci-florence.edu/",
@@ -535,7 +544,7 @@
         "projectTitle": "The Isabella Stewart Gardner Museum",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 10",
+        "technology": "Drupal",
         "designPartner": "Fabrique",
         "designPartnerUrl": "https://www.fabrique.com/",
         "projectUrl": "https://www.gardnermuseum.org/",
@@ -551,7 +560,7 @@
         "projectTitle": "Way Finders",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Drupal 7",
+        "technology": "Drupal",
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.wayfinders.org/",
@@ -564,6 +573,7 @@
   {
     "label": "E-Commerce",
     "icon": "money.svg",
+    "categoryDescription": "Our e-commerce solutions empower businesses to grow online. From custom storefronts to seamless integrations, we help brands reach new customers and maximize sales.",
     "more": 1,
     "submenu": [
       {
@@ -579,7 +589,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://www.chemexcoffeemaker.com/",
         "pageSummary": "<p>This is such a great website I can't even believe it!</p>",
-        "coverImage": "project_tiles/chemex.webp",
+        "coverImage": "project_tiles/chemex.png",
         "sub_menu": 1
       },
       {
@@ -595,7 +605,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://deansbeans.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/dean.webp",
+        "coverImage": "project_tiles/deans_beans.png",
         "sub_menu": 1
       },
       {
@@ -606,12 +616,12 @@
         "projectTitle": "Guardair",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Shopify Plus",
+        "technology": "Shopify",
         "designPartner": "Tunnel7",
         "designPartnerUrl": "https://tunnel7.com/",
         "projectUrl": "https://guardair.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/guard.webp",
+        "coverImage": "project_tiles/guardair.png",
         "sub_menu": 1
       },
       {
@@ -622,7 +632,7 @@
         "projectTitle": "Pioneer Valley Books",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
-        "technology": "Shopify Plus",
+        "technology": "Shopify",
         "designPartner": "Tunnel7",
         "designPartnerUrl": "https://tunnel7.com/",
         "projectUrl": "https://pioneervalleybooks.com/",
@@ -683,6 +693,7 @@
   {
     "label": "Music & Art",
     "icon": "music.svg",
+    "categoryDescription": "We celebrate creativity through digital projects in music and art. Discover how Knectar brings artistic visions to life with technology.",
     "more": 1,
     "submenu": [
       {
@@ -698,7 +709,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://editor.p5js.org/knectar/full/bLcZrlqt_",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/bezier.png",
+        "coverImage": "project_tiles/bezier.mp4",
         "sub_menu": 1
       },
       {
@@ -730,7 +741,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://midi-strudel-dash.vercel.app/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/strudelizer.png",
         "sub_menu": 1
       },
       {
@@ -746,7 +757,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/strudel_bach.png",
         "sub_menu": 1
       },
       {
@@ -794,7 +805,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/blobby.mp4",
         "sub_menu": 1
       },
       {
@@ -874,7 +885,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://editor.p5js.org/knectar/full/fIJ2pBpyz",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/fill.png",
+        "coverImage": "project_tiles/choosroozy.png",
         "sub_menu": 1
       },
       {
@@ -890,7 +901,7 @@
         "designPartnerUrl": null,
         "projectUrl": null,
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/door_open.svg",
+        "coverImage": "project_tiles/dog.png",
         "sub_menu": 1
       }
     ]
@@ -898,6 +909,7 @@
   {
     "label": "Blog Posts",
     "icon": "hash.svg",
+    "categoryDescription": "Explore our insights, stories, and technical deep-dives. The Knectar blog is where we share our expertise and passion for digital innovation.",
     "more": 0,
     "submenu": []
   },

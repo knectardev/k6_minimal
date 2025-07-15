@@ -131,10 +131,70 @@ The site uses a JSON-driven menu system located in `data/menu.json`. Each menu i
 - `categoryDescription`: Category description
 - `more`: Boolean to show "more..." link
 
+### CMS System
+The site includes a content management system with:
+- **Authentication**: Secure login via `edit.html`
+- **Real-time editing**: In-place content editing with Quill editor
+- **Cache management**: Intelligent caching with version control
+- **Data synchronization**: Automatic sync between browser cache and server
+
 ### Adding Projects
 1. **Add project images** to `project_tiles/` directory
 2. **Optimize images** using `npm run optimize-images`
 3. **Update menu.json** via edit.html interface
+
+### CMS Troubleshooting
+
+#### Cache Issues
+If you experience data synchronization problems:
+
+1. **Clear Browser Cache**
+   - Click the 🗑️ button in the edit banner
+   - Or manually clear localStorage in browser dev tools
+
+2. **Refresh from Server**
+   - Click the 🔄 button in the edit banner
+   - This forces a fresh download from the server
+
+3. **Check Data Sources**
+   - Browser cache: `menu_json_cache`
+   - Edit cache: `menu_json_edits`
+   - Server file: `data/menu.json`
+
+#### Common Issues
+
+**"Changes not appearing after save"**
+- Clear cache and refresh page
+- Check browser console for errors
+- Verify server response in Network tab
+
+**"Old data showing instead of new"**
+- Use refresh cache button (🔄)
+- Check if multiple browser tabs are open
+- Clear all caches and reload
+
+**"Edit mode not working"**
+- Verify authentication is active
+- Check if edit banner is visible
+- Ensure you're logged in via `edit.html`
+
+#### Data Flow
+1. **Initial Load**: Server → Browser Cache → Page Display
+2. **CMS Edit**: Page → Edit Cache → Server Save → Clear Caches
+3. **Page Refresh**: Server → Fresh Cache → Updated Display
+
+#### Manual Cache Management
+```javascript
+// In browser console (when logged in):
+// Clear all caches
+localStorage.clear();
+
+// Refresh from server
+window.menuDataManager.refreshFromServer();
+
+// Check current data source
+console.log(window.menuDataManager.getCurrentData());
+```
 4. **Add project details** including:
    - Project title and description
    - Role and technology used
