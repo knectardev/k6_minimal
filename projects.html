@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knectar Portfolio – Projects</title>
+    <title>Knectar Portfolio – Projects | Web Development & Design</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore Knectar's portfolio of web development and design projects across higher education, intranets, web apps, and more. View our work with Drupal, WordPress, and modern web technologies.">
+    <meta name="keywords" content="portfolio, projects, web development, design, drupal, wordpress, higher education, intranets, knectar">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://knectar.com/projects.html">
+    <meta property="og:title" content="Knectar Portfolio – Projects | Web Development & Design">
+    <meta property="og:description" content="Explore Knectar's portfolio of web development and design projects across higher education, intranets, web apps, and more.">
+    <meta property="og:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://knectar.com/projects.html">
+    <meta property="twitter:title" content="Knectar Portfolio – Projects | Web Development & Design">
+    <meta property="twitter:description" content="Explore Knectar's portfolio of web development and design projects across higher education, intranets, web apps, and more.">
+    <meta property="twitter:image" content="https://knectar.com/assets/logo.svg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://knectar.com/projects.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
+    
     <!-- Shared menu loader -->
     <script src="js/load_menu.js" defer></script>
 </head>
@@ -17,7 +48,7 @@
                     <div class="logo logo-mobile">
                         <a href="index.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
                     </div>
-                    <button class="hamburger" id="hamburger-button">
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
                         <span></span><span></span><span></span>
                     </button>
                 </div>
@@ -28,23 +59,23 @@
 
             <!-- Category filter -->
             <div style="margin-bottom: var(--spacing-xl); max-width: 250px;" class="select-wrapper custom-select" id="categoryDropdown">
-                <button type="button" class="select-toggle" id="dropdownToggle">
+                <button type="button" class="select-toggle" id="dropdownToggle" aria-label="Select project category" aria-expanded="false">
                     <span class="select-icon" id="dropdownIcon"></span>
                     <span class="select-label" id="dropdownLabel">All</span>
                     <span class="select-caret">▼</span>
                 </button>
-                <ul class="select-options" id="dropdownOptions">
-                    <li data-value="All"><span class="option-icon"></span>All</li>
-                    <li data-value="Higher Education"><span class="option-icon" style="background-image:url('assets/grad.svg')"></span>Higher Education</li>
-                    <li data-value="Intranets & Portals"><span class="option-icon" style="background-image:url('assets/intranet.svg')"></span>Intranets & Portals</li>
-                    <li data-value="Web & iOS Apps"><span class="option-icon" style="background-image:url('assets/web.svg')"></span>Web & iOS Apps</li>
-                    <li data-value="Informational"><span class="option-icon" style="background-image:url('assets/info.svg')"></span>Informational</li>
-                    <li data-value="E-Commerce"><span class="option-icon" style="background-image:url('assets/money.svg')"></span>E-Commerce</li>
-                    <li data-value="Blog Posts"><span class="option-icon" style="background-image:url('assets/hash.svg')"></span>Blog Posts</li>
-                    <li data-value="Music & Art"><span class="option-icon" style="background-image:url('assets/music.svg')"></span>Music & Art</li>
+                <ul class="select-options" id="dropdownOptions" role="listbox">
+                    <li data-value="All" role="option"><span class="option-icon"></span>All</li>
+                    <li data-value="Higher Education" role="option"><span class="option-icon" style="background-image:url('assets/grad.svg')"></span>Higher Education</li>
+                    <li data-value="Intranets & Portals" role="option"><span class="option-icon" style="background-image:url('assets/intranet.svg')"></span>Intranets & Portals</li>
+                    <li data-value="Web & iOS Apps" role="option"><span class="option-icon" style="background-image:url('assets/web.svg')"></span>Web & iOS Apps</li>
+                    <li data-value="Informational" role="option"><span class="option-icon" style="background-image:url('assets/info.svg')"></span>Informational</li>
+                    <li data-value="E-Commerce" role="option"><span class="option-icon" style="background-image:url('assets/money.svg')"></span>E-Commerce</li>
+                    <li data-value="Blog Posts" role="option"><span class="option-icon" style="background-image:url('assets/hash.svg')"></span>Blog Posts</li>
+                    <li data-value="Music & Art" role="option"><span class="option-icon" style="background-image:url('assets/music.svg')"></span>Music & Art</li>
                 </ul>
                 <!-- Hidden native select for accessibility & existing JS hooks -->
-                <select id="categoryFilter" style="display:none;">
+                <select id="categoryFilter" style="display:none;" aria-label="Project category filter">
                     <option value="All">All</option>
                     <option value="Higher Education">Higher Education</option>
                     <option value="Intranets & Portals">Intranets & Portals</option>
@@ -58,23 +89,23 @@
 
             <!-- Technology filter -->
             <div style="margin-bottom: var(--spacing-xl); max-width: 250px;" class="select-wrapper custom-select" id="technologyDropdown">
-                <button type="button" class="select-toggle" id="techDropdownToggle">
+                <button type="button" class="select-toggle" id="techDropdownToggle" aria-label="Select technology filter" aria-expanded="false">
                     <span class="select-label" id="techDropdownLabel">All</span>
                     <span class="select-caret">▼</span>
                 </button>
-                <ul class="select-options" id="techDropdownOptions">
-                    <li data-value="All">All</li>
+                <ul class="select-options" id="techDropdownOptions" role="listbox">
+                    <li data-value="All" role="option">All</li>
                     <!-- Options populated dynamically via JS -->
                 </ul>
                 <!-- Hidden native select for accessibility & existing JS hooks -->
-                <select id="technologyFilter" style="display:none;">
+                <select id="technologyFilter" style="display:none;" aria-label="Technology filter">
                     <option value="All">All</option>
                     <!-- Options populated dynamically via JS -->
                 </select>
             </div>
 
             <!-- Project list -->
-            <section class="project-list" id="projectList">
+            <section class="project-list" id="projectList" aria-label="Project portfolio">
                 <!-- Tile 1 -->
                 <article class="project-tile" data-category="Higher Education">
                     <div class="project-image">
@@ -158,21 +189,21 @@
             <section id="interactive-lines" class="interactive-lines-section">
                 <div id="controls">
                     <span id="clickPrompt" class="click-prompt">click spacebar to play</span>
-                    <button id="playPauseBtn" aria-label="Play/Pause">
+                    <button id="playPauseBtn" aria-label="Play/Pause animation" aria-pressed="false">
                         <img src="assets/simple_play.svg" alt="Play icon" class="play-icon">
                     </button>
                 </div>
-                <div id="beatControls">
-                    <div class="beatDot" data-index="0"></div>
-                    <div class="beatDot" data-index="1"></div>
-                    <div class="beatDot" data-index="2"></div>
-                    <div class="beatDot" data-index="3"></div>
-                    <div class="beatDot" data-index="4"></div>
-                    <div class="beatDot" data-index="5"></div>
-                    <div class="beatDot" data-index="6"></div>
-                    <div class="beatDot" data-index="7"></div>
+                <div id="beatControls" role="group" aria-label="Beat controls">
+                    <div class="beatDot" data-index="0" role="button" tabindex="0" aria-label="Beat 1"></div>
+                    <div class="beatDot" data-index="1" role="button" tabindex="0" aria-label="Beat 2"></div>
+                    <div class="beatDot" data-index="2" role="button" tabindex="0" aria-label="Beat 3"></div>
+                    <div class="beatDot" data-index="3" role="button" tabindex="0" aria-label="Beat 4"></div>
+                    <div class="beatDot" data-index="4" role="button" tabindex="0" aria-label="Beat 5"></div>
+                    <div class="beatDot" data-index="5" role="button" tabindex="0" aria-label="Beat 6"></div>
+                    <div class="beatDot" data-index="6" role="button" tabindex="0" aria-label="Beat 7"></div>
+                    <div class="beatDot" data-index="7" role="button" tabindex="0" aria-label="Beat 8"></div>
                 </div>
-                <canvas id="patternCanvas"></canvas>
+                <canvas id="patternCanvas" role="img" aria-label="Interactive lines animation"></canvas>
             </section>
         </main>
     </div>

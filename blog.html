@@ -4,8 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knectar Portfolio – Blog Post</title>
+    <title>Knectar Portfolio – Blog Post | Web Development & Design</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Read insights and articles from Knectar's web development and design blog. Explore technical articles, case studies, and industry perspectives.">
+    <meta name="keywords" content="blog, articles, web development, design, knectar, technical writing">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://knectar.com/blog.html">
+    <meta property="og:title" content="Knectar Portfolio – Blog Post | Web Development & Design">
+    <meta property="og:description" content="Read insights and articles from Knectar's web development and design blog.">
+    <meta property="og:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://knectar.com/blog.html">
+    <meta property="twitter:title" content="Knectar Portfolio – Blog Post | Web Development & Design">
+    <meta property="twitter:description" content="Read insights and articles from Knectar's web development and design blog.">
+    <meta property="twitter:image" content="https://knectar.com/assets/logo.svg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://knectar.com/blog.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
+    
     <!-- Shared menu loader -->
     <script src="js/load_menu.js" defer></script>
 </head>
@@ -17,7 +48,7 @@
                     <div class="logo logo-mobile">
                         <a href="index.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
                     </div>
-                    <button class="hamburger" id="hamburger-button">
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
                         <span></span><span></span><span></span>
                     </button>
                 </div>
@@ -30,10 +61,10 @@
                 <h1 data-field="projectTitle"></h1>
                 <p class="blog-lead" data-field="pageSummary"></p>
 
-                <ul class="blog-meta"><!-- injected dynamically --></ul>
+                <ul class="blog-meta" aria-label="Blog post metadata"><!-- injected dynamically --></ul>
 
                 <!-- TTS widget (hidden if textToAudioWidgetDisplayed = false) -->
-                <div class="tts-player">
+                <div class="tts-player" aria-label="Text-to-speech player">
                     <audio id="ttsAudio" controls>
                         Your browser does not support the <code>audio</code> element.
                     </audio>

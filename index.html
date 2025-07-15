@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knectar Portfolio</title>
+    <title>Knectar Portfolio - Web Development & Design</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Knectar - Professional web development and design services. We operate at the intersection of vision, execution, and connection, bridging disciplines and translating complexity into clarity.">
+    <meta name="keywords" content="web development, design, portfolio, knectar, drupal, wordpress, higher education, intranets">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://knectar.com/">
+    <meta property="og:title" content="Knectar Portfolio - Web Development & Design">
+    <meta property="og:description" content="Professional web development and design services. We bridge disciplines, align teams, and translate complexity into clarity.">
+    <meta property="og:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://knectar.com/">
+    <meta property="twitter:title" content="Knectar Portfolio - Web Development & Design">
+    <meta property="twitter:description" content="Professional web development and design services. We bridge disciplines, align teams, and translate complexity into clarity.">
+    <meta property="twitter:image" content="https://knectar.com/assets/logo.svg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://knectar.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
+    
     <!-- Shared menu loader -->
     <script src="js/load_menu.js" defer></script>
 </head>
@@ -16,7 +47,7 @@
                     <div class="logo logo-mobile">
                         <a href="index.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
                     </div>
-                    <button class="hamburger" id="hamburger-button">
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -50,27 +81,27 @@
             <section id="interactive-lines" class="interactive-lines-section">
                 <div id="controls">
                     <span id="clickPrompt" class="click-prompt">click spacebar to play</span>
-                    <button id="playPauseBtn" aria-label="Play/Pause">
+                    <button id="playPauseBtn" aria-label="Play/Pause animation" aria-pressed="false">
                         <img src="assets/simple_play.svg" alt="Play icon" class="play-icon">
                     </button>
                 </div>
-                <div id="beatControls">
-                    <div class="beatDot" data-index="0"></div>
-                    <div class="beatDot" data-index="1"></div>
-                    <div class="beatDot" data-index="2"></div>
-                    <div class="beatDot" data-index="3"></div>
-                    <div class="beatDot" data-index="4"></div>
-                    <div class="beatDot" data-index="5"></div>
-                    <div class="beatDot" data-index="6"></div>
-                    <div class="beatDot" data-index="7"></div>
+                <div id="beatControls" role="group" aria-label="Beat controls">
+                    <div class="beatDot" data-index="0" role="button" tabindex="0" aria-label="Beat 1"></div>
+                    <div class="beatDot" data-index="1" role="button" tabindex="0" aria-label="Beat 2"></div>
+                    <div class="beatDot" data-index="2" role="button" tabindex="0" aria-label="Beat 3"></div>
+                    <div class="beatDot" data-index="3" role="button" tabindex="0" aria-label="Beat 4"></div>
+                    <div class="beatDot" data-index="4" role="button" tabindex="0" aria-label="Beat 5"></div>
+                    <div class="beatDot" data-index="5" role="button" tabindex="0" aria-label="Beat 6"></div>
+                    <div class="beatDot" data-index="6" role="button" tabindex="0" aria-label="Beat 7"></div>
+                    <div class="beatDot" data-index="7" role="button" tabindex="0" aria-label="Beat 8"></div>
                 </div>
-                <canvas id="patternCanvas"></canvas>
+                <canvas id="patternCanvas" role="img" aria-label="Interactive lines animation"></canvas>
             </section>
         </main>
     </div>
     
     <!-- Login link for development -->
-    <a href="edit.html" class="dev-login-link">login</a>
+    <a href="edit.html" class="dev-login-link" aria-label="Admin login">login</a>
     
     <!-- main site script loaded by loader -->
     <script src="js/lines.js"></script>

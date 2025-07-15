@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and sensitive areas
+Disallow: /edit.html
+Disallow: /api/
+Disallow: /tts_cache/
+Disallow: /data/
+Disallow: /scripts/
+
+# Allow important files
+Allow: /sitemap.xml
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /project_tiles/
+Allow: /project_images/
+
+# Sitemap location
+Sitemap: https://knectar.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1 

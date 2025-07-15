@@ -2,12 +2,63 @@
 
 A modern, responsive portfolio website showcasing web development and design projects.
 
+## Technology Stack
+
+- **Frontend**: Vanilla JavaScript, HTML5, CSS3
+- **Backend**: Node.js with Express.js
+- **APIs**: ElevenLabs TTS, TinyPNG
+- **Deployment**: Static hosting with server-side components
+- **Content Management**: JSON-based with API endpoints
+
 ## Features
 
 - **Interactive Design**: Dynamic lines animation and modern UI
 - **Project Showcase**: Comprehensive portfolio with categorized projects
 - **Responsive Layout**: Mobile-first design approach
 - **Performance Optimized**: Optimized images and assets
+- **Content Management**: Server-side menu editing system
+- **TTS Integration**: ElevenLabs text-to-speech with caching
+- **Dynamic Navigation**: JSON-driven menu system
+
+## Development Workflow
+
+### Local Development
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Set up environment variables (see Environment Configuration)
+4. Start development server: `npm start` (runs server.js)
+5. Open `http://localhost:8000` in a web browser
+
+### Content Updates
+
+- **Menu Management**: Use `edit.html` interface for menu updates
+- **Image Optimization**: Run optimization scripts as needed
+- **Content Versioning**: Git-based content tracking
+
+### Required Python Packages
+
+```bash
+pip install requests
+```
+
+## Environment Configuration
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Required for menu editing authentication
+EDIT_SECRET=your-secure-secret-here
+
+# Required for TTS functionality
+ELEVEN_API_KEY=your-elevenlabs-api-key
+
+# Optional: Voice ID for TTS (default: "Rachel")
+ELEVEN_VOICE_ID=21m00Tcm4TlvDq8ikWAM
+
+# Optional: Enable TTS debugging
+TTS_DEBUG=true
+```
 
 ## Image Optimization
 
@@ -68,22 +119,38 @@ K6_MINIMAL/
 ├── js/                  # JavaScript files
 ├── project_tiles/       # Project thumbnail images (optimized)
 ├── scripts/             # Image optimization scripts
+├── server.js            # Express.js server
+├── package.json         # Node.js dependencies
 └── index.html           # Main homepage
 ```
 
-## Development
+## API Endpoints
 
-### Local Development
+### Menu Management
+- `POST /api/update-menu` - Update menu.json (requires EDIT_SECRET)
 
-1. Clone the repository
-2. Open `index.html` in a web browser
-3. For image optimization, ensure Python and required packages are installed
+### Text-to-Speech
+- `POST /api/tts` - Generate TTS audio (requires ELEVEN_API_KEY)
 
-### Required Python Packages
+## Security Considerations
 
-```bash
-pip install requests
-```
+- API keys are stored in environment variables
+- Menu updates require authentication via EDIT_SECRET
+- TTS requests are proxied to keep API keys server-side
+- Input validation on all API endpoints
+
+## Performance Features
+
+- **Image Optimization**: Automated compression pipeline
+- **TTS Caching**: Audio files cached to reduce API calls
+- **Static Asset Serving**: Optimized delivery of CSS/JS/images
+- **Responsive Images**: Multiple formats and sizes
+
+## Browser Support
+
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Mobile-responsive design
+- Progressive enhancement approach
 
 ## License
 

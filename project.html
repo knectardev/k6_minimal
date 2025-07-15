@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knectar Portfolio – Project</title>
+    <title>Knectar Portfolio – Project | Web Development & Design</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work across various technologies and industries.">
+    <meta name="keywords" content="project, portfolio, web development, design, knectar, case study">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://knectar.com/project.html">
+    <meta property="og:title" content="Knectar Portfolio – Project | Web Development & Design">
+    <meta property="og:description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work.">
+    <meta property="og:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://knectar.com/project.html">
+    <meta property="twitter:title" content="Knectar Portfolio – Project | Web Development & Design">
+    <meta property="twitter:description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work.">
+    <meta property="twitter:image" content="https://knectar.com/assets/logo.svg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://knectar.com/project.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script src="js/load_menu.js" defer></script>
 </head>
@@ -17,7 +49,7 @@
                     <div class="logo logo-mobile">
                         <a href="index.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
                     </div>
-                    <button class="hamburger" id="hamburger-button">
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
                         <span></span><span></span><span></span>
                     </button>
                 </div>
@@ -27,13 +59,13 @@
                 </div>
             </header>
             <section class="project-details">
-                <div class="project-gallery">
+                <div class="project-gallery" aria-label="Project gallery">
                     <!-- Existing image logic -->
                     <img id="project-main-image" src="" alt="Project image" style="display:none;" />
                     <img id="project-detail-image" src="" alt="Project detail image" style="display:none; position:absolute; top:80px; width:340px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.10);" />
                 </div>
                 <!-- Removed static .mobile-gallery -->
-                <div class="project-info"><!-- populated dynamically --></div>
+                <div class="project-info" aria-label="Project information"><!-- populated dynamically --></div>
             </section>
         </main>
     </div>
@@ -67,7 +99,7 @@
                 pageData.detailImages.forEach((src, i) => {
                     const img = document.createElement('img');
                     img.src = src;
-                    img.alt = 'Project detail image';
+                    img.alt = `Project detail image ${i + 1}`;
                     img.className = 'detail-stack-image detail-stack-image-base';
                     img.style.display = 'block';
                     img.style.position = 'absolute';
@@ -100,6 +132,7 @@
                     // Create new .mobile-gallery
                     const mobileGallery = document.createElement('div');
                     mobileGallery.className = 'mobile-gallery';
+                    mobileGallery.setAttribute('aria-label', 'Mobile project gallery');
                     // Find the meta-data <ul> (or fallback to first <p.description> or .dynamic-body)
                     let insertAfter = projectInfo.querySelector('ul');
                     if (!insertAfter) {
@@ -120,7 +153,7 @@
                         mobileGallery.innerHTML = '';
                         const img = document.createElement('img');
                         img.src = pageData.detailImages[idx];
-                        img.alt = 'Project detail image';
+                        img.alt = `Project detail image ${idx + 1} of ${pageData.detailImages.length}`;
                         img.style.width = '100%';
                         img.style.maxWidth = '420px';
                         img.style.display = 'block';
@@ -136,6 +169,7 @@
                         nav.style.marginBottom = '8px';
                         const prevBtn = document.createElement('button');
                         prevBtn.textContent = '◀';
+                        prevBtn.setAttribute('aria-label', 'Previous image');
                         prevBtn.style.fontSize = '22px';
                         prevBtn.style.background = 'none';
                         prevBtn.style.border = 'none';
@@ -145,6 +179,7 @@
                         prevBtn.onclick = () => { if (currentIdx > 0) { currentIdx--; renderMobileSlide(currentIdx); } };
                         const nextBtn = document.createElement('button');
                         nextBtn.textContent = '▶';
+                        nextBtn.setAttribute('aria-label', 'Next image');
                         nextBtn.style.fontSize = '22px';
                         nextBtn.style.background = 'none';
                         nextBtn.style.border = 'none';
@@ -162,6 +197,7 @@
                         count.style.fontSize = '13px';
                         count.style.color = '#888';
                         count.textContent = `${idx + 1} / ${pageData.detailImages.length}`;
+                        count.setAttribute('aria-label', `Image ${idx + 1} of ${pageData.detailImages.length}`);
                         mobileGallery.appendChild(count);
                     }
                     renderMobileSlide(currentIdx);
@@ -200,26 +236,23 @@
             // Cancel any running animation
             if (img._tiltFrame) cancelAnimationFrame(img._tiltFrame);
             img._tiltAnimating = true;
-            const origTilt = img.dataset.origTilt;
-            if (!origTilt) return;
-            const startTilt = parseFloat(img.style.getPropertyValue('--tilt') || '0');
-            const endTilt = parseFloat(origTilt);
+            const origTilt = img.dataset.origTilt || 0;
             const duration = 300;
             const start = performance.now();
-            function animateTiltBack(now) {
+            function animateTilt(now) {
                 const elapsed = now - start;
                 const t = Math.min(elapsed / duration, 1);
-                const newTilt = startTilt + (endTilt - startTilt) * t;
+                const newTilt = origTilt * t;
                 img.style.setProperty('--tilt', `${newTilt}deg`);
                 if (t < 1) {
-                    img._tiltFrame = requestAnimationFrame(animateTiltBack);
+                    img._tiltFrame = requestAnimationFrame(animateTilt);
                 } else {
-                    img.style.setProperty('--tilt', `${endTilt}deg`);
+                    img.style.setProperty('--tilt', `${origTilt}deg`);
                     img._tiltAnimating = false;
                     img._tiltFrame = null;
                 }
             }
-            img._tiltFrame = requestAnimationFrame(animateTiltBack);
+            img._tiltFrame = requestAnimationFrame(animateTilt);
         }, true);
     </script>
 </body>

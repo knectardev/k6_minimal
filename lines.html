@@ -2,7 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Interactive Diagonal Lines with Playback & Beat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Diagonal Lines with Playback & Beat | Knectar</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Interactive diagonal lines animation with musical playback and beat controls. Explore Knectar's creative coding and audio-visual experiments.">
+  <meta name="keywords" content="interactive, animation, audio, visual, creative coding, knectar">
+  <meta name="author" content="Knectar">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://knectar.com/lines.html">
+  <meta property="og:title" content="Interactive Diagonal Lines with Playback & Beat | Knectar">
+  <meta property="og:description" content="Interactive diagonal lines animation with musical playback and beat controls.">
+  <meta property="og:image" content="https://knectar.com/assets/logo.svg">
+  <meta property="og:site_name" content="Knectar">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://knectar.com/lines.html">
+  <meta property="twitter:title" content="Interactive Diagonal Lines with Playback & Beat | Knectar">
+  <meta property="twitter:description" content="Interactive diagonal lines animation with musical playback and beat controls.">
+  <meta property="twitter:image" content="https://knectar.com/assets/logo.svg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://knectar.com/lines.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="apple-touch-icon" href="assets/logo.svg">
+  
   <style>
     html, body { margin:0; padding:0; overflow:hidden; background:white; }
     canvas { display:block; }
@@ -25,16 +55,16 @@
 </head>
 <body>
   <div id="controls">
-    <button id="playPauseBtn">Play</button>
+    <button id="playPauseBtn" aria-label="Play/Pause animation">Play</button>
     <label>Pattern:
-      <select id="patternSelect">
+      <select id="patternSelect" aria-label="Select pattern">
         <option value="1">Pattern 1</option>
         <option value="2">Pattern 2</option>
         <option value="3">Pattern 3</option>
       </select>
     </label>
     <label>Key:
-      <select id="keySelect">
+      <select id="keySelect" aria-label="Select musical key">
         <option value="0">C</option>
         <option value="1">C#</option>
         <option value="2">D</option>
@@ -50,22 +80,22 @@
       </select>
     </label>
     <label>Tempo: <span id="tempoValue">220</span> BPM
-      <input type="range" id="tempoSlider" min="30" max="300" step="1" value="220">
+      <input type="range" id="tempoSlider" min="30" max="300" step="1" value="220" aria-label="Tempo slider">
     </label>
-    <label>Reverse: <input type="checkbox" id="reverseToggle" checked></label>
-    <label>Double Time: <input type="checkbox" id="doubleTimeToggle" checked></label>
+    <label>Reverse: <input type="checkbox" id="reverseToggle" checked aria-label="Reverse pattern"></label>
+    <label>Double Time: <input type="checkbox" id="doubleTimeToggle" checked aria-label="Double time"></label>
   </div>
-  <div id="beatControls">
-    <div class="beatDot" data-index="0"></div>
-    <div class="beatDot" data-index="1"></div>
-    <div class="beatDot" data-index="2"></div>
-    <div class="beatDot" data-index="3"></div>
-    <div class="beatDot" data-index="4"></div>
-    <div class="beatDot" data-index="5"></div>
-    <div class="beatDot" data-index="6"></div>
-    <div class="beatDot" data-index="7"></div>
+  <div id="beatControls" role="group" aria-label="Beat controls">
+    <div class="beatDot" data-index="0" role="button" tabindex="0" aria-label="Beat 1"></div>
+    <div class="beatDot" data-index="1" role="button" tabindex="0" aria-label="Beat 2"></div>
+    <div class="beatDot" data-index="2" role="button" tabindex="0" aria-label="Beat 3"></div>
+    <div class="beatDot" data-index="3" role="button" tabindex="0" aria-label="Beat 4"></div>
+    <div class="beatDot" data-index="4" role="button" tabindex="0" aria-label="Beat 5"></div>
+    <div class="beatDot" data-index="5" role="button" tabindex="0" aria-label="Beat 6"></div>
+    <div class="beatDot" data-index="6" role="button" tabindex="0" aria-label="Beat 7"></div>
+    <div class="beatDot" data-index="7" role="button" tabindex="0" aria-label="Beat 8"></div>
   </div>
-  <canvas id="patternCanvas"></canvas>
+  <canvas id="patternCanvas" role="img" aria-label="Interactive diagonal lines animation"></canvas>
 <script>
   // Canvas & audio context
   const canvas = document.getElementById('patternCanvas');
