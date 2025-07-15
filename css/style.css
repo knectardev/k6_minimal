@@ -245,15 +245,20 @@ body {
     left: auto;
     width: 340px;
     display: block;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), --tilt 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotate(var(--tilt, 0deg));
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(100%);
 }
+
 .project-gallery .detail-stack-image.detail-stack-image-base {
     transform: translateX(-50%) rotate(var(--tilt));
 }
+
 .project-gallery .detail-stack-image:hover {
     --tilt: 0deg;
     transform: translateX(-40%) rotate(var(--tilt)) scale(1.2);
     z-index: 10;
+    filter: grayscale(0%);
 }
 
 .project-info {
