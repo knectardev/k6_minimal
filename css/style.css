@@ -245,20 +245,17 @@ body {
     left: auto;
     width: 340px;
     display: block;
-    transform: rotate(var(--tilt, 0deg));
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%) rotate(var(--tilt, 0deg));
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     filter: grayscale(100%);
-}
-
-.project-gallery .detail-stack-image.detail-stack-image-base {
-    transform: translateX(-50%) rotate(var(--tilt));
+    cursor: pointer;
 }
 
 .project-gallery .detail-stack-image:hover {
-    --tilt: 0deg;
-    transform: translateX(-40%) rotate(var(--tilt)) scale(1.2);
+    transform: translateX(-40%) rotate(0deg) scale(1.15);
     z-index: 10;
     filter: grayscale(0%);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
 }
 
 .project-info {

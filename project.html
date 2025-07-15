@@ -204,56 +204,7 @@
                 }, 0);
             }
         });
-        // Animate tilt on hover for detail-stack-image
-        document.addEventListener('mouseover', function(e) {
-            const img = e.target.closest('.detail-stack-image');
-            if (!img) return;
-            // Cancel any running animation
-            if (img._tiltFrame) cancelAnimationFrame(img._tiltFrame);
-            img._tiltAnimating = true;
-            const origTilt = img.style.getPropertyValue('--tilt') || '0deg';
-            const origTiltNum = parseFloat(origTilt);
-            const duration = 300;
-            const start = performance.now();
-            function animateTilt(now) {
-                const elapsed = now - start;
-                const t = Math.min(elapsed / duration, 1);
-                const newTilt = origTiltNum * (1 - t);
-                img.style.setProperty('--tilt', `${newTilt}deg`);
-                if (t < 1) {
-                    img._tiltFrame = requestAnimationFrame(animateTilt);
-                } else {
-                    img.style.setProperty('--tilt', '0deg');
-                    img._tiltAnimating = false;
-                    img._tiltFrame = null;
-                }
-            }
-            img._tiltFrame = requestAnimationFrame(animateTilt);
-        }, true);
-        document.addEventListener('mouseout', function(e) {
-            const img = e.target.closest('.detail-stack-image');
-            if (!img) return;
-            // Cancel any running animation
-            if (img._tiltFrame) cancelAnimationFrame(img._tiltFrame);
-            img._tiltAnimating = true;
-            const origTilt = img.dataset.origTilt || 0;
-            const duration = 300;
-            const start = performance.now();
-            function animateTilt(now) {
-                const elapsed = now - start;
-                const t = Math.min(elapsed / duration, 1);
-                const newTilt = origTilt * t;
-                img.style.setProperty('--tilt', `${newTilt}deg`);
-                if (t < 1) {
-                    img._tiltFrame = requestAnimationFrame(animateTilt);
-                } else {
-                    img.style.setProperty('--tilt', `${origTilt}deg`);
-                    img._tiltAnimating = false;
-                    img._tiltFrame = null;
-                }
-            }
-            img._tiltFrame = requestAnimationFrame(animateTilt);
-        }, true);
+
     </script>
 </body>
 </html> 
