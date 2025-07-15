@@ -35,10 +35,8 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
     
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script src="js/load_menu.js" defer></script>
 </head>
 <body>
@@ -107,7 +105,7 @@
                     img.style.borderRadius = '8px';
                     img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
                     // Random tilt between -15 and +15 degrees
-                    const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
+                    const tilt = (Math.random() * 30 - 10).toFixed(2) + 'deg';
                     img.style.setProperty('--tilt', tilt);
                     img.dataset.origTilt = parseFloat(tilt);
                     img.style.left = '50%';
