@@ -248,7 +248,7 @@ body {
     transform: translateX(-50%) rotate(var(--tilt, 0deg));
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     filter: grayscale(100%);
-    cursor: pointer;
+    cursor: default;
 }
 
 .project-gallery .detail-stack-image:hover {
@@ -1209,19 +1209,21 @@ body {
 /* Project Description Edit UI */
 .description-edit-wrap {
     position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
+    display: block;
 }
 .edit-desc-btn {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 2px 4px;
-    margin-left: 4px;
-    vertical-align: middle;
+    padding: 4px;
     border-radius: 4px;
     transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.edit-desc-btn:hover {
+    background: rgba(255, 0, 0, 0.1);
 }
 .edit-desc-btn:hover svg path {
     fill: var(--color-primary);
@@ -1457,4 +1459,226 @@ body {
     .mobile-gallery div {
         text-align: center;
     }
+}
+
+/* WYSIWYG Editor Styles */
+.wysiwyg-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.toolbar-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    font-weight: 500;
+    color: #495057;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-btn:hover {
+    background: #FF0000;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar-btn.active {
+    background: #FF0000;
+    color: white;
+}
+
+.toolbar-select {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    min-width: 80px;
+}
+
+.wysiwyg-editor {
+    width: 100%;
+    min-height: 200px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    font-family: 'Karla', sans-serif;
+    transition: border-color 0.3s ease;
+    background: white;
+    overflow-y: auto;
+}
+
+.wysiwyg-editor:focus {
+    outline: none;
+    border-color: #FF0000;
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
+}
+
+.wysiwyg-editor pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 8px 0;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+.wysiwyg-editor pre code {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    font-family: inherit;
+    font-size: 13px;
+    display: block;
+}
+
+.wysiwyg-editor .inline-code {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+/* Override highlight.js styles to prevent double borders */
+.wysiwyg-editor .hljs {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+/* Code block styles for main content area */
+.description pre,
+.description-display pre,
+.dynamic-body pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 8px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow-x: auto;
+    white-space: pre-wrap !important;
+    word-wrap: break-word;
+}
+
+.description pre code,
+.description-display pre code,
+.dynamic-body pre code {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    font-family: inherit;
+    font-size: inherit;
+    display: block !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word;
+}
+
+/* Highlight.js styles for main content - more specific selectors */
+.description pre code.hljs,
+.description-display pre code.hljs,
+.dynamic-body pre code.hljs {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+}
+
+/* Override any highlight.js inline styles */
+.description pre code.hljs[style],
+.description-display pre code.hljs[style],
+.dynamic-body pre code.hljs[style] {
+    display: block !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+}
+
+/* Force line breaks for all code elements in descriptions */
+.description code,
+.description-display code,
+.dynamic-body code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+}
+
+/* Most specific override for highlight.js */
+.description pre code.hljs.language-javascript,
+.description-display pre code.hljs.language-javascript,
+.dynamic-body pre code.hljs.language-javascript,
+.description pre code.hljs.language-python,
+.description-display pre code.hljs.language-python,
+.dynamic-body pre code.hljs.language-python,
+.description pre code.hljs.language-html,
+.description-display pre code.hljs.language-html,
+.dynamic-body pre code.hljs.language-html,
+.description pre code.hljs.language-css,
+.description-display pre code.hljs.language-css,
+.dynamic-body pre code.hljs.language-css {
+    display: block !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    font-family: 'Courier New', monospace !important;
+}
+
+/* Nuclear option - override everything for code blocks */
+.description-edit-wrap .description-display pre code,
+.description-edit-wrap .description-display pre code.hljs,
+.description-edit-wrap .description-display pre code.hljs.language-javascript {
+    display: block !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    font-family: 'Courier New', monospace !important;
+    line-height: 1.4 !important;
+}
+
+/* Force line breaks on the pre element itself */
+.description-edit-wrap .description-display pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+}
+
+/* Handle code blocks that might be missing <pre> wrapper */
+.description-edit-wrap .description-display code.language-javascript,
+.description-edit-wrap .description-display code.language-python,
+.description-edit-wrap .description-display code.language-html,
+.description-edit-wrap .description-display code.language-css,
+.description-edit-wrap .description-display code.language-json,
+.description-edit-wrap .description-display code.language-sql {
+    background: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 6px !important;
+    padding: 12px !important;
+    margin: 8px 0 !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    display: block !important;
 }

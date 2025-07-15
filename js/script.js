@@ -515,14 +515,66 @@ function findBySlug(arr, slug, parentLabel = null) {
 function cleanLegacyContent(content) {
     if (!content) return '';
     
-    // Clean up legacy Quill editor HTML and convert to readable text
+    console.log('cleanLegacyContent input:', content);
+    
+        // If content contains WYSIWYG HTML (like <strong>, <em>, <pre>, etc.), preserve it
+    if (content.includes('<strong>') || content.includes('<em>') || content.includes('<pre>') || 
+        content.includes('<h1>') || content.includes('<h2>') || content.includes('<h3>') ||
+        content.includes('<code>') || content.includes('<p>')) {
+        // Clean up only legacy Quill editor markup, preserve WYSIWYG formatting
+        let cleanHtml = content
+            .replace(/<div[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor divs
+            .replace(/<span[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor spans
+            .trim(); // Remove leading/trailing whitespace
+        
+        // Fix problematic line break structure - convert consecutive <p> tags to proper line breaks
+        cleanHtml = cleanHtml
+            .replace(/<\/p>\s*<p[^>]*>/gi, '<br>') // Convert </p><p> to <br>
+            .replace(/<p[^>]*>/gi, '<p>') // Normalize p tags
+            .replace(/<\/p>/gi, '</p>'); // Normalize closing p tags
+        
+        // Additional fix: if we have multiple consecutive <br> tags, consolidate them
+        cleanHtml = cleanHtml.replace(/(<br\s*\/?>){2,}/gi, '<br><br>');
+        
+        // If the content is just a series of <br> tags, wrap it in a single <p>
+        if (cleanHtml.match(/^(<br\s*\/?>)+$/)) {
+            cleanHtml = `<p>${cleanHtml}</p>`;
+        }
+        
+        // Preserve code blocks with proper line breaks and ensure <pre> wrapper
+        cleanHtml = cleanHtml.replace(
+            /<pre><code([^>]*)>([\s\S]*?)<\/code><\/pre>/gi,
+            function(match, codeAttrs, codeContent) {
+                // Convert \n to <br> tags to preserve line breaks
+                const preservedContent = codeContent.replace(/\n/g, '<br>');
+                return `<pre><code${codeAttrs}>${preservedContent}</code></pre>`;
+            }
+        );
+        
+        // Fix code blocks that are missing <pre> wrapper (common issue)
+        cleanHtml = cleanHtml.replace(
+            /<code([^>]*class="[^"]*language-[^"]*"[^>]*)>([\s\S]*?)<\/code>/gi,
+            function(match, codeAttrs, codeContent) {
+                // Only wrap in <pre> if it's a language code block (not inline code)
+                if (codeAttrs.includes('language-')) {
+                    // Convert \n to <br> tags to preserve line breaks
+                    const preservedContent = codeContent.replace(/\n/g, '<br>');
+                    return `<pre><code${codeAttrs}>${preservedContent}</code></pre>`;
+                }
+                return match; // Keep inline code as-is
+            }
+        );
+        
+        return cleanHtml;
+    }
+    
+    // For plain text content, convert to readable text
     let cleanText = content
         .replace(/<div[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor divs
         .replace(/<span[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor spans
-        .replace(/<pre[^>]*>/gi, '') // Remove pre tags
         .replace(/<br\s*\/?>/gi, ' ') // Convert br tags to spaces
         .replace(/<\/p>/gi, ' ') // Convert paragraph ends to spaces
-        .replace(/<[^>]*>/g, '') // Strip remaining HTML tags
+        .replace(/<[^>]*>/g, '') // Strip remaining HTML tags (but preserve pre/code content)
         .replace(/\s+/g, ' ') // Clean up excessive whitespace
         .trim(); // Remove leading/trailing whitespace
     
@@ -542,9 +594,15 @@ function buildProjectInfoHTML(data) {
                 </label>
             </div>`;
         }
-        // Save button in upper right if admin (Cancel removed)
+        // Save button and Edit button in upper right if admin
         if (window.authManager && window.authManager.isLoggedIn) {
             html += `<div class="desc-edit-actions" style="display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-bottom: 8px;">
+                <button id="edit-desc-btn" class="edit-desc-btn" style="background: none; border: none; cursor: pointer; padding: 4px; border-radius: 4px; transition: background 0.2s;" title="Edit Description">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                </button>
                 <button id="desc-save-btn" class="desc-save-btn" disabled style="background: #888; cursor: not-allowed;">Save</button>
             </div>`;
         }
@@ -577,15 +635,14 @@ function buildProjectInfoHTML(data) {
     // Description: Simple textarea editor if logged in, static text otherwise
     if (window.authManager && window.authManager.isLoggedIn) {
         // For logged-in users, show the raw content in a hidden element for editing
+        console.log('Building project info for:', data.projectTitle);
+        console.log('Raw pageSummary:', data.pageSummary);
+        const cleanedContent = cleanLegacyContent(data.pageSummary || '');
+        console.log('Cleaned content:', cleanedContent);
+        
         html += `<div class="description-edit-wrap">
             <div id="project-description" class="description" style="display: none;">${data.pageSummary || ''}</div>
-            <p class="description-display">${cleanLegacyContent(data.pageSummary || '')}</p>
-            <button id="edit-desc-btn" class="edit-desc-btn" style="background: none; border: none; cursor: pointer; padding: 4px; margin-top: 8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                    <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                </svg>
-            </button>
+            <p class="description-display">${cleanedContent || 'No description available.'}</p>
         </div>`;
     } else if (data.pageSummary) {
         html += `<p class="description">${cleanLegacyContent(data.pageSummary)}</p>`;
@@ -605,11 +662,43 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
     // Store original state
     let origChecked = menuCheckbox ? menuCheckbox.checked : null;
     
-    // Replace display with simple textarea editor (no outer modal wrapper)
+    // Replace display with WYSIWYG editor
     const descEditor = document.createElement('div');
     descEditor.className = 'desc-editor';
     descEditor.innerHTML = `
-        <textarea id="desc-textarea" placeholder="Enter project description..." rows="10" style="width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; font-family: inherit; font-size: 14px; resize: vertical; margin-bottom: 12px;"></textarea>
+        <div class="wysiwyg-toolbar">
+            <button onclick="execWysiwygCommand('bold')" title="Bold" class="toolbar-btn">
+                <strong>B</strong>
+            </button>
+            <button onclick="execWysiwygCommand('italic')" title="Italic" class="toolbar-btn">
+                <em>I</em>
+            </button>
+            <button onclick="execWysiwygCommand('underline')" title="Underline" class="toolbar-btn">
+                <u>U</u>
+            </button>
+            <button onclick="insertWysiwygCodeBlock()" title="Insert Code Block" class="toolbar-btn">
+                📄 Code
+            </button>
+            <button onclick="insertWysiwygInlineCode()" title="Inline Code" class="toolbar-btn">
+                \`code\`
+            </button>
+            <select onchange="formatWysiwygHeading(this.value)" title="Heading Style" class="toolbar-select">
+                <option value="">Heading</option>
+                <option value="h1">H1</option>
+                <option value="h2">H2</option>
+                <option value="h3">H3</option>
+                <option value="p">Normal</option>
+            </select>
+            <select id="wysiwygLanguageSelect" onchange="changeWysiwygCodeLanguage()" title="Code Language" class="toolbar-select">
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="json">JSON</option>
+                <option value="sql">SQL</option>
+            </select>
+        </div>
+        <div id="wysiwyg-editor" class="wysiwyg-editor" contenteditable="true"></div>
         <div class="desc-edit-actions" style="text-align: right; margin-top: 8px;">
             <button id="desc-cancel-btn" style="background: #f5f5f5; border: 1px solid #ddd; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Cancel</button>
         </div>
@@ -619,34 +708,86 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
     const editWrap = descDiv.closest('.description-edit-wrap');
     if (editWrap) {
         editWrap.appendChild(descEditor);
-        // Hide the display text and edit button
+        
+        // Hide ALL display elements
         const displayText = editWrap.querySelector('.description-display');
         if (displayText) displayText.style.display = 'none';
+        
+        const originalDesc = editWrap.querySelector('.description');
+        if (originalDesc) originalDesc.style.display = 'none';
+        
+        // Hide the edit button
         editBtn.style.display = 'none';
+        
+        // Also hide any other description elements that might be showing
+        const allDescElements = editWrap.querySelectorAll('p, div');
+        allDescElements.forEach(el => {
+            if (el !== descDiv && el !== descEditor && !el.classList.contains('wysiwyg-toolbar') && !el.classList.contains('desc-edit-actions')) {
+                el.style.display = 'none';
+            }
+        });
+        
+        // Ensure the editor is visible
+        descEditor.style.display = 'block';
     }
     
-    // Initialize textarea
-    const textarea = document.getElementById('desc-textarea');
-    // Clean up legacy Quill editor HTML and convert to plain text
-    let cleanText = originalDesc
-        .replace(/<div[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor divs
-        .replace(/<span[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor spans
-        .replace(/<pre[^>]*>/gi, '') // Remove pre tags
-        .replace(/<br\s*\/?>/gi, '\n') // Convert br tags to newlines
-        .replace(/<\/p>/gi, '\n\n') // Convert paragraph ends to double newlines
-        .replace(/<[^>]*>/g, '') // Strip remaining HTML tags
-        .replace(/\n\s*\n\s*\n/g, '\n\n') // Clean up excessive newlines
-        .trim(); // Remove leading/trailing whitespace
+    // Initialize WYSIWYG editor
+    const wysiwygEditor = document.getElementById('wysiwyg-editor');
     
-    textarea.value = cleanText;
+    console.log('WYSIWYG editor element found:', !!wysiwygEditor);
+    console.log('Original description content:', originalDesc);
+    console.log('Content type:', typeof originalDesc);
+    console.log('Content length:', originalDesc ? originalDesc.length : 0);
     
-    let lastDesc = textarea.value;
+    if (!wysiwygEditor) {
+        console.error('WYSIWYG editor element not found!');
+        return;
+    }
+    
+    // Debug the editor element's styles
+    const computedStyle = window.getComputedStyle(wysiwygEditor);
+    console.log('Editor computed styles:', {
+        display: computedStyle.display,
+        visibility: computedStyle.visibility,
+        opacity: computedStyle.opacity,
+        height: computedStyle.height,
+        minHeight: computedStyle.minHeight,
+        color: computedStyle.color,
+        backgroundColor: computedStyle.backgroundColor
+    });
+    
+    // Force the editor to be visible
+    if (computedStyle.display === 'none') {
+        console.log('Editor was hidden, forcing it to be visible');
+        wysiwygEditor.style.display = 'block';
+    }
+    
+    // Use the same content processing logic that works for display
+    const cleanedContent = cleanLegacyContent(originalDesc);
+    console.log('Using cleaned content:', cleanedContent);
+    
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+        // Set the cleaned content directly
+        wysiwygEditor.innerHTML = cleanedContent || '<p><br></p>';
+        console.log('Editor innerHTML after setting:', wysiwygEditor.innerHTML);
+        
+        // Force a focus and blur to ensure content is visible
+        wysiwygEditor.focus();
+        setTimeout(() => wysiwygEditor.blur(), 10);
+        
+        // Try triggering a DOM update
+        wysiwygEditor.dispatchEvent(new Event('input'));
+        wysiwygEditor.dispatchEvent(new Event('change'));
+    });
+    
+    let lastDesc = wysiwygEditor.innerHTML;
     let descChanged = false;
     let menuChanged = false;
     
-    // Listen for textarea changes to update the main save button state
-    textarea.addEventListener('input', function() {
-        descChanged = (textarea.value !== lastDesc);
+    // Listen for WYSIWYG editor changes to update the main save button state
+    wysiwygEditor.addEventListener('input', function() {
+        descChanged = (wysiwygEditor.innerHTML !== lastDesc);
         // Update the main save button state
         const mainSaveBtn = document.getElementById('desc-save-btn');
         if (mainSaveBtn) {
@@ -752,9 +893,21 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
         cancelBtn.onclick = function() {
             // Remove editor and show original content
             descEditor.remove();
+            
+            // Show the display text
             const displayText = editWrap.querySelector('.description-display');
             if (displayText) displayText.style.display = 'block';
+            
+            // Show the edit button
             editBtn.style.display = 'block';
+            
+            // Show any other description elements that were hidden
+            const allDescElements = editWrap.querySelectorAll('p, div');
+            allDescElements.forEach(el => {
+                if (el !== descDiv && el.classList.contains('description-display')) {
+                    el.style.display = 'block';
+                }
+            });
         };
     }
 }
@@ -770,15 +923,7 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
             }
         }
         origInject();
-        // If logged in and on project detail, initialize simple editor and checkbox handler
-        const urlParams = new URLSearchParams(window.location.search);
-        const slugParam = urlParams.get('item');
-        if (slugParam && window.authManager && window.authManager.isLoggedIn) {
-            const pageData = findBySlug(window.__MENU_DATA, slugParam);
-            if (pageData && pageData.item && pageData.item.pageSummary !== undefined) {
-                setupSimpleDescriptionEditor(slugParam, pageData.item.pageSummary);
-            }
-        }
+        // Don't auto-initialize editor - let user click edit button instead
     }
 })();
 
@@ -799,8 +944,8 @@ function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
                 if (entry.slug === slug) {
                     // Update the pageSummary if new description is provided
                     if (newDesc !== null) {
-                        const htmlDesc = newDesc.replace(/\n/g, '<br>');
-                        entry.pageSummary = htmlDesc;
+                        // Preserve the HTML content from WYSIWYG editor
+                        entry.pageSummary = newDesc;
                     }
                     
                     // Update sub_menu if checkbox state is provided
@@ -903,7 +1048,10 @@ function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
             
             if (editBtn && descDiv) {
                 editBtn.onclick = function() {
-                    setupSimpleDescriptionEditor(slugParam, descDiv.innerHTML);
+                    // Get the raw content from the hidden project-description div
+                    const contentToEdit = descDiv.innerHTML || '';
+                    console.log('Content to edit:', contentToEdit);
+                    setupSimpleDescriptionEditor(slugParam, contentToEdit);
                 };
             }
             
@@ -912,13 +1060,13 @@ function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
                 saveBtn.onclick = function() {
                     if (saveBtn.disabled) return;
                     
-                    // Get the current textarea content if editor is open
-                    const textarea = document.getElementById('desc-textarea');
+                    // Get the current WYSIWYG editor content if editor is open
+                    const wysiwygEditor = document.getElementById('wysiwyg-editor');
                     const menuCheckbox = document.getElementById('displayInMenuCheckbox');
                     
-                    if (textarea) {
-                        // Editor is open, save the textarea content
-                        const newDesc = textarea.value;
+                    if (wysiwygEditor) {
+                        // Editor is open, save the WYSIWYG editor content
+                        const newDesc = wysiwygEditor.innerHTML;
                         const menuState = menuCheckbox ? menuCheckbox.checked : null;
                         updateProjectDescription(slugParam, newDesc, menuState);
                     } else {
@@ -961,5 +1109,143 @@ function buildBlogPostHTML(articleEl, data) {
         bodyDiv.className = 'dynamic-body';
         bodyDiv.innerHTML = data.pageBody;
         articleEl.appendChild(bodyDiv);
+    }
+}
+
+// WYSIWYG Editor Functions
+function execWysiwygCommand(command, showUI = false, value = null) {
+    document.execCommand(command, showUI, value);
+    // Trigger change detection
+    const wysiwygEditor = document.getElementById('wysiwyg-editor');
+    if (wysiwygEditor) {
+        wysiwygEditor.dispatchEvent(new Event('input'));
+    }
+}
+
+function insertWysiwygCodeBlock() {
+    const language = document.getElementById('wysiwygLanguageSelect').value;
+    const codeBlock = document.createElement('pre');
+    codeBlock.innerHTML = `<code class="language-${language}" contenteditable="true" data-language="${language}">// Enter your ${language} code here
+console.log("Hello, World!");</code>`;
+    
+    // Create a paragraph element to add after the code block
+    const afterParagraph = document.createElement('p');
+    afterParagraph.innerHTML = '<br>';
+    
+    const wysiwygEditor = document.getElementById('wysiwyg-editor');
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(codeBlock);
+        
+        // Insert the paragraph after the code block
+        const afterRange = document.createRange();
+        afterRange.setStartAfter(codeBlock);
+        afterRange.insertNode(afterParagraph);
+        
+        // Move cursor to the paragraph after the code block
+        const newRange = document.createRange();
+        newRange.setStart(afterParagraph, 0);
+        newRange.collapse(true);
+        selection.removeAllRanges();
+        selection.addRange(newRange);
+    }
+    
+    // Apply syntax highlighting
+    if (window.hljs) {
+        const codeElement = codeBlock.querySelector('code');
+        if (codeElement) {
+            hljs.highlightElement(codeElement);
+        }
+    }
+    
+    // Trigger change detection
+    wysiwygEditor.dispatchEvent(new Event('input'));
+}
+
+function formatWysiwygHeading(tag) {
+    if (tag && tag !== '') {
+        execWysiwygCommand('formatBlock', false, `<${tag}>`);
+        // Reset dropdown after use
+        document.querySelector('select[onchange="formatWysiwygHeading(this.value)"]').selectedIndex = 0;
+    }
+}
+
+function changeWysiwygCodeLanguage() {
+    const selection = window.getSelection();
+    let codeBlock = null;
+    
+    if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        let element = range.commonAncestorContainer;
+        
+        // If the common ancestor is a text node, get its parent
+        if (element.nodeType === Node.TEXT_NODE) {
+            element = element.parentElement;
+        }
+        
+        // Look for code element by traversing up the DOM tree
+        while (element && element !== document.getElementById('wysiwyg-editor')) {
+            if (element.tagName === 'CODE') {
+                codeBlock = element;
+                break;
+            }
+            if (element.tagName === 'PRE') {
+                const codeChild = element.querySelector('code');
+                if (codeChild) {
+                    codeBlock = codeChild;
+                    break;
+                }
+            }
+            element = element.parentElement;
+        }
+    }
+    
+    if (codeBlock) {
+        const newLanguage = document.getElementById('wysiwygLanguageSelect').value;
+        
+        // Remove all existing language classes
+        codeBlock.className = codeBlock.className.replace(/language-\w+/g, '').trim();
+        
+        // Add new language class
+        codeBlock.classList.add(`language-${newLanguage}`);
+        codeBlock.setAttribute('data-language', newLanguage);
+        
+        // Clear any existing highlighting
+        codeBlock.removeAttribute('data-highlighted');
+        
+        // Re-highlight with new language
+        if (window.hljs) {
+            hljs.highlightElement(codeBlock);
+        }
+        
+        // Trigger change detection
+        const wysiwygEditor = document.getElementById('wysiwyg-editor');
+        if (wysiwygEditor) {
+            wysiwygEditor.dispatchEvent(new Event('input'));
+        }
+    }
+}
+
+function insertWysiwygInlineCode() {
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const selectedText = range.toString() || 'code';
+        
+        const code = document.createElement('code');
+        code.className = 'inline-code';
+        code.textContent = selectedText;
+        
+        range.deleteContents();
+        range.insertNode(code);
+        selection.removeAllRanges();
+    }
+    
+    // Trigger change detection
+    const wysiwygEditor = document.getElementById('wysiwyg-editor');
+    if (wysiwygEditor) {
+        wysiwygEditor.dispatchEvent(new Event('input'));
     }
 } 
