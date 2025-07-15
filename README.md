@@ -20,32 +20,37 @@ A modern, responsive portfolio website showcasing web development and design pro
 - **TTS Integration**: ElevenLabs text-to-speech with caching
 - **Dynamic Navigation**: JSON-driven menu system
 
-## Development Workflow
+## Prerequisites
 
-### Local Development
+### Required Software
+- **Node.js 16+** - [Download here](https://nodejs.org/)
+- **Git** - [Download here](https://git-scm.com/)
+- **Python 3.7+** - [Download here](https://python.org/) (for image optimization scripts)
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Set up environment variables (see Environment Configuration)
-4. Start development server: `npm start` (runs server.js)
-5. Open `http://localhost:8000` in a web browser
+### Required Accounts & API Keys
+- **ElevenLabs Account** - [Sign up here](https://elevenlabs.io/) for TTS functionality
+- **TinyPNG API Key** - [Get free API key here](https://tinypng.com/developers) for image optimization
 
-### Content Updates
+## Quick Start
 
-- **Menu Management**: Use `edit.html` interface for menu updates
-- **Image Optimization**: Run optimization scripts as needed
-- **Content Versioning**: Git-based content tracking
-
-### Required Python Packages
-
+### 1. Clone the Repository
 ```bash
-pip install requests
+git clone <repository-url>
+cd K6_MINIMAL
 ```
 
-## Environment Configuration
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-Create a `.env` file in the root directory with the following variables:
+### 3. Configure Environment Variables
+Create a `.env` file in the root directory:
+```bash
+cp .env.example .env
+```
 
+Edit `.env` with your actual values:
 ```env
 # Required for menu editing authentication
 EDIT_SECRET=your-secure-secret-here
@@ -58,56 +63,310 @@ ELEVEN_VOICE_ID=21m00Tcm4TlvDq8ikWAM
 
 # Optional: Enable TTS debugging
 TTS_DEBUG=true
+
+# Optional: Server port (default: 8000)
+PORT=8000
+
+# Optional: Node environment
+NODE_ENV=development
 ```
 
-## Image Optimization
+### 4. Start Development Server
+```bash
+npm run dev
+```
 
-This project includes automated image optimization using the TinyPNG API to reduce file sizes while preserving quality.
+### 5. Access the Site
+- Open http://localhost:8000
+- The site will auto-reload on changes
 
-### Optimization Process
+## Development Workflow
 
-The project uses a conservative approach to image optimization:
+### Available Scripts
+```bash
+npm start          # Start production server
+npm run dev        # Start development server with auto-reload
+npm run build      # Build project (runs image optimization)
+npm run optimize-images    # Optimize project images
+npm run test-optimization  # Test image optimization process
+npm run deploy     # Build and deploy to production
+```
 
-- **Size Threshold**: Only optimizes files larger than 200KB
-- **Quality Preservation**: Skips files that would lose more than 30% of their size (to preserve quality)
-- **Supported Formats**: PNG, JPG, JPEG, WebP
-- **API Integration**: Uses TinyPNG API for professional-grade optimization
+### Local Development
+1. **Make changes** to HTML, CSS, or JavaScript files
+2. **Test changes** in browser (auto-reload enabled)
+3. **Optimize images** when adding new project tiles
+4. **Update menu data** via edit.html interface
+5. **Commit changes** with descriptive messages
 
-### Optimization Scripts
+### Code Style Guidelines
 
-Several scripts are available for image optimization:
+#### JavaScript
+- Use ES6+ features
+- Prefer `const` and `let` over `var`
+- Use meaningful variable and function names
+- Add JSDoc comments for complex functions
+- Keep functions small and focused
 
-- `scripts/optimize_conservative.py` - Main conservative optimization script
-- `scripts/test_conservative.py` - Test script for conservative approach
-- `scripts/test_smaller_file.py` - Test script for smaller files
-- `scripts/debug_optimization.py` - Debug script for API troubleshooting
+#### HTML
+- Use semantic HTML elements
+- Include proper ARIA labels for accessibility
+- Maintain consistent indentation
+- Add alt text to all images
 
-### Usage
+#### CSS
+- Use CSS custom properties for theming
+- Follow BEM methodology for class naming
+- Keep selectors specific but not overly complex
+- Use flexbox/grid for layouts
 
-To optimize project tile images:
+## Content Management
+
+### Menu Structure
+The site uses a JSON-driven menu system located in `data/menu.json`. Each menu item can have:
+- `label`: Display name
+- `icon`: SVG icon filename
+- `url`: Link URL
+- `submenu`: Array of sub-items
+- `categoryDescription`: Category description
+- `more`: Boolean to show "more..." link
+
+### Adding Projects
+1. **Add project images** to `project_tiles/` directory
+2. **Optimize images** using `npm run optimize-images`
+3. **Update menu.json** via edit.html interface
+4. **Add project details** including:
+   - Project title and description
+   - Role and technology used
+   - Budget range and design partner
+   - Project URL and cover image
+
+### Image Optimization
+The project includes automated image optimization:
+- **Size threshold**: Only optimizes files > 200KB
+- **Quality preservation**: Skips files that would lose > 30% size
+- **Supported formats**: PNG, JPG, JPEG, WebP
+- **API integration**: Uses TinyPNG API
 
 ```bash
-# Test the optimization process first
-python scripts/test_conservative.py
+# Test optimization first
+npm run test-optimization
 
-# Run the full conservative optimization
-python scripts/optimize_conservative.py
+# Run full optimization
+npm run optimize-images
 ```
 
-### Findings
+## Deployment
 
-During testing, we discovered that TinyPNG's default optimization is quite aggressive:
-- Files often see 60-75% size reduction
-- This level of compression may affect image quality
-- Conservative approach preserves quality by limiting reductions to 30%
+### Option 1: Traditional Hosting (Apache/Nginx)
 
-### API Configuration
+1. **Build the project**
+   ```bash
+   npm run build
+   ```
 
-The optimization uses TinyPNG API with the following settings:
-- API Key: Configured in scripts
-- Rate Limiting: 0.5 second delays between requests
-- Timeout: 30 seconds per request
-- Error Handling: Comprehensive error checking and reporting
+2. **Upload files to server**
+   - Upload all files except `node_modules/`
+   - Ensure `server.js` is in the root directory
+
+3. **Install production dependencies**
+   ```bash
+   npm install --production
+   ```
+
+4. **Configure environment variables**
+   - Set up environment variables on your hosting platform
+   - Ensure `EDIT_SECRET` and `ELEVEN_API_KEY` are configured
+
+5. **Start the server**
+   ```bash
+   npm start
+   ```
+
+### Option 2: Vercel Deployment
+
+1. **Install Vercel CLI**
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Deploy**
+   ```bash
+   vercel
+   ```
+
+3. **Configure environment variables**
+   - Go to Vercel dashboard
+   - Add environment variables in project settings
+
+### Option 3: Netlify Deployment
+
+1. **Create netlify.toml**
+   ```toml
+   [build]
+     command = "npm run build"
+     publish = "."
+   
+   [[redirects]]
+     from = "/api/*"
+     to = "/.netlify/functions/api/:splat"
+     status = 200
+   ```
+
+2. **Deploy via Git**
+   - Connect your repository to Netlify
+   - Configure environment variables in Netlify dashboard
+
+### Option 4: Railway Deployment
+
+1. **Connect repository**
+   - Connect your Git repository to Railway
+
+2. **Configure environment variables**
+   - Add environment variables in Railway dashboard
+
+3. **Deploy**
+   - Railway will automatically deploy on push to main branch
+
+## SSL/HTTPS Configuration
+
+### Let's Encrypt (Recommended)
+
+1. **Install Certbot**
+   ```bash
+   sudo apt-get install certbot
+   ```
+
+2. **Obtain certificate**
+   ```bash
+   sudo certbot certonly --webroot -w /var/www/html -d yourdomain.com
+   ```
+
+3. **Configure Nginx**
+   ```nginx
+   server {
+       listen 443 ssl;
+       server_name yourdomain.com;
+       
+       ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+       
+       location / {
+           proxy_pass http://localhost:8000;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+       }
+   }
+   ```
+
+## API Endpoints
+
+### Menu Management
+- `POST /api/update-menu` - Update menu.json (requires EDIT_SECRET)
+
+### Text-to-Speech
+- `POST /api/tts` - Generate TTS audio (requires ELEVEN_API_KEY)
+
+### Health Check
+- `GET /api/health` - Server health status
+
+## Security Considerations
+
+- **API keys** are stored in environment variables
+- **Menu updates** require authentication via EDIT_SECRET
+- **TTS requests** are proxied to keep API keys server-side
+- **Input validation** on all API endpoints
+- **Security headers** prevent XSS and clickjacking
+- **Request size limits** prevent abuse
+
+## Performance Features
+
+- **Image Optimization**: Automated compression pipeline
+- **TTS Caching**: Audio files cached to reduce API calls
+- **Static Asset Serving**: Optimized delivery of CSS/JS/images
+- **Responsive Images**: Multiple formats and sizes
+- **Browser Caching**: Appropriate cache headers
+
+## Monitoring and Maintenance
+
+### Health Checks
+- Monitor `/api/health` endpoint
+- Set up uptime monitoring (UptimeRobot, Pingdom)
+
+### Logs
+- Monitor server logs for errors
+- Check TTS cache directory size
+- Review API usage and limits
+
+### Updates
+1. **Pull latest changes**
+   ```bash
+   git pull origin main
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Restart server**
+   ```bash
+   npm start
+   ```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Port already in use**
+   - Change PORT in .env file
+   - Kill existing process: `lsof -ti:8000 | xargs kill`
+
+2. **TTS not working**
+   - Check ELEVEN_API_KEY is set
+   - Verify API key is valid
+   - Check network connectivity
+
+3. **Menu updates failing**
+   - Verify EDIT_SECRET is set
+   - Check file permissions on data/ directory
+   - Ensure server has write access
+
+4. **Image optimization failing**
+   - Check TinyPNG API key
+   - Verify Python and requests package installed
+   - Check file permissions
+
+### Support
+For issues, check:
+- Server logs
+- Environment variable configuration
+- Network connectivity
+- File permissions
+
+## Contributing
+
+### Development Setup
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
+3. **Make your changes** following code style guidelines
+4. **Test thoroughly** on multiple browsers and devices
+5. **Commit with descriptive messages**: `git commit -m "feat: add new feature"`
+6. **Push and create pull request**
+
+### Areas for Contribution
+- **Content Management**: Improve menu editing interface
+- **Performance**: Optimize image loading, implement lazy loading
+- **Accessibility**: Improve keyboard navigation, screen reader support
+- **User Experience**: Add loading states, improve error handling
+- **SEO**: Add structured data, improve meta tags
+- **Testing**: Add unit tests, integration tests
+
+### Code Review Process
+1. **Automated checks** must pass
+2. **At least one approval** from maintainers
+3. **All conversations resolved**
+4. **Squash and merge** when approved
 
 ## Project Structure
 
@@ -121,30 +380,10 @@ K6_MINIMAL/
 ├── scripts/             # Image optimization scripts
 ├── server.js            # Express.js server
 ├── package.json         # Node.js dependencies
+├── sitemap.xml          # Search engine sitemap
+├── robots.txt           # Crawler guidance
 └── index.html           # Main homepage
 ```
-
-## API Endpoints
-
-### Menu Management
-- `POST /api/update-menu` - Update menu.json (requires EDIT_SECRET)
-
-### Text-to-Speech
-- `POST /api/tts` - Generate TTS audio (requires ELEVEN_API_KEY)
-
-## Security Considerations
-
-- API keys are stored in environment variables
-- Menu updates require authentication via EDIT_SECRET
-- TTS requests are proxied to keep API keys server-side
-- Input validation on all API endpoints
-
-## Performance Features
-
-- **Image Optimization**: Automated compression pipeline
-- **TTS Caching**: Audio files cached to reduce API calls
-- **Static Asset Serving**: Optimized delivery of CSS/JS/images
-- **Responsive Images**: Multiple formats and sizes
 
 ## Browser Support
 
@@ -158,5 +397,5 @@ This project is proprietary to Knectar.
 
 ## Contact
 
-For questions about this portfolio or optimization process, contact the development team.
+For questions about this portfolio or technical issues, contact the development team.
  
