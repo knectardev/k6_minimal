@@ -23,6 +23,14 @@
     --z-index-overlay: 999;
     --z-index-sidebar: 1000;
     --z-index-hamburger: 1001;
+    
+    /* Typography Variables - Single Source of Truth */
+    --line-height-body: 1.6;
+    --line-height-heading: 1.2;
+    --line-height-description: 2;
+    --line-height-metadata: 1.4;
+    --line-height-code: 1.4;
+
 }
 
 /* Base Styles */
@@ -288,8 +296,134 @@ body {
     font-size: 13px;
 }
 
-.description {
-    line-height: 1.6;
+/* Centralized Description Typography - Single Source of Truth */
+.description,
+.description-display,
+.dynamic-body,
+.project-info .description,
+.project-info .description-display,
+.project-info .dynamic-body,
+.project-info [class*="description"],
+.project-info [class*="dynamic"] {
+    line-height: var(--line-height-description);
+    font-size: 16px;
+}
+
+/* All description content inherits the same line-height */
+.description *,
+.description-display *,
+.dynamic-body *,
+.project-info .description *,
+.project-info .description-display *,
+.project-info .dynamic-body *,
+.project-info [class*="description"] *,
+.project-info [class*="dynamic"] * {
+    line-height: var(--line-height-description);
+}
+
+/* Specific spacing for paragraphs and list items */
+.description p,
+.description-display p,
+.dynamic-body p,
+.description li,
+.description-display li,
+.dynamic-body li,
+.project-info p,
+.project-info li {
+    margin-bottom: 0.5em;
+}
+
+/* Code blocks get different line-height */
+.description pre,
+.description-display pre,
+.dynamic-body pre,
+.project-info pre,
+.description code,
+.description-display code,
+.dynamic-body code,
+.project-info code,
+.project-info .hljs {
+    line-height: var(--line-height-code);
+}
+
+/* Force description line-height with high specificity */
+.project-info .description,
+.project-info .description-display,
+.project-info .dynamic-body,
+.project-info [class*="description"],
+.project-info [class*="dynamic"],
+.project-info .description *,
+.project-info .description-display *,
+.project-info .dynamic-body *,
+.project-info [class*="description"] *,
+.project-info [class*="dynamic"] * {
+    line-height: var(--line-height-description) !important;
+}
+
+/* Nuclear option - force line-height on ALL project info content */
+.project-info,
+.project-info *,
+.project-info p,
+.project-info div,
+.project-info span,
+.project-info h1,
+.project-info h2,
+.project-info h3,
+.project-info h4,
+.project-info h5,
+.project-info h6,
+.project-info li,
+.project-info ul,
+.project-info ol,
+.project-info blockquote,
+.project-info strong,
+.project-info em,
+.project-info b,
+.project-info i,
+.project-info a {
+    line-height: var(--line-height-description) !important;
+}
+
+/* Exception for code blocks */
+.project-info pre,
+.project-info code,
+.project-info .hljs,
+.project-info pre *,
+.project-info code * {
+    line-height: var(--line-height-code) !important;
+}
+
+/* Metadata section - tight line height */
+.project-info ul,
+.project-info ul li,
+.project-info ul li strong,
+.project-info ul li a {
+    line-height: var(--line-height-metadata) !important;
+}
+
+/* Description content - looser line height */
+.project-info .description,
+.project-info .description-display,
+.project-info .dynamic-body,
+.project-info p:not(.description-display),
+.project-info div:not(.description-display),
+.project-info span:not(.description-display),
+.project-info h1,
+.project-info h2,
+.project-info h3,
+.project-info h4,
+.project-info h5,
+.project-info h6,
+.project-info li:not(.project-info ul li),
+.project-info ol,
+.project-info ol li,
+.project-info blockquote,
+.project-info strong:not(.project-info ul li strong),
+.project-info em,
+.project-info b,
+.project-info i,
+.project-info a:not(.project-info ul li a) {
+    line-height: var(--line-height-description) !important;
 }
 
 /* External Link Styles */
@@ -1514,8 +1648,8 @@ body {
     border: 2px solid #e9ecef;
     border-radius: 8px;
     padding: 16px;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: var(--line-height-description);
     font-family: 'Karla', sans-serif;
     transition: border-color 0.3s ease;
     background: white;
@@ -1563,6 +1697,45 @@ body {
     border: none !important;
     border-radius: 0 !important;
     margin: 0 !important;
+}
+
+/* Ensure WYSIWYG editor content maintains proper formatting */
+.wysiwyg-editor p,
+.wysiwyg-editor div,
+.wysiwyg-editor span,
+.wysiwyg-editor h1,
+.wysiwyg-editor h2,
+.wysiwyg-editor h3,
+.wysiwyg-editor h4,
+.wysiwyg-editor h5,
+.wysiwyg-editor h6,
+.wysiwyg-editor li,
+.wysiwyg-editor ul,
+.wysiwyg-editor ol,
+.wysiwyg-editor blockquote,
+.wysiwyg-editor strong,
+.wysiwyg-editor em,
+.wysiwyg-editor b,
+.wysiwyg-editor i,
+.wysiwyg-editor a {
+    line-height: var(--line-height-description) !important;
+    margin-bottom: 0.5em !important;
+}
+
+/* Ensure paragraphs have proper spacing in WYSIWYG editor */
+.wysiwyg-editor p {
+    margin-bottom: 1em !important;
+}
+
+/* Ensure lists have proper formatting in WYSIWYG editor */
+.wysiwyg-editor ul,
+.wysiwyg-editor ol {
+    margin: 1em 0 !important;
+    padding-left: 2em !important;
+}
+
+.wysiwyg-editor li {
+    margin-bottom: 0.5em !important;
 }
 
 /* Code block styles for main content area */
@@ -1653,7 +1826,7 @@ body {
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     font-family: 'Courier New', monospace !important;
-    line-height: 1.4 !important;
+    line-height: var(--line-height-code) !important;
 }
 
 /* Force line breaks on the pre element itself */
@@ -1676,7 +1849,7 @@ body {
     margin: 8px 0 !important;
     font-family: 'Courier New', monospace !important;
     font-size: 13px !important;
-    line-height: 1.4 !important;
+    line-height: var(--line-height-code) !important;
     overflow-x: auto !important;
     white-space: pre-wrap !important;
     word-wrap: break-word !important;

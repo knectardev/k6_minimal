@@ -517,28 +517,25 @@ function cleanLegacyContent(content) {
     
     console.log('cleanLegacyContent input:', content);
     
-        // If content contains WYSIWYG HTML (like <strong>, <em>, <pre>, etc.), preserve it
-    if (content.includes('<strong>') || content.includes('<em>') || content.includes('<pre>') || 
-        content.includes('<h1>') || content.includes('<h2>') || content.includes('<h3>') ||
-        content.includes('<code>') || content.includes('<p>')) {
-        // Clean up only legacy Quill editor markup, preserve WYSIWYG formatting
+    // If content contains HTML tags, preserve the structure
+    if (content.includes('<') && content.includes('>')) {
+        // Clean up only legacy Quill editor markup, preserve all other HTML formatting
         let cleanHtml = content
             .replace(/<div[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor divs
             .replace(/<span[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor spans
             .trim(); // Remove leading/trailing whitespace
         
-        // Fix problematic line break structure - convert consecutive <p> tags to proper line breaks
-        cleanHtml = cleanHtml
-            .replace(/<\/p>\s*<p[^>]*>/gi, '<br>') // Convert </p><p> to <br>
-            .replace(/<p[^>]*>/gi, '<p>') // Normalize p tags
-            .replace(/<\/p>/gi, '</p>'); // Normalize closing p tags
-        
-        // Additional fix: if we have multiple consecutive <br> tags, consolidate them
-        cleanHtml = cleanHtml.replace(/(<br\s*\/?>){2,}/gi, '<br><br>');
-        
-        // If the content is just a series of <br> tags, wrap it in a single <p>
-        if (cleanHtml.match(/^(<br\s*\/?>)+$/)) {
-            cleanHtml = `<p>${cleanHtml}</p>`;
+        // Ensure proper paragraph structure - wrap text in <p> tags if it's not already wrapped
+        if (!cleanHtml.includes('<p>') && !cleanHtml.includes('<h') && !cleanHtml.includes('<ul>') && !cleanHtml.includes('<ol>')) {
+            // Split by double line breaks and wrap each section in <p> tags
+            const sections = cleanHtml.split(/\n\s*\n/);
+            cleanHtml = sections.map(section => {
+                const trimmed = section.trim();
+                if (trimmed) {
+                    return `<p>${trimmed}</p>`;
+                }
+                return '';
+            }).join('');
         }
         
         // Preserve code blocks with proper line breaks and ensure <pre> wrapper
@@ -568,15 +565,32 @@ function cleanLegacyContent(content) {
         return cleanHtml;
     }
     
-    // For plain text content, convert to readable text
+    // For plain text content, convert to readable HTML structure
     let cleanText = content
         .replace(/<div[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor divs
         .replace(/<span[^>]*class="ql-[^"]*"[^>]*>/gi, '') // Remove Quill editor spans
-        .replace(/<br\s*\/?>/gi, ' ') // Convert br tags to spaces
-        .replace(/<\/p>/gi, ' ') // Convert paragraph ends to spaces
-        .replace(/<[^>]*>/g, '') // Strip remaining HTML tags (but preserve pre/code content)
-        .replace(/\s+/g, ' ') // Clean up excessive whitespace
         .trim(); // Remove leading/trailing whitespace
+    
+    // Convert plain text to proper HTML structure
+    if (cleanText) {
+        // Split by double line breaks to identify paragraphs
+        const sections = cleanText.split(/\n\s*\n/);
+        cleanText = sections.map(section => {
+            const trimmed = section.trim();
+            if (trimmed) {
+                // Check if this looks like a heading (starts with common heading words)
+                if (/^(Background|Objectives|Key Features|Technical Approach|Outcomes|Challenges|Solution|Results|Summary)/i.test(trimmed)) {
+                    return `<h3>${trimmed}</h3>`;
+                }
+                // Check if this looks like a list item
+                if (/^\d+\.\s/.test(trimmed) || /^[•\-\*]\s/.test(trimmed)) {
+                    return `<ul><li>${trimmed.replace(/^[\d•\-\*\.\s]+/, '')}</li></ul>`;
+                }
+                return `<p>${trimmed}</p>`;
+            }
+            return '';
+        }).join('');
+    }
     
     return cleanText;
 }
@@ -676,18 +690,21 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
             <button onclick="execWysiwygCommand('underline')" title="Underline" class="toolbar-btn">
                 <u>U</u>
             </button>
+            <button onclick="execWysiwygCommand('insertUnorderedList')" title="Bulleted List" class="toolbar-btn">• List</button>
+            <button onclick="execWysiwygCommand('insertOrderedList')" title="Numbered List" class="toolbar-btn">1. List</button>
             <button onclick="insertWysiwygCodeBlock()" title="Insert Code Block" class="toolbar-btn">
                 📄 Code
             </button>
             <button onclick="insertWysiwygInlineCode()" title="Inline Code" class="toolbar-btn">
                 \`code\`
             </button>
-            <select onchange="formatWysiwygHeading(this.value)" title="Heading Style" class="toolbar-select">
+            <select onchange="formatWysiwygHeading(this.value)" title="Heading Style" class="toolbar-select wysiwyg-heading-select">
                 <option value="">Heading</option>
-                <option value="h1">H1</option>
-                <option value="h2">H2</option>
-                <option value="h3">H3</option>
-                <option value="p">Normal</option>
+                <option value="h1" class="wysiwyg-h1-option">H1</option>
+                <option value="h2" class="wysiwyg-h2-option">H2</option>
+                <option value="h3" class="wysiwyg-h3-option">H3</option>
+                <option value="p" class="wysiwyg-p-option">Normal</option>
+                <option value="red-bold" class="wysiwyg-red-bold-option">Red Bold</option>
             </select>
             <select id="wysiwygLanguageSelect" onchange="changeWysiwygCodeLanguage()" title="Code Language" class="toolbar-select">
                 <option value="javascript">JavaScript</option>
@@ -698,6 +715,47 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
                 <option value="sql">SQL</option>
             </select>
         </div>
+        <style>
+        /* Style the heading dropdown options visually and with correct font */
+        .wysiwyg-heading-select option.wysiwyg-h1-option {
+            font-family: 'Benne', serif;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .wysiwyg-heading-select option.wysiwyg-h2-option {
+            font-family: 'Karla', sans-serif;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .wysiwyg-heading-select option.wysiwyg-h3-option {
+            font-family: 'Karla', sans-serif;
+            font-size: 1.17em;
+            font-weight: bold;
+        }
+        .wysiwyg-heading-select option.wysiwyg-p-option {
+            font-family: 'Karla', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .wysiwyg-heading-select option.wysiwyg-red-bold-option {
+            font-family: 'Karla', sans-serif;
+            font-size: 1em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        /* Fallback for browsers that ignore option styles: style the select itself for preview */
+        .wysiwyg-heading-select {
+            font-family: 'Karla', sans-serif;
+        }
+        .wysiwyg-heading-select:has(option:checked.wysiwyg-h1-option),
+        .wysiwyg-heading-select option:checked.wysiwyg-h1-option {
+            font-family: 'Benne', serif;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        /* Style toolbar buttons for lists */
+        .wysiwyg-toolbar .toolbar-btn { min-width: 32px; }
+        </style>
         <div id="wysiwyg-editor" class="wysiwyg-editor" contenteditable="true"></div>
         <div class="desc-edit-actions" style="text-align: right; margin-top: 8px;">
             <button id="desc-cancel-btn" style="background: #f5f5f5; border: 1px solid #ddd; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Cancel</button>
@@ -709,26 +767,44 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
     if (editWrap) {
         editWrap.appendChild(descEditor);
         
-        // Hide ALL display elements
+        // Hide ALL display elements - be more aggressive about hiding
         const displayText = editWrap.querySelector('.description-display');
-        if (displayText) displayText.style.display = 'none';
+        if (displayText) {
+            displayText.style.display = 'none';
+            displayText.style.visibility = 'hidden';
+            displayText.style.opacity = '0';
+        }
         
         const originalDesc = editWrap.querySelector('.description');
-        if (originalDesc) originalDesc.style.display = 'none';
+        if (originalDesc) {
+            originalDesc.style.display = 'none';
+            originalDesc.style.visibility = 'hidden';
+            originalDesc.style.opacity = '0';
+        }
         
         // Hide the edit button
         editBtn.style.display = 'none';
         
-        // Also hide any other description elements that might be showing
-        const allDescElements = editWrap.querySelectorAll('p, div');
-        allDescElements.forEach(el => {
-            if (el !== descDiv && el !== descEditor && !el.classList.contains('wysiwyg-toolbar') && !el.classList.contains('desc-edit-actions')) {
+        // Hide ALL other elements within the edit wrap that aren't the editor
+        const allElements = editWrap.querySelectorAll('*');
+        allElements.forEach(el => {
+            if (el !== descDiv && 
+                el !== descEditor && 
+                !el.classList.contains('wysiwyg-toolbar') && 
+                !el.classList.contains('desc-edit-actions') &&
+                !el.closest('.wysiwyg-toolbar') &&
+                !el.closest('.desc-edit-actions') &&
+                !el.closest('#wysiwyg-editor')) {
                 el.style.display = 'none';
+                el.style.visibility = 'hidden';
+                el.style.opacity = '0';
             }
         });
         
         // Ensure the editor is visible
         descEditor.style.display = 'block';
+        descEditor.style.visibility = 'visible';
+        descEditor.style.opacity = '1';
     }
     
     // Initialize WYSIWYG editor
@@ -799,6 +875,45 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
                 mainSaveBtn.disabled = true;
                 mainSaveBtn.style.background = '#888';
                 mainSaveBtn.style.cursor = 'not-allowed';
+            }
+        }
+    });
+    
+    // Add keyboard shortcuts for the WYSIWYG editor
+    wysiwygEditor.addEventListener('keydown', function(e) {
+        if (e.ctrlKey || e.metaKey) {
+            switch(e.key) {
+                case 'z':
+                    if (e.shiftKey) {
+                        // Ctrl+Shift+Z or Cmd+Shift+Z for Redo
+                        e.preventDefault();
+                        execWysiwygCommand('redo', false, null);
+                    } else {
+                        // Ctrl+Z or Cmd+Z for Undo
+                        e.preventDefault();
+                        execWysiwygCommand('undo', false, null);
+                    }
+                    break;
+                case 'y':
+                    // Ctrl+Y or Cmd+Y for Redo (alternative)
+                    e.preventDefault();
+                    execWysiwygCommand('redo', false, null);
+                    break;
+                case 'b':
+                    // Ctrl+B or Cmd+B for Bold
+                    e.preventDefault();
+                    execWysiwygCommand('bold', false, null);
+                    break;
+                case 'i':
+                    // Ctrl+I or Cmd+I for Italic
+                    e.preventDefault();
+                    execWysiwygCommand('italic', false, null);
+                    break;
+                case 'u':
+                    // Ctrl+U or Cmd+U for Underline
+                    e.preventDefault();
+                    execWysiwygCommand('underline', false, null);
+                    break;
             }
         }
     });
@@ -1166,7 +1281,39 @@ console.log("Hello, World!");</code>`;
 
 function formatWysiwygHeading(tag) {
     if (tag && tag !== '') {
-        execWysiwygCommand('formatBlock', false, `<${tag}>`);
+        if (tag === 'red-bold') {
+            // Apply red bold styling using execCommand for undo support
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                const selectedText = range.toString();
+                
+                if (selectedText) {
+                    // Use execCommand for foreground color and bold to make it undoable
+                    execWysiwygCommand('foreColor', false, '#e74c3c');
+                    execWysiwygCommand('bold', false, null);
+                }
+            }
+        } else if (tag === 'p') {
+            // Handle "Normal" selection - remove inline styles from selected text
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                const selectedText = range.toString();
+                
+                if (selectedText) {
+                    // First try to remove all formatting
+                    execWysiwygCommand('removeFormat', false, null);
+                    // Then ensure we have normal color and no bold
+                    execWysiwygCommand('foreColor', false, '#000000');
+                    execWysiwygCommand('bold', false, null);
+                }
+            }
+            // Also apply normal paragraph formatting
+            execWysiwygCommand('formatBlock', false, '<p>');
+        } else {
+            execWysiwygCommand('formatBlock', false, `<${tag}>`);
+        }
         // Reset dropdown after use
         document.querySelector('select[onchange="formatWysiwygHeading(this.value)"]').selectedIndex = 0;
     }

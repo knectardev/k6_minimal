@@ -106,15 +106,60 @@ app.post('/api/update-menu', (req, res) => {
       fs.mkdirSync(dataDir, { recursive: true });
     }
     
-    // Create backup before writing
-    const backupPath = path.join(__dirname, 'data', `menu_backup_${Date.now()}.json`);
-    try {
-      if (fs.existsSync(menuPath)) {
-        fs.copyFileSync(menuPath, backupPath);
-        console.log('Backup created:', backupPath);
+    // Smart backup strategy: only backup if content changed
+    let shouldCreateBackup = false;
+    let currentContent = '';
+    
+    if (fs.existsSync(menuPath)) {
+      try {
+        currentContent = fs.readFileSync(menuPath, 'utf8');
+        const newContent = JSON.stringify(req.body, null, 2);
+        shouldCreateBackup = currentContent !== newContent;
+      } catch (readError) {
+        console.warn('Could not read current menu for comparison:', readError);
+        shouldCreateBackup = true; // Backup if we can't compare
       }
-    } catch (backupError) {
-      console.warn('Backup creation failed:', backupError);
+    } else {
+      shouldCreateBackup = true; // Backup if file doesn't exist
+    }
+    
+    if (shouldCreateBackup) {
+      try {
+        // Clean up old backups (keep only 10 most recent)
+        const backupDir = path.dirname(menuPath);
+        const backupFiles = fs.readdirSync(backupDir)
+          .filter(file => file.startsWith('menu_backup_') && file.endsWith('.json'))
+          .map(file => ({
+            name: file,
+            path: path.join(backupDir, file),
+            time: fs.statSync(path.join(backupDir, file)).mtime.getTime()
+          }))
+          .sort((a, b) => b.time - a.time); // Sort by newest first
+        
+        // Remove old backups beyond the 10th one
+        if (backupFiles.length >= 10) {
+          const filesToDelete = backupFiles.slice(10);
+          filesToDelete.forEach(file => {
+            try {
+              fs.unlinkSync(file.path);
+              console.log('Removed old backup:', file.name);
+            } catch (deleteError) {
+              console.warn('Failed to delete old backup:', file.name, deleteError);
+            }
+          });
+        }
+        
+        // Create new backup
+        const backupPath = path.join(__dirname, 'data', `menu_backup_${Date.now()}.json`);
+        if (fs.existsSync(menuPath)) {
+          fs.copyFileSync(menuPath, backupPath);
+          console.log('Backup created:', path.basename(backupPath));
+        }
+      } catch (backupError) {
+        console.warn('Backup creation failed:', backupError);
+      }
+    } else {
+      console.log('No backup needed - content unchanged');
     }
     
     // Write file with error handling

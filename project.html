@@ -45,6 +45,7 @@
     <style>
         /* Force line breaks for highlight.js code blocks */
         .description-edit-wrap .description-display pre code.hljs,
+        /* Code block line height now controlled via CSS variables */
         .description-edit-wrap .description-display pre code.hljs.language-javascript,
         .description-edit-wrap .description-display pre code.hljs.language-python,
         .description-edit-wrap .description-display pre code.hljs.language-html,
@@ -53,7 +54,7 @@
             white-space: pre-wrap !important;
             word-wrap: break-word !important;
             font-family: 'Courier New', monospace !important;
-            line-height: 1.4 !important;
+            line-height: var(--line-height-code) !important;
         }
         
         .description-edit-wrap .description-display pre {
@@ -78,6 +79,9 @@
         .description-edit-wrap .description-display pre code.hljs * {
             white-space: pre-wrap !important;
         }
+        
+        /* Line spacing is now controlled centrally via CSS variables */
+        /* See css/style.css for --line-height-description and --line-height-code */
     </style>
 </head>
 <body>
@@ -122,6 +126,28 @@
                         span.innerHTML = span.innerHTML.replace(/\n/g, '<br>');
                     }
                 });
+            });
+        }
+
+        // Force line-height on dynamically generated content
+        function applyLineHeightToProjectInfo() {
+            const projectInfo = document.querySelector('.project-info');
+            if (!projectInfo) return;
+            
+            // Get the CSS variable values
+            const computedStyle = getComputedStyle(document.documentElement);
+            const descriptionLineHeight = computedStyle.getPropertyValue('--line-height-description');
+            const codeLineHeight = computedStyle.getPropertyValue('--line-height-code');
+            
+            // Apply to all text content (excluding code blocks)
+            const textElements = projectInfo.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote, strong, em, b, i, a');
+            textElements.forEach(el => {
+                // Skip if it's a code element or inside a code block
+                if (el.closest('pre') || el.closest('code') || el.tagName === 'PRE' || el.tagName === 'CODE') {
+                    el.style.lineHeight = codeLineHeight;
+                } else {
+                    el.style.lineHeight = descriptionLineHeight;
+                }
             });
         }
 
@@ -261,6 +287,8 @@
             
             // Fix line breaks in code blocks after content is loaded
             setTimeout(fixCodeBlockLineBreaks, 100);
+            // Apply line height after content is loaded
+            setTimeout(applyLineHeightToProjectInfo, 100);
         });
 
     </script>
