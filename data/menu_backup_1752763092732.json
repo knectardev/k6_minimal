@@ -20,16 +20,16 @@
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
         "technology": "Drupal",
-        "designPartner": "Carnegie Higher Ed",
+        "designPartner": "Carnegie Dartlet ",
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.cmu.edu/",
         "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">Carnegie Mellon University (CMU) engaged our team to replatform its primary web presence on Drupal 10. Working alongside design and strategy partner Carnegie Higher Ed (aka Knectar), our goal was to deliver a flexible, component‑driven CMS that could power both the flagship site (cmu.edu) and a family of unit sites, all sharing global design patterns but maintaining local autonomy.</p><h3 style=\"line-height: 2;\">Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Modernize &amp; Unify:</strong> Rebuild https://cmu.edu/ on Drupal 10, consolidating legacy Cascade sites and streamlining update workflows.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Component Library:</strong> Expose a rich library of paragraph‑based components (hero, accordions, timeline sliders, event feeds, RFI forms, etc.) that editorial teams across schools, colleges, and units could assemble without code.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Global vs. Local Governance:</strong> Support both centrally managed \"global\" features (utility nav, footer, alerts) and \"local\" unit‑specific content instances.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Integration First:</strong> Leverage existing CMU services—Search (search.cmu.edu), Events (LiveWhale JSON feeds), News (native Drupal or pull‑through feeds), video embeds, and third‑party forms (Wufoo via Form Connector).</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Decoupled Search &amp; News</h3><p style=\"line-height: 2;\">CMU's global search lives at search.cmu.edu; flagship and unit sites simply post queries there. We built a minimal search form in the header, routing all results off‑site to avoid duplicating infrastructure.<br>News content had to live either natively in each Drupal instance or be pulled from an external news site; editorial decisions determined on a per‑unit basis.</p><h3 style=\"line-height: 2;\">Events Integration</h3><p style=\"line-height: 2;\">LiveWhale powers CMU's University Calendar, exposing hundreds of events via JSON. Our front‑end team built a parser to ingest selected feeds (e.g. by group or tag) and render them in styled cards—rather than embedding iframes—while still linking back to the LiveWhale application for full details.</p><h3 style=\"line-height: 2;\">Component‑Driven Build</h3><p style=\"line-height: 2;\">More than 50 reusable \"paragraph\" components (hero banners, three‑up panels, video embeds, timeline sliders, stats panels, faculty bios, RFI forms) needed wireframes, design‑system specs, and dev tasks tracked across multiple QA rounds.<br>We established clear content workflows in Drupal, anchoring each component in a matrix that mapped which template (flagship homepage, secondary, tertiary, marketing landing, unit site) would expose which configuration options.</p><h3 style=\"line-height: 2;\">Global vs. Local Site Governance</h3><p style=\"line-height: 2;\">Critical global elements—utility nav (Current Students / Faculty &amp; Staff / Alumni / Directory), emergency alerts, and the large footer—had to behave consistently across all instances, yet allow regional overrides. We built a lightweight feature module to manage on/off toggles at the site group level.</p><h3 style=\"line-height: 2;\">Performance &amp; Caching</h3><p style=\"line-height: 2;\">With dynamic JSON feeds for events and occasional iframe‑based form embeds, we balanced on‑the‑fly rendering with opportunistic caching. Final recommendation: cache event JSON for 10 minutes in Drupal, while form connectors remain live.</p><h3 style=\"line-height: 2;\">Technical Approach</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Drupal 10 Composer Managed Project:</strong> Leveraged the official Drupal core and contributed modules via Composer; used a custom feature module (cmu_common) to bundle global components and settings.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Pattern Lab &amp; Twig Components:</strong> Our FE team exported Knectar's Sketch/Zeplin specs into a living style guide backed by Twig component templates. Each paragraph type corresponded to a Twig partial with clear variable contracts.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Decoupled Data Fetchers:</strong> For LiveWhale events and external news feeds, we built custom services to fetch and normalize JSON, exposing them as render arrays so editors could drop \"Featured Events\" or \"News List\" blocks onto any page.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Form Connector Integration:</strong> Wufoo forms were embedded via FormConnector; we abstracted embed code behind a generic \"RFI Form\" component so that marketing landing pages, academic program pages, and full‑width forms all use the same markup pattern.</li></ul><h3 style=\"line-height: 2;\">Outcomes</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Launch Date:</strong> The new https://cmu.edu/ went live in June of 2025, with zero downtime for the legacy Cascade and news subsites.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Editorial Empowerment:</strong> Over 20 internal teams now share a single Drupal backend, authoring content through a consistent component palette—reducing training time by 40%.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Performance Gains:</strong> Our caching strategy and optimized JSON parsing delivered a Lighthouse performance score of 92 on desktop and 85 on mobile.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Scalability &amp; Future‑Proofing:</strong> With Drupal's robust API-first foundation, CMU can now integrate additional data sources (e.g., research profiles, digital collections) without rearchitecting the site.</li></ul><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to modernize your institution's web ecosystem?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver scalable, component‑driven digital experiences.</p>",
         "coverImage": "project_tiles/cmu.png",
         "sub_menu": 1,
         "detailImages": [
-          "project_images/cmu_1.png",
-          "project_images/cmu_2.png",
-          "project_images/cmu_3.png"
+          "project_images/cmu.webp",
+          "project_images/cmu.webp",
+          "project_images/cmu.webp"
         ]
       },
       {
@@ -193,7 +193,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://solve.mit.edu/",
-        "pageSummary": "<p>Description goes heresd sdlkj&nbsp; skdjs kdsj dksd</p><p>sdsljdh skldjhs dlj</p>",
+        "pageSummary": "Description goes here",
         "coverImage": "project_tiles/mit.jpg",
         "sub_menu": 1
       },
@@ -358,6 +358,22 @@
         "sub_menu": 1
       },
       {
+        "label": "Oxform PM",
+        "slug": "oxform-pm",
+        "menuDisplayName": "Oxform",
+        "url": "project.html?item=oxform-pm",
+        "projectTitle": "Oxform PM",
+        "role": "Technical Lead, Developer",
+        "budget": "$50,000 - $100,000",
+        "technology": "Drupal",
+        "designPartner": null,
+        "designPartnerUrl": null,
+        "projectUrl": "https://www.oxfordpm.com/",
+        "pageSummary": "<p></p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\">Descripti&nbsp; <a href=\"skdjskd\" target=\"_blank\" style=\"color: rgb(255, 0, 0); text-decoration: underline; font-weight: normal; line-height: 2;\">goes heresd sd sd s</a>&nbsp;sdksjd&nbsp;</p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\"></p><p></p>",
+        "coverImage": "project_tiles/ox.png",
+        "sub_menu": 1
+      },
+      {
         "label": "Paragraphs Stats Module",
         "slug": "paragraphs-stats-module",
         "menuDisplayName": "Paragraphs Stats",
@@ -475,22 +491,6 @@
         "projectUrl": "https://riverbendanimal.com/",
         "pageSummary": "<pre data-language=\"javascript\" class=\"language-javascript\"><br></pre>",
         "coverImage": "project_tiles/riverbend.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Oxford PM",
-        "slug": "oxform-pm",
-        "menuDisplayName": "Oxford PM",
-        "url": "project.html?item=oxform-pm",
-        "projectTitle": "Oxford Performance Materials",
-        "role": "Technical Lead, Developer",
-        "budget": "$50,000 - $100,000",
-        "technology": "Drupal",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://www.oxfordpm.com/",
-        "pageSummary": "<p></p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\">Descripti&nbsp; <a href=\"skdjskd\" target=\"_blank\" style=\"color: rgb(255, 0, 0); text-decoration: underline; font-weight: normal; line-height: 2;\">goes heresd sd sd s</a>&nbsp;sdksjd sdsdsd&nbsp;</p><p style=\"line-height: 2;\"><br></p><p style=\"line-height: 2;\">dsk;djs lkds&nbsp;</p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\"></p><p style=\"line-height: 2;\"></p><p></p>",
-        "coverImage": "project_tiles/ox.png",
         "sub_menu": 1
       },
       {

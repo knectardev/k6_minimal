@@ -79,6 +79,66 @@
         .description-edit-wrap .description-display pre code.hljs * {
             white-space: pre-wrap !important;
         }
+
+        /* Make stack images clickable */
+        .detail-stack-image {
+            cursor: pointer;
+        }
+
+        /* Modal overlay for expanded images */
+        .image-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000; /* above GitHub button */
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal-overlay img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .image-modal-overlay.active { opacity: 1; }
+        .image-modal-overlay.active img { transform: scale(1); }
+
+        /* Close button */
+        .image-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Arrow controls */
+        .image-modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            padding: 8px 16px;
+        }
+        .image-modal-arrow.left { left: 16px; }
+        .image-modal-arrow.right { right: 16px; }
+        .image-modal-arrow.disabled { opacity: 0.3; cursor: default; }
         
         /* Line spacing is now controlled centrally via CSS variables */
         /* See css/style.css for --line-height-description and --line-height-code */
@@ -169,6 +229,8 @@
                     return null;
                 };
                 pageData = findBySlug(window.__MENU_DATA, slugParam);
+                // Expose images for modal
+                window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
             }
             // Remove old single image
             const oldImg = document.getElementById('project-detail-image');
@@ -177,6 +239,7 @@
             const gallery = document.querySelector('.project-gallery');
             if (gallery) gallery.innerHTML = '';
             if (pageData && Array.isArray(pageData.detailImages)) {
+                window.__DETAIL_IMAGES = pageData.detailImages;
                 pageData.detailImages.forEach((src, i) => {
                     const img = document.createElement('img');
                     img.src = src;
@@ -187,11 +250,14 @@
                     img.style.width = '340px';
                     img.style.borderRadius = '8px';
                     img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                    // Make clickable to open modal
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', () => showImageModal(i));
                     // Random tilt between -15 and +15 degrees
                     const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
                     img.style.setProperty('--tilt', tilt);
                     img.dataset.origTilt = parseFloat(tilt);
-                    img.style.left = '50%';
+                    img.style.left = 'calc(50% + 100px)';
                     // Stagger vertical position for up to 4 images
                     if (i === 0) img.style.top = '100px';
                     if (i === 1) img.style.top = '450px';
@@ -271,6 +337,9 @@
                         nav.appendChild(prevBtn);
                         nav.appendChild(img);
                         nav.appendChild(nextBtn);
+                        // Click to expand
+                        img.style.cursor = 'pointer';
+                        img.addEventListener('click', () => showImageModal(idx));
                         mobileGallery.appendChild(nav);
                         // Optional: show image count
                         const count = document.createElement('div');
@@ -291,6 +360,85 @@
             setTimeout(applyLineHeightToProjectInfo, 100);
         });
 
+        // Modal helper
+        function showImageModal(startIdx) {
+            const imagesArr = Array.isArray(window.__DETAIL_IMAGES) ? window.__DETAIL_IMAGES : [];
+            if (!imagesArr.length) return;
+            let currentIdx = startIdx;
+            // Prevent multiple overlays
+            if (document.querySelector('.image-modal-overlay')) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'image-modal-overlay';
+            const img = document.createElement('img');
+            img.src = imagesArr[currentIdx];
+            img.alt = '';
+            overlay.appendChild(img);
+
+            // Close X
+            const closeX = document.createElement('div');
+            closeX.className = 'image-modal-close';
+            closeX.textContent = '×';
+            closeX.addEventListener('click', e => { e.stopPropagation(); overlay.remove(); });
+            overlay.appendChild(closeX);
+
+            // Arrow controls
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'image-modal-arrow left';
+            leftArrow.textContent = '‹';
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'image-modal-arrow right';
+            rightArrow.textContent = '›';
+            overlay.appendChild(leftArrow);
+            overlay.appendChild(rightArrow);
+
+            function updateArrows() {
+                leftArrow.classList.toggle('disabled', currentIdx === 0);
+                rightArrow.classList.toggle('disabled', currentIdx === imagesArr.length - 1);
+            }
+
+            leftArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx > 0) {
+                    currentIdx--; img.src = imagesArr[currentIdx]; updateArrows();
+                }
+            });
+            rightArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx < imagesArr.length - 1) {
+                    currentIdx++; img.src = imagesArr[currentIdx]; updateArrows();
+                }
+            });
+
+            updateArrows();
+
+            // Keyboard navigation
+            function handleKey(e) {
+                if (e.key === 'ArrowLeft') {
+                    leftArrow.click();
+                } else if (e.key === 'ArrowRight') {
+                    rightArrow.click();
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+
+            document.addEventListener('keydown', handleKey);
+
+            function closeModal() {
+                document.removeEventListener('keydown', handleKey);
+                overlay.remove();
+            }
+
+            // Replace previous listeners to use closeModal
+            overlay.addEventListener('click', closeModal);
+            closeX.removeEventListener('click', () => { }); // ensure no duplicate
+            closeX.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
+            document.body.appendChild(overlay);
+            // trigger animated entrance
+            requestAnimationFrame(() => {
+                overlay.classList.add('active');
+            });
+        }
     </script>
 </body>
 </html> 

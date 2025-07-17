@@ -1855,3 +1855,34 @@ body {
     word-wrap: break-word !important;
     display: block !important;
 }
+
+/* ------- Responsive Project Title Adjustments ------- */
+@media (min-width: 1024px) {
+    /* Extend project content gutter so long titles don't wrap */
+    .project-info {
+        max-width: 720px; /* was 500px */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Tighten line-height for project titles when they wrap on small screens */
+    .project-info h1 {
+        line-height: 1.15 !important;
+    }
+}
+
+/* ------- Custom Red Bullet Style for Lists ------- */
+.project-info ul li::marker,
+.dynamic-body ul li::marker,
+.description ul li::marker,
+.wysiwyg-editor ul li::marker,
+.blog-post ul li::marker {
+    color: #FF0000;      /* red */
+    font-size: 1.15em;   /* slightly larger */
+    /* You can further adjust weight or font-family if needed */
+}
+
+.red-bullet {
+    color: #FF0000;
+    font-size: 1.15em;
+}

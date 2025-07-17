@@ -851,9 +851,16 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
         wysiwygEditor.innerHTML = cleanedContent || '<p><br></p>';
         console.log('Editor innerHTML after setting:', wysiwygEditor.innerHTML);
         
-        // Force a focus and blur to ensure content is visible
+        // Focus the editor and place cursor at the end
         wysiwygEditor.focus();
-        setTimeout(() => wysiwygEditor.blur(), 10);
+        const sel = window.getSelection();
+        if (sel) {
+            const range = document.createRange();
+            range.selectNodeContents(wysiwygEditor);
+            range.collapse(false); // place at end
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
         
         // Try triggering a DOM update
         wysiwygEditor.dispatchEvent(new Event('input'));
@@ -884,6 +891,15 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
     
     // Add keyboard shortcuts for the WYSIWYG editor
     wysiwygEditor.addEventListener('keydown', function(e) {
+        // ESC to cancel editing and refresh
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            const cancelBtn = document.getElementById('desc-cancel-btn');
+            if (cancelBtn) cancelBtn.click();
+            // Give DOM a moment, then refresh to fetch latest data
+            setTimeout(() => window.location.reload(), 50);
+            return;
+        }
         if (e.ctrlKey || e.metaKey) {
             switch(e.key) {
                 case 'z':
@@ -916,6 +932,32 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
                     // Ctrl+U or Cmd+U for Underline
                     e.preventDefault();
                     execWysiwygCommand('underline', false, null);
+                    break;
+                case 'k':
+                    // Ctrl+K or Cmd+K for Insert Link
+                    e.preventDefault();
+                    insertWysiwygLink();
+                    break;
+                case 'Enter':
+                    // Ctrl+Enter or Cmd+Enter to Quick-Save without closing editor
+                    e.preventDefault();
+                    const menuCheckboxQuick = document.getElementById('displayInMenuCheckbox');
+                    const menuStateQuick = menuCheckboxQuick ? menuCheckboxQuick.checked : null;
+                    const newDescQuick = wysiwygEditor.innerHTML;
+                    updateProjectDescription(slug, newDescQuick, menuStateQuick, true);
+                    // Provide visual feedback on the main Save button but keep editing
+                    const saveBtnShortcut = document.getElementById('desc-save-btn');
+                    if (saveBtnShortcut) {
+                        saveBtnShortcut.textContent = 'Saved!';
+                        saveBtnShortcut.style.background = '#28a745';
+                        saveBtnShortcut.disabled = true;
+                        // Re-enable after few seconds so user can save again later
+                        setTimeout(() => {
+                            saveBtnShortcut.textContent = 'Save';
+                            saveBtnShortcut.style.background = '#FF0000';
+                            saveBtnShortcut.disabled = false;
+                        }, 2000);
+                    }
                     break;
             }
         }
@@ -1045,7 +1087,7 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
     }
 })();
 
-function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
+function updateProjectDescription(slug, newDesc, menuCheckboxState = null, skipReload = false) {
     // First, get the original data from the server to ensure we don't lose any fields
     fetch('/data/menu.json', { 
         cache: 'no-cache',
@@ -1133,10 +1175,12 @@ function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
                 saveBtn.disabled = true;
             }
             
-            // Reload the page to show the updated content immediately
-            setTimeout(() => {
-                window.location.reload();
-            }, 1000); // Give user time to see the success message
+            // Reload page only if not skipping (regular save button)
+            if (!skipReload) {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
         }
     })
     .catch(err => {
@@ -1155,6 +1199,11 @@ function updateProjectDescription(slug, newDesc, menuCheckboxState = null) {
         }
         
         origInject();
+        
+        // Apply red bullet styling after content is injected
+        if (typeof styleRedBullets === 'function') {
+            styleRedBullets();
+        }
         
         // Attach edit icon handler if logged in and on project detail
         const urlParams = new URLSearchParams(window.location.search);
@@ -1429,4 +1478,38 @@ function insertWysiwygLink() {
 
     // Trigger change detection so that the Save button state updates
     wysiwygEditor.dispatchEvent(new Event('input'));
+} 
+
+// Replace literal bullet characters (•) with styled red bullet spans
+function styleRedBullets() {
+    const selectors = ['.project-info', '.dynamic-body', '.description-display', '.description'];
+    selectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(container => {
+            if (!container) return;
+            const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
+            const textNodes = [];
+            while (walker.nextNode()) {
+                const node = walker.currentNode;
+                if (node.nodeValue && node.nodeValue.includes('•')) {
+                    textNodes.push(node);
+                }
+            }
+            textNodes.forEach(node => {
+                const parts = node.nodeValue.split('•');
+                const frag = document.createDocumentFragment();
+                parts.forEach((txt, idx) => {
+                    if (idx > 0) {
+                        const span = document.createElement('span');
+                        span.className = 'red-bullet';
+                        span.textContent = '•';
+                        frag.appendChild(span);
+                    }
+                    if (txt.length) {
+                        frag.appendChild(document.createTextNode(txt));
+                    }
+                });
+                node.parentNode.replaceChild(frag, node);
+            });
+        });
+    });
 } 

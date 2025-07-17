@@ -281,7 +281,7 @@
         "designPartner": "",
         "designPartnerUrl": "#N/A",
         "projectUrl": "https://rebates.nextzero.org/",
-        "pageSummary": "<p>Description goes heres s </p>",
+        "pageSummary": "<p></p><p style=\"line-height: 2;\"></p><a href=\"skdjskjd\" target=\"_blank\" style=\"color: rgb(255, 0, 0); text-decoration: underline; font-weight: normal;\">sdsds</a><p style=\"line-height: 2;\"></p><p></p>",
         "coverImage": "project_tiles/rebates.png",
         "sub_menu": 1
       },
@@ -337,7 +337,7 @@
         "designPartner": " ",
         "designPartnerUrl": null,
         "projectUrl": null,
-        "pageSummary": "<p>Description goess222s here!!!</p><p>Description goes ssshere!!! ssdsd</p><p>Descrisdsdsdsdption goes here!!!</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block ql-syntax language-javascript\" data-language=\"javascript\">                    if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div><p><br></p><p>Description goes here!!!</p><p><br></p><p>Description goes here!!!</p><p><br></p>",
+        "pageSummary": "<p></p><p style=\"line-height: 2;\">Description <a href=\"https://www.glenmede.com/\" target=\"_blank\" style=\"color: rgb(255, 0, 0); text-decoration: underline; font-weight: normal;\">goess222s </a>here!!!</p><p style=\"line-height: 2;\">Description goes ssshere!!! ssdsd</p><p style=\"line-height: 2;\">Descrisdsdsdsdption goes here!!!</p>if (newDesc !== originalDesc) {                updateProjectDescription(slug, newDesc, (success) =&gt; {                    if (success) {                        showIndicator('Saved!', 'saved');                        originalDesc = newDesc; // Update original for next comparison                    } else {<p style=\"line-height: 2;\"><br></p><p style=\"line-height: 2;\">Description goes here!!!</p><p style=\"line-height: 2;\"><br></p><p style=\"line-height: 2;\">Description goes here!!!</p><p style=\"line-height: 2;\"><br></p><p></p>",
         "coverImage": "project_tiles/carv.png",
         "sub_menu": 1
       },
@@ -369,7 +369,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://www.oxfordpm.com/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<p></p><p style=\"line-height: 2;\">Description<a href=\"skdjskd\" target=\"_blank\" style=\"color: rgb(255, 0, 0); text-decoration: underline; font-weight: normal; line-height: 2;\"> goes heresd sd sd s</a>&nbsp;</p><p></p>",
         "coverImage": "project_tiles/ox.png",
         "sub_menu": 1
       },
