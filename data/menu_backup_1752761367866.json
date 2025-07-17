@@ -281,7 +281,7 @@
         "designPartner": "",
         "designPartnerUrl": "#N/A",
         "projectUrl": "https://rebates.nextzero.org/",
-        "pageSummary": "<p></p><p style=\"line-height: 2;\"><a href=\"https://google.com\" target=\"_blank\" style=\"color: rgb(255, 0, 0); text-decoration: underline; font-weight: normal;\">Description goes heres s </a></p><p></p>",
+        "pageSummary": "<p>Description goes heres s </p>",
         "coverImage": "project_tiles/rebates.png",
         "sub_menu": 1
       },
