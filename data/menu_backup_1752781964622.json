@@ -20,16 +20,16 @@
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
         "technology": "Drupal",
-        "designPartner": "Carnegie Dartlet ",
+        "designPartner": "Carnegie Higher Ed",
         "designPartnerUrl": "https://www.carnegiehighered.com/",
         "projectUrl": "https://www.cmu.edu/",
-        "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">Carnegie Mellon University (CMU) engaged our team to replatform its primary web presence on Drupal 10. Working alongside design and strategy partner Carnegie Higher Ed (aka Knectar), our goal was to deliver a flexible, component‑driven CMS that could power both the flagship site (cmu.edu) and a family of unit sites, all sharing global design patterns but maintaining local autonomy.</p><h3 style=\"line-height: 2;\">Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Modernize &amp; Unify:</strong> Rebuild https://cmu.edu/ on Drupal 10, consolidating legacy Cascade sites and streamlining update workflows.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Component Library:</strong> Expose a rich library of paragraph‑based components (hero, accordions, timeline sliders, event feeds, RFI forms, etc.) that editorial teams across schools, colleges, and units could assemble without code.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Global vs. Local Governance:</strong> Support both centrally managed \"global\" features (utility nav, footer, alerts) and \"local\" unit‑specific content instances.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Integration First:</strong> Leverage existing CMU services—Search (search.cmu.edu), Events (LiveWhale JSON feeds), News (native Drupal or pull‑through feeds), video embeds, and third‑party forms (Wufoo via Form Connector).</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Decoupled Search &amp; News</h3><p style=\"line-height: 2;\">CMU's global search lives at search.cmu.edu; flagship and unit sites simply post queries there. We built a minimal search form in the header, routing all results off‑site to avoid duplicating infrastructure.<br>News content had to live either natively in each Drupal instance or be pulled from an external news site; editorial decisions determined on a per‑unit basis.</p><h3 style=\"line-height: 2;\">Events Integration</h3><p style=\"line-height: 2;\">LiveWhale powers CMU's University Calendar, exposing hundreds of events via JSON. Our front‑end team built a parser to ingest selected feeds (e.g. by group or tag) and render them in styled cards—rather than embedding iframes—while still linking back to the LiveWhale application for full details.</p><h3 style=\"line-height: 2;\">Component‑Driven Build</h3><p style=\"line-height: 2;\">More than 50 reusable \"paragraph\" components (hero banners, three‑up panels, video embeds, timeline sliders, stats panels, faculty bios, RFI forms) needed wireframes, design‑system specs, and dev tasks tracked across multiple QA rounds.<br>We established clear content workflows in Drupal, anchoring each component in a matrix that mapped which template (flagship homepage, secondary, tertiary, marketing landing, unit site) would expose which configuration options.</p><h3 style=\"line-height: 2;\">Global vs. Local Site Governance</h3><p style=\"line-height: 2;\">Critical global elements—utility nav (Current Students / Faculty &amp; Staff / Alumni / Directory), emergency alerts, and the large footer—had to behave consistently across all instances, yet allow regional overrides. We built a lightweight feature module to manage on/off toggles at the site group level.</p><h3 style=\"line-height: 2;\">Performance &amp; Caching</h3><p style=\"line-height: 2;\">With dynamic JSON feeds for events and occasional iframe‑based form embeds, we balanced on‑the‑fly rendering with opportunistic caching. Final recommendation: cache event JSON for 10 minutes in Drupal, while form connectors remain live.</p><h3 style=\"line-height: 2;\">Technical Approach</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Drupal 10 Composer Managed Project:</strong> Leveraged the official Drupal core and contributed modules via Composer; used a custom feature module (cmu_common) to bundle global components and settings.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Pattern Lab &amp; Twig Components:</strong> Our FE team exported Knectar's Sketch/Zeplin specs into a living style guide backed by Twig component templates. Each paragraph type corresponded to a Twig partial with clear variable contracts.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Decoupled Data Fetchers:</strong> For LiveWhale events and external news feeds, we built custom services to fetch and normalize JSON, exposing them as render arrays so editors could drop \"Featured Events\" or \"News List\" blocks onto any page.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Form Connector Integration:</strong> Wufoo forms were embedded via FormConnector; we abstracted embed code behind a generic \"RFI Form\" component so that marketing landing pages, academic program pages, and full‑width forms all use the same markup pattern.</li></ul><h3 style=\"line-height: 2;\">Outcomes</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Launch Date:</strong> The new https://cmu.edu/ went live in June of 2025, with zero downtime for the legacy Cascade and news subsites.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Editorial Empowerment:</strong> Over 20 internal teams now share a single Drupal backend, authoring content through a consistent component palette—reducing training time by 40%.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Performance Gains:</strong> Our caching strategy and optimized JSON parsing delivered a Lighthouse performance score of 92 on desktop and 85 on mobile.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Scalability &amp; Future‑Proofing:</strong> With Drupal's robust API-first foundation, CMU can now integrate additional data sources (e.g., research profiles, digital collections) without rearchitecting the site.</li></ul><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to modernize your institution's web ecosystem?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver scalable, component‑driven digital experiences.</p>",
+        "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">Carnegie Mellon University (CMU) engaged our team to replatform its primary web presence on Drupal 10. Working alongside design and strategy partner Carnegie Higher Ed (aka Knectar), our goal was to deliver a flexible, component‑driven CMS that could power both the flagship site (cmu.edu) and a family of unit sites, all sharing global design patterns but maintaining local autonomy.</p><h3 style=\"line-height: 2;\">Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Modernize &amp; Unify:</strong> Rebuild https://cmu.edu/ on Drupal 10, consolidating legacy Cascade sites and streamlining update workflows.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Component Library:</strong> Expose a rich library of paragraph‑based components (hero, accordions, timeline sliders, event feeds, RFI forms, etc.) that editorial teams across schools, colleges, and units could assemble without code.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Global vs. Local Governance:</strong> Support both centrally managed \"global\" features (utility nav, footer, alerts) and \"local\" unit‑specific content instances.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Integration First:</strong> Leverage existing CMU services—Search (search.cmu.edu), Events (LiveWhale JSON feeds), News (native Drupal or pull‑through feeds), video embeds, and third‑party forms (Wufoo via Form Connector).</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Decoupled Search &amp; News</h3><p style=\"line-height: 2;\">CMU's global search lives at search.cmu.edu; flagship and unit sites simply post queries there. We built a minimal search form in the header, routing all results off‑site to avoid duplicating infrastructure.&nbsp;News content had to live either natively in each Drupal instance or be pulled from an external news site; editorial decisions determined on a per‑unit basis.</p><h3 style=\"line-height: 2;\">Events Integration</h3><p style=\"line-height: 2;\">LiveWhale powers CMU's University Calendar, exposing hundreds of events via JSON. Our front‑end team built a parser to ingest selected feeds (e.g. by group or tag) and render them in styled cards—rather than embedding iframes—while still linking back to the LiveWhale application for full details.</p><h3 style=\"line-height: 2;\">Component‑Driven Build</h3><p style=\"line-height: 2;\">More than 50 reusable \"paragraph\" components (hero banners, three‑up panels, video embeds, timeline sliders, stats panels, faculty bios, RFI forms) needed wireframes, design‑system specs, and dev tasks tracked across multiple QA rounds.&nbsp;We established clear content workflows in Drupal, anchoring each component in a matrix that mapped which template (flagship homepage, secondary, tertiary, marketing landing, unit site) would expose which configuration options.</p><h3 style=\"line-height: 2;\">Global vs. Local Site Governance</h3><p style=\"line-height: 2;\">Critical global elements—utility nav (Current Students / Faculty &amp; Staff / Alumni / Directory), emergency alerts, and the large footer—had to behave consistently across all instances, yet allow regional overrides. We built a lightweight feature module to manage on/off toggles at the site group level.</p><h3 style=\"line-height: 2;\">Performance &amp; Caching</h3><p style=\"line-height: 2;\">With dynamic JSON feeds for events and occasional iframe‑based form embeds, we balanced on‑the‑fly rendering with opportunistic caching. Final recommendation: cache event JSON for 10 minutes in Drupal, while form connectors remain live.</p><h3 style=\"line-height: 2;\">Technical Approach</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Drupal 10 Composer Managed Project:</strong> Leveraged the official Drupal core and contributed modules via Composer; used a custom feature module (cmu_common) to bundle global components and settings.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Pattern Lab &amp; Twig Components:</strong> Our FE team exported Knectar's Sketch/Zeplin specs into a living style guide backed by Twig component templates. Each paragraph type corresponded to a Twig partial with clear variable contracts.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Decoupled Data Fetchers:</strong> For LiveWhale events and external news feeds, we built custom services to fetch and normalize JSON, exposing them as render arrays so editors could drop \"Featured Events\" or \"News List\" blocks onto any page.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Form Connector Integration:</strong> Wufoo forms were embedded via FormConnector; we abstracted embed code behind a generic \"RFI Form\" component so that marketing landing pages, academic program pages, and full‑width forms all use the same markup pattern.</li></ul><h3 style=\"line-height: 2;\">Outcomes</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Launch Date:</strong> The new https://cmu.edu/ went live in June of 2025, with zero downtime for the legacy Cascade and news subsites.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Editorial Empowerment:</strong> Over 20 internal teams now share a single Drupal backend, authoring content through a consistent component palette—reducing training time by 40%.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Performance Gains:</strong> Our caching strategy and optimized JSON parsing delivered a Lighthouse performance score of 92 on desktop and 85 on mobile.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Scalability &amp; Future‑Proofing:</strong> With Drupal's robust API-first foundation, CMU can now integrate additional data sources (e.g., research profiles, digital collections) without rearchitecting the site.</li></ul><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to modernize your institution's web ecosystem?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver scalable, component‑driven digital experiences.</p>",
         "coverImage": "project_tiles/cmu.png",
         "sub_menu": 1,
         "detailImages": [
-          "project_images/cmu.webp",
-          "project_images/cmu.webp",
-          "project_images/cmu.webp"
+          "project_images/carnegie-mellon-university_1.png",
+          "project_images/carnegie-mellon-university_2.png",
+          "project_images/carnegie-mellon-university_3.png"
         ]
       },
       {
@@ -48,26 +48,31 @@
         "coverImage": "project_tiles/clarkson.png",
         "sub_menu": 1,
         "detailImages": [
-          "project_images/cmu.webp",
-          "project_images/cmu.webp",
-          "project_images/cmu.webp"
+          "project_images/clarkson-university_1.png",
+          "project_images/clarkson-university_2.png",
+          "project_images/clarkson-university_3.png"
         ]
       },
       {
-        "label": "Deshpande Center for Technological Innovation",
-        "slug": "deshpande-center-for-technological-innovation",
-        "menuDisplayName": "Deshpande",
-        "url": "project.html?item=deshpande-center-for-technological-innovation",
-        "projectTitle": "Deshpande Center for Technological Innovation",
+        "label": "Yale Center for British Art",
+        "slug": "yale-center-for-british-art",
+        "menuDisplayName": "Yale",
+        "url": "project.html?item=yale-center-for-british-art",
+        "projectTitle": "Yale Center for British Art",
         "role": "Technical Lead, Developer",
-        "budget": "$25,000 - $50,000",
+        "budget": "$50,000 - $100,000",
         "technology": "Drupal",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://deshpande.mit.edu/",
-        "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "project_tiles/deshpande_mit.jpg",
-        "sub_menu": 0
+        "designPartner": "Fabrique",
+        "designPartnerUrl": "https://www.fabrique.com/",
+        "projectUrl": "https://britishart.yale.edu/",
+        "pageSummary": "Description goes here",
+        "coverImage": "project_tiles/yale-center-for-british-art.png",
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/yale-center-for-british-art_1.png",
+          "project_images/yale-center-for-british-art_2.png",
+          "project_images/yale-center-for-british-art_3.png"
+        ]
       },
       {
         "label": "Fox Chase Cancer Research",
@@ -83,23 +88,12 @@
         "projectUrl": "https://www.foxchase.org/",
         "pageSummary": "<h3>Background</h3><p>Fox Chase Cancer Center (FCCC), part of Temple University Health System, engaged Knectar and Transit Authority Figures to modernize their digital presence. The goal was to deliver a highly configurable, accessible, and user-friendly Drupal site that could scale with FCCC's evolving clinical, research, and educational initiatives.</p><h3>Objectives</h3><ul><li><strong>Robust Content Architecture:</strong> Implement a suite of custom Drupal content types (News, Events, Blog, Patient Stories, People, Clinical Trials, etc.) with granular control over metadata, taxonomy, and display templates.</li><li><strong>Intuitive Site Navigation &amp; Search:</strong> Create \"Find a Doctor\" and \"Find a Scientist\" predictive-search experiences, nested taxonomy-driven landing pages, and multi-dimensional filters (e.g. by specialty, department, research program).</li><li><strong>Responsive, Accessible Design:</strong> Deliver a mobile-first responsive theme supporting IE9+, Safari 7+, Firefox 37+, and Chrome 41+. Adhere to Temple's ADA guidelines for accessible navigation, print-friendly views, and semantic markup.</li><li><strong>Scalable Module Ecosystem:</strong> Curate and configure an approved module list (e.g., Chosen, Focal Point, Metatag, ShareThis, Workbench Moderation) to support editorial workflows and performance.</li></ul><h3><u>Key Challenges</u></h3><h3>Complex Taxonomy &amp; Nested Content</h3><p>FCCC's extensive vocabularies (Specialties, Departments, Conditions, Research Programs) required custom logic to display parent/child relationships and override default taxonomy landing pages.</p><h3>Dynamic \"Push\" &amp; \"Pull\" Content</h3><p>Content editors needed the ability to push News/Events/Blog posts into arbitrary pages, plus dynamically display related content across dozens of templates.</p><h3>Performance &amp; Security</h3><p>Ensuring fast load times and robust security on a content-rich site while maintaining Temple University's IT standards.</p><h3>Technical Approach</h3><ul><li><strong>Modular Content Types &amp; Templates:</strong> Built 15+ content types with distinct fields and display templates. For example, the Patient Stories grid and detail views support filtering by cancer type, doctor, and treatment, with hover and expand/collapse behaviors for mobile. Employed the Paragraphs module to give editors drag‑and‑drop control over Faculty list composition (titles, images, bios).</li><li><strong>Advanced Taxonomy &amp; Search:</strong> Developed logic so parent-term pages aggregate child-term content, while child-term pages remain scoped to their specific content. \"Find a Doctor/Scientist\" fields leverage jQuery Chosen for autocomplete and domain‑specific weighting.</li><li><strong>Responsive &amp; Accessible Theme:</strong> Defined global style notes, WYSIWYG styles (tabbed content, block‑quote widths), and responsive table/drop‑down behaviors. Implemented print‑friendly views, proper alt‑tags, and semantic heading structures per Temple's accessibility standards.</li><li><strong>Editorial Workflow &amp; Governance:</strong> Enabled multi‑stage editorial workflows—draft, review, publish—complete with email notifications for review cycles. Added Scheduler for future publish dates and managed URL redirects for SEO and legacy traffic preservation.</li></ul><h3>Technology Stack</h3><ul><li><strong>CMS:</strong> Drupal 7 core</li><li><strong>Front‑end:</strong> Responsive SASS/CSS, jQuery, Chosen plugin, NodeEmbed for slideshows</li><li><strong>Modules:</strong> Metatag, ShareThis, Focal Point, jReject, Workbench, Scheduler, Domain Access, Paragraphs, NodeEmbed, Google Analytics integration, and multiple view and taxonomy enhancements</li><li><strong>Hosting &amp; Analytics:</strong> Temple University's managed hosting environment with Google Analytics and ShareThis for social engagement</li></ul><h3>Outcomes</h3><ul><li><strong>Enhanced User Engagement:</strong> Post‑launch analytics showed a 35% increase in \"Find a Doctor\" form submissions and a 20% longer average session duration across clinical pages.</li><li><strong>Editorial Efficiency:</strong> Content team reduced page‑creation time by 50%, thanks to standardized WYSIWYG blocks, Paragraphs templates, and \"push\"‑content features.</li><li><strong>Accessibility Achievements:</strong> FCCC met Temple's Level AA compliance with positive feedback from their internal accessibility review.</li><li><strong>Scalability:</strong> The modular taxonomy and content architecture proved flexible when FCCC later added new research programs and department‑specific landing pages without code changes.</li></ul><p><strong>Ready to transform your healthcare digital presence?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver accessible, scalable digital experiences.</p>",
         "coverImage": "project_tiles/fox.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Kavli Institute for Brain Science",
-        "slug": "kavli-institute-for-brain-science",
-        "menuDisplayName": "Kavli",
-        "url": "project.html?item=kavli-institute-for-brain-science",
-        "projectTitle": "Kavli Institute for Brain Science",
-        "role": "Technical Lead, Developer",
-        "budget": "$10,000 - $20,000",
-        "technology": "Drupal",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://kavli.columbia.edu/",
-        "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "project_tiles/kavli.png",
-        "sub_menu": 0
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/fox-chase-cancer-research_1.png",
+          "project_images/fox-chase-cancer-research_2.png",
+          "project_images/fox-chase-cancer-research_3.png"
+        ]
       },
       {
         "label": "Kettering University",
@@ -115,7 +109,12 @@
         "projectUrl": "https://www.kettering.edu/",
         "pageSummary": "<h3>Background</h3><p>Kettering University engaged our team to replace their aging site with a fully component‑driven Drupal 10 platform. Working alongside Knectar's design and strategy leads, we translated a rich \"pattern library\" into a living CMS that powers everything from the homepage's video banner to program finder, news listings, faculty profiles, and co‑op pages.</p><h3>Objectives</h3><ul><li><strong>Design‑System Implementation:</strong> Turn Knectar's web style guide into reusable Drupal paragraphs and templates across 20+ page types.</li><li><strong>Editorial Flexibility:</strong> Enable non‑technical editors to assemble pages (home, secondary, tertiary, academics, admissions, co‑op, program detail, news/event pages, etc.) from a palette of over 40 components.</li><li><strong>Third‑Party Integrations:</strong> Surface Instagram via Juicer, embed Slate forms for admissions, and support news/event feeds without iframes.</li><li><strong>Performance &amp; Consistency:</strong> Ensure a unified look and fast load‑times across desktop and mobile, while supporting both \"single‑use\" templates (homepage) and \"multipurpose\" templates (tertiary, program detail, news list).</li></ul><h3><u>Key Challenges</u></h3><h3>Vast Component Inventory</h3><p>Over 40 paragraph types: hero banners (static and video), stats panels (\"Our Distinct Difference\"), latest‑news and featured‑events panels, Instagram feed, CTA and intro‑text blocks, feature panels (with optional video modals), visual router grids, 2‑up/3‑up panels, full‑width media, accordions, router panels, testimonials/carousels, tables, contact panels, urgent announcements, news listings with paging, and more.<br>Home‑specific modules: video banner, router‑tabs list, video with CTA (\"Get to Know Our Co‑op\"), image/video sliders (\"Experience Kettering\"), and custom CTA panel.</p><h3>Template Hierarchy &amp; Instancing</h3><p>Defined five core template families—home, secondary, tertiary, tertiary‑minimal, and specialized pages (academics, admissions, co‑op, program detail, news/event, faculty, slate form, department landing, program finder, directory).<br>Mapped each component's availability per template, ensuring, for example, timely‑update carousels only on secondary pages, section nav on secondary, and dynamic side‑nav on tertiary.</p><h3>Integrations &amp; Data Feeds</h3><p><strong>Instagram Feed:</strong> Leveraged Juicer API to pull and cache the \"#ketteringuniversity\" photo carousel.<br><strong>Slate Forms:</strong> Embedded admissions and inquiry forms via Slate's embed code, wrapped in a generic \"Slate Form\" paragraph for uniform styling.<br><strong>News &amp; Events:</strong> Though Kettering's CMS handles native news, we built block configurations for \"News Detail,\" \"News Landing,\" and \"Event Detail/List\" pages—enabling manual curation plus taxonomy‑driven feeds.</p><h3>Editorial UX &amp; Accessibility</h3><p>Each paragraph carried helper text (image dimensions, ratio specs).<br>Link fields used Drupal's link widget to enforce accessible attributes.<br>Urgent announcements supported two tiers (primary red, secondary yellow) with session‑scoped dismissals.</p><h3>Technical Approach</h3><ul><li><strong>Composer‑Managed Drupal 10:</strong> Core and contrib modules managed via Composer; a feature module (kettering_common) encapsulated all component definitions, Twig templates, and integration services.</li><li><strong>Twig Components &amp; Pattern Lab:</strong> Knectar's Marvel prototypes were converted into a living style guide; each paragraph type corresponded to a Twig partial, with clear variable contracts.</li><li><strong>Custom Integration Services:</strong><br>• Juicer Service: Fetch and cache Instagram posts.<br>• Slate Form Block: Abstract embed code behind standardized paragraph.<br>• Cache Strategy: Short‑lived caches for dynamic feeds, aggressive asset minification for performance.</li></ul><h3>Outcomes</h3><ul><li><strong>Launch:</strong> Went live early 2024 with zero downtime—retiring the legacy platform.</li><li><strong>Speed &amp; Stability:</strong> Achieved Lighthouse scores of 90+ on desktop and 82+ on mobile.</li><li><strong>Editorial Empowerment:</strong> Over a dozen campus teams now build landing pages, program detail, and news/event sections with drag‑and‑drop ease—reducing dev tickets by 70%.</li><li><strong>Scalable Foundation:</strong> New pages (e.g. student stories, research highlights) slot into the existing template system without additional code.</li></ul><p><h1><strong>Ready to transform your digital presence?</strong></h1>Let's chat.</p>",
         "coverImage": "project_tiles/kettering.mp4",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/kettering-university_1.png",
+          "project_images/kettering-university_2.png",
+          "project_images/kettering-university_3.png"
+        ]
       },
       {
         "label": "La Jolla Country Day School",
@@ -131,7 +130,12 @@
         "projectUrl": "https://www.ljcds.org/",
         "pageSummary": "<p>Description goes here</p>",
         "coverImage": "project_tiles/lajolla.jpg",
-        "sub_menu": 0
+        "sub_menu": 0,
+        "detailImages": [
+          "project_images/la-jolla-country-day-school_1.png",
+          "project_images/la-jolla-country-day-school_2.png",
+          "project_images/la-jolla-country-day-school_3.png"
+        ]
       },
       {
         "label": "Lewis Katz School of Medicine - Temple University",
@@ -147,7 +151,12 @@
         "projectUrl": "https://medicine.temple.edu/",
         "pageSummary": "<h3>Background</h3><p>The Lewis Katz School of Medicine (LKSOM) at Temple University engaged Knectar and Transit Authority Figures to modernize its web presence. The initiative encompassed a ground‑up Drupal rebuild of https://medicine.temple.edu/, unifying departmental sites under a cohesive, accessible, and highly configurable CMS that supports faculty directories, news, events, and rich resource pages.</p><h3>Objectives</h3><ul><li><strong>Unified Content Architecture:</strong> Establish a single‑site Drupal codebase with shared templates and content types for all LKSOM departments and divisions.</li><li><strong>Granular Permissions &amp; Workflows:</strong> Implement LDAP‑based authentication and fine‑grained roles (Global Publisher, Sub‑site Editor, Faculty Editor) to manage \"gated\" content and departmental autonomy.</li><li><strong>Responsive, Accessible Design:</strong> Deliver cross‑browser (IE8+, Safari 7+, Firefox 37+, Chrome 41+) responsive layouts meeting Temple's ADA guidelines (print‑friendly views, semantic headings, alt tags).</li><li><strong>Scalable Faculty &amp; Publications Management:</strong> Create a flexible Faculty Directory content type with PubMed integration, allowing individual profiles to pull publication data dynamically.</li><li><strong>Centralized Search &amp; Event Integration:</strong> Integrate Temple's XML calendar API for events and leverage Google Search Appliance (GSA) for global and departmental search experiences.</li></ul><h3><u>Key Challenges</u></h3><h3>Complex Departmental Structure</h3><p>LKSOM comprises over 40 departments and divisions, each requiring \"sub‑site\" behavior (navigation, content gating) without fragmenting the codebase.</p><h3>LDAP Integration</h3><p>The project's first production use of Temple's custom Drupal LDAP module demanded close coordination with University IT and sandbox testing.</p><h3>Third‑Party APIs</h3><p>Consuming Temple's upcoming Calendar XML feeds and PubMed queries for faculty publications required custom parsers and caching strategies.</p><h3>Editorial Governance</h3><p>Balancing site‑wide template consistency with departmental flexibility, while training diverse user roles on the new CMS workflows.</p><h3>Technical Approach</h3><ul><li><strong>Single‑Site, Multi‑Subsite Architecture:</strong> Employed Organic Groups plus og_menu to scope content and menus by department while maintaining a unified front‑end theme. Configured LDAP authentication; assigned roles (Global Publisher, Sub‑site Editor, Faculty Editor) to enforce content‑creation boundaries.</li><li><strong>Robust Content Modeling:</strong> Built Faculty Directory content type with fields for name, credentials, departments, bio, and dynamic PubMed publication lists via a custom \"PubMed Fetch\" module. Defined 12 template types (Home, Department Landing, Standard Page, News List/Detail, Events List/Detail, Blog, Faculty Profile, Search Results). Leveraged Paragraphs for drag‑and‑drop assembly of rich content (calls‑to‑action, feature panels, resource blocks).</li><li><strong>API &amp; Integration Layer:</strong> Built a Feeds importer to pull Temple's XML calendar API, exposing events in both list and grid views with date‑range filters. The site's global and departmental search interfaces query the university's Google Search Appliance, with themed results and facets by content type.</li><li><strong>Responsive &amp; Accessible Design:</strong> Crafted CSS/SASS for desktop, tablet, and mobile layouts, including responsive tables and dropdowns in WYSIWYG. Ensured WCAG 2.0 Level AA support—accessible navigation landmark roles, 200% text resize, print‑friendly stylesheets, and alt‑tag enforcement.</li></ul><h3>Technology Stack</h3><ul><li><strong>CMS:</strong> Drupal 7 core</li><li><strong>Authentication:</strong> LDAP module (Temple‑custom integration)</li><li><strong>Integrations:</strong> Feeds module for XML calendar; custom PubMed fetcher; Google Search Appliance</li><li><strong>Front‑end:</strong> Responsive SASS/CSS, jQuery, Chosen for autocomplete, NodeEmbed for slideshows</li><li><strong>Modules:</strong> Organic Groups, og_menu, Paragraphs, Metatag, ShareThis, Workbench Moderation, Scheduler, Focal Point, Honeypot</li></ul><h3>Outcomes</h3><ul><li><strong>Editorial Efficiency:</strong> Site editors achieved a 60% reduction in page‑creation time via standardized content types and reusable Paragraph components.</li><li><strong>Improved Discoverability:</strong> \"Find a Faculty\" directory searches increased by 45%, with PubMed publication views up by 30%.</li><li><strong>Accessibility Success:</strong> Achieved Level AA compliance, with zero major issues in Temple's accessibility audit.</li><li><strong>Scalable Foundation:</strong> Departments onboarded without additional code changes; new subdivisions seamlessly inherit templates and permissions.</li></ul><p><strong>Ready to transform your academic medical web presence?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver unified, accessible digital experiences.</p>",
         "coverImage": "project_tiles/temple.jpg",
-        "sub_menu": 0
+        "sub_menu": 0,
+        "detailImages": [
+          "project_images/lewis-katz-school-of-medicine-temple-university_1.png",
+          "project_images/lewis-katz-school-of-medicine-temple-university_2.png",
+          "project_images/lewis-katz-school-of-medicine-temple-university_3.png"
+        ]
       },
       {
         "label": "LIM College",
@@ -163,7 +172,12 @@
         "projectUrl": "https://www.limcollege.edu/",
         "pageSummary": "<h3>Background</h3><p>LIM College partnered with Primacy to launch a brand‑new Drupal‑based site built on the ZenSource distribution, delivering a highly modular, component‑driven CMS. In 2025, we completed a seamless upgrade from Drupal 9 to Drupal 11, ensuring the site stays on the leading edge of performance and security.</p><h3>Objectives</h3><ul><li><strong>Flexible Page Templates:</strong> Support seven core templates (Wide/T1, Left‑Nav with Hero/T2, Left‑Nav without Hero/T3+, News, Event, Story, Degree, Faculty Profile) so editors can choose the right layout for any content type.</li><li><strong>Rich \"Widget\" Library:</strong> Expose over 20 custom widgets (accordions, sliders, callouts, feeds, alerts, menus, site‑wide alerts) as reusable Paragraph bundles, enabling non‑technical authors to assemble complex pages without code.</li><li><strong>Enterprise Features:</strong> Integrate media management, site‑wide Bootstrap alerts, dynamic news/event indexing, facet filters for stories and faculty, and a robust menu/footer configuration system.</li></ul><h3><u>Key Challenges</u></h3><h3>Template Diversity &amp; Consistency</h3><p>Each template (Wide, T2, T3+, News, Event, Blog/Story, Degree, Faculty) had distinct fields, menu settings, and widget placements. We codified these in configuration snapshots, ensuring editor guidance matched front‑end behavior.</p><h3>Widget UX &amp; Accessibility</h3><p>Over 40 widget types—from \"Dynamic Feed\" to \"Two‑Column Callout\"—required clear helper text (image dimensions, ratio specs) and accessible link dialogs. We enforced alt‑text and semantic markup across all widgets.</p><h3>Upgrade Path to Drupal 11</h3><p>After launch on Drupal 9, the active community around key modules (e.g. S3FS) delivered Drupal 10 compatibility (v10.5) and is finalizing Drupal 11 support (issue #3528246). We coordinated with maintainers, ran composer why-not php 8.3.0 checks, and upgraded core to 11.0 → 11.2 with zero downtime.</p><h3>Technical Approach</h3><ul><li><strong>ZenSource Distribution:</strong> Leveraged a Composer‑managed codebase, bundling core, contrib, and custom feature modules (paragraph bundles, site alerts, menu enhancements).</li><li><strong>Paragraph‑First Architecture:</strong> All widgets live as Drupal Paragraph types. Editors click \"Add Block\" in Layout mode to drop Accordions, Spotlight Carousels, Media Sliders, Dynamic Feeds, and more onto pages.</li><li><strong>Custom Integration Services:</strong><br>• Bootstrap Site Alerts: Configurable banners via bootstrap_site_alert settings.<br>• Media Library: Unified image/video uploads under /admin/content/media.<br>• Taxonomy‑Driven Feeds: Topics, Event Types, and Audience filters drive Dynamic Feed and Story Feed widgets.</li><li><strong>Upgrade Workflow:</strong><br>• Ensured system requirements (PHP ≥ 8.3.0, MySQL 8.0+, Drush 13).<br>• Ran the core \"Upgrade Status\" report to identify incompatible contrib/custom modules, collaborating upstream where possible.<br>• Adopted module maintainer releases (e.g. S3FS v3.x branch) and committed custom fixes to in‑house features to clear all Drupal 11 \"incompatible\" flags.</li></ul><h3>Outcomes</h3><ul><li><strong>Editorial Empowerment:</strong> New editors spin up landing pages, news posts, and program profiles in minutes—reducing dev hand‑offs by 75%.</li><li><strong>Performance &amp; Security:</strong> Post‑upgrade Lighthouse scores of 92 (desktop) and 88 (mobile); core's Symfony 6 foundation and PHP 8.3 deliver both speed and robust security.</li><li><strong>Future‑Proofed Platform:</strong> With Drupal 11 live and key modules upstreamed, LIM College has a solid path to minor version updates (11.2, 11.3…) as soon as community releases are tagged.</li></ul>",
         "coverImage": "project_tiles/lim.mp4",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/lim-college_1.png",
+          "project_images/lim-college_2.png",
+          "project_images/lim-college_3.png"
+        ]
       },
       {
         "label": "Madison Country Day School",
@@ -179,7 +193,12 @@
         "projectUrl": "https://www.madisoncountryday.org/",
         "pageSummary": "<p>Description goes here</p>",
         "coverImage": "project_tiles/mad2.png",
-        "sub_menu": 0
+        "sub_menu": 0,
+        "detailImages": [
+          "project_images/madison-country-day-school_1.png",
+          "project_images/madison-country-day-school_2.png",
+          "project_images/madison-country-day-school_3.png"
+        ]
       },
       {
         "label": "MIT",
@@ -193,9 +212,14 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://solve.mit.edu/",
-        "pageSummary": "Description goes here",
+        "pageSummary": "<p>Description goes heresd sdlkj&nbsp; skdjs kdsj dksd</p><p>sdsljdh skldjhs dlj</p>",
         "coverImage": "project_tiles/mit.jpg",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/mit_1.png",
+          "project_images/mit_2.png",
+          "project_images/mit_3.png"
+        ]
       },
       {
         "label": "Northeastern Illinois University",
@@ -211,30 +235,19 @@
         "projectUrl": "https://www.neiu.edu/",
         "pageSummary": "<p>Description goes here 22323</p>",
         "coverImage": "project_tiles/neiu.webp",
-        "sub_menu": 0
+        "sub_menu": 0,
+        "detailImages": [
+          "project_images/northeastern-illinois-university_1.png",
+          "project_images/northeastern-illinois-university_2.png",
+          "project_images/northeastern-illinois-university_3.png"
+        ]
       },
       {
-        "label": "The ADA Forsyth Institute",
-        "slug": "the-ada-forsyth-institute",
-        "menuDisplayName": "Forsyth",
-        "url": "project.html?item=the-ada-forsyth-institute",
-        "projectTitle": "The ADA Forsyth Institute",
-        "role": "Technical Lead, Developer",
-        "budget": "$25,000 - $50,000",
-        "technology": "Drupal",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://forsyth.org/",
-        "pageSummary": "<p>Description goes here</p>",
-        "coverImage": "project_tiles/forsyth.png",
-        "sub_menu": 0
-      },
-      {
-        "label": "University of Massachusetts Amherst, Humanities and Fine Arts",
-        "slug": "university-of-massachusetts-amherst-humanities-and-fine-arts",
+        "label": "University of Massachusetts, Amherst",
+        "slug": "university-of-massachusetts-amherst",
         "menuDisplayName": "UMass",
-        "url": "project.html?item=university-of-massachusetts-amherst-humanities-and-fine-arts",
-        "projectTitle": "University of Massachusetts Amherst, Humanities and Fine Arts",
+        "url": "project.html?item=university-of-massachusetts-amherst",
+        "projectTitle": "University of Massachusetts Amherst",
         "role": "Technical Lead, Developer",
         "budget": "$50,000 - $100,000",
         "technology": "Drupal",
@@ -243,7 +256,12 @@
         "projectUrl": "https://www.umass.edu/uww/programs/pre-college",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/umass.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/university-of-massachusetts-amherst_1.png",
+          "project_images/university-of-massachusetts-amherst_2.png",
+          "project_images/university-of-massachusetts-amherst_3.png"
+        ]
       }
     ]
   },
@@ -251,7 +269,7 @@
     "label": "Intranets & Portals",
     "icon": "intranet.svg",
     "categoryDescription": "From robust intranets to dynamic portals, Knectar builds secure, scalable platforms that streamline communication and collaboration for organizations of all sizes.",
-    "more": 1,
+    "more": 0,
     "submenu": [
       {
         "label": "Massachusetts Municipal Wholesale Electric Company",
@@ -267,30 +285,19 @@
         "projectUrl": "https://webportal.mmwec.org/",
         "pageSummary": "<h1 style=\"line-height: 2;\">Background</h1><p style=\"line-height: 2;\">The Massachusetts Municipal Electric Company (MMWEC) engaged <span style=\"line-height: 2;\">Knectar </span>and its in‑house team to build a secure, member‑centric web portal (webportal.mmwec.org) on Drupal, replacing disparate legacy applications with a unified CMS. Launched in mid‑2023 on Drupal 9, the<b style=\"line-height: 2;\"> </b>portal has since been upgraded through Drupal 10 and now runs on Drupal 11—a testament to the project's modular architecture and rigorous maintenance.</p><h3 style=\"line-height: 2;\">Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Centralize Content &amp; Data:</strong> Provide a single entry point for board meeting documents, reports, newsletters, marketing materials, and dynamic market/meter data.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Fine‑Grained Access Control:</strong> Enforce both \"town\"‑level visibility (members see only their own municipality's files) and role‑based access (board vs. executive vs. public).</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Self‑Service Reporting:</strong> Enable members to find, filter, download, and archive PDFs and real‑time data feeds without developer intervention.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Operational Automation:</strong> Automate bulk imports of hundreds of PDF reports, sync taxonomy terms with the main menu, and pull live market and meter data via API.</li></ul><h3 style=\"line-height: 2;\">Key Features</h3><h3 style=\"line-height: 2;\">1. Board Meeting Notes</h3><p style=\"line-height: 2;\">Custom \"Board Meeting Note\" content type with fields for agendas, regular/executive minutes, \"package contents\" and scope controls.<br>WYSIWYG \"Insert Media\" integration for in‑text file linking.<br>Role‑ and town‑based visibility driven by a custom access‑check service.</p><h3 style=\"line-height: 2;\">2. PDF Report Finder</h3><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Dual intake methods:</strong><br>• Bulk sync (off‑site service) imports hundreds of files nightly.<br>• Manual upload UI lets admins add individual PDFs, select \"Report Type\" taxonomy, restrict by town, and add descriptions.<br><span style=\"color: rgb(27, 27, 27);\">•&nbsp;</span>Dynamic filter page (/pdf-report-finder) with dropdowns for Town, Title, and Report Type; sortable columns, ZIP export, and archived‑file toggle.</p><h3 style=\"line-height: 2;\">3. Menu‑Taxonomy Automation</h3><p style=\"line-height: 2;\">Every \"Report Type\" term (e.g. \"DPU,\" \"Invoice Repository\") automatically syncs to the main navigation via a string‑matching sync mechanism.<br>Admins simply edit the menu link's URL to /taxonomy/term/{tid}; the portal handles the rest.</p><h3 style=\"line-height: 2;\">4. Marketing Materials &amp; Newsletters</h3><p style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27);\">•</span><span style=\"color: rgb(27, 27, 27);\">&nbsp;</span>\"Marketing Material\" CT supports multiple asset types (social posts, flyers, videos, releases) with a \"User Action\" checkbox for tracking publication.<br><span style=\"color: rgb(27, 27, 27);\">•&nbsp;</span>\"Newsletters &amp; Announcements\" CT with thumbnail, type filter, published date, and file upload, powering /newsletters-and-announcements.</p><h3 style=\"line-height: 2;\">5. Dynamic Data Highlights &amp; Reports</h3><p style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27);\">•</span><span style=\"color: rgb(27, 27, 27);\">&nbsp;</span>Custom dashboard blocks on the homepage show \"Day Ahead Locational Marginal Prices\" (HUB, WCMA, NEMA, SEMA) via the MMWEC API.<br><span style=\"color: rgb(27, 27, 27);\">•&nbsp;</span>Dynamic Market Reports and Meter Data Reports lists link directly to live LMP, reserve prices, and meter load feeds.<br>Underlying CT Views use faceted filters to narrow by town, date, and data type.</p><h3 style=\"line-height: 2;\">6. User &amp; Town Management</h3><p style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27);\">•</span><span style=\"color: rgb(27, 27, 27);\">&nbsp;</span>Extended user entity with \"Member Town\" multi‑select, Document Access Levels, and Org Services flags.<br><span style=\"color: rgb(27, 27, 27);\">•&nbsp;</span>CSV‑based bulk‑invite feed for MMWEC Staff and Member Admin roles.<br><span style=\"color: rgb(27, 27, 27);\">•&nbsp;</span>Masquerade integration for admins to troubleshoot member‑specific views.<br><span style=\"color: rgb(27, 27, 27);\">•&nbsp;</span>Duo/TFA two‑factor plugin for enhanced security.</p><h3 style=\"line-height: 2;\">Technical Approach</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Drupal Core &amp; Contrib:</strong> Started on Drupal 9.5 with USWDS base theme, Paragraphs, Feeds/Feeds Tamper, Views Data Export, TFA, Masquerade, S3FS for file storage, and custom mmwec_viz &amp; mmwec_custom modules. Upgraded incrementally through Drupal 10.3 → 10.6 and, in early 2025, to Drupal 11.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Paragraph‑First Architecture:</strong> Reusable paragraph types for Board Meetings, PDF Docs, Marketing CTAs, Teasers, Alerts, and Data Highlights. Editors build landing pages and dashboards via Layout Builder, dropping pre‑configured blocks.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">API &amp; Feed Integrations:</strong><br>• MMWEC API: Fetches live JSON for LMP, reserve prices, portfolio forecasts.<br>• Bulk PDF Sync: Scheduled off‑site job writes to an upload table, which Drupal's Feeds pipeline ingests and normalizes nightly.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Menu‑Taxonomy Sync:</strong> Custom service maps Report Type terms to the Main Menu via RESTful hook, eliminating manual menu edits.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Testing &amp; CI/CD:</strong> GitLab CI pipelines run PHPUnit/Mink tests against a staged DB snapshot, enforce coding standards, auto‑backup the database, and deploy to dev/prod. Over 30 unit and integration tests cover core features: report filtering, town access, board meeting CT, and dynamic feeds.</li></ul><h3 style=\"line-height: 2;\">Challenges &amp; Resolutions</h3><h3 style=\"line-height: 2;\">Town‑Scoped Access Logic</h3><p style=\"line-height: 2;\">Crafting a service that simultaneously filters Views, REST endpoints, and page access by a user's multi‑select \"Member Town\" required careful adjustments to hook_entity_access and Views filters.</p><h3 style=\"line-height: 2;\">Menu Sync Reliability</h3><p style=\"line-height: 2;\">Ensuring the \"Menu taxonomy syncing mechanism\" reliably matched term names to menu links—even as new Report Types were added—necessitated implementing robust string‑matching algorithms and unit tests.</p><h3 style=\"line-height: 2;\">Data Volume &amp; Performance</h3><p style=\"line-height: 2;\">With thousands of PDF nodes and real‑time feeds, we introduced caching layers (Drupal page cache, Views caching, Feeds tamper caching) and optimized database indexes to keep page loads under 400 ms.</p><h3 style=\"line-height: 2;\">Secure File Handling</h3><p style=\"line-height: 2;\">Using S3FS and signed URLs, large PDF binaries are offloaded to AWS S3, giving members fast, secure downloads without taxing the web server.</p><h3 style=\"line-height: 2;\">Outcomes</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Highly Autonomous Members:</strong> Municipal staff now self‑serve 95% of report downloads, eliminating dozens of help‑desk tickets per month.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Streamlined Editorial Workflows:</strong> Non‑technical MMWEC editors publish board minutes, marketing assets, and newsletters with zero dev support.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Future‑Proof, Compliant Platform:</strong> Multiple major‑core upgrades completed with no downtime; integrated two‑factor auth and WCAG‑aligned USWDS theming ensure both security and accessibility.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Measurable Efficiency Gains:</strong> Bulk PDF sync reduced manual uploads by 80%; automated menu mapping cut navigation‑maintenance time in half.</li></ul>",
         "coverImage": "project_tiles/mmwec.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/massachusetts-municipal-wholesale-electric-company_1.png",
+          "project_images/massachusetts-municipal-wholesale-electric-company_2.png",
+          "project_images/massachusetts-municipal-wholesale-electric-company_3.png"
+        ]
       },
       {
-        "label": "MMWEC Nextzero Rebate Web Application",
-        "slug": "mmwec-nextzero-rebate-web-application",
-        "menuDisplayName": "MMWEC Rebate",
-        "url": "project.html?item=mmwec-nextzero-rebate-web-application",
-        "projectTitle": "MMWEC Nextzero Rebate Web Application",
-        "role": "Technical Lead, Developer",
-        "budget": "$100,000 - $250,000",
-        "technology": "Drupal",
-        "designPartner": "",
-        "designPartnerUrl": "#N/A",
-        "projectUrl": "https://rebates.nextzero.org/",
-        "pageSummary": "<p></p><p style=\"line-height: 2;\"></p><a href=\"skdjskjd\" target=\"_blank\" style=\"color: rgb(255, 0, 0); text-decoration: underline; font-weight: normal;\">sdsds</a><p style=\"line-height: 2;\"></p><p></p>",
-        "coverImage": "project_tiles/rebates.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Modelo",
-        "slug": "modelo",
-        "menuDisplayName": "Modelo",
-        "url": "project.html?item=modelo",
-        "projectTitle": "Modelo",
+        "label": "AB InBev",
+        "slug": "ab_inbev",
+        "menuDisplayName": "AB InBev",
+        "url": "project.html?item=ab_inbev",
+        "projectTitle": "AB InBev",
         "role": "Technical Lead, Developer",
         "budget": "> $250,000",
         "technology": "Magento",
@@ -299,7 +306,12 @@
         "projectUrl": "https://www.mimodelo.com.mx/",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/ab.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/ab_inbev_1.png",
+          "project_images/ab_inbev_2.png",
+          "project_images/ab_inbev_3.png"
+        ]
       },
       {
         "label": "SmartLabs",
@@ -315,7 +327,12 @@
         "projectUrl": "https://smartlabs.com/",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/smart.jpeg",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/smartlabs_1.png",
+          "project_images/smartlabs_2.png",
+          "project_images/smartlabs_3.png"
+        ]
       }
     ]
   },
@@ -337,9 +354,15 @@
         "designPartner": " ",
         "designPartnerUrl": null,
         "projectUrl": null,
-        "pageSummary": "<p>Description goess222s here!!!</p><p>Description goes ssshere!!! ssdsd</p><p>Descrisdsdsdsdption goes here!!!</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block ql-syntax language-javascript\" data-language=\"javascript\">                    if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div><p><br></p><p>Description goes here!!!</p><p><br></p><p>Description goes here!!!</p><p><br></p>",
+        "pageSummary": "<p></p><p style=\"line-height: 2;\">Description <a href=\"https://www.glenmede.com/\" target=\"_blank\" style=\"color: rgb(255, 0, 0); text-decoration: underline; font-weight: normal;\">goess222s </a>here!!!</p><p style=\"line-height: 2;\">Description goes ssshere!!! ssdsd</p><p style=\"line-height: 2;\">Descrisdsdsdsdption goes here!!!</p>if (newDesc !== originalDesc) {                updateProjectDescription(slug, newDesc, (success) =&gt; {                    if (success) {                        showIndicator('Saved!', 'saved');                        originalDesc = newDesc; // Update original for next comparison                    } else {<p style=\"line-height: 2;\"><br></p><p style=\"line-height: 2;\">Description goes here!!!</p><p style=\"line-height: 2;\"><br></p><p style=\"line-height: 2;\">Description goes here!!!</p><p style=\"line-height: 2;\"><br></p><p></p>",
         "coverImage": "project_tiles/carv.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/carv-resource-management_1.png",
+          "project_images/carv-resource-management_2.png",
+          "project_images/carv-resource-management_3.png",
+          "project_images/carv-resource-management_4.png"
+        ]
       },
       {
         "label": "Glassica App",
@@ -355,23 +378,12 @@
         "projectUrl": null,
         "pageSummary": "<ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Description goes here</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsds</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsd</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sd</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>sdsds</li></ol><blockquote>sdsd sd sd </blockquote><p>sdsds</p>",
         "coverImage": "project_tiles/glass.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Oxform PM",
-        "slug": "oxform-pm",
-        "menuDisplayName": "Oxform",
-        "url": "project.html?item=oxform-pm",
-        "projectTitle": "Oxform PM",
-        "role": "Technical Lead, Developer",
-        "budget": "$50,000 - $100,000",
-        "technology": "Drupal",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://www.oxfordpm.com/",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/ox.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/glassica-app_1.png",
+          "project_images/glassica-app_2.png",
+          "project_images/glassica-app_3.png"
+        ]
       },
       {
         "label": "Paragraphs Stats Module",
@@ -387,23 +399,10 @@
         "projectUrl": "https://www.drupal.org/project/ps",
         "pageSummary": "<p>Description goes here</p><p>sdlsj dls</p><p>sdsdsdlsjkhd skhd slkdh sl</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block language-javascript\">     saveTimeout = setTimeout(() =&gt; {</div><div class=\"ql-code-block language-python\">            const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block\">                    if (success) {</div></div><p>                        showIndicator('Saved!', 'saved');</p><p>                        originalDesc = newDesc; // Update original for next comparison</p><p>                    } else {lsjdh lskjd </p><p>lsjhd sljdh </p><p>skdjgh s</p>",
         "coverImage": "project_tiles/stats.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "SMMA Architecture",
-        "slug": "smma-architecture",
-        "menuDisplayName": "SMMA",
-        "url": "project.html?item=smma-architecture",
-        "projectTitle": "SMMA Architecture",
-        "role": "Technical Lead, Developer",
-        "budget": "$100,000 - $250,000",
-        "technology": "WordPress",
-        "designPartner": "TOKY",
-        "designPartnerUrl": "https://toky.com/",
-        "projectUrl": "https://smma.com/",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/smma.jpg",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/paragraphs-stats-module_1.png"
+        ]
       }
     ]
   },
@@ -427,7 +426,11 @@
         "projectUrl": "https://www.aier.org/",
         "pageSummary": "<p>sxsdsdsd ss</p><p>sdsdsdsdsds</p><p>sdsd  2w222</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">skdjgs kdh skdhs ds</div><div class=\"ql-code-block\">d skdhsg ds</div></div><p><br></p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\"> skdhgs kdhgs dkh sds</div></div><p>s</p><p>sdksjgd kshd s</p><p><br></p><p>s</p><p>dksjdg skhgd sds</p><p><br></p>",
         "coverImage": "project_tiles/aier.png",
-        "sub_menu": 0
+        "sub_menu": 0,
+        "detailImages": [
+          "project_images/aier-american-institute-for-economic-research_1.png",
+          "project_images/aier-american-institute-for-economic-research_2.png"
+        ]
       },
       {
         "label": "Eze Soft",
@@ -443,7 +446,33 @@
         "projectUrl": "https://www.ezesoft.com/",
         "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">     saveTimeout = setTimeout(() =&gt; {</div><div class=\"ql-code-block\">            const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div><div class=\"ql-code-block\">            if (success) {</div><div class=\"ql-code-block\">                        showIndicator('Saved!', 'saved');</div><div class=\"ql-code-block\">                        originalDesc = newDesc; // Update original for next comparison</div><div class=\"ql-code-block\">                    } else {</div></div>",
         "coverImage": "project_tiles/eze.webp",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/eze-soft_1.png",
+          "project_images/eze-soft_2.png",
+          "project_images/eze-soft_3.png"
+        ]
+      },
+      {
+        "label": "SMMA Architecture",
+        "slug": "smma-architecture",
+        "menuDisplayName": "SMMA",
+        "url": "project.html?item=smma-architecture",
+        "projectTitle": "SMMA Architecture",
+        "role": "Technical Lead, Developer",
+        "budget": "$100,000 - $250,000",
+        "technology": "WordPress",
+        "designPartner": "TOKY",
+        "designPartnerUrl": "https://toky.com/",
+        "projectUrl": "https://smma.com/",
+        "pageSummary": "Description goes here",
+        "coverImage": "project_tiles/smma.jpg",
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/smma-architecture_1.png",
+          "project_images/smma-architecture_2.png",
+          "project_images/smma-architecture_3.png"
+        ]
       },
       {
         "label": "Glenmede",
@@ -459,7 +488,12 @@
         "projectUrl": "https://www.glenmede.com/",
         "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">Glenmede is a privately owned wealth and investment management firm. For Phase 1 of the site rebuild (October 2015), Knectar partnered with Hatch and Beehive Media to deliver a unified, highly flexible web platform for Glenmede's corporate brand and its three business lines: Investment Management (GIM), Endowments &amp; Foundations (E&amp;F), and Individuals &amp; Families (I&amp;F).</p><h3 style=\"line-height: 2;\">Project Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Single codebase &amp; taxonomy:</strong> Create one Drupal installation that could present four distinct \"sections\" (GTC parent, GIM, E&amp;F, I&amp;F) via theming rather than separate sites</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Robust content model:</strong> Define content types—from Homepage and Business Line Homepages to People, Ideas, Events, Funds, and Personal Stories—that support rich, push‑and‑pull content workflows</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Seamless third‑party integrations:</strong> Integrate the ICIMS recruitment feed, Twitter timeline, Google Maps for office locations, mutual‑fund data feeds, and a secure client login portal</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Responsive, brand‑consistent design:</strong> Translate wireframes and high‑fidelity flats into mobile‑friendly templates, ensuring consistency across desktop, tablet, and phone</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Multiple business lines, one platform</h3><p style=\"line-height: 2;\">Ensuring each division could have its own color profile, navigation, and content while pulling from a shared database and template set.</p><h3 style=\"line-height: 2;\">Complex content relationships</h3><p style=\"line-height: 2;\">Enabling \"push\" blocks that let editors promote any content type (e.g., Person or Idea) to any other page, and \"pull\" relationships (e.g., Regional Office pages automatically listing People nodes).</p><h3 style=\"line-height: 2;\">Editorial governance</h3><p style=\"line-height: 2;\">Defining clear user roles—Root/Admin, Publisher, Content Editor—with granular permissions for publishing, revision control, and site configuration.</p><h3 style=\"line-height: 2;\">Data feeds &amp; dynamic widgets</h3><p style=\"line-height: 2;\">Architecting stable integrations for live content—tweets, maps, fund pricing—without compromising performance or security.</p><h3 style=\"line-height: 2;\">Solution Overview</h3><h4 style=\"line-height: 2;\">Drupal‑based CMS</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Leveraged Drupal core with custom modules and configurations for content types, CKEditor WYSIWYG blocks, nodequeue sorting, and theme selection per business line</li></ul><h4 style=\"line-height: 2;\">Flexible templating</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Developed a suite of Twig/PHP templates covering all page types—Homepage carousel with H1/H2 overlays, Business Line landing pages, Standard Inner Pages, Regional Office and People list/detail views, Ideas, Events, Funds, Personal Stories, Contact Forms, and static pages (About, Careers)</li></ul><h4 style=\"line-height: 2;\">Push vs. Pull workflows</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Implemented editorial UI that lets authors create a node and immediately \"push\" it as a featured block to other pages; conversely, certain pages (Regional Office, Fund) \"pull\" related content based on taxonomy and node references</li></ul><h4 style=\"line-height: 2;\">Third‑party &amp; social media integration</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;ICIMS Careers Feed for recruiting pages</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Twitter Widget auto‑pull on the GTC homepage</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Google Maps embed on office pages</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Mutual Fund Data feeds into fund detail pages</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Secure Client Login linking to GlenmedeConnect portal</span></li></ul><h4 style=\"line-height: 2;\">Responsive design</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Incorporated mobile‑first CSS and design flats into breakpoints for desktop, tablet, and mobile; leveraged fluid grids and flexible assets</li></ul><h3 style=\"line-height: 2;\">Outcome &amp; Impact</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Unified brand experience:</strong> Across all business lines under a single codebase</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Enhanced editorial efficiency:</strong> Allowing non‑technical content teams to manage complex layouts and features without developer intervention</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Dynamic content delivery:</strong> With live data feeds and social media integration boosting client engagement</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Responsive, future‑proof platform:</strong> Supporting ongoing Phase 2 enhancements (additional API integrations, deeper personalization)</li></ul><h3 style=\"line-height: 2;\">Technologies &amp; Tools</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Platform:</strong> Drupal 7/8 (core, Views, Taxonomy, Nodequeue)</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Content Management:</strong> CKEditor for WYSIWYG blocks</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Design &amp; IA:</strong> Slickplan, Axure for IA and wireframes</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Development:</strong> PHP, Twig, JavaScript for custom theming</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">APIs:</strong> ICIMS, Twitter, Google Maps, Mutual Fund data</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Version Control:</strong> Git/Bitbucket</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">CI/CD &amp; DevOps:</strong> Automated deployment pipelines, QA/staging environments</li></ul><h3 style=\"line-height: 2;\">Live Site Highlights</h3><p style=\"line-height: 2;\">The new homepage features a clean, hierarchical navigation menu (\"About Us,\" \"A True Partnership\" business lines, \"News &amp; Insights,\" and client login), large hero imagery with overlaid headlines, and sectional calls‑to‑action (e.g., \"Learn More – Individuals &amp; Families\") that guide visitors to specialized service pages at <strong style=\"line-height: 2;\">glenmede.com</strong>. This modern, boutique‑firm aesthetic, combined with deep content flexibility, positions Glenmede for ongoing digital evolution.</p><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to transform your financial services digital presence?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver unified, scalable digital experiences for your business lines and clients.</p>",
         "coverImage": "project_tiles/glen.png",
-        "sub_menu": 0
+        "sub_menu": 0,
+        "detailImages": [
+          "project_images/glenmede_1.png",
+          "project_images/glenmede_2.png",
+          "project_images/glenmede_3.png"
+        ]
       },
       {
         "label": "Monadnock Media",
@@ -475,39 +509,12 @@
         "projectUrl": "https://monadnock.org/",
         "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">Descrips tion goes sdsdsd </div></div>",
         "coverImage": "project_tiles/monad2.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Riverbend Animal Hospital",
-        "slug": "riverbend-animal-hospital",
-        "menuDisplayName": "Riverbend",
-        "url": "project.html?item=riverbend-animal-hospital",
-        "projectTitle": "Riverbend Animal Hospital",
-        "role": "Technical Lead, Developer",
-        "budget": "$10,000 - $20,000",
-        "technology": "Drupal",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://riverbendanimal.com/",
-        "pageSummary": "<pre data-language=\"javascript\" class=\"language-javascript\"><br></pre>",
-        "coverImage": "project_tiles/riverbend.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Crocker",
-        "slug": "crocker",
-        "menuDisplayName": "Crocker",
-        "url": "project.html?item=crocker",
-        "projectTitle": "Crocker",
-        "role": "Technical Lead, Developer",
-        "budget": "$25,000 - $50,000",
-        "technology": "Drupal",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://crocker.com/",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/crocker.jpg",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/monadnock-media_1.png",
+          "project_images/monadnock-media_2.png",
+          "project_images/monadnock-media_3.png"
+        ]
       },
       {
         "label": "Robert Rauschenberg Foundation",
@@ -521,9 +528,14 @@
         "designPartner": "Knectar (Design & Development)",
         "designPartnerUrl": null,
         "projectUrl": "https://www.rauschenbergfoundation.org/",
-        "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">The Robert Rauschenberg Foundation engaged Knectar to design and implement a new public‑facing website that would showcase Rauschenberg's legacy, engage scholars and patrons, and streamline editorial workflows across a vast archive. Knectar delivered both the front‑end theming and a custom Drupal‑based CMS, alongside a comprehensive Drupal User Guide.</p><h3 style=\"line-height: 2;\">Client &amp; Partners</h3><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Client:</strong> Robert Rauschenberg Foundation</p><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Design &amp; Development Partner:</strong> Knectar</p><h3 style=\"line-height: 2;\">Project Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Modular, editorial‑driven site architecture:</strong> Support five primary sections—Foundation, Artist, Art &amp; Archives, Programs, and News—with deep sub‑menus for chronology, exhibitions, bibliography, residencies, and more</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Flexible page layouts:</strong> Enable non‑technical editors to assemble pages using Drupal's Layout Builder and custom blocks for media, text, timelines, and call‑to‑action panels</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Interactive chronology:</strong> Present Robert Rauschenberg's life and career as a timeline with footnotes managed via structured HTML and enhanced by custom JavaScript for dynamic numbering and navigation</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Robust taxonomy &amp; menus:</strong> Architect vocabularies for collections, series, themes, locations, and chronology headings, and implement logic to highlight active menu items based on URL alias rather than manual nesting</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Comprehensive training &amp; documentation:</strong> Provide a detailed user guide covering login, menu management, taxonomy, redirects, WYSIWYG best practices, layout usage, and content creation workflows</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Deeply nested navigational structure</h3><p style=\"line-height: 2;\">Six top‑level menus and dozens of child items demanded a scalable, maintainable menu system.</p><h3 style=\"line-height: 2;\">Dynamic footnotes in chronology</h3><p style=\"line-height: 2;\">Editors supply simple HTML anchors; a custom script then transforms these into sequentially numbered footnotes, requiring precise authoring guidelines.</p><h3 style=\"line-height: 2;\">Empowering varied editorial roles</h3><p style=\"line-height: 2;\">Balancing site‑wide administrative controls with fine‑grained permissions prevented accidental misconfigurations while maintaining agility.</p><h3 style=\"line-height: 2;\">Migrating and presenting archival media</h3><p style=\"line-height: 2;\">Handling large volumes of high‑resolution images, videos, and PDFs without compromising performance or accessibility.</p><h3 style=\"line-height: 2;\">Solution Overview</h3><h4 style=\"line-height: 2;\">Drupal CMS with Layout Builder</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Configured custom content types (Chronology Section, Exhibition Entry, Oral History, Grant, Residency, etc.) and leveraged Layout Builder for drag‑and‑drop page assembly</li></ul><h4 style=\"line-height: 2;\">Custom menu‑highlighting logic</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Developed a module that parses URL aliases (e.g., /artist/chronology/1964) to automatically mark \"Artist\" and \"Chronology\" menu items active</li></ul><h4 style=\"line-height: 2;\">Footnote rendering engine</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Implemented a lightweight JavaScript utility scanning for &lt;a class=\"see-footnote\"&gt; and &lt;li class=\"footnote\"&gt; pairs, injecting sequential labels and appending a linked footnote list</li></ul><h4 style=\"line-height: 2;\">Third‑party integrations</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Jobs: Embedded Greenhouse job board via iframe</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Social &amp; Newsletter: Integrated Instagram, Vimeo feeds, and mailing‑list signup forms</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;External Microsite: Linked to the Foundation's centennial site (rauschenberg100.org)</span></li></ul><h4 style=\"line-height: 2;\">Responsive, accessible design</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Adopted mobile‑first breakpoints, semantic HTML5, and ARIA attributes for WCAG compliance</li></ul><h3 style=\"line-height: 2;\">Migration &amp; Integration</h3><h4 style=\"line-height: 2;\">Drupal 7 → Drupal 8 Upgrade</h4><h5 style=\"line-height: 2;\">Core &amp; Module Mapping</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Audited every D7 element—core, sub‑core, community, and custom modules—identifying D8 equivalents and re‑architecting configurations to fit the new plugin‑based system</li></ul><h5 style=\"line-height: 2;\">Content Migration</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Recommended a hybrid approach: scripted migration for one‑to‑one content models and manual editorial migration for complex sections and IA changes, supported by training and documentation for the RRF editorial team</li></ul><h4 style=\"line-height: 2;\">FileMaker \"Art API\" Architecture</h4><h5 style=\"line-height: 2;\">Data Mapping &amp; Schema Coordination</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Conducted technical analysis to map FileMaker database structures into Drupal content types, coordinating schema changes in both systems</li></ul><h5 style=\"line-height: 2;\">Integration Plan Documentation</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Delivered open technical specifications and spreadsheet‑based schema maps to guide development and future maintenance</li></ul><h5 style=\"line-height: 2;\">API Development Approach</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Evaluated pull vs. push strategies; recommended leveraging FileMaker's RESTful Data API (v18) to expose records to Drupal, subject to hosting and firewall considerations</li></ul><h3 style=\"line-height: 2;\">Outcome &amp; Impact</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Streamlined editorial workflows:</strong> Reducing page‑creation time by 60% through Layout Builder and reusable blocks</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Maintainable menu system:</strong> Where new subsections auto‑highlight without manual edits</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Engaging timeline experience:</strong> With over 150 chronology entries and dynamic footnotes</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Successful legacy migration:</strong> With zero data loss and minimal editorial overhead</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Robust FileMaker integration:</strong> Exposing rich archival metadata directly on the site and laying groundwork for future enhancements</li></ul><h3 style=\"line-height: 2;\">Technologies &amp; Tools</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Platform:</strong> Drupal 8 (core, Layout Builder, Taxonomy, Menu)</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Development:</strong> CKEditor, Twig, PHP, JavaScript</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Custom Modules:</strong> Footnotes, Menu Logic, FileMaker Connector</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Integrations:</strong> FileMaker Data API (v18), Greenhouse, Instagram, Vimeo embeds</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">DevOps:</strong> Git/Bitbucket, Pantheon CI/CD</li></ul><h3 style=\"line-height: 2;\">Live Site Highlights</h3><p style=\"line-height: 2;\">The site's main navigation features six top‑level items—Foundation, Artist, Art &amp; Archives, Programs, News, and Search—with deep drill‑downs under \"Artist\" (Chronology, Exhibitions, Oral Histories). Chronology pages dynamically render footnotes and timeline events, while the Archives area surfaces FileMaker‑driven exhibition and collection metadata in rich, filterable galleries at <strong style=\"line-height: 2;\">rauschenbergfoundation.org</strong>.</p><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to transform your cultural foundation's digital presence?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver engaging, accessible digital experiences for your archives and audiences.</p>",
+        "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">The Robert Rauschenberg Foundation engaged Knectar to design and implement a new public‑facing website that would showcase Rauschenberg's legacy, engage scholars and patrons, and streamline editorial workflows across a vast archive. Knectar delivered both the front‑end theming and a custom Drupal‑based CMS, alongside a comprehensive Drupal User Guide.</p><h3 style=\"line-height: 2;\">Project Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Modular, editorial‑driven site architecture:</strong> Support five primary sections—Foundation, Artist, Art &amp; Archives, Programs, and News—with deep sub‑menus for chronology, exhibitions, bibliography, residencies, and more</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Flexible page layouts:</strong> Enable non‑technical editors to assemble pages using Drupal's Layout Builder and custom blocks for media, text, timelines, and call‑to‑action panels</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Interactive chronology:</strong> Present Robert Rauschenberg's life and career as a timeline with footnotes managed via structured HTML and enhanced by custom JavaScript for dynamic numbering and navigation</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Robust taxonomy &amp; menus:</strong> Architect vocabularies for collections, series, themes, locations, and chronology headings, and implement logic to highlight active menu items based on URL alias rather than manual nesting</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Comprehensive training &amp; documentation:</strong> Provide a detailed user guide covering login, menu management, taxonomy, redirects, WYSIWYG best practices, layout usage, and content creation workflows</li></ul><h3 style=\"line-height: 2;\">Key Challenges</h3><h3 style=\"line-height: 2;\">Deeply nested navigational structure</h3><p style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span><span style=\"color: rgb(27, 27, 27);\">&nbsp;</span>Six top‑level menus and dozens of child items demanded a scalable, maintainable menu system.</p><h3 style=\"line-height: 2;\">Dynamic footnotes in chronology</h3><p style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span><span style=\"color: rgb(27, 27, 27);\">&nbsp;</span>Editors supply simple HTML anchors; a custom script then transforms these into sequentially numbered footnotes, requiring precise authoring guidelines.</p><h3 style=\"line-height: 2;\">Empowering varied editorial roles</h3><p style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span><span style=\"color: rgb(27, 27, 27);\">&nbsp;</span>Balancing site‑wide administrative controls with fine‑grained permissions prevented accidental misconfigurations while maintaining agility.</p><h3 style=\"line-height: 2;\">Migrating and presenting archival media</h3><p style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span><span style=\"color: rgb(27, 27, 27);\">&nbsp;</span>Handling large volumes of high‑resolution images, videos, and PDFs without compromising performance or accessibility.</p><h3 style=\"line-height: 2;\">Solution Overview</h3><h4 style=\"line-height: 2;\">Drupal CMS with Layout Builder</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span>&nbsp;Configured custom content types (Chronology Section, Exhibition Entry, Oral History, Grant, Residency, etc.) and leveraged Layout Builder for drag‑and‑drop page assembly</li></ul><h4 style=\"line-height: 2;\">Custom menu‑highlighting logic</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span>&nbsp;Developed a module that parses URL aliases (e.g., /artist/chronology/1964) to automatically mark \"Artist\" and \"Chronology\" menu items active</li></ul><h4 style=\"line-height: 2;\">Footnote rendering engine</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span>&nbsp;Implemented a lightweight JavaScript utility scanning for &lt;a class=\"see-footnote\"&gt; and &lt;li class=\"footnote\"&gt; pairs, injecting sequential labels and appending a linked footnote list</li></ul><h4 style=\"line-height: 2;\">Third‑party integrations</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span>&nbsp;Jobs: Embedded Greenhouse job board via iframe</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span>&nbsp;Social &amp; Newsletter: Integrated Instagram, Vimeo feeds, and mailing‑list signup forms</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span>&nbsp;External Microsite: Linked to the Foundation's centennial site (rauschenberg100.org)</span></li></ul><h4 style=\"line-height: 2;\">Responsive, accessible design</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\"><span class=\"red-bullet\" style=\"line-height: 2;\">•</span></span>&nbsp;Adopted mobile‑first breakpoints, semantic HTML5, and ARIA attributes for WCAG compliance</li></ul><h3 style=\"line-height: 2;\">Migration &amp; Integration</h3><h4 style=\"line-height: 2;\">Drupal 7 → Drupal 8 Upgrade</h4><h5 style=\"line-height: 2;\">Core &amp; Module Mapping</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Audited every D7 element—core, sub‑core, community, and custom modules—identifying D8 equivalents and re‑architecting configurations to fit the new plugin‑based system</li></ul><h5 style=\"line-height: 2;\">Content Migration</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Recommended a hybrid approach: scripted migration for one‑to‑one content models and manual editorial migration for complex sections and IA changes, supported by training and documentation for the RRF editorial team</li></ul><h4 style=\"line-height: 2;\">FileMaker \"Art API\" Architecture</h4><h5 style=\"line-height: 2;\">Data Mapping &amp; Schema Coordination</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Conducted technical analysis to map FileMaker database structures into Drupal content types, coordinating schema changes in both systems</li></ul><h5 style=\"line-height: 2;\">Integration Plan Documentation</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Delivered open technical specifications and spreadsheet‑based schema maps to guide development and future maintenance</li></ul><h5 style=\"line-height: 2;\">API Development Approach</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Evaluated pull vs. push strategies; recommended leveraging FileMaker's RESTful Data API (v18) to expose records to Drupal, subject to hosting and firewall considerations</li></ul><h3 style=\"line-height: 2;\">Outcome &amp; Impact</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Streamlined editorial workflows:</strong> Reducing page‑creation time by 60% through Layout Builder and reusable blocks</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Maintainable menu system:</strong> Where new subsections auto‑highlight without manual edits</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Engaging timeline experience:</strong> With over 150 chronology entries and dynamic footnotes</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Successful legacy migration:</strong> With zero data loss and minimal editorial overhead</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Robust FileMaker integration:</strong> Exposing rich archival metadata directly on the site and laying groundwork for future enhancements</li></ul><h3 style=\"line-height: 2;\">Technologies &amp; Tools</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Platform:</strong> Drupal 8 (core, Layout Builder, Taxonomy, Menu)</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Development:</strong> CKEditor, Twig, PHP, JavaScript</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Custom Modules:</strong> Footnotes, Menu Logic, FileMaker Connector</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Integrations:</strong> FileMaker Data API (v18), Greenhouse, Instagram, Vimeo embeds</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">DevOps:</strong> Git/Bitbucket, Pantheon CI/CD</li></ul><h3 style=\"line-height: 2;\">Live Site Highlights</h3><p style=\"line-height: 2;\">The site's main navigation features six top‑level items—Foundation, Artist, Art &amp; Archives, Programs, News, and Search—with deep drill‑downs under \"Artist\" (Chronology, Exhibitions, Oral Histories). Chronology pages dynamically render footnotes and timeline events, while the Archives area surfaces FileMaker‑driven exhibition and collection metadata in rich, filterable galleries at <strong style=\"line-height: 2;\">rauschenbergfoundation.org</strong>.</p><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to transform your cultural foundation's digital presence?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver engaging, accessible digital experiences for your archives and audiences.</p>",
         "coverImage": "project_tiles/rrf.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/robert-rauschenberg-foundation_1.png",
+          "project_images/robert-rauschenberg-foundation_2.png",
+          "project_images/robert-rauschenberg-foundation_3.png"
+        ]
       },
       {
         "label": "Studio Arts Consortium International (SACI), Florence",
@@ -539,7 +551,12 @@
         "projectUrl": "https://saci-florence.edu/",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/saci.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/studio-arts-consortium-international-saci-florence_1.png",
+          "project_images/studio-arts-consortium-international-saci-florence_2.png",
+          "project_images/studio-arts-consortium-international-saci-florence_3.png"
+        ]
       },
       {
         "label": "The Isabella Stewart Gardner Museum",
@@ -555,7 +572,13 @@
         "projectUrl": "https://www.gardnermuseum.org/",
         "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">The Isabella Stewart Gardner Museum (ISGM) partnered with Fabrique for design and Knectar for development to relaunch the museum's flagship website at https://www.gardnermuseum.org/. Phase 1 of the build focused on delivering a rich, media‑driven experience that could showcase collections, events, and multimedia content while giving museum staff full control over updates and taxonomy‑driven filtering.</p><h4 style=\"line-height: 2;\">Goals:</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">•&nbsp;Create a modern, responsive site to highlight art, gardens, and music</li><li style=\"line-height: 2;\">•&nbsp;Enable deep browsing by artist, century, room, and other taxonomies</li><li style=\"line-height: 2;\">•&nbsp;Integrate multimedia (intro video, audio collection, event promos)</li><li style=\"line-height: 2;\">•&nbsp;Provide intuitive, content‑driven templates for non‑technical editors</li><li style=\"line-height: 2;\">•&nbsp;Support future expansion through a robust, Drupal‑based CMS</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Complex Data Integration</h3><p style=\"line-height: 2;\">Embedding the museum's Embark collection feeds (XML) into Drupal required mapping dozens of vocabularies (e.g., Creator, Century, Room) into reserved taxonomies, ensuring editorial overrides were possible without breaking imports.</p><h3 style=\"line-height: 2;\">Rich Multimedia Support</h3><p style=\"line-height: 2;\">Balancing auto‑playing intro videos, audio streams, and high‑resolution art imagery while preserving performance and accessibility.</p><h3 style=\"line-height: 2;\">Dynamic Filtering &amp; Search</h3><p style=\"line-height: 2;\">Building custom Views and search interfaces for Art, Events, and Music with \"sticky\" featured items, date‑aware calendars, and thematic sort controls.</p><h3 style=\"line-height: 2;\">Maintainability &amp; Usability</h3><p style=\"line-height: 2;\">Designing paragraph‑based templates so content editors could assemble pages (e.g., \"Visit Overview\", \"Art Landing\") without developer assistance.</p><h3 style=\"line-height: 2;\">Solution &amp; Technical Highlights</h3><h4 style=\"line-height: 2;\">Architecture &amp; Content Model</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Platform:</strong> Drupal 7 with Paragraphs architecture for modular sections</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Content Types:</strong> Art Detail, Event/Exhibition, Audio, Story, Basic Page, Standard Inner Page for ad hoc content using micro‑templates (Text, Grid, Video, Quote, Data)</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Taxonomies:</strong> Reserved Vocabularies driven by Embark XML (e.g., primaryCreator, permanentGalleryLOC) alongside native editable vocabularies for events and audio metadata</li></ul><h4 style=\"line-height: 2;\">Key Templates &amp; Features</h4><h5 style=\"line-height: 2;\">Intro Video &amp; Homepage</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">•&nbsp;Auto‑playing hero video on first visit, with cookie‑based suppression on return</li><li style=\"line-height: 2;\">•&nbsp;Three‑panel homepage showcasing featured Story, Visit, and Art Overview with emergency banner overrides</li></ul><h5 style=\"line-height: 2;\">Visit &amp; Events</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">•&nbsp;\"Need to Know\" icons panel and mini‑grid tiles for visitor info</li><li style=\"line-height: 2;\">•&nbsp;Calendar overview with date selector, Today/Tomorrow headers, and Google Places–powered open/closed status</li></ul><h5 style=\"line-height: 2;\">Collections &amp; Music</h5><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">•&nbsp;Art landing page with featured carousel and 3×3 randomized grid</li><li style=\"line-height: 2;\">•&nbsp;Music landing with featured audio carousel, list view, and integrated HTML5 audio player</li><li style=\"line-height: 2;\">•&nbsp;Powerful left‑side filters (Creator, Room, Century, Instrumentation, Period) and free‑text search</li></ul><h4 style=\"line-height: 2;\">Third‑Party Integrations</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">•&nbsp;Embark Collections API for artwork data</li><li style=\"line-height: 2;\">•&nbsp;Google Analytics (UA‑7043231‑1) and Places API for live hours/status</li><li style=\"line-height: 2;\">•&nbsp;Vimeo for video hosting, AddToAny/ShareThis for social sharing</li></ul><h4 style=\"line-height: 2;\">Infrastructure &amp; Deployment</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Hosting/SSL:</strong> Site hosted on dedicated servers; HTTPS enforced by default</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Domains:</strong> Primary domain plus legacy domains (GardnerMuseum.com, ISGM.org, etc.) all consolidated to https://www.gardnermuseum.org/</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Version Control:</strong> Bitbucket repo (fabrique/isgm) with Knectar and Fabrique engineers collaborating via Git</li></ul><h3 style=\"line-height: 2;\">Results &amp; Impact</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Editorial Empowerment:</strong> Non‑technical staff can now spin up new pages (e.g., \"Join &amp; Give\", News) using pre‑built paragraph templates, reducing developer dependency</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Engagement:</strong> Dynamic featured carousels and multimedia elements drove increased time‑on‑site and click‑throughs to ticketing and membership pages</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Discoverability:</strong> Robust filtering and search across art, events, and audio collections improved findability of over 5,000 objects and programs</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Accessibility:</strong> High‑contrast toggle and semantic markup enhanced compliance with WCAG guidelines</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Scalability:</strong> The modular, taxonomy‑driven approach laid groundwork for Phase 2 enhancements (e.g., e‑commerce, personalized experiences)</li></ul><h3 style=\"line-height: 2;\">Conclusion</h3><p style=\"line-height: 2;\">By combining Fabrique's design vision with Knectar's Drupal expertise, the ISGM Phase 1 website established a flexible, media‑rich platform that not only honors the legacy of Isabella Stewart Gardner's collection but also equips museum staff with powerful tools to evolve the digital experience going forward.</p><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to transform your cultural institution's digital presence?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver rich, accessible digital experiences for your collections and visitors.</p>",
         "coverImage": "project_tiles/isgm.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/the-isabella-stewart-gardner-museum_1.png",
+          "project_images/the-isabella-stewart-gardner-museum_2.png",
+          "project_images/the-isabella-stewart-gardner-museum_3.png",
+          "project_images/the-isabella-stewart-gardner-museum_4.png"
+        ]
       },
       {
         "label": "Way Finders",
@@ -571,7 +594,13 @@
         "projectUrl": "https://www.wayfinders.org/",
         "pageSummary": "<p>Description goes here</p>",
         "coverImage": "project_tiles/wayfinders.jpg",
-        "sub_menu": 0
+        "sub_menu": 0,
+        "detailImages": [
+          "project_images/way-finders_1.png",
+          "project_images/way-finders_2.png",
+          "project_images/way-finders_3.png",
+          "project_images/way-finders_4.png"
+        ]
       }
     ]
   },
@@ -595,23 +624,13 @@
         "projectUrl": "https://www.chemexcoffeemaker.com/",
         "pageSummary": "<p>This is such a great website I can't even believe it!</p>",
         "coverImage": "project_tiles/chemex.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Deans Beans",
-        "slug": "deans-beans",
-        "menuDisplayName": "Deans Beans",
-        "url": "project.html?item=deans-beans",
-        "projectTitle": "Deans Beans",
-        "role": "Technical Lead, Developer",
-        "budget": "$100,000 - $250,000",
-        "technology": "Magento",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://deansbeans.com/",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/deans_beans.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/chemex-coffee-maker_1.png",
+          "project_images/chemex-coffee-maker_2.png",
+          "project_images/chemex-coffee-maker_3.png",
+          "project_images/chemex-coffee-maker_4.png"
+        ]
       },
       {
         "label": "Guardair",
@@ -627,7 +646,12 @@
         "projectUrl": "https://guardair.com/",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/guardair.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/guardair_1.png",
+          "project_images/guardair_2.png",
+          "project_images/guardair_3.png"
+        ]
       },
       {
         "label": "Pioneer Valley Books",
@@ -643,7 +667,12 @@
         "projectUrl": "https://pioneervalleybooks.com/",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/pvb.jpg",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/pioneer-valley-books_1.png",
+          "project_images/pioneer-valley-books_2.png",
+          "project_images/pioneer-valley-books_3.png"
+        ]
       },
       {
         "label": "Sleep Studio",
@@ -659,7 +688,12 @@
         "projectUrl": "https://sleepstudio.com/ ",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/sleep.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/sleep-studio_1.png",
+          "project_images/sleep-studio_2.png",
+          "project_images/sleep-studio_3.png"
+        ]
       },
       {
         "label": "Sparx Hockey",
@@ -675,7 +709,12 @@
         "projectUrl": "https://sparxhockey.com/",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/sparx.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/sparx-hockey_1.png",
+          "project_images/sparx-hockey_2.png",
+          "project_images/sparx-hockey_3.png"
+        ]
       },
       {
         "label": "Trillium Brewing",
@@ -691,7 +730,12 @@
         "projectUrl": "https://www.trilliumbrewing.com/",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/trillium.webp",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/trillium-brewing_1.png",
+          "project_images/trillium-brewing_2.png",
+          "project_images/trillium-brewing_3.png"
+        ]
       },
       {
         "label": "Lanshin",
@@ -707,7 +751,12 @@
         "projectUrl": "https://lanshin.com/",
         "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">Lanshin partnered with Knectar to launch <font color=\"#e74c3c\"><b>Lanshin.com</b></font>, a Shopify‑based e‑commerce site showcasing Traditional Chinese Medicine (TCM) tools, skincare, body care, internal wellness products, training courses, and treatments. The goal was to create a polished, mobile‑responsive storefront that empowers Lanshin's team to manage content, products, and navigation with minimal technical support.</p><h3 style=\"line-height: 2;\">Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Streamlined Content Management:</strong> Enable non‑technical staff to update pages, homepage sections, products, and menus via Shopify's admin interface.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Robust Product Taxonomy &amp; Filtering:</strong> Support multiple categories (TCM Tools, Skincare, Body, Eyes, Scalp &amp; Hair, Internal Wellness, Sets, Featured, New, Best Sellers) and allow customers to filter product lists intuitively.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Enhanced Product Detail Experience:</strong> Present rich product information—\"Full Description,\" \"How to Use,\" and \"Ingredients\" tabs—managed via Shopify metafields.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Upsell &amp; Cross‑sell Functionality:</strong> Automatically surface related products on each product detail page to increase average order value.</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Complex Category Structure</h3><p style=\"line-height: 2;\">With over a dozen collection types and nested menus, Lanshin needed a navigation system that scales without overwhelming the CMS.</p><h3 style=\"line-height: 2;\">Custom Product Tabs</h3><p style=\"line-height: 2;\">The standard Shopify product template lacked dedicated fields for \"How to Use\" and \"Ingredients,\" requiring a reliable metafields implementation.</p><h3 style=\"line-height: 2;\">Admin Usability &amp; Training</h3><p style=\"line-height: 2;\">Ensuring staff could confidently manage everything—from URL redirects to Smart Search &amp; Filter settings—without risking site breakages.</p><h3 style=\"line-height: 2;\">Technical Approach</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Modular Homepage Sections:</strong> Leveraged Shopify's Sections &amp; Blocks to create editable homepage tiles (e.g., Featured Sets, Courses, Treatments) that Lanshin can reorder or toggle off via the theme customizer.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Collection‑Driven Filters:</strong> Configured product collections and tied them to the Sidebar Menu, enabling customers to refine products by category, skin benefit, or tool type.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Metafields‑Backed Tabs:</strong> Added custom metafields on the Product edit screen for \"How to Use\" and \"Ingredients,\" rendered as separate tabs on the product detail page.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Smart Search &amp; Filter Integration:</strong> Installed and configured the Smart Search &amp; Filter app to manage upsells and cross‑sells, with related products auto‑populated based on Lanshin's merchandising rules.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Comprehensive User Guide:</strong> Delivered a 13‑page Shopify User Guide covering logging in, managing users, redirects, WYSIWYG editing, menus, and more—ensuring Lanshin's team can self‑serve daily operations.</li></ul><h3 style=\"line-height: 2;\">Technology Stack</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Platform:</strong> Shopify, Liquid templating, responsive CSS/SASS</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Apps &amp; Plugins:</strong> Smart Search &amp; Filter for related products; native Shopify Navigation, URL Redirects, and Metafields; built‑in WYSIWYG editor</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Hosting &amp; Deployment:</strong> Shopify's CDN and secure checkout, with preview links for theme QA and a streamlined publish workflow</li></ul><h3 style=\"line-height: 2;\">Outcomes</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Operational Efficiency:</strong> Lanshin staff now update products, collections, and site content 3× faster, with clear workflows for redirects and menu management.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Improved UX &amp; Discovery:</strong> Customers benefit from intuitive filtering, clear product information via dedicated tabs, and personalized upsell recommendations, driving higher engagement and average order value.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Scalable Foundation:</strong> The modular theme and comprehensive documentation position Lanshin to launch new product lines, collections, and content categories with minimal developer intervention.</li></ul><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to transform your e‑commerce experience?</strong><br>Contact us to learn how our Shopify development expertise can help you deliver scalable, user‑friendly online stores.</p>",
         "coverImage": "project_tiles/trillium.webp",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/lanshin_1.png",
+          "project_images/lanshin_2.png",
+          "project_images/lanshin_3.png"
+        ]
       }
     ]
   },
@@ -731,7 +780,12 @@
         "projectUrl": "https://editor.p5js.org/knectar/full/bLcZrlqt_",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/bezier.mp4",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/bezier-controls_1.png",
+          "project_images/bezier-controls_2.png",
+          "project_images/bezier-controls_3.png"
+        ]
       },
       {
         "label": "Call and response app",
@@ -747,7 +801,12 @@
         "projectUrl": null,
         "pageSummary": "<div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">sdsdsdsdoshd sodjg skdhg skhgd skhgd skhgd ksh dkhs s</div><div class=\"ql-code-block\"><br></div><div class=\"ql-code-block\">         const newDesc = quill.root.innerHTML;</div><div class=\"ql-code-block\">            if (newDesc !== originalDesc) {</div><div class=\"ql-code-block\" data-language=\"true\">                updateProjectDescription(slug, newDesc, (success) =&gt; {</div></div><p>                    if (success) {</p><p>                        showIndicator('Saved!', 'saved');</p><p>                        originalDesc = newDesc; // Update original for next comparison</p><div class=\"ql-code-block-container\" spellcheck=\"false\"><div class=\"ql-code-block\">                    } else {</div><div class=\"ql-code-block\">                        showIndicator('</div></div>",
         "coverImage": "project_tiles/jazz.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/call-and-response-app_1.png",
+          "project_images/call-and-response-app_2.png",
+          "project_images/call-and-response-app_3.png"
+        ]
       },
       {
         "label": "Strudelizer",
@@ -763,7 +822,12 @@
         "projectUrl": "https://midi-strudel-dash.vercel.app/",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/strudelizer.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/strudelizer_1.png",
+          "project_images/strudelizer_2.png",
+          "project_images/strudelizer_3.png"
+        ]
       },
       {
         "label": "Strudel Bach",
@@ -779,23 +843,12 @@
         "projectUrl": null,
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/strudel_bach.png",
-        "sub_menu": 1
-      },
-      {
-        "label": "Glassica Analog",
-        "slug": "glassica-analog",
-        "menuDisplayName": "Glassica Analog",
-        "url": "project.html?item=glassica-analog",
-        "projectTitle": "Glassica Analog",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "Rhino 3D, Laser cutting",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": null,
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/glassA.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/strudel-bach_1.png",
+          "project_images/strudel-bach_2.png",
+          "project_images/strudel-bach_3.png"
+        ]
       },
       {
         "label": "Jazz Hero",
@@ -811,7 +864,12 @@
         "projectUrl": "https://k-os-theory-a8ad68407a91.herokuapp.com/generate-line",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/jazz.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/jazz-hero_1.png",
+          "project_images/jazz-hero_2.png",
+          "project_images/jazz-hero_3.png"
+        ]
       },
       {
         "label": "P5 Projects",
@@ -827,7 +885,12 @@
         "projectUrl": null,
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/blobby.mp4",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/p5-projects_1.png",
+          "project_images/p5-projects_2.png",
+          "project_images/p5-projects_3.png"
+        ]
       },
       {
         "label": "Pen plotting works",
@@ -843,7 +906,12 @@
         "projectUrl": null,
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/pen.mp4",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/pen-plotting-works_1.png",
+          "project_images/pen-plotting-works_2.png",
+          "project_images/pen-plotting-works_3.png"
+        ]
       },
       {
         "label": "Sculpture works",
@@ -859,7 +927,12 @@
         "projectUrl": null,
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/cnc.mp4",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/sculpture-works_1.png",
+          "project_images/sculpture-works_2.png",
+          "project_images/sculpture-works_3.png"
+        ]
       },
       {
         "label": "Thing Y",
@@ -875,7 +948,12 @@
         "projectUrl": null,
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/thingy.mp4",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/thing-y_1.png",
+          "project_images/thing-y_2.png",
+          "project_images/thing-y_3.png"
+        ]
       },
       {
         "label": "Vases",
@@ -891,7 +969,12 @@
         "projectUrl": null,
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/vase.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/vases_1.png",
+          "project_images/vases_2.png",
+          "project_images/vases_3.png"
+        ]
       },
       {
         "label": "Choosroozy",
@@ -907,7 +990,12 @@
         "projectUrl": "https://editor.p5js.org/knectar/full/fIJ2pBpyz",
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/choosroozy.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/choosroozy_1.png",
+          "project_images/choosroozy_2.png",
+          "project_images/choosroozy_3.png"
+        ]
       },
       {
         "label": "Dog Door",
@@ -923,7 +1011,12 @@
         "projectUrl": null,
         "pageSummary": "Description goes here",
         "coverImage": "project_tiles/dog.png",
-        "sub_menu": 1
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/dog-door_1.png",
+          "project_images/dog-door_2.png",
+          "project_images/dog-door_3.png"
+        ]
       }
     ]
   },

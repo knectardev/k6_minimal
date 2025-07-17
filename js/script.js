@@ -635,14 +635,14 @@ function buildProjectInfoHTML(data) {
     if (data.years) rows.push(`<li><strong>YEARS:</strong> ${data.years}</li>`);
     if (data.designPartner) {
         if (data.designPartnerUrl) {
-            rows.push(`<li><strong>DESIGN PARTNER:</strong> <a href="${data.designPartnerUrl}" target="_blank" class="external-link">${data.designPartner}<img src="assets/link_arrow.svg" alt="" class="link-icon"></a></li>`);
+            rows.push(`<li><strong>DESIGN PARTNER:</strong> <a href="${data.designPartnerUrl}" target="_blank" class="external-link">${data.designPartner}</a><span class="link-icon" aria-hidden="true">↗</span></li>`);
         } else {
             rows.push(`<li><strong>DESIGN PARTNER:</strong> ${data.designPartner}</li>`);
         }
     }
     if (data.projectUrl) {
         const disp = data.projectLinkDisplay || data.projectUrl;
-        rows.push(`<li><strong>DOMAIN:</strong> <a href="${data.projectUrl}" target="_blank" class="external-link">${disp}<img src="assets/link_arrow.svg" alt="" class="link-icon"></a></li>`);
+        rows.push(`<li><strong>DOMAIN:</strong> <a href="${data.projectUrl}" target="_blank" class="external-link">${disp}</a><span class="link-icon" aria-hidden="true">↗</span></li>`);
     }
     if (rows.length) html += `<ul>${rows.join('\n')}</ul>`;
 
@@ -1260,7 +1260,7 @@ function buildBlogPostHTML(articleEl, data) {
         if (data.technology) metaRows.push(`<li><span class="label">Technology:</span> <span>${data.technology}</span></li>`);
         if (data.projectUrl) {
             const disp = data.projectLinkDisplay || data.projectUrl;
-            metaRows.push(`<li><span class="label">Domain:</span> <span><a href="${data.projectUrl}" target="_blank" class="external-link">${disp}<img src="assets/link_arrow.svg" alt="" class="link-icon"></a></span></li>`);
+            metaRows.push(`<li><span class="label">Domain:</span> <span><a href="${data.projectUrl}" target="_blank" class="external-link">${disp}</a><span class="link-icon" aria-hidden="true">↗</span></span></li>`);
         }
         if (metaRows.length) meta.innerHTML = metaRows.join('\n');
     }

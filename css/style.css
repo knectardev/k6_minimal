@@ -439,17 +439,18 @@ body {
     color: var(--color-primary) !important;
 }
 
+/* Update arrow indicator styling */
 .link-icon {
-    width: 12px;
-    height: 12px;
-    /* Make icon black by default */
-    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
-    transition: filter 0.3s ease;
-}
-
-.external-link:hover .link-icon {
-    /* Make icon red on hover */
-    filter: brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(7471%) hue-rotate(3deg) brightness(99%) contrast(118%);
+    /* Small actual footprint so it doesn't stretch line-height */
+    font-size: 11px;
+    line-height: 0;
+    display: inline-block;
+    margin-left: 3px;
+    color: var(--color-primary);
+    pointer-events: none;
+    /* Visual scaling */
+    transform: scale(2);
+    transform-origin: left center;
 }
 
 /* Home Page Styles */
