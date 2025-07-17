@@ -125,10 +125,10 @@ app.post('/api/update-menu', (req, res) => {
     
     if (shouldCreateBackup) {
       try {
-        // Clean up old backups (keep only 10 most recent)
+        // Clean up old backups (keep only 3 most recent)
         const backupDir = path.dirname(menuPath);
         const backupFiles = fs.readdirSync(backupDir)
-          .filter(file => file.startsWith('menu_backup_') && file.endsWith('.json'))
+          .filter(file => file.startsWith('menu_backup') && file.endsWith('.json'))
           .map(file => ({
             name: file,
             path: path.join(backupDir, file),
@@ -136,9 +136,9 @@ app.post('/api/update-menu', (req, res) => {
           }))
           .sort((a, b) => b.time - a.time); // Sort by newest first
         
-        // Remove old backups beyond the 10th one
-        if (backupFiles.length >= 10) {
-          const filesToDelete = backupFiles.slice(10);
+        // Remove old backups beyond the 3rd one
+        if (backupFiles.length >= 3) {
+          const filesToDelete = backupFiles.slice(3);
           filesToDelete.forEach(file => {
             try {
               fs.unlinkSync(file.path);

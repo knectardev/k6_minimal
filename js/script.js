@@ -698,6 +698,9 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
             <button onclick="insertWysiwygInlineCode()" title="Inline Code" class="toolbar-btn">
                 \`code\`
             </button>
+            <button onclick="insertWysiwygLink()" title="Insert Link" class="toolbar-btn">
+                🔗 Link
+            </button>
             <select onchange="formatWysiwygHeading(this.value)" title="Heading Style" class="toolbar-select wysiwyg-heading-select">
                 <option value="">Heading</option>
                 <option value="h1" class="wysiwyg-h1-option">H1</option>
@@ -1395,4 +1398,35 @@ function insertWysiwygInlineCode() {
     if (wysiwygEditor) {
         wysiwygEditor.dispatchEvent(new Event('input'));
     }
+} 
+
+// Insert a hyperlink with red, underlined styling that opens in a new tab
+function insertWysiwygLink() {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) {
+        alert('Please select the text you want to turn into a link.');
+        return;
+    }
+
+    const url = prompt('Enter the URL to link to (include http:// or https://):');
+    if (!url) return;
+
+    // Use execCommand to create the link so that undo/redo work as expected
+    execWysiwygCommand('createLink', false, url);
+
+    // Post-process the newly created <a> elements to enforce styling & behaviour
+    const wysiwygEditor = document.getElementById('wysiwyg-editor');
+    if (!wysiwygEditor) return;
+
+    // Query for anchors that match the provided URL inside the editor
+    const anchors = wysiwygEditor.querySelectorAll(`a[href="${url}"]`);
+    anchors.forEach(anchor => {
+        anchor.setAttribute('target', '_blank');
+        anchor.style.color = '#FF0000';  // red text
+        anchor.style.textDecoration = 'underline'; // underline
+        anchor.style.fontWeight = 'normal'; // ensure not bold
+    });
+
+    // Trigger change detection so that the Save button state updates
+    wysiwygEditor.dispatchEvent(new Event('input'));
 } 

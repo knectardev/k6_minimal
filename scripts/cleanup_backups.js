@@ -5,7 +5,7 @@ const path = require('path');
 function cleanupBackups() {
   const dataDir = path.join(__dirname, '..', 'data');
   const backupFiles = fs.readdirSync(dataDir)
-    .filter(file => file.startsWith('menu_backup_') && file.endsWith('.json'))
+    .filter(file => file.startsWith('menu_backup') && file.endsWith('.json'))
     .map(file => ({
       name: file,
       path: path.join(dataDir, file),
@@ -15,12 +15,12 @@ function cleanupBackups() {
 
   console.log(`Found ${backupFiles.length} backup files`);
 
-  if (backupFiles.length <= 10) {
+  if (backupFiles.length <= 3) {
     console.log('No cleanup needed - only', backupFiles.length, 'backup files exist');
     return;
   }
 
-  const filesToDelete = backupFiles.slice(10);
+  const filesToDelete = backupFiles.slice(3);
   console.log(`Removing ${filesToDelete.length} old backup files...`);
 
   filesToDelete.forEach(file => {
