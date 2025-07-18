@@ -302,7 +302,7 @@
                         img.src = pageData.detailImages[idx];
                         img.alt = `Project detail image ${idx + 1} of ${pageData.detailImages.length}`;
                         img.style.width = '100%';
-                        img.style.maxWidth = '420px';
+                        img.style.maxWidth = '100%';
                         img.style.display = 'block';
                         img.style.margin = '0 auto 12px auto';
                         img.style.borderRadius = '8px';
@@ -324,6 +324,8 @@
                         prevBtn.style.color = '#FF0000';
                         prevBtn.disabled = idx === 0;
                         prevBtn.onclick = () => { if (currentIdx > 0) { currentIdx--; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        prevBtn.style.display = 'none';
                         const nextBtn = document.createElement('button');
                         nextBtn.textContent = '▶';
                         nextBtn.setAttribute('aria-label', 'Next image');
@@ -334,12 +336,31 @@
                         nextBtn.style.color = '#FF0000';
                         nextBtn.disabled = idx === pageData.detailImages.length - 1;
                         nextBtn.onclick = () => { if (currentIdx < pageData.detailImages.length - 1) { currentIdx++; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        nextBtn.style.display = 'none';
                         nav.appendChild(prevBtn);
                         nav.appendChild(img);
                         nav.appendChild(nextBtn);
-                        // Click to expand
-                        img.style.cursor = 'pointer';
-                        img.addEventListener('click', () => showImageModal(idx));
+                        // Add swipe gesture handling
+                        let touchStartX = 0;
+                        img.addEventListener('touchstart', (e) => {
+                            touchStartX = e.touches[0].clientX;
+                        });
+                        img.addEventListener('touchend', (e) => {
+                            const diffX = e.changedTouches[0].clientX - touchStartX;
+                            const threshold = 50; // minimum px swipe distance
+                            if (Math.abs(diffX) > threshold) {
+                                if (diffX < 0 && currentIdx < pageData.detailImages.length - 1) {
+                                    currentIdx++;
+                                    renderMobileSlide(currentIdx);
+                                } else if (diffX > 0 && currentIdx > 0) {
+                                    currentIdx--;
+                                    renderMobileSlide(currentIdx);
+                                }
+                            }
+                        });
+                        // Disable modal trigger on mobile
+                        img.style.cursor = 'default';
                         mobileGallery.appendChild(nav);
                         // Optional: show image count
                         const count = document.createElement('div');

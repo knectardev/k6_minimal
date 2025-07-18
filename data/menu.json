@@ -788,11 +788,11 @@
         ]
       },
       {
-        "label": "Call and response app",
-        "slug": "call-and-response-app",
-        "menuDisplayName": "Call and Response",
-        "url": "project.html?item=call-and-response-app",
-        "projectTitle": "Call and response app",
+        "label": "Music app experiments",
+        "slug": "music-app-experiments",
+        "menuDisplayName": "Music app experiments",
+        "url": "project.html?item=music-app-experiments",
+        "projectTitle": "Music app experiments",
         "role": "Concept, Design, Developer",
         "budget": "< $10,000",
         "technology": "Cursor, Javascript",
@@ -803,9 +803,9 @@
         "coverImage": "project_tiles/jazz.png",
         "sub_menu": 1,
         "detailImages": [
-          "project_images/call-and-response-app_1.png",
-          "project_images/call-and-response-app_2.png",
-          "project_images/call-and-response-app_3.png"
+          "project_images/music-app-experiments_1.png",
+          "project_images/music-app-experiments_2.png",
+          "project_images/music-app-experiments_3.png"
         ]
       },
       {

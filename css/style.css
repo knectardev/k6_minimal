@@ -1596,6 +1596,20 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+  /* Updated mobile gallery for swipe navigation */
+  .mobile-gallery {
+    max-width: 100% !important;
+  }
+  .mobile-gallery img {
+    max-width: 100% !important;
+  }
+  /* Hide old arrow buttons */
+  .mobile-gallery button {
+    display: none !important;
+  }
+}
+
 /* WYSIWYG Editor Styles */
 .wysiwyg-toolbar {
     display: flex;
