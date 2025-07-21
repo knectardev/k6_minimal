@@ -340,7 +340,7 @@
     "label": "Web & iOS Apps",
     "icon": "web.svg",
     "categoryDescription": "We design and develop custom web and iOS applications that delight users and drive results. Our apps are crafted for performance, accessibility, and seamless integration.",
-    "more": 1,
+    "more": 0,
     "submenu": [
       {
         "label": "Carv Resource Management",
@@ -383,6 +383,27 @@
           "project_images/glassica-app_1.png",
           "project_images/glassica-app_2.png",
           "project_images/glassica-app_3.png"
+        ]
+      },
+      {
+        "label": "Choosroozy",
+        "slug": "choosroozy",
+        "menuDisplayName": "Choosroozy",
+        "url": "project.html?item=choosroozy",
+        "projectTitle": "Choosroozy",
+        "role": "Concept, Design, Developer",
+        "budget": "< $10,000",
+        "technology": "JavaScript",
+        "designPartner": null,
+        "designPartnerUrl": null,
+        "projectUrl": "https://editor.p5js.org/knectar/full/fIJ2pBpyz",
+        "pageSummary": "Description goes here",
+        "coverImage": "project_tiles/choosroozy.png",
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/choosroozy_1.png",
+          "project_images/choosroozy_2.png",
+          "project_images/choosroozy_3.png"
         ]
       },
       {
@@ -475,27 +496,6 @@
         ]
       },
       {
-        "label": "Glenmede",
-        "slug": "glenmede",
-        "menuDisplayName": "Glenmede",
-        "url": "project.html?item=glenmede",
-        "projectTitle": "Glenmede",
-        "role": "Technical Lead, Developer",
-        "budget": "$100,000 - $250,000",
-        "technology": "Drupal",
-        "designPartner": "Hatch and Beehive Media",
-        "designPartnerUrl": null,
-        "projectUrl": "https://www.glenmede.com/",
-        "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">Glenmede is a privately owned wealth and investment management firm. For Phase 1 of the site rebuild (October 2015), Knectar partnered with Hatch and Beehive Media to deliver a unified, highly flexible web platform for Glenmede's corporate brand and its three business lines: Investment Management (GIM), Endowments &amp; Foundations (E&amp;F), and Individuals &amp; Families (I&amp;F).</p><h3 style=\"line-height: 2;\">Project Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Single codebase &amp; taxonomy:</strong> Create one Drupal installation that could present four distinct \"sections\" (GTC parent, GIM, E&amp;F, I&amp;F) via theming rather than separate sites</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Robust content model:</strong> Define content types—from Homepage and Business Line Homepages to People, Ideas, Events, Funds, and Personal Stories—that support rich, push‑and‑pull content workflows</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Seamless third‑party integrations:</strong> Integrate the ICIMS recruitment feed, Twitter timeline, Google Maps for office locations, mutual‑fund data feeds, and a secure client login portal</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Responsive, brand‑consistent design:</strong> Translate wireframes and high‑fidelity flats into mobile‑friendly templates, ensuring consistency across desktop, tablet, and phone</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Multiple business lines, one platform</h3><p style=\"line-height: 2;\">Ensuring each division could have its own color profile, navigation, and content while pulling from a shared database and template set.</p><h3 style=\"line-height: 2;\">Complex content relationships</h3><p style=\"line-height: 2;\">Enabling \"push\" blocks that let editors promote any content type (e.g., Person or Idea) to any other page, and \"pull\" relationships (e.g., Regional Office pages automatically listing People nodes).</p><h3 style=\"line-height: 2;\">Editorial governance</h3><p style=\"line-height: 2;\">Defining clear user roles—Root/Admin, Publisher, Content Editor—with granular permissions for publishing, revision control, and site configuration.</p><h3 style=\"line-height: 2;\">Data feeds &amp; dynamic widgets</h3><p style=\"line-height: 2;\">Architecting stable integrations for live content—tweets, maps, fund pricing—without compromising performance or security.</p><h3 style=\"line-height: 2;\">Solution Overview</h3><h4 style=\"line-height: 2;\">Drupal‑based CMS</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Leveraged Drupal core with custom modules and configurations for content types, CKEditor WYSIWYG blocks, nodequeue sorting, and theme selection per business line</li></ul><h4 style=\"line-height: 2;\">Flexible templating</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Developed a suite of Twig/PHP templates covering all page types—Homepage carousel with H1/H2 overlays, Business Line landing pages, Standard Inner Pages, Regional Office and People list/detail views, Ideas, Events, Funds, Personal Stories, Contact Forms, and static pages (About, Careers)</li></ul><h4 style=\"line-height: 2;\">Push vs. Pull workflows</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Implemented editorial UI that lets authors create a node and immediately \"push\" it as a featured block to other pages; conversely, certain pages (Regional Office, Fund) \"pull\" related content based on taxonomy and node references</li></ul><h4 style=\"line-height: 2;\">Third‑party &amp; social media integration</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;ICIMS Careers Feed for recruiting pages</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Twitter Widget auto‑pull on the GTC homepage</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Google Maps embed on office pages</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Mutual Fund Data feeds into fund detail pages</span></li><li style=\"line-height: 2;\"><span style=\"color: rgb(27, 27, 27); line-height: 2;\">•&nbsp;Secure Client Login linking to GlenmedeConnect portal</span></li></ul><h4 style=\"line-height: 2;\">Responsive design</h4><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\">Incorporated mobile‑first CSS and design flats into breakpoints for desktop, tablet, and mobile; leveraged fluid grids and flexible assets</li></ul><h3 style=\"line-height: 2;\">Outcome &amp; Impact</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Unified brand experience:</strong> Across all business lines under a single codebase</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Enhanced editorial efficiency:</strong> Allowing non‑technical content teams to manage complex layouts and features without developer intervention</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Dynamic content delivery:</strong> With live data feeds and social media integration boosting client engagement</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Responsive, future‑proof platform:</strong> Supporting ongoing Phase 2 enhancements (additional API integrations, deeper personalization)</li></ul><h3 style=\"line-height: 2;\">Technologies &amp; Tools</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Platform:</strong> Drupal 7/8 (core, Views, Taxonomy, Nodequeue)</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Content Management:</strong> CKEditor for WYSIWYG blocks</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Design &amp; IA:</strong> Slickplan, Axure for IA and wireframes</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Development:</strong> PHP, Twig, JavaScript for custom theming</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">APIs:</strong> ICIMS, Twitter, Google Maps, Mutual Fund data</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Version Control:</strong> Git/Bitbucket</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">CI/CD &amp; DevOps:</strong> Automated deployment pipelines, QA/staging environments</li></ul><h3 style=\"line-height: 2;\">Live Site Highlights</h3><p style=\"line-height: 2;\">The new homepage features a clean, hierarchical navigation menu (\"About Us,\" \"A True Partnership\" business lines, \"News &amp; Insights,\" and client login), large hero imagery with overlaid headlines, and sectional calls‑to‑action (e.g., \"Learn More – Individuals &amp; Families\") that guide visitors to specialized service pages at <strong style=\"line-height: 2;\">glenmede.com</strong>. This modern, boutique‑firm aesthetic, combined with deep content flexibility, positions Glenmede for ongoing digital evolution.</p><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to transform your financial services digital presence?</strong><br>Contact us to learn how our Drupal development expertise can help you deliver unified, scalable digital experiences for your business lines and clients.</p>",
-        "coverImage": "project_tiles/glen.png",
-        "sub_menu": 0,
-        "detailImages": [
-          "project_images/glenmede_1.png",
-          "project_images/glenmede_2.png",
-          "project_images/glenmede_3.png"
-        ]
-      },
-      {
         "label": "Monadnock Media",
         "slug": "monadnock-media",
         "menuDisplayName": "Monadnock",
@@ -535,6 +535,27 @@
           "project_images/robert-rauschenberg-foundation_1.png",
           "project_images/robert-rauschenberg-foundation_2.png",
           "project_images/robert-rauschenberg-foundation_3.png"
+        ]
+      },
+      {
+        "label": "Jack Daniels",
+        "slug": "jack-daniels",
+        "menuDisplayName": "Jack Daniels",
+        "url": "project.html?item=jack-daniels",
+        "projectTitle": "Jack Daniels",
+        "role": "Technical Lead, Developer",
+        "budget": "> $250,000",
+        "technology": "Drupal",
+        "designPartner": " ",
+        "designPartnerUrl": null,
+        "projectUrl": "http://jackdaniels.com/",
+        "pageSummary": "Description goes here",
+        "coverImage": "project_tiles/jack_daniels.mp4",
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/jack-daniels_1.png",
+          "project_images/jack-daniels_2.png",
+          "project_images/jack-daniels_3.png"
         ]
       },
       {
@@ -608,7 +629,7 @@
     "label": "E-Commerce",
     "icon": "money.svg",
     "categoryDescription": "Our e-commerce solutions empower businesses to grow online. From custom storefronts to seamless integrations, we help brands reach new customers and maximize sales.",
-    "more": 1,
+    "more": 0,
     "submenu": [
       {
         "label": "Chemex Coffee Maker",
@@ -675,27 +696,6 @@
         ]
       },
       {
-        "label": "Sleep Studio",
-        "slug": "sleep-studio",
-        "menuDisplayName": "Sleep Studio",
-        "url": "project.html?item=sleep-studio",
-        "projectTitle": "Sleep Studio",
-        "role": "Technical Lead, Developer",
-        "budget": "$50,000 - $100,000",
-        "technology": "Magento",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://sleepstudio.com/ ",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/sleep.png",
-        "sub_menu": 1,
-        "detailImages": [
-          "project_images/sleep-studio_1.png",
-          "project_images/sleep-studio_2.png",
-          "project_images/sleep-studio_3.png"
-        ]
-      },
-      {
         "label": "Sparx Hockey",
         "slug": "sparx-hockey",
         "menuDisplayName": "Sparx Hockey",
@@ -708,7 +708,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://sparxhockey.com/",
         "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/sparx.png",
+        "coverImage": "project_tiles/sparx_hockey.mp4",
         "sub_menu": 1,
         "detailImages": [
           "project_images/sparx-hockey_1.png",
@@ -740,9 +740,9 @@
       {
         "label": "Lanshin",
         "slug": "lanshin",
-        "menuDisplayName": "Lanshin",
+        "menuDisplayName": "Lanshin by Sandra Chiu",
         "url": "project.html?item=lanshin",
-        "projectTitle": "Lanshin",
+        "projectTitle": "Lanshin by Sandra Chiu",
         "role": "Technical Lead, Developer",
         "budget": "$25,000 - $50,000",
         "technology": "Shopify",
@@ -750,7 +750,7 @@
         "designPartnerUrl": null,
         "projectUrl": "https://lanshin.com/",
         "pageSummary": "<h3 style=\"line-height: 2;\">Background</h3><p style=\"line-height: 2;\">Lanshin partnered with Knectar to launch <font color=\"#e74c3c\"><b>Lanshin.com</b></font>, a Shopify‑based e‑commerce site showcasing Traditional Chinese Medicine (TCM) tools, skincare, body care, internal wellness products, training courses, and treatments. The goal was to create a polished, mobile‑responsive storefront that empowers Lanshin's team to manage content, products, and navigation with minimal technical support.</p><h3 style=\"line-height: 2;\">Objectives</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Streamlined Content Management:</strong> Enable non‑technical staff to update pages, homepage sections, products, and menus via Shopify's admin interface.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Robust Product Taxonomy &amp; Filtering:</strong> Support multiple categories (TCM Tools, Skincare, Body, Eyes, Scalp &amp; Hair, Internal Wellness, Sets, Featured, New, Best Sellers) and allow customers to filter product lists intuitively.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Enhanced Product Detail Experience:</strong> Present rich product information—\"Full Description,\" \"How to Use,\" and \"Ingredients\" tabs—managed via Shopify metafields.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Upsell &amp; Cross‑sell Functionality:</strong> Automatically surface related products on each product detail page to increase average order value.</li></ul><h3 style=\"line-height: 2;\"><u>Key Challenges</u></h3><h3 style=\"line-height: 2;\">Complex Category Structure</h3><p style=\"line-height: 2;\">With over a dozen collection types and nested menus, Lanshin needed a navigation system that scales without overwhelming the CMS.</p><h3 style=\"line-height: 2;\">Custom Product Tabs</h3><p style=\"line-height: 2;\">The standard Shopify product template lacked dedicated fields for \"How to Use\" and \"Ingredients,\" requiring a reliable metafields implementation.</p><h3 style=\"line-height: 2;\">Admin Usability &amp; Training</h3><p style=\"line-height: 2;\">Ensuring staff could confidently manage everything—from URL redirects to Smart Search &amp; Filter settings—without risking site breakages.</p><h3 style=\"line-height: 2;\">Technical Approach</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Modular Homepage Sections:</strong> Leveraged Shopify's Sections &amp; Blocks to create editable homepage tiles (e.g., Featured Sets, Courses, Treatments) that Lanshin can reorder or toggle off via the theme customizer.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Collection‑Driven Filters:</strong> Configured product collections and tied them to the Sidebar Menu, enabling customers to refine products by category, skin benefit, or tool type.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Metafields‑Backed Tabs:</strong> Added custom metafields on the Product edit screen for \"How to Use\" and \"Ingredients,\" rendered as separate tabs on the product detail page.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Smart Search &amp; Filter Integration:</strong> Installed and configured the Smart Search &amp; Filter app to manage upsells and cross‑sells, with related products auto‑populated based on Lanshin's merchandising rules.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Comprehensive User Guide:</strong> Delivered a 13‑page Shopify User Guide covering logging in, managing users, redirects, WYSIWYG editing, menus, and more—ensuring Lanshin's team can self‑serve daily operations.</li></ul><h3 style=\"line-height: 2;\">Technology Stack</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Platform:</strong> Shopify, Liquid templating, responsive CSS/SASS</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Apps &amp; Plugins:</strong> Smart Search &amp; Filter for related products; native Shopify Navigation, URL Redirects, and Metafields; built‑in WYSIWYG editor</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Hosting &amp; Deployment:</strong> Shopify's CDN and secure checkout, with preview links for theme QA and a streamlined publish workflow</li></ul><h3 style=\"line-height: 2;\">Outcomes</h3><ul style=\"line-height: 2;\"><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Operational Efficiency:</strong> Lanshin staff now update products, collections, and site content 3× faster, with clear workflows for redirects and menu management.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Improved UX &amp; Discovery:</strong> Customers benefit from intuitive filtering, clear product information via dedicated tabs, and personalized upsell recommendations, driving higher engagement and average order value.</li><li style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Scalable Foundation:</strong> The modular theme and comprehensive documentation position Lanshin to launch new product lines, collections, and content categories with minimal developer intervention.</li></ul><p style=\"line-height: 2;\"><strong style=\"line-height: 2;\">Ready to transform your e‑commerce experience?</strong><br>Contact us to learn how our Shopify development expertise can help you deliver scalable, user‑friendly online stores.</p>",
-        "coverImage": "project_tiles/trillium.webp",
+        "coverImage": "project_tiles/lanshin.png",
         "sub_menu": 1,
         "detailImages": [
           "project_images/lanshin_1.png",
@@ -767,30 +767,9 @@
     "more": 1,
     "submenu": [
       {
-        "label": "Bezier Controls",
-        "slug": "bezier-controls",
-        "menuDisplayName": "Bezier",
-        "url": "project.html?item=bezier-controls",
-        "projectTitle": "Bezier Controls",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "JavaScript",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://editor.p5js.org/knectar/full/bLcZrlqt_",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/bezier.mp4",
-        "sub_menu": 1,
-        "detailImages": [
-          "project_images/bezier-controls_1.png",
-          "project_images/bezier-controls_2.png",
-          "project_images/bezier-controls_3.png"
-        ]
-      },
-      {
-        "label": "Music app experiments",
+        "label": "Music apps",
         "slug": "music-app-experiments",
-        "menuDisplayName": "Music app experiments",
+        "menuDisplayName": "Music apps",
         "url": "project.html?item=music-app-experiments",
         "projectTitle": "Music app experiments",
         "role": "Concept, Design, Developer",
@@ -806,69 +785,6 @@
           "project_images/music-app-experiments_1.png",
           "project_images/music-app-experiments_2.png",
           "project_images/music-app-experiments_3.png"
-        ]
-      },
-      {
-        "label": "Strudelizer",
-        "slug": "strudelizer",
-        "menuDisplayName": "Strudelizer",
-        "url": "project.html?item=strudelizer",
-        "projectTitle": "Strudelizer",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "Cursor, Javascript",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://midi-strudel-dash.vercel.app/",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/strudelizer.png",
-        "sub_menu": 1,
-        "detailImages": [
-          "project_images/strudelizer_1.png",
-          "project_images/strudelizer_2.png",
-          "project_images/strudelizer_3.png"
-        ]
-      },
-      {
-        "label": "Strudel Bach",
-        "slug": "strudel-bach",
-        "menuDisplayName": "Strudel Bach",
-        "url": "project.html?item=strudel-bach",
-        "projectTitle": "Strudel Bach",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "Strudel",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": null,
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/strudel_bach.png",
-        "sub_menu": 1,
-        "detailImages": [
-          "project_images/strudel-bach_1.png",
-          "project_images/strudel-bach_2.png",
-          "project_images/strudel-bach_3.png"
-        ]
-      },
-      {
-        "label": "Jazz Hero",
-        "slug": "jazz-hero",
-        "menuDisplayName": "Jazz Hero",
-        "url": "project.html?item=jazz-hero",
-        "projectTitle": "Jazz Hero",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "Django, Angular",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://k-os-theory-a8ad68407a91.herokuapp.com/generate-line",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/jazz.png",
-        "sub_menu": 1,
-        "detailImages": [
-          "project_images/jazz-hero_1.png",
-          "project_images/jazz-hero_2.png",
-          "project_images/jazz-hero_3.png"
         ]
       },
       {
@@ -974,27 +890,6 @@
           "project_images/vases_1.png",
           "project_images/vases_2.png",
           "project_images/vases_3.png"
-        ]
-      },
-      {
-        "label": "Choosroozy",
-        "slug": "choosroozy",
-        "menuDisplayName": "Choosroozy",
-        "url": "project.html?item=choosroozy",
-        "projectTitle": "Choosroozy",
-        "role": "Concept, Design, Developer",
-        "budget": "< $10,000",
-        "technology": "JavaScript",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://editor.p5js.org/knectar/full/fIJ2pBpyz",
-        "pageSummary": "Description goes here",
-        "coverImage": "project_tiles/choosroozy.png",
-        "sub_menu": 1,
-        "detailImages": [
-          "project_images/choosroozy_1.png",
-          "project_images/choosroozy_2.png",
-          "project_images/choosroozy_3.png"
         ]
       },
       {
