@@ -103,7 +103,8 @@
             transition: opacity 0.3s ease;
         }
 
-        .image-modal-overlay img {
+        .image-modal-overlay img,
+        .image-modal-overlay video {
             max-width: 90vw;
             max-height: 90vh;
             border-radius: 8px;
@@ -112,7 +113,8 @@
             transition: transform 0.3s ease;
         }
         .image-modal-overlay.active { opacity: 1; }
-        .image-modal-overlay.active img { transform: scale(1); }
+        .image-modal-overlay.active img,
+        .image-modal-overlay.active video { transform: scale(1); }
 
         /* Close button */
         .image-modal-close {
@@ -241,29 +243,33 @@
             if (pageData && Array.isArray(pageData.detailImages)) {
                 window.__DETAIL_IMAGES = pageData.detailImages;
                 pageData.detailImages.forEach((src, i) => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.alt = `Project detail image ${i + 1}`;
-                    img.className = 'detail-stack-image detail-stack-image-base';
-                    img.style.display = 'block';
-                    img.style.position = 'absolute';
-                    img.style.width = '340px';
-                    img.style.borderRadius = '8px';
-                    img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
-                    // Make clickable to open modal
-                    img.style.cursor = 'pointer';
-                    img.addEventListener('click', () => showImageModal(i));
-                    // Random tilt between -15 and +15 degrees
+                    const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
+                    const media = document.createElement(isVideo ? 'video' : 'img');
+                    media.src = src;
+                    if (isVideo) {
+                        media.muted = true;
+                        media.loop = true;
+                        media.playsInline = true;
+                        media.autoplay = true;
+                    }
+                    media.alt = `Project detail media ${i + 1}`;
+                    media.className = 'detail-stack-image detail-stack-image-base';
+                    media.style.display = 'block';
+                    media.style.position = 'absolute';
+                    media.style.width = '340px';
+                    media.style.borderRadius = '8px';
+                    media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                    media.style.cursor = 'pointer';
+                    media.addEventListener('click', () => showImageModal(i));
                     const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
-                    img.style.setProperty('--tilt', tilt);
-                    img.dataset.origTilt = parseFloat(tilt);
-                    img.style.left = 'calc(50% + 100px)';
-                    // Stagger vertical position for up to 4 images
-                    if (i === 0) img.style.top = '100px';
-                    if (i === 1) img.style.top = '450px';
-                    if (i === 2) img.style.top = '800px';
-                    if (i === 3) img.style.top = '1150px';
-                    gallery.appendChild(img);
+                    media.style.setProperty('--tilt', tilt);
+                    media.dataset.origTilt = parseFloat(tilt);
+                    media.style.left = 'calc(50% + 100px)';
+                    if (i === 0) media.style.top = '100px';
+                    if (i === 1) media.style.top = '450px';
+                    if (i === 2) media.style.top = '800px';
+                    if (i === 3) media.style.top = '1150px';
+                    gallery.appendChild(media);
                 });
             }
             // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
@@ -298,15 +304,22 @@
                     let currentIdx = 0;
                     function renderMobileSlide(idx) {
                         mobileGallery.innerHTML = '';
-                        const img = document.createElement('img');
-                        img.src = pageData.detailImages[idx];
-                        img.alt = `Project detail image ${idx + 1} of ${pageData.detailImages.length}`;
-                        img.style.width = '100%';
-                        img.style.maxWidth = '100%';
-                        img.style.display = 'block';
-                        img.style.margin = '0 auto 12px auto';
-                        img.style.borderRadius = '8px';
-                        img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                        const isVid = /\.(mp4|webm|ogg)$/i.test(pageData.detailImages[idx]);
+                        const media = document.createElement(isVid ? 'video' : 'img');
+                        media.src = pageData.detailImages[idx];
+                        if (isVid) {
+                            media.playsInline = true;
+                            media.autoplay = true;
+                            media.muted = true;
+                            media.loop = true;
+                        }
+                        media.alt = `Project detail media ${idx + 1} of ${pageData.detailImages.length}`;
+                        media.style.width = '100%';
+                        media.style.maxWidth = '100%';
+                        media.style.display = 'block';
+                        media.style.margin = '0 auto 12px auto';
+                        media.style.borderRadius = '8px';
+                        media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
                         // Navigation controls
                         const nav = document.createElement('div');
                         nav.style.display = 'flex';
@@ -339,14 +352,14 @@
                         // Hide arrow for new swipe-based navigation
                         nextBtn.style.display = 'none';
                         nav.appendChild(prevBtn);
-                        nav.appendChild(img);
+                        nav.appendChild(media);
                         nav.appendChild(nextBtn);
                         // Add swipe gesture handling
                         let touchStartX = 0;
-                        img.addEventListener('touchstart', (e) => {
+                        media.addEventListener('touchstart', (e) => {
                             touchStartX = e.touches[0].clientX;
                         });
-                        img.addEventListener('touchend', (e) => {
+                        media.addEventListener('touchend', (e) => {
                             const diffX = e.changedTouches[0].clientX - touchStartX;
                             const threshold = 50; // minimum px swipe distance
                             if (Math.abs(diffX) > threshold) {
@@ -360,7 +373,7 @@
                             }
                         });
                         // Disable modal trigger on mobile
-                        img.style.cursor = 'default';
+                        media.style.cursor = 'default';
                         mobileGallery.appendChild(nav);
                         // Optional: show image count
                         const count = document.createElement('div');
@@ -390,10 +403,21 @@
             if (document.querySelector('.image-modal-overlay')) return;
             const overlay = document.createElement('div');
             overlay.className = 'image-modal-overlay';
-            const img = document.createElement('img');
-            img.src = imagesArr[currentIdx];
-            img.alt = '';
-            overlay.appendChild(img);
+            let mediaEl;
+            function renderMedia(idx) {
+                const src = imagesArr[idx];
+                const isVid = /\.(mp4|webm|ogg)$/i.test(src);
+                if (mediaEl) mediaEl.remove();
+                mediaEl = document.createElement(isVid ? 'video' : 'img');
+                mediaEl.src = src;
+                if (isVid) {
+                    mediaEl.autoplay = true;
+                    mediaEl.loop = true;
+                    mediaEl.playsInline = true;
+                }
+                overlay.insertBefore(mediaEl, overlay.firstChild);
+            }
+            renderMedia(currentIdx);
 
             // Close X
             const closeX = document.createElement('div');
@@ -420,13 +444,13 @@
             leftArrow.addEventListener('click', e => {
                 e.stopPropagation();
                 if (currentIdx > 0) {
-                    currentIdx--; img.src = imagesArr[currentIdx]; updateArrows();
+                    currentIdx--; renderMedia(currentIdx); updateArrows();
                 }
             });
             rightArrow.addEventListener('click', e => {
                 e.stopPropagation();
                 if (currentIdx < imagesArr.length - 1) {
-                    currentIdx++; img.src = imagesArr[currentIdx]; updateArrows();
+                    currentIdx++; renderMedia(currentIdx); updateArrows();
                 }
             });
 
