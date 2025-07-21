@@ -332,6 +332,27 @@
           "project_images/smartlabs_2.png",
           "project_images/smartlabs_3.png"
         ]
+      },
+      {
+        "label": "NexxtShow",
+        "slug": "nexxtshow",
+        "menuDisplayName": "NexxtShow",
+        "url": "project.html?item=NexxtShow",
+        "projectTitle": "NexxtShow Exhibit Management",
+        "role": "Technical Lead, Developer",
+        "budget": "> $250,000",
+        "technology": "Drupal",
+        "designPartner": "n/a",
+        "designPartnerUrl": null,
+        "projectUrl": "https://nexxt-expo.com/en-us/",
+        "pageSummary": "Description goes here",
+        "coverImage": "project_tiles/nexxtshow.jpeg",
+        "sub_menu": 1,
+        "detailImages": [
+          "project_images/nexxtshow_1.png",
+          "project_images/nexxtshow_2.png",
+          "project_images/nexxtshow_3.png"
+        ]
       }
     ]
   },
