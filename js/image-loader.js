@@ -17,16 +17,37 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(loader);
         }
 
-        // Hide loader when page is ready
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                const loader = document.querySelector('.page-loader');
-                if (loader) {
-                    loader.classList.add('hidden');
-                    setTimeout(() => loader.remove(), 500);
-                }
-            }, 300); // Small delay to ensure smooth transition
-        });
+        // Hide loader when DOM and critical resources are ready
+        function hideLoader() {
+            const loader = document.querySelector('.page-loader');
+            if (loader) {
+                loader.classList.add('hidden');
+                setTimeout(() => loader.remove(), 500);
+            }
+        }
+
+        // Hide loader after DOM is ready and menu is loaded (much faster than waiting for all images)
+        let checkCount = 0;
+        function checkAndHideLoader() {
+            checkCount++;
+            
+            // Wait for menu data to be available (critical for page functionality)
+            if (window.__MENU_DATA) {
+                setTimeout(hideLoader, 200); // Small delay for smooth transition
+            } else if (checkCount > 60) { // Failsafe: hide after 3 seconds max (60 * 50ms)
+                console.warn('Menu data not loaded, hiding loader anyway');
+                hideLoader();
+            } else {
+                setTimeout(checkAndHideLoader, 50); // Check again soon
+            }
+        }
+
+        // Start checking once DOM is ready (don't wait for images)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', checkAndHideLoader);
+        } else {
+            checkAndHideLoader();
+        }
     }
 
     // Enhanced lazy loading for images
@@ -139,12 +160,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Preload critical images
+// Preload only essential images (logo only)
 function preloadCriticalImages() {
     const criticalImages = [
-        'assets/logo.svg',
-        'project_tiles/sample_tile1.png',
-        'project_tiles/sample_tile2.png'
+        'assets/logo.svg'
     ];
     
     criticalImages.forEach(src => {
