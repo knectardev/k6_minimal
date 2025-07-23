@@ -118,6 +118,49 @@ document.addEventListener('DOMContentLoaded', () => {
         if (existingStyle) existingStyle.remove();
         if (existingArc) existingArc.remove();
     }
+    
+    // Function to initialize haiku grainy effect
+    function initializeHaikuGrainyEffect() {
+        // Add SVG filter for grainy effect if not already present
+        if (!document.getElementById('roughpaper-filter')) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('id', 'roughpaper-filter');
+            svg.style.position = 'absolute';
+            svg.style.width = '0';
+            svg.style.height = '0';
+            svg.style.overflow = 'hidden';
+            
+            const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+            const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+            filter.setAttribute('id', 'roughpaper');
+            
+            // Create turbulence for noise
+            const turbulence = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');
+            turbulence.setAttribute('baseFrequency', '0.04');
+            turbulence.setAttribute('numOctaves', '5');
+            turbulence.setAttribute('result', 'noise');
+            
+            // Create displacement map
+            const displacementMap = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');
+            displacementMap.setAttribute('in', 'SourceGraphic');
+            displacementMap.setAttribute('in2', 'noise');
+            displacementMap.setAttribute('scale', '1.5');
+            
+            // Create gaussian blur
+            const gaussianBlur = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
+            gaussianBlur.setAttribute('stdDeviation', '0.3');
+            
+            // Assemble the filter
+            filter.appendChild(turbulence);
+            filter.appendChild(displacementMap);
+            filter.appendChild(gaussianBlur);
+            defs.appendChild(filter);
+            svg.appendChild(defs);
+            document.body.appendChild(svg);
+        }
+        
+        // No additional visual enhancements needed - keeping it clean with just the SVG filter
+    }
 
     // Dynamic connecting line functionality
     function createConnectingLine() {
@@ -299,6 +342,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.logo-active')) {
         createHomeConnectingLine();
     }
+    
+    // Initialize haiku grainy effect
+    initializeHaikuGrainyEffect();
     
     // Try again after a short delay to ensure layout is settled (only if needed)
     setTimeout(() => {
@@ -651,17 +697,7 @@ function buildProjectInfoHTML(data) {
 
     // Add project haiku content after the metadata list
     if (data.project_haiku) {
-        html += `<div class="project-haiku" style="
-        margin: 32px 0 36px 0; 
-        padding-left: 50px; 
-        font-family: 'Spectral', serif; 
-        font-size: 22px; 
-        font-style: italic;
-        font-weight: 400; 
-        text-shadow: 0 3px 6px rgba(0,0,0,0.2); 
-        line-height: 1.6; 
-        opacity: 0.8;
-        color:rgb(0, 0, 0);">${data.project_haiku}</div>`;
+        html += `<div class="project-haiku">${data.project_haiku}</div>`;
     }
 
     // Description: Simple textarea editor if logged in, static text otherwise
@@ -1254,6 +1290,11 @@ function updateProjectDescription(slug, newDesc, menuCheckboxState = null, skipR
         // Apply red bullet styling after content is injected
         if (typeof styleRedBullets === 'function') {
             styleRedBullets();
+        }
+        
+        // Apply haiku grainy effect after content is injected
+        if (document.querySelector('.project-haiku')) {
+            initializeHaikuGrainyEffect();
         }
         
         // Attach edit icon handler if logged in and on project detail
