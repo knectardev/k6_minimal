@@ -183,24 +183,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const refreshBtn = projectGallerySection.querySelector('.refresh-gallery-btn');
     if (refreshBtn) {
         refreshBtn.addEventListener('click', function() {
-            // Get new random selection
-            const newSelectedImages = shuffleArray(projectImages).slice(0, 16);
-            
-            // Update the gallery grid
             const galleryGrid = projectGallerySection.querySelector('.project-gallery-grid');
-            galleryGrid.innerHTML = newSelectedImages.map(image => {
-                const projectSlug = imageToProjectMap[image];
-                const projectUrl = projectSlug ? `project.html?item=${projectSlug}` : '#';
-                const projectTitle = projectSlug ? projectSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Project';
-                return `
-                    <div class="project-gallery-wrapper">
-                        <a href="${projectUrl}" class="project-gallery-item">
-                            <img src="project_images/${image}" alt="Project ${image.replace('.png', '')}" loading="lazy">
-                        </a>
-                        <span class="project-tooltip">${projectTitle}</span>
-                    </div>
-                `;
-            }).join('');
+            // Start fade out
+            galleryGrid.classList.add('fade-out');
+            galleryGrid.classList.remove('fade-in');
+            setTimeout(() => {
+                // Get new random selection
+                const newSelectedImages = shuffleArray(projectImages).slice(0, 16);
+                // Update the gallery grid
+                galleryGrid.innerHTML = newSelectedImages.map(image => {
+                    const projectSlug = imageToProjectMap[image];
+                    const projectUrl = projectSlug ? `project.html?item=${projectSlug}` : '#';
+                    const projectTitle = projectSlug ? projectSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Project';
+                    return `
+                        <div class="project-gallery-wrapper fade-in-item">
+                            <a href="${projectUrl}" class="project-gallery-item">
+                                <img src="project_images/${image}" alt="Project ${image.replace('.png', '')}" loading="lazy">
+                            </a>
+                            <span class="project-tooltip">${projectTitle}</span>
+                        </div>
+                    `;
+                }).join('');
+                // Staggered fade-in
+                const items = galleryGrid.querySelectorAll('.fade-in-item');
+                items.forEach((item, idx) => {
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, 40 * idx);
+                });
+                // Start fade in
+                galleryGrid.classList.remove('fade-out');
+                galleryGrid.classList.add('fade-in');
+            }, 300); // match the CSS transition duration
         });
     }
 }); 
