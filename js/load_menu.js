@@ -198,10 +198,20 @@
     const searchPart = window.location.search;
     const full = pathPart + searchPart;
 
-    // Try full match including query string first
-    let link = document.querySelector(`.main-nav .submenu a[href='${full}']`);
+    // First, try to match top-level menu items (like About and Tools)
+    let link = document.querySelector(`.main-nav > ul > li > a[href='${full}']`);
+    
+    // Fallback: match top-level items by file name only
+    if (!link) {
+      link = document.querySelector(`.main-nav > ul > li > a[href$='${pathPart}']`);
+    }
 
-    // Fallback: match by file name only
+    // If not found in top-level, try submenu items with full match including query string
+    if (!link) {
+      link = document.querySelector(`.main-nav .submenu a[href='${full}']`);
+    }
+
+    // Fallback: match submenu items by file name only
     if (!link) {
       link = document.querySelector(`.main-nav .submenu a[href$='${pathPart}']`);
     }

@@ -331,7 +331,6 @@ body {
 
 .main-nav li.active > a {
     color: var(--color-primary);
-    font-weight: normal;
 }
 
 /* Make icon red when parent menu is active */
@@ -380,7 +379,6 @@ body {
 
 .main-nav .submenu li.active-sub a {
     color: var(--color-primary);
-    font-weight: normal;
 }
 
 .nav-icon {
@@ -2422,6 +2420,25 @@ svg {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* CSS-based arrows for cross-browser consistency */
+.select-caret {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.select-caret::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--color-primary);
 }
 
 /* CSS-based arrows for cross-browser consistency */
