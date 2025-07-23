@@ -368,8 +368,11 @@ function buildTilesFromData(menu) {
             if (item.submenu) {
                 traverse(item.submenu, item.label);
             } else {
-                // Always include all projects in the list view, regardless of sub_menu
-                leafItems.push({ ...item, parentLabel });
+                // Exclude About page from projects list
+                if (item.label !== 'About') {
+                    // Always include all projects in the list view, regardless of sub_menu
+                    leafItems.push({ ...item, parentLabel });
+                }
             }
         });
     }
@@ -394,12 +397,25 @@ function buildTilesFromData(menu) {
         // link
         const link = item.url;
 
-        // --- Video or Image logic ---
+        // --- Video or Image logic with loading states ---
         let mediaHTML = '';
         if (item.coverImage && item.coverImage.match(/\.mp4$/i)) {
             mediaHTML = `<video src="${item.coverImage}" autoplay loop muted playsinline style="width:100%;height:200px;object-fit:cover;border-radius:var(--border-radius) 0 0 var(--border-radius);"></video>`;
         } else {
-            mediaHTML = `<img src="${item.coverImage || 'project_tiles/sample_tile1.png'}" alt="${item.projectTitle || item.label} image">`;
+            const imageSrc = item.coverImage || 'project_tiles/sample_tile1.png';
+            const imageId = `img-${idx}`;
+            mediaHTML = `
+                <div class="image-container" style="position: relative; width: 100%; height: 200px;">
+                    <div class="image-skeleton" style="width: 100%; height: 200px; position: absolute; top: 0; left: 0;"></div>
+                    <img id="${imageId}" 
+                         src="${imageSrc}" 
+                         alt="${item.projectTitle || item.label} image" 
+                         loading="lazy"
+                         class="fade-in-image"
+                         style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius) 0 0 var(--border-radius);"
+                         onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
+                         onerror="this.previousElementSibling.style.display='none';">
+                </div>`;
         }
 
         article.innerHTML = `
