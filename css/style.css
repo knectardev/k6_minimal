@@ -59,6 +59,179 @@ body {
 .font-elegant { font-family: var(--font-elegant); }
 .font-mono { font-family: var(--font-mono); }
 
+/* Project Gallery Component */
+.project-gallery-section {
+    margin-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.project-gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xl);
+}
+
+.project-gallery-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    line-height: var(--line-height-heading);
+    margin: 0;
+}
+
+.refresh-gallery-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.refresh-gallery-btn:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.refresh-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+    transition: transform 0.3s ease;
+}
+
+.refresh-gallery-btn:hover .refresh-icon {
+    transform: rotate(180deg);
+}
+
+.project-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 160px);
+    gap: var(--spacing-lg);
+    justify-content: center;
+    max-width: 100%;
+    align-items: center;
+}
+
+.project-gallery-item {
+    width: 160px;
+    border-radius: 15px;
+    border: 1px solid #a1a1a1;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: top;
+}
+
+.project-gallery-item {
+    position: relative;
+}
+
+.project-gallery-item::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: var(--font-primary);
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    visibility: hidden;
+}
+
+.project-gallery-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    border-color: var(--color-primary);
+}
+
+.project-gallery-item:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-gallery-item:hover::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.project-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: var(--font-primary);
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    visibility: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-gallery-wrapper {
+    position: relative;
+    width: 160px;
+}
+
+.project-gallery-wrapper:hover .project-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+    .project-gallery-grid {
+        gap: var(--spacing-md);
+    }
+    
+    .project-gallery-item {
+        width: calc(50% - var(--spacing-md));
+        min-width: 150px;
+    }
+    
+    .project-gallery-title {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
 /* Layout Components */
 .container {
     display: flex;

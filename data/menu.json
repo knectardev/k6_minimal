@@ -540,29 +540,6 @@
         ]
       },
       {
-        "label": "Eze Soft",
-        "slug": "eze-soft",
-        "menuDisplayName": "Eze Soft",
-        "url": "project.html?item=eze-soft",
-        "projectTitle": "Eze Soft",
-        "role": "Technical Lead, Developer",
-        "budget": "$25,000 - $50,000",
-        "technology": "Drupal",
-        "designPartner": null,
-        "designPartnerUrl": null,
-        "projectUrl": "https://www.ezesoft.com/",
-        "project_haiku": "Software solutions flow<br/>Complex made beautifully simple<br/>Innovation serves",
-        "project_footer_CTA": "Ready to streamline your business operations through intelligent software? Let's build solutions that simplify complexity and drive growth.",
-        "pageSummary": "<p><font color=\"#FF0000\"><b>PICTURE THIS:</b></font> You're running a growing business with software needs that seem to multiply faster than your ability to manage them—tracking inventory, managing customer relationships, processing orders, analyzing performance—and you're drowning in a sea of disconnected systems that don't talk to each other. Eze Soft needed a comprehensive business software platform that could bring order to operational chaos.</p><p>That's where Knectar stepped in to create what's essentially a digital operations command center—a Drupal-powered platform that could unify all the moving pieces of modern business management into one coherent, user-friendly system. We built a solution that works like having a brilliant operations manager who never sleeps, automating routine tasks while providing real-time insights that help business owners make smarter decisions faster.</p><p>The breakthrough was in creating software that felt intuitive rather than industrial, powerful rather than overwhelming. We designed workflows that matched how businesses actually operate rather than forcing users to adapt to rigid software logic. The platform integrated everything from customer management and inventory tracking to financial reporting and team collaboration, all presented through interfaces that felt as natural as using consumer apps.</p><p>The transformation gave Eze Soft's clients a unified business management solution that finally made running a company feel manageable rather than chaotic. Sometimes the best business software is the kind that becomes invisible—platforms that handle all the complexity behind the scenes so entrepreneurs can focus on what they do best: growing their businesses and serving their customers.</p>",
-        "coverImage": "project_tiles/eze.webp",
-        "sub_menu": 0,
-        "detailImages": [
-          "project_images/eze-soft_1.png",
-          "project_images/eze-soft_2.png",
-          "project_images/eze-soft_3.png"
-        ]
-      },
-      {
         "label": "SMMA Architecture",
         "slug": "smma-architecture",
         "menuDisplayName": "SMMA",
