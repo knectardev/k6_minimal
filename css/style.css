@@ -460,7 +460,8 @@ body {
     cursor: default;
 }
 
-.project-gallery .detail-stack-image:hover {
+.project-gallery .detail-stack-image:hover,
+.project-gallery .detail-stack-image.active {
     transform: translateX(-10px) rotate(0deg) scale(1.15);
     z-index: 10;
     filter: grayscale(0%);

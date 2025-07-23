@@ -269,8 +269,15 @@
                     if (i === 1) media.style.top = '450px';
                     if (i === 2) media.style.top = '800px';
                     if (i === 3) media.style.top = '1150px';
+                    
+                    // Add data attribute for scroll detection
+                    media.dataset.imageIndex = i;
+                    
                     gallery.appendChild(media);
                 });
+                
+                // Set up scroll-based single image activation (spotlight effect)
+                setupImageScrollActivation();
             }
             // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
@@ -395,6 +402,55 @@
         });
 
         // Modal helper
+        function setupImageScrollActivation() {
+            const images = document.querySelectorAll('.detail-stack-image');
+            if (images.length === 0) return;
+            
+            function updateActiveImage() {
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Adjust the effective "trigger point" based on scroll position
+                // When at top (scrollY = 0), use upper portion of viewport
+                // As we scroll down, gradually transition to center of viewport
+                const scrollProgress = Math.min(scrollY / (viewportHeight * 1.5), 1);
+                const triggerPoint = scrollY + (viewportHeight * (0.25 + (scrollProgress * 0.25))); // Ranges from 25% to 50% of viewport
+                
+                let closestImage = null;
+                let closestDistance = Infinity;
+                
+                // Find which image is closest to our dynamic trigger point
+                images.forEach((image) => {
+                    const rect = image.getBoundingClientRect();
+                    const imageCenter = scrollY + rect.top + (rect.height / 2);
+                    const distance = Math.abs(triggerPoint - imageCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestImage = image;
+                    }
+                });
+                
+                // Remove active class from all images
+                images.forEach(image => image.classList.remove('active'));
+                
+                // Add active class only to the closest image (if it's reasonably visible)
+                if (closestImage && closestDistance < viewportHeight) {
+                    closestImage.classList.add('active');
+                }
+            }
+            
+            // Update on scroll with throttling for performance
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveImage, 16); // ~60fps
+            });
+            
+            // Initial update
+            updateActiveImage();
+        }
+
         function showImageModal(startIdx) {
             const imagesArr = Array.isArray(window.__DETAIL_IMAGES) ? window.__DETAIL_IMAGES : [];
             if (!imagesArr.length) return;

@@ -25,7 +25,7 @@
         "projectUrl": "https://www.cmu.edu/",
         "project_haiku": "Code and wisdom merge<br/>Innovation takes its flight<br/>Learning never ends",
         "project_footer_CTA": "Ready to transform your institution's digital presence? Let's build something extraordinary together.",
-        "pageSummary": "<p></p><p style=\"line-height: 2;\"><span style=\"white-space-collapse: preserve; line-height: 2;\"><font color=\"#FF0000\"><b style=\"line-height: 2;\">PICTURE THIS:</b></font> Carnegie Mellon University had a digital identity crisis. Their main website was a patchwork quilt of legacy systems, each department doing its own thing, and updating anything required the patience of a saint and the technical skills of a wizard. Something had to give.</span></p><p style=\"line-height: 2;\"><span style=\"white-space-collapse: preserve; line-height: 2;\">That's where Carnegie Higher Ed came in—and despite the name similarity being pure coincidence, they knew exactly who to call for the technical heavy lifting. They brought us (Knectar) on board as their Drupal development partner, with them handling the content strategy and design while we tackled the technology strategy and architecture. Together, we embarked on a mission to give CMU a digital makeover that would make Marie Kondo proud. We rebuilt their entire web presence on Drupal 10, creating a component library so intuitive that even the most technophobic professor could drag and drop their way to web glory. Think of it as LEGO blocks for websites—over 50 different pieces (hero banners, event feeds, faculty bios, you name it) that snap together beautifully. \n<br>The real magic? We kept CMU's existing services humming along—their search, their LiveWhale events calendar, their various forms and feeds—while giving everything a fresh, unified look. Now 20+ internal teams share one streamlined system instead of wrestling with a dozen different platforms. The result? A 40% reduction in training time, lightning-fast performance scores, and probably a lot fewer IT support tickets. Sometimes the best transformations are the ones that make complex things feel simple.</span></p><p></p>",
+        "pageSummary": "<p></p><p style=\"line-height: 2;\"><span style=\"white-space-collapse: preserve; line-height: 2;\"><font color=\"#FF0000\"><b style=\"line-height: 2;\">PICTURE THIS:</b></font> Carnegie Mellon University had a digital identity crisis. Their main website was a patchwork quilt of legacy systems, each department doing its own thing, and updating anything required the patience of a saint and the technical skills of a wizard. Something had to give.</span></p><p style=\"line-height: 2;\"><span style=\"white-space-collapse: preserve; line-height: 2;\">That's where Carnegie Higher Ed came in—and despite the name similarity being pure coincidence, they knew exactly who to call for the technical heavy lifting. They brought us (Knectar) on board as their Drupal development partner, with them handling the content strategy and design while we tackled the technology strategy and architecture. Together, we embarked on a mission to give CMU a digital makeover that would make Marie Kondo proud. We rebuilt their entire web presence on Drupal 10, creating a component library so intuitive that even the most technophobic professor could drag and drop their way to web glory. Think of it as LEGO blocks for websites—over 50 different pieces (hero banners, event feeds, faculty bios, you name it) that snap together beautifully.\n<br>The real magic? We kept CMU's existing services humming along—their search, their LiveWhale events calendar, their various forms and feeds—while giving everything a fresh, unified look. Now 20+ internal teams share one streamlined system instead of wrestling with a dozen different platforms. The result? A 40% reduction in training time, lightning-fast performance scores, and probably a lot fewer IT support tickets. Sometimes the best transformations are the ones that make complex things feel simple.</span></p><p></p>",
         "coverImage": "project_tiles/cmu.png",
         "sub_menu": 1,
         "detailImages": [
@@ -72,7 +72,7 @@
         "project_haiku": "Art meets technology<br/>British treasures come alive<br/>Digital galleries",
         "project_footer_CTA": "Ready to showcase your cultural collections? Let's create digital experiences that inspire.",
         "pageSummary": "<p><font color=\"#FF0000\"><b>PICTURE THIS:</b></font> You have one of the world's finest collections of British art, spanning centuries of creative genius, and it's been living behind digital walls that make it feel more like a dusty archive than the vibrant cultural treasure it actually is. The Yale Center for British Art needed a digital presence that could do justice to works by Turner, Constable, and Hogarth while making them accessible to art lovers worldwide.</p><p>That's where Fabrique stepped in with their design vision, and we joined the party to bring their creative concepts to life through Drupal wizardry. Together, we crafted a digital gallery experience that's like having a private tour with the world's most knowledgeable curator—except this one never gets tired, works 24/7, and can instantly pull up exactly what you're looking for.</p><p>We built a sophisticated content management system that lets museum staff showcase their collections with the same care and attention they give to physical exhibitions. Think of it as a digital curatorial toolkit that makes organizing and presenting art as intuitive as arranging pieces in a gallery space. The result? A website that doesn't just display art—it tells stories, creates connections, and invites exploration in ways that make British artistic heritage feel alive and relevant to modern audiences.</p>",
-        "coverImage": "project_tiles/yale-center-for-british-art.png",
+        "coverImage": "project_tiles/ycba.jpg",
         "sub_menu": 1,
         "detailImages": [
           "project_images/yale-center-for-british-art_1.png",
@@ -361,29 +361,6 @@
           "project_images/smartlabs_1.png",
           "project_images/smartlabs_2.png",
           "project_images/smartlabs_3.png"
-        ]
-      },
-      {
-        "label": "NexxtShow",
-        "slug": "nexxtshow",
-        "menuDisplayName": "NexxtShow",
-        "url": "project.html?item=NexxtShow",
-        "projectTitle": "NexxtShow Exhibit Management",
-        "role": "Technical Lead, Developer",
-        "budget": "> $250,000",
-        "technology": "Drupal",
-        "designPartner": "n/a",
-        "designPartnerUrl": null,
-        "projectUrl": "https://nexxt-expo.com/en-us/",
-        "project_haiku": "Events come to life<br/>Exhibits connect and inspire<br/>Memories are made",
-        "project_footer_CTA": "Ready to transform your event management experience? Let's create platforms that make every exhibition unforgettable.",
-        "pageSummary": "<p><font color=\"#FF0000\"><b>PICTURE THIS:</b></font> You're managing world-class exhibitions and trade shows where millions of dollars of business relationships are built and breakthrough innovations are unveiled—but your event management platform feels more like herding cats with a spreadsheet than orchestrating seamless experiences for exhibitors and attendees. NexxtShow needed a comprehensive digital ecosystem that could handle the incredible complexity of modern exhibitions while making everything feel effortless for everyone involved.</p><p>That's where Knectar stepped in to create what's essentially a digital event director that works 24/7—a Drupal-powered platform that could coordinate everything from booth assignments and vendor management to attendee networking and lead generation. We built a system that works like having a master event planner who never forgets a detail, ensuring that exhibitors can focus on showcasing their innovations while attendees can navigate and connect with exactly the right people and products.</p><p>The breakthrough was in creating digital workflows that enhanced rather than complicated the human connections that make exhibitions valuable. We built features for intelligent attendee matchmaking, real-time exhibit floor navigation, digital lead capture and management, and seamless integration with everything from badge printing to post-event follow-up campaigns. The platform needed to handle thousands of exhibitors, tens of thousands of attendees, and millions of potential business connections, all while maintaining the personal touch that makes events memorable.</p><p>The transformation gave NexxtShow a digital infrastructure that could scale with the largest trade shows while preserving the networking magic that makes exhibitions valuable. Sometimes the best event technology is the kind that amplifies human connections rather than replacing them—platforms that help great ideas find the right audiences and turn brief encounters into lasting business relationships.</p>",
-        "coverImage": "project_tiles/nexxtshow.jpeg",
-        "sub_menu": 1,
-        "detailImages": [
-          "project_images/nexxtshow_1.png",
-          "project_images/nexxtshow_2.png",
-          "project_images/nexxtshow_3.png"
         ]
       }
     ]
