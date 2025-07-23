@@ -241,7 +241,17 @@
     const li = document.createElement('li');
     li.classList.add('menu-item-parent');
     const a = document.createElement('a');
-    if (item.url) a.href = item.url; else a.href = '#';
+    
+    // Set href for parent menu items
+    if (item.url) {
+      a.href = item.url;
+    } else if (item.submenu) {
+      // Parent menu items with submenus should link to their category page
+      a.href = `projects.html?category=${encodeURIComponent(item.label)}`;
+    } else {
+      a.href = '#';
+    }
+    
     a.innerHTML = `<img src="assets/${item.icon}" class="nav-icon" alt="">${item.label.toUpperCase()}`;
 
     if (item.submenu) a.classList.add('menu-parent');
