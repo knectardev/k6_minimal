@@ -1349,14 +1349,17 @@ a:visited {
 }
 
 .select-wrapper::after {
-    content: "▼"; /* downward triangle */
+    content: "";
     position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    font-size: 14px;
-    color: var(--color-primary);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--color-primary);
 }
 
 /* Dropdown font & icons */
@@ -2419,6 +2422,50 @@ svg {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* CSS-based arrows for cross-browser consistency */
+.css-arrow-left {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 15px solid var(--color-primary);
+}
+
+.css-arrow-right {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 15px solid var(--color-primary);
+}
+
+.image-modal-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.image-modal-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.image-modal-arrow.disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.image-modal-arrow.disabled:hover {
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* About page responsive design */

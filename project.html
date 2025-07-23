@@ -487,10 +487,10 @@
             // Arrow controls
             const leftArrow = document.createElement('div');
             leftArrow.className = 'image-modal-arrow left';
-            leftArrow.textContent = '‹';
+            leftArrow.innerHTML = '<span class="css-arrow-left"></span>';
             const rightArrow = document.createElement('div');
             rightArrow.className = 'image-modal-arrow right';
-            rightArrow.textContent = '›';
+            rightArrow.innerHTML = '<span class="css-arrow-right"></span>';
             overlay.appendChild(leftArrow);
             overlay.appendChild(rightArrow);
 
