@@ -141,7 +141,8 @@ body {
     color: inherit;
 }
 
-.project-gallery-item img {
+.project-gallery-item img,
+.project-gallery-item video {
     width: 100%;
     height: auto;
     display: block;
@@ -426,6 +427,10 @@ body {
     color: var(--color-primary);
 }
 
+.breadcrumb-link:visited {
+    color: black;
+}
+
 .mobile-header-top {
     display: flex;
     justify-content: space-between;
@@ -639,6 +644,29 @@ body {
 
 .external-link:hover {
     color: var(--color-primary) !important;
+}
+
+.external-link:visited {
+    color: black !important;
+}
+
+/* Technology Link Styles */
+.tech-link {
+    color: black;
+    text-decoration: underline;
+}
+
+.tech-link:hover {
+    color: var(--color-primary);
+}
+
+.tech-link:visited {
+    color: black;
+}
+
+/* General link visited state - prevent browser default purple */
+a:visited {
+    color: inherit;
 }
 
 /* Update arrow indicator styling */

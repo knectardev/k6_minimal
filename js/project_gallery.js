@@ -2,8 +2,8 @@
 // Randomly selects 16 images from project_images folder and displays them in a grid
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mapping of image filenames to project slugs
-    const imageToProjectMap = {
+    // Mapping of image/video filenames to project slugs
+    const mediaToProjectMap = {
         'ab_inbev_1.png': 'ab_inbev',
         'ab_inbev_2.png': 'ab_inbev',
         'aier-american-institute-for-economic-research_1.png': 'aier-american-institute-for-economic-research',
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'p5-projects_2.png': 'p5-projects',
         'p5-projects_3.png': 'p5-projects',
         'paragraphs-stats-module_1.png': 'paragraphs-stats-module',
-        'pen-plotting-works_1.png': 'pen-plotting-works',
+        'pen-plotting-works_1.mp4': 'pen-plotting-works',
         'pen-plotting-works_2.png': 'pen-plotting-works',
         'pen-plotting-works_3.png': 'pen-plotting-works',
         'pioneer-valley-books_1.png': 'pioneer-valley-books',
@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'robert-rauschenberg-foundation_2.png': 'robert-rauschenberg-foundation',
         'robert-rauschenberg-foundation_3.png': 'robert-rauschenberg-foundation',
         'sculpture-works_1.png': 'sculpture-works',
+        'sculpture-works_2.mp4': 'sculpture-works',
         'sculpture-works_3.png': 'sculpture-works',
         'sculpture-works_4.png': 'sculpture-works',
         'smartlabs_1.png': 'smartlabs',
@@ -105,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'the-isabella-stewart-gardner-museum_3.png': 'the-isabella-stewart-gardner-museum',
         'the-isabella-stewart-gardner-museum_4.png': 'the-isabella-stewart-gardner-museum',
         'thing-y_1.png': 'thing-y',
+        'thing-y_2.mp4': 'thing-y',
         'thing-y_3.png': 'thing-y',
         'thing-y_4.png': 'thing-y',
         'trillium-brewing_1.png': 'trillium-brewing',
@@ -126,8 +128,30 @@ document.addEventListener('DOMContentLoaded', function() {
         'yale-center-for-british-art_3.png': 'yale-center-for-british-art'
     };
 
-    // List of available project images (excluding screenshots and non-image files)
-    const projectImages = Object.keys(imageToProjectMap);
+    // List of available project media (excluding screenshots and non-media files)
+    const projectMedia = Object.keys(mediaToProjectMap);
+
+    // Function to check if a file is a video
+    function isVideoFile(filename) {
+        return filename.toLowerCase().endsWith('.mp4');
+    }
+
+    // Function to create media element (video or image)
+    function createMediaElement(mediaFile, alt) {
+        if (isVideoFile(mediaFile)) {
+            return `<video src="project_images/${mediaFile}" 
+                           alt="${alt}" 
+                           autoplay 
+                           muted 
+                           loop 
+                           playsinline 
+                           preload="metadata">
+                        Your browser does not support the video tag.
+                    </video>`;
+        } else {
+            return `<img src="project_images/${mediaFile}" alt="${alt}" loading="lazy">`;
+        }
+    }
 
     // Function to shuffle array and get random selection
     function shuffleArray(array) {
@@ -139,8 +163,8 @@ document.addEventListener('DOMContentLoaded', function() {
         return shuffled;
     }
 
-    // Get 16 random images
-    const selectedImages = shuffleArray(projectImages).slice(0, 16);
+    // Get 16 random media items
+    const selectedMedia = shuffleArray(projectMedia).slice(0, 16);
 
     // Create the project gallery section
     const projectGallerySection = document.createElement('section');
@@ -153,14 +177,15 @@ document.addEventListener('DOMContentLoaded', function() {
             </button>
         </div>
         <div class="project-gallery-grid">
-            ${selectedImages.map(image => {
-                const projectSlug = imageToProjectMap[image];
+            ${selectedMedia.map(mediaFile => {
+                const projectSlug = mediaToProjectMap[mediaFile];
                 const projectUrl = projectSlug ? `project.html?item=${projectSlug}` : '#';
                 const projectTitle = projectSlug ? projectSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Project';
+                const altText = `Project ${mediaFile.replace(/\.(png|mp4)$/, '')}`;
                 return `
                     <div class="project-gallery-wrapper">
                         <a href="${projectUrl}" class="project-gallery-item">
-                            <img src="project_images/${image}" alt="Project ${image.replace('.png', '')}" loading="lazy">
+                            ${createMediaElement(mediaFile, altText)}
                         </a>
                         <span class="project-tooltip">${projectTitle}</span>
                     </div>
@@ -189,16 +214,17 @@ document.addEventListener('DOMContentLoaded', function() {
             galleryGrid.classList.remove('fade-in');
             setTimeout(() => {
                 // Get new random selection
-                const newSelectedImages = shuffleArray(projectImages).slice(0, 16);
+                const newSelectedMedia = shuffleArray(projectMedia).slice(0, 16);
                 // Update the gallery grid
-                galleryGrid.innerHTML = newSelectedImages.map(image => {
-                    const projectSlug = imageToProjectMap[image];
+                galleryGrid.innerHTML = newSelectedMedia.map(mediaFile => {
+                    const projectSlug = mediaToProjectMap[mediaFile];
                     const projectUrl = projectSlug ? `project.html?item=${projectSlug}` : '#';
                     const projectTitle = projectSlug ? projectSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Project';
+                    const altText = `Project ${mediaFile.replace(/\.(png|mp4)$/, '')}`;
                     return `
                         <div class="project-gallery-wrapper fade-in-item">
                             <a href="${projectUrl}" class="project-gallery-item">
-                                <img src="project_images/${image}" alt="Project ${image.replace('.png', '')}" loading="lazy">
+                                ${createMediaElement(mediaFile, altText)}
                             </a>
                             <span class="project-tooltip">${projectTitle}</span>
                         </div>
