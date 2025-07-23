@@ -235,11 +235,10 @@ function initProjects() {
         if (currentTech !== 'All') queryParts.push(`technology=${encodeURIComponent(currentTech)}`);
         const queryString = queryParts.length ? `?${queryParts.join('&')}` : '';
 
-        // Update breadcrumb link text + href
+        // Update breadcrumb text (no link since it's the current page)
         const catLink = document.getElementById('crumbCategoryLink');
         if (catLink) {
             catLink.textContent = currentCat;
-            catLink.setAttribute('href', `projects.html${queryString}`);
         }
 
         // Sync sidebar active state
