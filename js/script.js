@@ -644,7 +644,25 @@ function buildProjectInfoHTML(data) {
         const disp = data.projectLinkDisplay || data.projectUrl;
         rows.push(`<li><strong>DOMAIN:</strong> <a href="${data.projectUrl}" target="_blank" class="external-link">${disp}</a><span class="link-icon" aria-hidden="true">↗</span></li>`);
     }
+    if (data.project_haiku) {
+        rows.push(`<li><strong>TL;DR HAIKU:</strong></li>`);
+    }
     if (rows.length) html += `<ul>${rows.join('\n')}</ul>`;
+
+    // Add project haiku content after the metadata list
+    if (data.project_haiku) {
+        html += `<div class="project-haiku" style="
+        margin: 32px 0 36px 0; 
+        padding-left: 50px; 
+        font-family: 'Spectral', serif; 
+        font-size: 22px; 
+        font-style: italic;
+        font-weight: 400; 
+        text-shadow: 0 3px 6px rgba(0,0,0,0.2); 
+        line-height: 1.6; 
+        opacity: 0.8;
+        color:rgb(0, 0, 0);">${data.project_haiku}</div>`;
+    }
 
     // Description: Simple textarea editor if logged in, static text otherwise
     if (window.authManager && window.authManager.isLoggedIn) {
@@ -662,6 +680,39 @@ function buildProjectInfoHTML(data) {
         html += `<p class="description">${cleanLegacyContent(data.pageSummary)}</p>`;
     }
     if (data.pageBody) html += `<div class="dynamic-body">${data.pageBody}</div>`;
+    
+    // Add project footer CTA if present
+    if (data.project_footer_CTA) {
+        // Parse the CTA to extract heading and body
+        const ctaText = data.project_footer_CTA;
+        const questionMarkIndex = ctaText.indexOf('?');
+        let heading = '';
+        let bodyText = '';
+        
+        if (questionMarkIndex !== -1) {
+            heading = ctaText.substring(0, questionMarkIndex + 1).trim();
+            bodyText = ctaText.substring(questionMarkIndex + 1).trim();
+        } else {
+            // Fallback: use first sentence as heading
+            const sentences = ctaText.split('.');
+            heading = sentences[0] + (sentences.length > 1 ? '.' : '');
+            bodyText = sentences.slice(1).join('.').trim();
+        }
+        
+        // Add contact link to body text
+        const bodyWithLink = bodyText + ' <a href="/contact.html" style="color: #000; text-decoration: underline;">Contact us</a> to learn more.';
+        
+        html += `<div class="project-footer-cta" style="
+        margin-top: 40px; 
+        padding: 24px; 
+        background-color: #D9D9D9; 
+        border-radius: 8px; 
+        line-height: 1.5;">
+            <div style="font-weight: bold; color: #FF0000; font-size: 15px; margin-bottom: 8px;">${heading}</div>
+            <div style="color: #000; font-size: 15px;">${bodyWithLink}</div>
+        </div>`;
+    }
+    
     return html;
 }
 
@@ -744,7 +795,7 @@ function setupSimpleDescriptionEditor(slug, originalDesc) {
             font-family: 'Karla', sans-serif;
             font-size: 1em;
             font-weight: bold;
-            color: #e74c3c;
+            color: #FF0000;
         }
         /* Fallback for browsers that ignore option styles: style the select itself for preview */
         .wysiwyg-heading-select {
@@ -1342,7 +1393,7 @@ function formatWysiwygHeading(tag) {
                 
                 if (selectedText) {
                     // Use execCommand for foreground color and bold to make it undoable
-                    execWysiwygCommand('foreColor', false, '#e74c3c');
+                    execWysiwygCommand('foreColor', false, '#FF0000');
                     execWysiwygCommand('bold', false, null);
                 }
             }

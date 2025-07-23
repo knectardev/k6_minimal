@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@200;300;400;500;600;700;800&display=swap');
 
 /* CSS Custom Properties for consistent theming */
 :root {
@@ -25,6 +27,12 @@
     --z-index-hamburger: 1001;
     
     /* Typography Variables - Single Source of Truth */
+    --font-primary: 'Karla', sans-serif;
+    --font-serif: 'Benne', serif;
+    --font-playful: 'Fredoka', sans-serif;
+    --font-elegant: 'Spectral', serif;
+    --font-mono: 'Courier New', monospace;
+    
     --line-height-body: 1.6;
     --line-height-heading: 1.2;
     --line-height-description: 2;
@@ -39,10 +47,17 @@
 }
 
 body {
-    font-family: 'Karla', sans-serif;
+    font-family: var(--font-primary);
     margin: 0;
     color: var(--color-text-primary);
 }
+
+/* Font utility classes */
+.font-primary { font-family: var(--font-primary); }
+.font-serif { font-family: var(--font-serif); }
+.font-playful { font-family: var(--font-playful); }
+.font-elegant { font-family: var(--font-elegant); }
+.font-mono { font-family: var(--font-mono); }
 
 /* Layout Components */
 .container {
