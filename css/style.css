@@ -266,16 +266,16 @@ body {
     position: absolute;
     right: 20px;
     left: auto;
-    width: 340px;
+    width: 240px;
     display: block;
-    transform: translateX(-50%) rotate(var(--tilt, 0deg));
+    transform: translateX(0%) rotate(var(--tilt, 0deg));
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     filter: grayscale(100%);
     cursor: default;
 }
 
 .project-gallery .detail-stack-image:hover {
-    transform: translateX(-40%) rotate(0deg) scale(1.15);
+    transform: translateX(-10px) rotate(0deg) scale(1.15);
     z-index: 10;
     filter: grayscale(0%);
     box-shadow: 0 8px 32px rgba(0,0,0,0.15);
@@ -1941,10 +1941,10 @@ body {
     background: #f8f8f8;
     border: 1px solid rgba(179, 179, 179, 0.1);
     border-radius: 40px;
-    padding: 17px 26px;
+    padding: 22px 36px 22px 36px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin: 12px 0 16px 0;
-    font-family: 'Spectral', serif;
+    font-family: 'EB Garamond', serif;
     font-size: 22px;
     font-style: italic;
     font-weight: 400;

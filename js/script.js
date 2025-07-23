@@ -743,7 +743,9 @@ function buildProjectInfoHTML(data) {
         padding: 24px; 
         background-color: #D9D9D9; 
         border-radius: 8px; 
-        line-height: 1.5;">
+        line-height: 1.5;
+        max-width: 500px;
+        width: fit-content;">
             <div style="font-weight: bold; color: #FF0000; font-size: 15px; margin-bottom: 8px;">${heading}</div>
             <div style="color: #000; font-size: 15px;">${bodyWithLink}</div>
         </div>`;
