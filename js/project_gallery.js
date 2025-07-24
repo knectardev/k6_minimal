@@ -163,8 +163,8 @@ document.addEventListener('DOMContentLoaded', function() {
         return shuffled;
     }
 
-    // Get 16 random media items
-    const selectedMedia = shuffleArray(projectMedia).slice(0, 16);
+    // Get 8 random media items
+    const selectedMedia = shuffleArray(projectMedia).slice(0, 8);
 
     // Create the project gallery section
     const projectGallerySection = document.createElement('section');
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
             galleryGrid.classList.remove('fade-in');
             setTimeout(() => {
                 // Get new random selection
-                const newSelectedMedia = shuffleArray(projectMedia).slice(0, 16);
+                const newSelectedMedia = shuffleArray(projectMedia).slice(0, 8);
                 // Update the gallery grid
                 galleryGrid.innerHTML = newSelectedMedia.map(mediaFile => {
                     const projectSlug = mediaToProjectMap[mediaFile];
