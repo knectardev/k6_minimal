@@ -928,6 +928,12 @@ a:visited {
         width: auto;
         box-sizing: border-box;
     }
+
+    .main-content,
+    .about-content {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
 }
 
 @media (min-width: 769px) {
@@ -1540,7 +1546,7 @@ a:visited {
     display: flex;
     align-items: center;
     background: var(--color-primary);
-    color: #fff;
+    color: #fff !important;
     font-family: 'Karla', sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -2219,8 +2225,8 @@ svg {
 
 .about-content h3 {
     font-family: var(--font-serif);
-    font-size: 1.75rem;
-    font-weight: 400;
+    font-size: 1.35rem;
+    font-weight: 600;
     color: var(--color-text-primary);
     line-height: var(--line-height-heading);
     margin: 50px 0 10px 0;
@@ -2531,4 +2537,64 @@ svg {
     .about-content h3 {
         font-size: 1.1375rem;
     }
+}
+
+/* CTA Block for call-to-action (matches project.html style) */
+.cta-block {
+    background: #e0e0e0;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 36px 0 0 0;
+    max-width: 700px;
+    font-family: var(--font-primary);
+    font-size: 1.08rem;
+    color: var(--color-text-primary);
+}
+.cta-block .cta-heading {
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.08rem;
+    display: block;
+}
+.cta-block a {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+}
+.cta-block a:hover {
+    color: var(--color-primary);
+}
+
+/* Red color for tools section icons */
+.tools-section-icon {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(7493%) hue-rotate(359deg) brightness(98%) contrast(118%);
+    /* This filter produces #ff0000 for SVGs with fill="#e3e3e3" */
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+    align-self: flex-start;
+}
+.tools-section-header {
+    justify-content: flex-start !important;
+    text-align: left !important;
+}
+
+@media (max-width: 768px) {
+    .main-content,
+    .about-content {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+    .chris-section {
+        text-align: center;
+    }
+    .chris-image {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+.about-content .tools-section-header:first-of-type {
+    margin-top: 32px;
 }
