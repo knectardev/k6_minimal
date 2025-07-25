@@ -26,14 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // Detect if we are on the home page (index.html or root).
+        const isHome = /(?:^|\/)(index\.html)?$/.test(window.location.pathname);
+
         // Hide loader after DOM is ready and menu is loaded (much faster than waiting for all images)
         let checkCount = 0;
         function checkAndHideLoader() {
             checkCount++;
             
             // Wait for menu data to be available (critical for page functionality)
-            if (window.__MENU_DATA) {
-                setTimeout(hideLoader, 200); // Small delay for smooth transition
+            if (window.__MENU_DATA && (!isHome || window.__HOME_MEDIA_READY)) {
+                setTimeout(hideLoader, 200); // Small delay for smooth transition once everything important is ready
             } else if (checkCount > 60) { // Failsafe: hide after 3 seconds max (60 * 50ms)
                 console.warn('Menu data not loaded, hiding loader anyway');
                 hideLoader();

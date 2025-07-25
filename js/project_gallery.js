@@ -166,6 +166,53 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get 8 random media items
     const selectedMedia = shuffleArray(projectMedia).slice(0, 8);
 
+    // ------------------------------------------------------------
+    //  NEW: Pre-load the 8 chosen image / video assets BEFORE we
+    //  hide the global page-loader.  When everything is fetched
+    //  we expose the flag `window.__HOME_MEDIA_READY` that the
+    //  page-loader script (image-loader.js) will wait for.
+    // ------------------------------------------------------------
+    (function preloadSelectedMedia() {
+        // Only run on home page (index) – other pages don’t care.
+        const isHome = /(?:^|\/)(index\.html)?$/.test(window.location.pathname);
+        if (!isHome) return;
+
+        /**
+         * Preload an image – resolves once the resource is in cache.
+         */
+        function preloadImage(src) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = img.onerror = () => resolve();
+                img.src = src;
+            });
+        }
+
+        /**
+         * Preload a video – resolves on `canplaythrough` OR error.
+         * We keep the element off-DOM so it doesn’t play.
+         */
+        function preloadVideo(src) {
+            return new Promise((resolve) => {
+                const vid = document.createElement('video');
+                vid.preload = 'auto';
+                vid.muted = true;
+                vid.oncanplaythrough = vid.onerror = () => resolve();
+                vid.src = src;
+            });
+        }
+
+        const mediaPromises = selectedMedia.map((file) => {
+            const path = `project_images/${file}`;
+            return isVideoFile(file) ? preloadVideo(path) : preloadImage(path);
+        });
+
+        // Expose a promise so other scripts can await it.
+        window.__HOME_MEDIA_PROMISE = Promise.all(mediaPromises)
+            .then(() => { window.__HOME_MEDIA_READY = true; })
+            .catch(() => { window.__HOME_MEDIA_READY = true; /* fail-open */ });
+    })();
+
     // Create the project gallery section
     const projectGallerySection = document.createElement('section');
     projectGallerySection.className = 'project-gallery-section';
