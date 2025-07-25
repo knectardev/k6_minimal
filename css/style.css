@@ -2263,28 +2263,44 @@ svg {
 .chris-image {
     flex-shrink: 0;
     width: 200px;
+    /* Remove any border or shadow here */
 }
 
 .chris-image a {
     display: block;
-    transition: transform var(--transition-duration) ease, 
-                box-shadow var(--transition-duration) ease;
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
     border-radius: 50%;
-    border: 1px solid #a1a1a1;
-    overflow: hidden;
+    /* Remove border and overflow here */
 }
 
 .chris-image img {
     width: 100%;
     height: auto;
     border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Remove box-shadow and border here */
     display: block;
 }
 
 .chris-image a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    /* Removed hover effect from anchor to prevent slideshow flashing */
+}
+
+.chris-slideshow-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    margin-top: 25px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.28); 
+    border: 1px solid #FF0000 !important;
+    transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+.chris-slideshow-container:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.28);
     border: 1px solid #FF0000;
 }
 
@@ -2597,4 +2613,43 @@ svg {
 
 .about-content .tools-section-header:first-of-type {
     margin-top: 32px;
+}
+
+.chris-slideshow-container {
+    position: relative;
+    width: 180px; /* match image size or adjust as needed */
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border: 1px solid #a1a1a1;
+    transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+}
+.chris-slideshow-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    border: 1px solid #FF0000;
+}
+.chris-photo-slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: opacity 300ms ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+.chris-photo-slide:first-child {
+    opacity: 1;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .about-content,
+    .chris-text {
+        text-align: left !important;
+    }
 }
