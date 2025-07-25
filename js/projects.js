@@ -368,8 +368,9 @@ function buildTilesFromData(menu) {
             if (item.submenu) {
                 traverse(item.submenu, item.label);
             } else {
-                // Exclude About page from projects list
-                if (item.label !== 'About') {
+                // Only include actual projects (items with projectTitle)
+                // This excludes regular pages like "About", "Tools", "Resume", "Contact", etc.
+                if (item.projectTitle) {
                     // Always include all projects in the list view, regardless of sub_menu
                     leafItems.push({ ...item, parentLabel });
                 }
