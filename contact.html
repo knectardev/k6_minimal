@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Knectar</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/load_menu.js" defer></script>
+    <script src="js/phone-obfuscation.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="index.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <div class="breadcrumbs">
+                    <a href="index.html" class="breadcrumb-link">Home</a> &gt; Contact
+                </div>
+            </header>
+            <h2 style="font-family: var(--font-serif); font-size: 1.475rem; font-weight: 600; color: var(--color-text-primary); line-height: var(--line-height-heading); margin: 50px 0 10px 0;">Connect with us | Kvetch to us | Eat tacos with us</h2>
+            <form class="contact-form" action="https://formspree.io/f/mqalqbvg" method="POST" autocomplete="off">
+                <input type="hidden" name="_next" value="https://knectar.com/contact_confirmation.html">
+                <label for="name">Your name?</label>
+                <input type="text" id="name" name="name" required autocomplete="off">
+                <label for="email">Your email?</label>
+                <input type="email" id="email" name="email" required autocomplete="off">
+                <label for="message">Tell us about your project</label>
+                <textarea id="message" name="message" required></textarea>
+                <!-- Hidden field for spam bots -->
+                <input type="text" name="_gotcha" style="display:none">
+                <button type="submit">Send</button>
+            </form>
+            <div class="contact-call-block">
+                <h3>Or call</h3>
+                <a href="#" class="contact-phone" id="phone-link"><span id="phone-display">Click to reveal</span></a>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

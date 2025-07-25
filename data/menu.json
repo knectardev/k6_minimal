@@ -991,5 +991,11 @@
     "icon": "work.svg",
     "url": "resume/resume.html",
     "more": 0
+  },
+  {
+    "label": "Contact",
+    "icon": "phone.svg",
+    "url": "contact.html",
+    "more": 0
   }
 ]
