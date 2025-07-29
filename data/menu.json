@@ -488,7 +488,8 @@
         "coverImage": "project_tiles/stats.png",
         "sub_menu": 1,
         "detailImages": [
-          "project_images/paragraphs-stats-module_1.png"
+          "project_images/paragraphs-stats-module_1.png",
+          "project_images/paragraphs-stats-module_2.mp4"
         ]
       }
     ]
