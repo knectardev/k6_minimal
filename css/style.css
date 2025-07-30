@@ -2141,6 +2141,22 @@ a:visited {
     /* You can further adjust weight or font-family if needed */
 }
 
+/* Additional specific selectors to ensure red bullets work */
+.description ul li::marker,
+.project-info .description ul li::marker,
+#project-description ul li::marker {
+    color: #FF0000 !important;
+    font-size: 1.15em !important;
+}
+
+/* Ensure unordered lists have proper bullet styling */
+.description ul,
+.project-info .description ul,
+#project-description ul {
+    list-style-type: disc !important;
+    padding-left: 1.5em !important;
+}
+
 .red-bullet {
     color: #FF0000;
     font-size: 1.15em;

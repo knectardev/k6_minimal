@@ -39,6 +39,71 @@
     <script src="js/load_menu.js" defer></script>
     <!-- Image Loading Enhancements -->
     <script src="js/image-loader.js" defer></script>
+    
+    <!-- Modal styles for tools images -->
+    <style>
+        /* Make stack images clickable */
+        .detail-stack-image {
+            cursor: pointer;
+        }
+
+        /* Modal overlay for expanded images */
+        .image-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000;
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal-overlay img,
+        .image-modal-overlay video {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .image-modal-overlay.active { opacity: 1; }
+        .image-modal-overlay.active img,
+        .image-modal-overlay.active video { transform: scale(1); }
+
+        /* Close button */
+        .image-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Arrow controls */
+        .image-modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            padding: 8px 16px;
+        }
+        .image-modal-arrow.left { left: 16px; }
+        .image-modal-arrow.right { right: 16px; }
+        .image-modal-arrow.disabled { opacity: 0.3; cursor: default; }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -59,6 +124,10 @@
             </header>
 
             <div class="about-content">
+                <!-- Tools Gallery Container -->
+                <div class="project-gallery" aria-label="Tools gallery">
+                    <!-- Tools images will be populated by JavaScript -->
+                </div>
 
                 <!-- Tools of the Trade Section -->
                 <section>
@@ -122,7 +191,7 @@
                 <section>
                     <div class="tools-section-header" style="display: flex; align-items: baseline; gap: 14px;">
                         <img src="assets/tools_framework.svg" alt="Open Source Frameworks & Ecosystem icon" width="32" height="32" class="tools-section-icon" style="flex-shrink:0;">
-                        <h3 style="margin: 4px 0 0 0;">Modern Development Frameworksm</h3>
+                        <h3 style="margin: 4px 0 0 0;">Modern Development Frameworks</h3>
                     </div>
                     <div class="tools-section">
                         <p>We believe in building on solid foundations rather than reinventing the wheel. We use battle-tested, community-supported frameworks and tools that accelerate development while maintaining high quality. This approach means faster delivery, lower costs, and access to continuous improvements from global developer communities.</p>
@@ -177,5 +246,195 @@
             </div>
         </main>
     </div>
+
+    <script>
+        // Tools page image gallery logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Define the tools images
+            const toolsImages = [
+                'tools/tools_design.png',
+                'tools/tools_roadmap.png', 
+                'tools/tools_architecture.png',
+                'tools/tool_buy-build.png'
+            ];
+            
+            // Expose images for modal
+            window.__DETAIL_IMAGES = toolsImages;
+            
+            // Populate .project-gallery with stacked images
+            const gallery = document.querySelector('.project-gallery');
+            if (gallery) {
+                gallery.innerHTML = '';
+                toolsImages.forEach((src, i) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = `Tools image ${i + 1}`;
+                    img.className = 'detail-stack-image detail-stack-image-base';
+                    img.style.display = 'block';
+                    img.style.position = 'absolute';
+                    img.style.width = '340px';
+                    img.style.borderRadius = '8px';
+                    img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', () => showImageModal(i));
+                    
+                    // Random tilt
+                    const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
+                    img.style.setProperty('--tilt', tilt);
+                    img.dataset.origTilt = parseFloat(tilt);
+                    img.style.left = 'calc(50% + 100px)';
+                    
+                    // Position images at different vertical positions
+                    if (i === 0) img.style.top = '100px';
+                    if (i === 1) img.style.top = '450px';
+                    if (i === 2) img.style.top = '800px';
+                    if (i === 3) img.style.top = '1150px';
+                    
+                    // Add data attribute for scroll detection
+                    img.dataset.imageIndex = i;
+                    
+                    gallery.appendChild(img);
+                });
+                
+                // Set up scroll-based single image activation (spotlight effect)
+                setupImageScrollActivation();
+            }
+        });
+
+        // Modal helper
+        function setupImageScrollActivation() {
+            const images = document.querySelectorAll('.detail-stack-image');
+            if (images.length === 0) return;
+            
+            function updateActiveImage() {
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Adjust the effective "trigger point" based on scroll position
+                const scrollProgress = Math.min(scrollY / (viewportHeight * 1.5), 1);
+                const triggerPoint = scrollY + (viewportHeight * (0.25 + (scrollProgress * 0.25)));
+                
+                let closestImage = null;
+                let closestDistance = Infinity;
+                
+                // Find which image is closest to our dynamic trigger point
+                images.forEach((image) => {
+                    const rect = image.getBoundingClientRect();
+                    const imageCenter = scrollY + rect.top + (rect.height / 2);
+                    const distance = Math.abs(triggerPoint - imageCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestImage = image;
+                    }
+                });
+                
+                // Remove active class from all images
+                images.forEach(image => image.classList.remove('active'));
+                
+                // Add active class only to the closest image (if it's reasonably visible)
+                if (closestImage && closestDistance < viewportHeight) {
+                    closestImage.classList.add('active');
+                }
+            }
+            
+            // Update on scroll with throttling for performance
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveImage, 16); // ~60fps
+            });
+            
+            // Initial update
+            updateActiveImage();
+        }
+
+        function showImageModal(startIdx) {
+            const imagesArr = Array.isArray(window.__DETAIL_IMAGES) ? window.__DETAIL_IMAGES : [];
+            if (!imagesArr.length) return;
+            let currentIdx = startIdx;
+            
+            // Prevent multiple overlays
+            if (document.querySelector('.image-modal-overlay')) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'image-modal-overlay';
+            
+            let mediaEl;
+            function renderMedia(idx) {
+                const src = imagesArr[idx];
+                if (mediaEl) mediaEl.remove();
+                mediaEl = document.createElement('img');
+                mediaEl.src = src;
+                overlay.insertBefore(mediaEl, overlay.firstChild);
+            }
+            renderMedia(currentIdx);
+
+            // Close X
+            const closeX = document.createElement('div');
+            closeX.className = 'image-modal-close';
+            closeX.textContent = '×';
+            closeX.addEventListener('click', e => { e.stopPropagation(); overlay.remove(); });
+            overlay.appendChild(closeX);
+
+            // Arrow controls
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'image-modal-arrow left';
+            leftArrow.innerHTML = '<span class="css-arrow-left"></span>';
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'image-modal-arrow right';
+            rightArrow.innerHTML = '<span class="css-arrow-right"></span>';
+            overlay.appendChild(leftArrow);
+            overlay.appendChild(rightArrow);
+
+            function updateArrows() {
+                leftArrow.classList.toggle('disabled', currentIdx === 0);
+                rightArrow.classList.toggle('disabled', currentIdx === imagesArr.length - 1);
+            }
+
+            leftArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx > 0) {
+                    currentIdx--; renderMedia(currentIdx); updateArrows();
+                }
+            });
+            rightArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx < imagesArr.length - 1) {
+                    currentIdx++; renderMedia(currentIdx); updateArrows();
+                }
+            });
+
+            updateArrows();
+
+            // Keyboard navigation
+            function handleKey(e) {
+                if (e.key === 'ArrowLeft') {
+                    leftArrow.click();
+                } else if (e.key === 'ArrowRight') {
+                    rightArrow.click();
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+
+            document.addEventListener('keydown', handleKey);
+
+            function closeModal() {
+                document.removeEventListener('keydown', handleKey);
+                overlay.remove();
+            }
+
+            // Replace previous listeners to use closeModal
+            overlay.addEventListener('click', closeModal);
+            closeX.removeEventListener('click', () => { }); // ensure no duplicate
+            closeX.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
+            document.body.appendChild(overlay);
+            
+            // trigger animated entrance
+            requestAnimationFrame(() => {
+                overlay.classList.add('active');
+            });
+        }
+    </script>
 </body>
 </html> 
