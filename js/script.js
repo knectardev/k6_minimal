@@ -713,10 +713,10 @@ function buildProjectInfoHTML(data) {
         
         html += `<div class="description-edit-wrap">
             <div id="project-description" class="description" style="display: none;">${data.pageSummary || ''}</div>
-            <p class="description-display">${cleanedContent || 'No description available.'}</p>
+            <div class="description-display">${cleanedContent || 'No description available.'}</div>
         </div>`;
     } else if (data.pageSummary) {
-        html += `<p class="description">${cleanLegacyContent(data.pageSummary)}</p>`;
+        html += `<div class="description">${cleanLegacyContent(data.pageSummary)}</div>`;
     }
     if (data.pageBody) html += `<div class="dynamic-body">${data.pageBody}</div>`;
     

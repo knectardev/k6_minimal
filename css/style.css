@@ -2144,6 +2144,8 @@ a:visited {
 /* Additional specific selectors to ensure red bullets work */
 .description ul li::marker,
 .project-info .description ul li::marker,
+.project-info .description-display ul li::marker,
+.description-edit-wrap .description-display ul li::marker,
 #project-description ul li::marker {
     color: #FF0000 !important;
     font-size: 1.15em !important;
@@ -2152,6 +2154,8 @@ a:visited {
 /* Ensure unordered lists have proper bullet styling */
 .description ul,
 .project-info .description ul,
+.project-info .description-display ul,
+.description-edit-wrap .description-display ul,
 #project-description ul {
     list-style-type: disc !important;
     padding-left: 1.5em !important;
