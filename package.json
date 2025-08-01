@@ -8,15 +8,7 @@
     "dev": "nodemon server.js",
     "optimize-images": "python scripts/optimize_conservative.py",
     "test-optimization": "python scripts/test_conservative.py",
-    "deploy": "git push origin main",
-    "redirects:list": "node scripts/manage_redirects.js list",
-    "redirects:add": "node scripts/manage_redirects.js add",
-    "redirects:remove": "node scripts/manage_redirects.js remove",
-    "redirects:validate": "node scripts/manage_redirects.js validate",
-    "scrape:legacy": "node scripts/scrape_legacy_site.js",
-    "map:urls": "node scripts/map_urls.js",
-    "inventory:full": "npm run scrape:legacy && npm run map:urls",
-    "redirects:comprehensive": "node scripts/comprehensive_redirect_mapper.js"
+    "deploy": "git push origin main"
   },
   "keywords": ["portfolio", "web-development", "design", "knectar"],
   "author": "Knectar",

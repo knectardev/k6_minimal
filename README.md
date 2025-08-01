@@ -330,30 +330,6 @@ npm run optimize-images
 ### Health Check
 - `GET /api/health` - Server health status
 
-## 301 Redirects
-
-The site includes a comprehensive 301 redirect system with multiple deployment options.
-
-### Quick Start
-```bash
-# List current redirects
-npm run redirects:list
-
-# Add a redirect
-npm run redirects:add exact /old-page /new-page.html
-
-# Validate redirects
-npm run redirects:validate
-```
-
-### Supported Platforms
-- **Express.js Server** (primary) - `redirects.json` configuration
-- **Netlify** - `netlify.toml` configuration
-- **Vercel** - `vercel.json` configuration  
-- **Nginx** - `nginx.conf` configuration
-
-See [REDIRECTS.md](REDIRECTS.md) for complete documentation.
-
 ## Security Considerations
 
 - **API keys** are stored in environment variables
