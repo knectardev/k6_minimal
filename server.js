@@ -20,6 +20,55 @@ app.use((req, res, next) => {
 // Middleware to parse JSON bodies with size limit
 app.use(express.json({ limit: '1mb' }));
 
+// Load redirect configuration
+let redirectConfig = { redirects: { exact: {}, patterns: {}, wildcards: {} } };
+try {
+  const redirectPath = path.join(__dirname, 'redirects.json');
+  if (fs.existsSync(redirectPath)) {
+    redirectConfig = JSON.parse(fs.readFileSync(redirectPath, 'utf8'));
+  }
+} catch (error) {
+  console.warn('Could not load redirects.json:', error.message);
+}
+
+// 301 Redirect middleware
+app.use((req, res, next) => {
+  const requestPath = req.path;
+  
+  // Check exact matches first
+  if (redirectConfig.redirects.exact[requestPath]) {
+    return res.redirect(301, redirectConfig.redirects.exact[requestPath]);
+  }
+  
+  // Check pattern matches
+  for (const [pattern, destination] of Object.entries(redirectConfig.redirects.patterns)) {
+    if (requestPath === pattern) {
+      return res.redirect(301, destination);
+    }
+  }
+  
+  // Check wildcard patterns
+  for (const [pattern, destination] of Object.entries(redirectConfig.redirects.wildcards)) {
+    if (pattern.includes('*')) {
+      const regexPattern = pattern.replace(/\*/g, '.*');
+      const regex = new RegExp(`^${regexPattern}$`);
+      if (regex.test(requestPath)) {
+        return res.redirect(301, destination);
+      }
+    }
+  }
+  
+  // Handle trailing slash redirects for HTML files
+  if (requestPath.endsWith('/') && requestPath !== '/') {
+    const withoutSlash = requestPath.slice(0, -1);
+    if (redirectConfig.redirects.exact[withoutSlash]) {
+      return res.redirect(301, redirectConfig.redirects.exact[withoutSlash]);
+    }
+  }
+  
+  next();
+});
+
 // Serve static files (your site)
 app.use(express.static(__dirname));
 

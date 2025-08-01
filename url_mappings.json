@@ -1,0 +1,165 @@
+{
+  "generated_at": "2025-08-01T15:45:22.469Z",
+  "total_mapped": 17,
+  "total_unmapped": 8,
+  "mappings": [
+    {
+      "originalPath": "/",
+      "destination": "/index.html",
+      "type": "exact",
+      "description": "Homepage",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/fox-chase-cancer-center",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/isabella-stewart-gardner-museum",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/glenmede-trust-company",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/chemex-coffeemaker",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/umass-humanities-fine-arts",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/smma",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/saci-florence",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/mit-deshpande-center",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/portfolio/smartlabs",
+      "destination": "/project.html?item=smartlabs",
+      "type": "exact",
+      "description": "Portfolio: SmartLabs",
+      "project": {
+        "slug": "smartlabs",
+        "label": "SmartLabs",
+        "menuDisplayName": "SmartLabs",
+        "category": "Intranets & Portals"
+      }
+    },
+    {
+      "originalPath": "/portfolio/umass-summer-programs",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Portfolio items",
+      "project": null
+    },
+    {
+      "originalPath": "/contact",
+      "destination": "/contact.html",
+      "type": "exact",
+      "description": "Contact page",
+      "project": null
+    },
+    {
+      "originalPath": "/about",
+      "destination": "/about.html",
+      "type": "exact",
+      "description": "About page",
+      "project": null
+    },
+    {
+      "originalPath": "/blog",
+      "destination": "/blog.html",
+      "type": "exact",
+      "description": "Blog page",
+      "project": null
+    },
+    {
+      "originalPath": "/case-studies/fox-chase-cancer-center",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Case studies",
+      "project": null
+    },
+    {
+      "originalPath": "/case-studies/isabella-stewart-gardner-museum",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Case studies",
+      "project": null
+    },
+    {
+      "originalPath": "/case-studies/mit-deshpande-center",
+      "destination": "/projects.html",
+      "type": "wildcard",
+      "description": "Case studies",
+      "project": null
+    }
+  ],
+  "unmapped": [
+    {
+      "path": "/our-work",
+      "fullUrl": "https://www.knectar.com/our-work"
+    },
+    {
+      "path": "/clients-partners",
+      "fullUrl": "https://www.knectar.com/clients-partners"
+    },
+    {
+      "path": "/services",
+      "fullUrl": "https://www.knectar.com/services"
+    },
+    {
+      "path": "/knectar-blog",
+      "fullUrl": "https://www.knectar.com/knectar-blog"
+    },
+    {
+      "path": "/talk-to-us",
+      "fullUrl": "https://www.knectar.com/talk-to-us"
+    },
+    {
+      "path": "/work",
+      "fullUrl": "https://www.knectar.com/work"
+    },
+    {
+      "path": "/clients",
+      "fullUrl": "https://www.knectar.com/clients"
+    },
+    {
+      "path": "/case-studies",
+      "fullUrl": "https://www.knectar.com/case-studies"
+    }
+  ]
+}

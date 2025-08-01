@@ -1,0 +1,67 @@
+[build]
+  command = "npm run build"
+  publish = "."
+
+# Redirect rules for Netlify
+[[redirects]]
+  from = "/old-about"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/old-projects"
+  to = "/projects.html"
+  status = 301
+
+[[redirects]]
+  from = "/old-contact"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/legacy-blog"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/old-tools"
+  to = "/tools.html"
+  status = 301
+
+# Remove trailing slashes
+[[redirects]]
+  from = "/about/"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/projects/"
+  to = "/projects.html"
+  status = 301
+
+[[redirects]]
+  from = "/contact/"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/tools/"
+  to = "/tools.html"
+  status = 301
+
+# API redirects for serverless functions
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+# Handle SPA routing (if needed)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 
