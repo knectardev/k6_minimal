@@ -130,29 +130,25 @@
             color: white;
         }
         
-        .skill-item {
+        .nav-item {
             margin-bottom: var(--spacing-md);
         }
         
-        .skill-name {
+        .nav-link {
             font-size: 0.9em;
-            margin-bottom: 5px;
             font-family: var(--font-primary);
             color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+            border-left: 3px solid transparent;
+            padding-left: 10px;
         }
         
-        .skill-bar {
-            background: #ddd;
-            height: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            background: var(--color-primary);
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.3s ease;
+        .nav-link:hover {
+            color: var(--color-primary);
+            border-left-color: var(--color-primary);
         }
         
         .languages-section h3 {
@@ -336,55 +332,7 @@
                 </div>
                 
                 <div class="skills-section">
-                    <h3>Skills</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">Drupal</div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">PHP</div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">JavaScript</div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">React</div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">WordPress</div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">Python</div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">AWS</div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">Accessibility</div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
+                    <!-- Navigation links will be generated dynamically -->
                 </div>
                 
                 <div class="languages-section">
@@ -426,13 +374,42 @@
             .then(response => response.json())
             .then(data => {
                 const container = document.getElementById('projects-container');
+                const navContainer = document.querySelector('.skills-section');
+                
+                // Clear existing navigation links
+                const existingNav = navContainer.querySelectorAll('.nav-item');
+                existingNav.forEach(item => item.remove());
+                
+                // Add navigation header
+                const navHeader = document.createElement('h3');
+                navHeader.textContent = 'Project Categories';
+                navContainer.appendChild(navHeader);
                 
                 data.forEach(category => {
                     if (category.submenu && category.submenu.length > 0) {
+                        // Create navigation link
+                        const navItem = document.createElement('div');
+                        navItem.className = 'nav-item';
+                        
+                        const navLink = document.createElement('a');
+                        navLink.className = 'nav-link';
+                        navLink.textContent = category.label;
+                        
+                        // Create ID for smooth scrolling based on category label
+                        const categoryId = category.label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                        navLink.href = '#' + categoryId;
+                        
+                        navItem.appendChild(navLink);
+                        navContainer.appendChild(navItem);
+                        
                         // Create category header
                         const categoryHeader = document.createElement('h3');
                         categoryHeader.className = 'category-header';
                         categoryHeader.textContent = category.label;
+                        categoryHeader.id = categoryId;
+                        
+                        console.log('Created category header with ID:', categoryId, 'for label:', category.label);
+                        
                         container.appendChild(categoryHeader);
                         
                         // Add projects in this category
@@ -483,6 +460,45 @@
                             }
                         });
                     }
+                });
+                
+                // Add smooth scrolling functionality after everything is loaded
+                const navLinks = document.querySelectorAll('.nav-link');
+                console.log('Found', navLinks.length, 'navigation links');
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        console.log('Clicked link:', this.textContent);
+                        console.log('Target ID:', targetId);
+                        console.log('Target element found:', !!targetElement);
+                        
+                        if (targetElement) {
+                            console.log('Scrolling to target element');
+                            
+                            // Use scrollIntoView for more reliable scrolling
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            
+                            // Add a small delay and then scroll the main content to account for the offset
+                            setTimeout(() => {
+                                const mainContent = document.querySelector('.main-content');
+                                const currentScroll = mainContent.scrollTop;
+                                mainContent.scrollTop = currentScroll - 20; // Offset for padding
+                            }, 100);
+                        } else {
+                            console.log('Target element not found. Available IDs:');
+                            document.querySelectorAll('[id]').forEach(el => {
+                                console.log('-', el.id);
+                            });
+                        }
+                    });
                 });
             })
             .catch(error => {

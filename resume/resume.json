@@ -875,7 +875,7 @@
         "projectUrl": null,
         "project_haiku": "Code becomes canvas<br/>Pixels dance to algorithm<br/>Art born from logic",
         "project_footer_CTA": "Ready to bring your creative vision to life through code? Let's make art together.",
-        "pageSummary": "Project summary not available.",
+        "pageSummary": "Developed a series of generative art sketches using p5.js to explore creative coding and algorithmic art generation. Built interactive sketches that demonstrate various generative techniques including particle systems, procedural geometry, and mathematical pattern generation. Created responsive designs that adapt to different screen sizes and user interactions. Implemented real-time parameter controls allowing users to adjust generative algorithms and see immediate visual feedback. Developed a collection of sketches showcasing different artistic styles and mathematical concepts. Delivered a portfolio of generative art pieces that demonstrate creative coding skills and artistic vision while providing engaging interactive experiences for viewers.",
         "coverImage": "project_tiles/blobby.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -899,7 +899,7 @@
         "projectUrl": null,
         "project_haiku": "Machine draws with soul<br/>Lines emerge from coded dreams<br/>Analog meets digital",
         "project_footer_CTA": "Ready to explore the intersection of technology and traditional art? Let's create automated beauty that bridges digital and physical worlds.",
-        "pageSummary": "Project summary not available.",
+        "pageSummary": "Developed a creative coding project that bridges digital and physical art by converting p5.js Bézier curve sketches into pen plotter artwork. Built a p5.js sketch that generates complex Bézier curve patterns with interactive controls for curve manipulation and pattern generation. Implemented export functionality that converts digital sketches into vector formats suitable for pen plotters and laser cutters. Created a workflow that allows for iterative design refinement between digital and physical mediums. Developed documentation and tutorials explaining the process of moving from digital sketches to physical artwork. Delivered a complete system that demonstrates the intersection of creative coding, digital fabrication, and artistic expression while providing practical tools for artists and makers.",
         "coverImage": "project_tiles/pen.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -922,7 +922,7 @@
         "projectUrl": null,
         "project_haiku": "Stone yields to vision<br/>Ancient craft meets modern tools<br/>Form awakens space",
         "project_footer_CTA": "Ready to sculpt your creative vision into reality? Let's combine traditional craftsmanship with cutting-edge technology to bring ideas to life.",
-        "pageSummary": "Project summary not available.",
+        "pageSummary": "Curated and designed a digital exhibition showcasing Chris Amato's first solo exhibition 'Experiments in Material and Flow' featuring sculpture works and material explorations. Built an interactive digital gallery that presents the exhibition's themes of material experimentation and artistic process. Created detailed documentation of individual artworks with high-resolution photography and artist statements. Implemented a responsive design that adapts to different viewing contexts and device types. Developed educational content explaining the artistic concepts and material processes behind the works. Delivered a comprehensive digital exhibition that extends the physical show's reach while providing engaging documentation of the artistic process and material explorations.",
         "coverImage": "project_tiles/cnc.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -970,7 +970,7 @@
         "projectUrl": null,
         "project_haiku": "Clay spins to new life<br/>Hands shape what the heart envisions<br/>Beauty holds water",
         "project_footer_CTA": "Ready to give form to your artistic vision? Let's create functional beauty that brings joy to everyday moments.",
-        "pageSummary": "Project summary not available.",
+        "pageSummary": "Designed and produced 'Test Tube Babies,' a distinctive series of bud vases that combine functional design with artistic expression. Created a collection of vases inspired by laboratory glassware and scientific aesthetics while maintaining practical functionality. Built a comprehensive design system including multiple vase forms, material specifications, and production processes. Implemented quality control measures ensuring each vase meets both aesthetic and functional requirements. Developed marketing materials and product photography showcasing the unique design aesthetic. Delivered a complete product line that demonstrates the intersection of art, design, and functionality while providing beautiful and practical home decor items.",
         "coverImage": "project_tiles/vase.png",
         "sub_menu": 1,
         "detailImages": [
