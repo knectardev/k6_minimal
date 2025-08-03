@@ -31,7 +31,7 @@
         "projectUrl": "https://www.cmu.edu/",
         "project_haiku": "Code and wisdom merge<br/>Innovation takes its flight<br/>Learning never ends",
         "project_footer_CTA": "Ready to transform your institution's digital presence? Let's build something extraordinary together.",
-        "pageSummary": "Led the complete redesign and implementation of Carnegie Mellon University's flagship website and distributed CMS ecosystem, managing an 18-month project that modernized the university's digital presence across 50+ departments. Built a scalable component-based architecture using Drupal, GitLab, and Pantheon Upstream that supports both the main CMU.edu site and multiple unit sites while maintaining brand consistency. Implemented 50+ reusable components, distributed content management workflows, and enterprise integrations including LiveWhale events, faculty directories, and program finders. The system achieved WCAG 2.1 AA accessibility compliance, mobile-first responsive design, and enabled autonomous content management for individual units while reducing development time for new sites by 60%.",
+        "pageSummary": "Led complete redesign of CMU's flagship website and distributed CMS ecosystem across 50+ departments. Built scalable component architecture using Drupal, GitLab, and Pantheon with 50+ reusable components and enterprise integrations. Achieved WCAG 2.1 AA compliance and reduced new site development time by 60%.",
         "coverImage": "project_tiles/cmu.png",
         "sub_menu": 1,
         "detailImages": [
@@ -54,7 +54,7 @@
         "projectUrl": "https://www.clarkson.edu/",
         "project_haiku": "Engineers dream here<br/>Modules click like gears in sync<br/>Knowledge builds tomorrow",
         "project_footer_CTA": "Ready to modernize your university's digital infrastructure? Let's engineer success together.",
-        "pageSummary": "Implemented a comprehensive Drupal 9 website redesign for Clarkson University on Pantheon, collaborating with Carnegie Higher Ed for design strategy. Built a modern, accessible platform featuring PeopleSoft integration for dynamic faculty directories, Funnelback search capabilities, and modular content management using Drupal Paragraphs. Developed custom modules for emergency alerts, EMS calendar integration, and microsite functionality. Achieved WCAG 2.1 AA accessibility compliance with automated monitoring tools and created a sustainable CMS that enables distributed editors to build flexible pages without developer assistance.",
+        "pageSummary": "Delivered comprehensive Drupal 9 redesign with PeopleSoft integration, Funnelback search, and modular content management. Developed custom modules for emergency alerts and calendar integration. Achieved WCAG 2.1 AA compliance with automated monitoring and enabled distributed editing without developer assistance.",
         "coverImage": "project_tiles/clarkson.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -77,7 +77,7 @@
         "projectUrl": "https://britishart.yale.edu/",
         "project_haiku": "Art meets technology<br/>British treasures come alive<br/>Digital galleries",
         "project_footer_CTA": "Ready to showcase your cultural collections? Let's create digital experiences that inspire.",
-        "pageSummary": "Designed and implemented a dual-platform digital ecosystem for Yale Center for British Art, comprising a Drupal 10 museum website and a headless Drupal 11 collections search backed by Apache Solr. Built a comprehensive content architecture supporting 2,000+ paintings, 250 sculptures, and 40,000+ library items with faceted search capabilities. Implemented WCAG 2.0 Level AA compliance, editorial workflows, and third-party integrations including Bedework events and Google Places API. Created a custom remote Solr integration module for the Drupal community and established a scalable foundation for future growth.",
+        "pageSummary": "Built dual-platform ecosystem: Drupal 10 museum website and headless Drupal 11 collections search with Apache Solr. Supports 2,000+ paintings, 250 sculptures, and 40,000+ library items with faceted search. Achieved WCAG 2.0 Level AA compliance and created custom Solr integration module for Drupal community.",
         "coverImage": "project_tiles/ycba.jpg",
         "sub_menu": 1,
         "detailImages": [
@@ -100,7 +100,7 @@
         "projectUrl": "https://www.foxchase.org/",
         "project_haiku": "Hope flows through each page<br/>Science meets compassionate care<br/>Healing hearts online",
         "project_footer_CTA": "Ready to transform healthcare digital experiences? Let's build solutions that save lives.",
-        "pageSummary": "Led the complete website redesign and Drupal implementation for Fox Chase Cancer Center, partnering with Transit Authority Figures for design strategy. Built a patient-centric platform featuring modular content management using Drupal Paragraphs, advanced search functionality with Google Search Appliance integration, and comprehensive accessibility features meeting Temple University's ADA guidelines. Implemented custom modules for faculty and scientist directories, emergency alert systems, and third-party integrations including YouTube, Google Maps, and clinical trial forms. Created a responsive, accessible design that serves patients, researchers, and donors effectively.",
+        "pageSummary": "Led complete website redesign for Fox Chase Cancer Center with patient-centric design. Built modular content system using Drupal Paragraphs, Google Search Appliance integration, and comprehensive accessibility features. Developed custom modules for faculty directories and emergency alerts.",
         "coverImage": "project_tiles/fox.png",
         "sub_menu": 1,
         "detailImages": [
@@ -123,7 +123,7 @@
         "projectUrl": "https://www.kettering.edu/",
         "project_haiku": "Innovation flows<br/>Students build tomorrow's dreams<br/>Tech meets human heart",
         "project_footer_CTA": "Ready to empower the next generation of innovators? Let's build educational excellence together.",
-        "pageSummary": "Executed a comprehensive Drupal 10 upgrade and component-based redesign for Kettering University, implementing a four-phase strategy that modernized the institution's digital presence. Built flexible templates for academic programs, faculty directories, and student resources while integrating external data sources for program information and social media feeds. Developed a program finder with filtering capabilities and implemented accessibility compliance with WCAG guidelines. Created a scalable architecture that supports the university's focus on advanced mobility, new energy vehicles, and intelligent manufacturing while maintaining brand consistency across all digital touchpoints.",
+        "pageSummary": "Executed Drupal 10 upgrade and component-based redesign with four-phase strategy. Built flexible templates for academic programs and faculty directories with external data integration. Implemented program finder with filtering and WCAG compliance for advanced mobility and manufacturing focus.",
         "coverImage": "project_tiles/kettering.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -146,7 +146,7 @@
         "projectUrl": "https://www.ljcds.org/",
         "project_haiku": "Young minds flourish here<br/>Ocean breeze carries new dreams<br/>Excellence takes root",
         "project_footer_CTA": "Ready to cultivate excellence in your school's digital presence? Let's grow together.",
-        "pageSummary": "Collaborated with Verso Design to build a Drupal website that reflects La Jolla Country Day School's mission of nurturing well-rounded learners. Structured the information architecture around the school's three divisions and implemented custom content types for academics, arts, athletics, and community service. Created a warm, welcoming visual identity with purpose-driven messaging that celebrates independent thinking. Integrated customizable event calendars, faculty directories, and admission inquiry forms to provide prospective families with clear pathways to learn about the IB program and schedule campus visits.",
+        "pageSummary": "Built Drupal website reflecting school's mission across three divisions. Implemented custom content types for academics, arts, athletics, and community service. Created warm visual identity with event calendars, faculty directories, and admission forms for IB program promotion.",
         "coverImage": "project_tiles/lajolla.jpg",
         "sub_menu": 0,
         "detailImages": [
@@ -169,7 +169,7 @@
         "projectUrl": "https://medicine.temple.edu/",
         "project_haiku": "Healing hands, sharp minds<br/>Medicine meets digital care<br/>Lives touched through each click",
         "project_footer_CTA": "Ready to advance medical education through innovative digital solutions? Let's heal the world together.",
-        "pageSummary": "Implemented a modern Drupal website for Temple University's Lewis Katz School of Medicine, partnering with Transit Authority Figures for design and user experience strategy. Built a responsive platform featuring dynamic homepage slideshows, flexible content management using Drupal Paragraphs, and a sophisticated faculty directory with predictive search capabilities. Implemented comprehensive accessibility features including relative font sizes, alt-text enforcement, and keyboard navigation to meet Temple's Web Accessibility Standards. Integrated third-party services including Google Custom Search, events feeds, and social sharing tools to create an engaging digital experience for prospective students and researchers.",
+        "pageSummary": "Implemented modern Drupal platform with dynamic slideshows and sophisticated faculty directory with predictive search. Built comprehensive accessibility features including relative font sizes and keyboard navigation. Integrated Google Custom Search and social sharing tools.",
         "coverImage": "project_tiles/temple.jpg",
         "sub_menu": 0,
         "detailImages": [
@@ -192,7 +192,7 @@
         "projectUrl": "https://www.limcollege.edu/",
         "project_haiku": "Fashion meets future<br/>Style and code blend seamlessly<br/>Dreams take elegant form",
         "project_footer_CTA": "Ready to style your institution's digital presence? Let's create something fashionable together.",
-        "pageSummary": "Executed a strategic website refresh for LIM College, translating Carnegie Higher Ed's creative vision into a functional Drupal 9 platform without rebuilding the entire system. Built new templates for homepage, program finder, and program pages while preserving existing infrastructure and content. Implemented embedded RFI forms, updated design system components, and enhanced accessibility by replacing tabbed interfaces with accordions. Created a program finder with filters for degree level, modality, area of study, and career field, and improved mobile performance to address the high share of mobile sessions. Established a foundation for continuous improvement through analytics-informed refinements.",
+        "pageSummary": "Executed strategic Drupal 9 refresh preserving existing infrastructure. Built new homepage and program finder templates with embedded RFI forms. Enhanced accessibility by replacing tabs with accordions and improved mobile performance for high mobile usage.",
         "coverImage": "project_tiles/lim.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -215,7 +215,7 @@
         "projectUrl": "https://www.madisoncountryday.org/",
         "project_haiku": "Midwest traditions<br/>Technology shapes bright futures<br/>Community thrives here",
         "project_footer_CTA": "Ready to strengthen your school's digital community? Let's build educational experiences that bring families together.",
-        "pageSummary": "Collaborated with Verso Design to create a Drupal website that captures Madison Country Day School's commitment to challenge and support as an International Baccalaureate World School. Implemented a versatile page builder using Drupal Paragraphs enabling teachers and administrators to craft pages for the IB curriculum, arts, athletics, and admissions. Created an inviting visual identity and messaging that celebrates student curiosity while integrating event calendars, news blogs, and parent portals. Provided prospective families with clear pathways to learn about the IB program and schedule campus visits while offering current families secure access to resources.",
+        "pageSummary": "Created Drupal website for International Baccalaureate World School using versatile page builder with Drupal Paragraphs. Enabled teachers and administrators to craft pages for IB curriculum, arts, and athletics. Integrated event calendars, news blogs, and secure parent portals.",
         "coverImage": "project_tiles/mad2.png",
         "sub_menu": 0,
         "detailImages": [
@@ -238,7 +238,7 @@
         "projectUrl": "https://solve.mit.edu/",
         "project_haiku": "Minds solve global needs<br/>Technology meets purpose here<br/>Future takes its shape",
         "project_footer_CTA": "Ready to solve complex challenges through technology? Let's build solutions that matter.",
-        "pageSummary": "Built a sophisticated Drupal platform for MIT Solve that serves as a digital innovation lab connecting entrepreneurs, researchers, and change-makers globally. Created a matchmaking service that enables challenge-seekers to connect with solution-builders and big ideas with resources needed to become reality. Implemented features for showcasing global challenges, collaborative solution development, and pathways for supporters and investors to discover and fund promising initiatives. Designed a user experience that serves everyone from Nobel laureates to startup founders without overwhelming any audience, handling everything from initial ideation to ongoing project management and impact tracking.",
+        "pageSummary": "Built sophisticated platform for MIT Solve connecting global entrepreneurs and researchers. Created matchmaking service linking challenge-seekers with solution-builders. Implemented features for showcasing challenges, collaborative development, and investor discovery without overwhelming diverse audiences.",
         "coverImage": "project_tiles/mit.jpg",
         "sub_menu": 1,
         "detailImages": [
@@ -261,7 +261,7 @@
         "projectUrl": "https://www.neiu.edu/",
         "project_haiku": "Diverse voices unite<br/>Knowledge bridges every culture<br/>Wisdom grows with care",
         "project_footer_CTA": "Ready to celebrate diversity through digital innovation? Let's create inclusive educational platforms that welcome everyone.",
-        "pageSummary": "Designed and implemented a Drupal website for Northeastern Illinois University that celebrates the institution's diversity and accessibility, collaborating with Carnegie Higher Ed for design direction and content strategy. Built custom program pages showcasing academic offerings alongside student testimonials and success metrics, and created an interactive campus map helping prospective students explore the university's four Chicago locations. Implemented ADA-compliant design, built multilingual capability to serve NEIU's diverse community, and integrated application portals and event calendars. Created a user-friendly site that positions NEIU as an inclusive institution dedicated to student success.",
+        "pageSummary": "Built Drupal website celebrating institutional diversity with custom program pages and student testimonials. Created interactive campus map for four Chicago locations. Implemented ADA-compliant design with multilingual capability and integrated application portals.",
         "coverImage": "project_tiles/neiu.webp",
         "sub_menu": 0,
         "detailImages": [
@@ -284,7 +284,7 @@
         "projectUrl": "https://www.umass.edu/uww/programs/pre-college",
         "project_haiku": "New England learning<br/>Pre-college dreams take root here<br/>Pathways to success",
         "project_footer_CTA": "Ready to nurture the next generation of leaders? Let's build pre-college programs that inspire and prepare students for excellence.",
-        "pageSummary": "Built a Drupal distribution for UMass Amherst College of Humanities and Fine Arts that serves more than 20 departments while maintaining consistent branding across the college. Created a platform allowing each department to launch its own site with the same design framework, including pre-made content types and taxonomies for academic programs, faculty bios, and events. Implemented a Blocks Placer interface enabling editors to position and customize blocks such as slideshows and accent colors. Designed a rotating footer background and moving logo to create visual interest while reinforcing the college's identity. Reduced duplication of effort by enabling content sharing across departments while allowing each department to highlight unique offerings.",
+        "pageSummary": "Created Drupal distribution for College of Humanities and Fine Arts serving 20+ departments. Built consistent branding framework with pre-made content types and Blocks Placer interface. Enabled content sharing across departments while allowing unique customization, reducing duplication of effort.",
         "coverImage": "project_tiles/umass.png",
         "sub_menu": 1,
         "detailImages": [
@@ -315,7 +315,7 @@
         "projectUrl": "https://webportal.mmwec.org/",
         "project_haiku": "Power flows through data<br/>Municipal energy shared<br/>Communities connect",
         "project_footer_CTA": "Ready to power your organization with cutting-edge portal solutions? Let's energize your digital infrastructure.",
-        "pageSummary": "Developed a comprehensive member portal and NextZero rebate application for MMWEC, a not-for-profit public corporation serving 23 municipal light departments. Built a secure, scalable Drupal platform that streamlines communication and collaboration for municipal utilities while helping them meet clean-energy mandates. Implemented advanced portal functionality including user authentication, document management, and rebate processing workflows. Created a robust system that supports the agency's mission of providing power-supply, financial, and risk-management services to member utilities across Massachusetts.",
+        "pageSummary": "Developed comprehensive member portal for MMWEC serving 23 municipal light departments. Built secure Drupal platform streamlining utility communication and clean-energy mandate compliance. Implemented advanced portal functionality with user authentication, document management, and rebate processing workflows.",
         "coverImage": "project_tiles/mmwec.png",
         "sub_menu": 1,
         "detailImages": [
@@ -338,7 +338,7 @@
         "projectUrl": "https://www.mimodelo.com.mx/",
         "project_haiku": "Global brands unite<br/>Digital craft meets tradition<br/>Celebration flows",
         "project_footer_CTA": "Ready to scale your global brand presence? Let's brew digital experiences that connect with customers worldwide.",
-        "pageSummary": "Designed and implemented a scalable B2B ordering portal for AB InBev's wholesale distribution model in Latin America and beyond. Built a multilingual, multi-brand environment using Magento Enterprise Edition with Docker containerization for rapid deployment across multiple countries. Implemented custom AB API adapters, multi-country logic, and Mulesoft API integration for real-time communications with country-specific backend systems. Created a user-friendly interface emphasizing simplicity for B2B users with tiled visual browsing and mobile-friendly filtering. Established a scalable foundation supporting future growth while reducing order friction and improving rebate application tracking.",
+        "pageSummary": "Built scalable B2B ordering portal for Latin American wholesale distribution. Implemented multilingual, multi-brand Magento Enterprise with Docker containerization. Created custom AB API adapters and Mulesoft integration for real-time backend communications, reducing order friction.",
         "coverImage": "project_tiles/ab.png",
         "sub_menu": 1,
         "detailImages": [
@@ -360,7 +360,7 @@
         "projectUrl": "https://smartlabs.com/",
         "project_haiku": "Science meets smart tech<br/>Laboratory workflows flow<br/>Discovery awaits",
         "project_footer_CTA": "Ready to revolutionize your laboratory operations? Let's build intelligent systems that accelerate scientific discovery.",
-        "pageSummary": "Built a comprehensive three-tier digital ecosystem for SmartLabs spanning public marketing, secure member operations, and specialized compliance management. Implemented a modern marketing site, multi-tenant member portal on Drupal 8, and specialized vivarium compliance platform with enterprise-grade security. Created sophisticated badge management systems with enforced company-specific quotas, integrated third-party tools including BioRAFT, TEEM, and Zendesk, and implemented SSO authentication through company identity providers. Built a scalable architecture supporting rapid expansion across Boston, Cambridge, and San Francisco while maintaining operational reliability and regulatory compliance.",
+        "pageSummary": "Built three-tier ecosystem: marketing site, multi-tenant member portal, and vivarium compliance platform. Implemented sophisticated badge management with company quotas, third-party integrations (BioRAFT, TEEM, Zendesk), and SSO authentication. Supports expansion across Boston, Cambridge, and San Francisco.",
         "coverImage": "project_tiles/smart.jpeg",
         "sub_menu": 1,
         "detailImages": [
@@ -391,7 +391,7 @@
         "projectUrl": null,
         "project_haiku": "Resources aligned<br/>Efficiency meets strategy<br/>Growth becomes seamless",
         "project_footer_CTA": "Ready to optimize your resource management processes? Let's build intelligent systems that maximize efficiency and drive growth.",
-        "pageSummary": "Developed Carv.io, a resource management platform that transforms time tracking into true capacity forecasting for small and mid-sized teams. Built two working prototypes: a browser-based pipeline simulator and a curved (Bezier) hours allocator that model project dynamics beyond simple record-keeping. Implemented confidence zones (25%, 50%, 75%, 100%) to handle uncertainty in project pipelines and created a quadratic Bezier curve system for realistic effort distribution across timelines. Designed a systems-theory approach that models flow, entry, attrition, and maturation while making uncertainty visible. Created a foundation for future recommendation engines using statistical methods and machine learning informed by real time-log data.",
+        "pageSummary": "Developed Carv.io resource management platform transforming time tracking into capacity forecasting. Built browser-based pipeline simulator and curved hours allocator with confidence zones (25%-100%). Implemented quadratic Bezier curve system for realistic effort distribution and uncertainty modeling.",
         "coverImage": "project_tiles/carv.png",
         "sub_menu": 1,
         "detailImages": [
@@ -415,7 +415,7 @@
         "projectUrl": null,
         "project_haiku": "Glass becomes alive<br/>Interactive art unfolds<br/>Touch awakens beauty",
         "project_footer_CTA": "Ready to bring your interactive vision to life? Let's create immersive experiences that captivate and inspire users.",
-        "pageSummary": "Prototyped a hexagon-based puzzle game through three iterations: an iOS puzzle app, a two-player p5.js game, and a physical laser-cut board. Built an iOS game featuring polyiamond shape placement, color mixing mechanics, and rotating concentric rings with snap-to-grid functionality. Created a two-player competitive game similar to Go using the same hexagonal board mechanics with territory control and capture rules. Designed and fabricated a physical prototype using Ponoko's laser-cutting service with precise tolerances for smooth rotation. Demonstrated how a single mechanic—rotating concentric hexagonal rings—can support both casual puzzles and competitive territory games across digital and physical media.",
+        "pageSummary": "Prototyped hexagon-based puzzle game across three iterations: iOS app, two-player p5.js game, and laser-cut physical board. Built iOS game with polyiamond placement, color mixing, and rotating concentric rings. Demonstrated single mechanic supporting casual puzzles and competitive territory games.",
         "coverImage": "project_tiles/glass.png",
         "sub_menu": 1,
         "detailImages": [
@@ -438,7 +438,7 @@
         "projectUrl": null,
         "project_haiku": "Melodies in code<br/>Rhythm meets digital dreams<br/>Sound becomes visual",
         "project_footer_CTA": "Ready to harmonize technology with creativity? Let's compose digital experiences that make music come alive in new ways.",
-        "pageSummary": "Developed three complementary web-based music generation tools: Jazz Hero, Strudelizer, and Musical Call & Response. Built Jazz Hero as a headless Django REST API with Angular frontend for jazz practice, featuring customizable chord progressions and melodic line generation. Created Strudelizer to bridge hardware performance and live coding by translating MIDI input into Strudel syntax in real-time. Implemented Musical Call & Response combining Tone.js synthesis with Magenta MusicRNN for AI-powered musical conversations. Designed cross-cultural scale systems including Western modes and Indian ragas, demonstrating how browser technologies can democratize music creation and learning.",
+        "pageSummary": "Developed three web-based music tools: Jazz Hero (Django REST API with Angular), Strudelizer (MIDI to Strudel translation), and Musical Call & Response (Tone.js with Magenta MusicRNN). Implemented cross-cultural scale systems including Western modes and Indian ragas.",
         "coverImage": "project_tiles/jazz.png",
         "sub_menu": 1,
         "detailImages": [
@@ -462,7 +462,7 @@
         "projectUrl": "https://editor.p5js.org/knectar/full/fIJ2pBpyz",
         "project_haiku": "Choices dance and play<br/>Random becomes meaningful<br/>Decision delights",
         "project_footer_CTA": "Ready to gamify your decision-making process? Let's create playful tools that make choices engaging and fun.",
-        "pageSummary": "Built ChoozRoozy, a visual decision-making tool that transforms abstract choice criteria into draggable, manipulable elements on a digital canvas. Implemented a transparent algorithm where each factor becomes a weighted circle that users can position and resize to reflect importance and directional preference. Created an intuitive interface using p5.js for smooth interactions without technical overhead, allowing users to rename options, customize factors, and export decision snapshots. Designed the tool to prompt reflection rather than mystify outcomes, helping users understand their priorities and reclaim agency in decision-making processes.",
+        "pageSummary": "Built visual decision-making tool with draggable weighted circles representing choice factors. Implemented transparent algorithm using p5.js for smooth interactions. Created intuitive interface with factor renaming, customization, and decision export to promote reflection over mystification.",
         "coverImage": "project_tiles/choosroozy.png",
         "sub_menu": 1,
         "detailImages": [
@@ -484,7 +484,7 @@
         "projectUrl": "https://www.drupal.org/project/ps",
         "project_haiku": "Data tells its tale<br/>Content patterns emerge clear<br/>Insight guides the way",
         "project_footer_CTA": "Ready to unlock insights from your content strategy? Let's build analytics tools that reveal what really matters to your audience.",
-        "pageSummary": "Developed Paragraphs Stats, an open-source Drupal module that provides content managers and designers with comprehensive visibility into how Paragraphs components are utilized across Drupal sites. Built a utilization matrix showing every paragraph type against every content type with color-coded usage levels and drill-down reports. Implemented metadata tracking, CSV export functionality, and automated scanning of entity bundles and fields. Created a solution that enables data-driven decisions about component libraries, helping teams identify unused components, measure adoption of new features, and maintain lean, performant websites. Contributed the module to the Drupal community to improve content governance across the ecosystem.",
+        "pageSummary": "Developed open-source Drupal module providing content managers visibility into Paragraphs component utilization. Built utilization matrix with color-coded usage levels and drill-down reports. Enables data-driven decisions about component libraries and maintains lean websites.",
         "coverImage": "project_tiles/stats.png",
         "sub_menu": 1,
         "detailImages": [
@@ -514,7 +514,7 @@
         "projectUrl": "https://www.aier.org/",
         "project_haiku": "Data speaks the truth<br/>Economic insights flow freely<br/>Knowledge lights the path",
         "project_footer_CTA": "Ready to illuminate complex ideas through clear digital communication? Let's build platforms that make research accessible and actionable.",
-        "pageSummary": "Executed a comprehensive Drupal 7 migration and redesign for the American Institute for Economic Research, the oldest economic research institute in the United States. Consolidated multiple content types into six core types while implementing advanced taxonomy systems for research categories, educational classifications, and archive organization. Built responsive design with mobile-first approach, infinite scroll functionality, and comprehensive third-party integrations including Authorize.net for e-commerce and NetworkforGood for donations. Implemented accessibility features including relative font sizes, alt-text enforcement, and keyboard navigation. Created a modern platform that serves AIER's diverse content needs while maintaining their prestigious position in economic research.",
+        "pageSummary": "Executed comprehensive Drupal 7 migration for the oldest US economic research institute. Consolidated content types and implemented advanced taxonomy systems. Built responsive design with infinite scroll, Authorize.net e-commerce integration, and NetworkforGood donations with full accessibility compliance.",
         "coverImage": "project_tiles/aier.png",
         "sub_menu": 0,
         "detailImages": [
@@ -536,7 +536,7 @@
         "projectUrl": "https://smma.com/",
         "project_haiku": "Form follows digital function<br/>Spaces rendered in pixels<br/>Architecture awakens online",
         "project_footer_CTA": "Ready to showcase your architectural vision through stunning digital experiences? Let's build platforms that bring designs to life.",
-        "pageSummary": "Collaborated with design agency Toky to deliver a comprehensive website redesign and CMS implementation for SMMA Architecture using WordPress and Elementor. Built a visually compelling platform featuring render-to-reality blocks, dynamic media galleries, and interactive storytelling components. Implemented Advanced Custom Fields for precise content structuring, HubSpot integration for streamlined marketing workflows, and Tinify API for automated image compression. Created responsive design with sophisticated animations and integrated social media feeds using SmashBalloon. Built a robust, user-friendly platform that captures SMMA's innovative design solutions while providing flexible content management capabilities.",
+        "pageSummary": "Delivered comprehensive WordPress redesign with Elementor featuring render-to-reality blocks and interactive storytelling. Implemented Advanced Custom Fields, HubSpot integration, and Tinify API for image compression. Created sophisticated animations with social media integration.",
         "coverImage": "project_tiles/smma.jpg",
         "sub_menu": 1,
         "detailImages": [
@@ -559,7 +559,7 @@
         "projectUrl": "https://monadnock.org/",
         "project_haiku": "Museum stories shine<br/>Digital and physical blend<br/>Design innovation flows",
         "project_footer_CTA": "Ready to amplify your community's voice through powerful digital storytelling? Let's build platforms that connect and inform.",
-        "pageSummary": "Built a headless CMS architecture for Monadnock Media using Strapi as the content management foundation and implemented advanced front-end development with sophisticated animations and interactions. Created a modern, engaging website that supports the organization's journalism mission with scroll-triggered effects, quasi-3D layering, and interactive elements. Implemented modular structure for maintainability, integrated third-party services, and optimized performance through lazy loading and responsive design. Built a platform that serves both practical needs of a local newspaper and provides an engaging, modern user experience that helps the publication stand out in the digital media landscape.",
+        "pageSummary": "Built headless CMS with Strapi foundation and advanced front-end development. Created modern journalism platform with scroll-triggered effects, quasi-3D layering, and interactive elements. Implemented modular structure with performance optimization through lazy loading.",
         "coverImage": "project_tiles/monad2.png",
         "sub_menu": 1,
         "detailImages": [
@@ -582,7 +582,7 @@
         "projectUrl": "https://www.rauschenbergfoundation.org/",
         "project_haiku": "Art lives beyond time<br/>Digital archives preserve<br/>Creative spirit soars",
         "project_footer_CTA": "Ready to preserve and celebrate artistic legacy through digital innovation? Let's create something timeless.",
-        "pageSummary": "Executed a comprehensive Drupal 7 to Drupal 10 migration for the Robert Rauschenberg Foundation, modernizing their complex platform with thousands of artwork records and archive entries. Consolidated multiple content types into a streamlined system using Drupal 10's Layout Builder to empower non-technical editors with drag-and-drop page construction. Implemented FileMaker integration using the Feeds FileMaker Module for automated import of art and archive records while maintaining data integrity and curatorial flexibility. Built advanced search and filtering capabilities, combined mapping functionality for on-view and public collections, and created an interactive timeline for the artist's chronology. Delivered a more intuitive user experience while positioning the Foundation's digital presence to support their mission of promoting Rauschenberg's artistic and philanthropic legacy.",
+        "pageSummary": "Executed Drupal 7 to 10 migration with thousands of artwork records. Consolidated content types using Layout Builder for drag-and-drop editing. Implemented FileMaker integration with Feeds module, advanced search capabilities, and interactive artist timeline.",
         "coverImage": "project_tiles/rrf.png",
         "sub_menu": 1,
         "detailImages": [
@@ -605,7 +605,7 @@
         "projectUrl": "http://jackdaniels.com/",
         "project_haiku": "Tennessee tradition flows<br/>Craft distilled through digital care<br/>Heritage meets innovation",
         "project_footer_CTA": "Ready to distill your brand's essence into compelling digital experiences? Let's craft something that honors tradition while embracing the future.",
-        "pageSummary": "Collaborated with Arnold Worldwide to build a global website for Jack Daniels that showcases the brand's heritage and craftsmanship while providing an engaging digital experience for consumers worldwide. Implemented a sophisticated content management system that supports multiple markets and languages while maintaining brand consistency. Built interactive features including virtual tours, product showcases, and storytelling elements that bring the brand's history to life. Created a responsive design that works seamlessly across all devices and integrated analytics to track user engagement and brand performance. Delivered a platform that strengthens Jack Daniels' position as a premium spirits brand while providing valuable insights for marketing and brand development.",
+        "pageSummary": "Built global website showcasing brand heritage with sophisticated multi-market content management. Implemented interactive virtual tours, product showcases, and storytelling elements. Created responsive design with analytics integration for brand performance tracking.",
         "coverImage": "project_tiles/jack_daniels.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -628,7 +628,7 @@
         "projectUrl": "https://saci-florence.edu/",
         "project_haiku": "Renaissance returns<br/>Art blooms in Florence once more<br/>Creativity crosses oceans",
         "project_footer_CTA": "Ready to help students discover their artistic passion abroad? Let's create digital experiences that inspire global creativity and cultural exchange.",
-        "pageSummary": "Designed and implemented a comprehensive Drupal website for Studio Arts College International (SACI) in Florence, Italy, collaborating with Stoltze Design for visual identity and user experience. Built a responsive platform featuring extensive content architecture supporting programs, courses, faculty, events, and student galleries with advanced taxonomy systems. Implemented custom content types for programs, courses, faculty/alumni, events, and student galleries with dynamic filtering and search capabilities. Created a full-page scroll experience with hero media, promoted programs, news grids, and event carousels. Integrated third-party services including YouTube/Vimeo video hosting, Google Analytics, and ShareThis for social sharing. Delivered a modern digital presence that reflects SACI's blend of Renaissance tradition and contemporary art education while improving accessibility and enrollment.",
+        "pageSummary": "Built comprehensive Drupal website for Florence-based art college with extensive content architecture. Implemented custom content types for programs, faculty, and student galleries with dynamic filtering. Created full-page scroll experience with hero media and event carousels.",
         "coverImage": "project_tiles/saci.png",
         "sub_menu": 1,
         "detailImages": [
@@ -651,7 +651,7 @@
         "projectUrl": "https://www.gardnermuseum.org/",
         "project_haiku": "Timeless treasures shine<br/>Isabella's vision lives on<br/>Art speaks to the soul",
         "project_footer_CTA": "Ready to bring your museum's collection to life online? Let's create immersive digital experiences that inspire and educate visitors worldwide.",
-        "pageSummary": "Designed and implemented a sophisticated Drupal 8 digital platform for the Isabella Stewart Gardner Museum, partnering with Fabrique for design strategy. Built a comprehensive content management system integrating Embark Collections data for over 2,500 art objects with real-time XML synchronization. Created custom content types for stories, events, exhibitions, and room experiences with interactive audio player integration via LibSyn. Implemented advanced filtering and search capabilities across all content types with dynamic room mapping and wayfinding features. Built multi-media story chapters with before/after sliders, video, and audio components supporting up to 15 interactive chapters per story. Delivered a responsive, accessible platform that honors the museum's unique character while providing modern functionality for diverse user needs.",
+        "pageSummary": "Built sophisticated Drupal 8 platform integrating Embark Collections data for 2,500+ art objects with real-time XML sync. Created custom content types with LibSyn audio integration, advanced filtering, and dynamic room mapping. Built multi-media story chapters with interactive elements.",
         "coverImage": "project_tiles/isgm.png",
         "sub_menu": 1,
         "detailImages": [
@@ -675,7 +675,7 @@
         "projectUrl": "https://www.wayfinders.org/",
         "project_haiku": "Paths open before us<br/>Housing dreams become real plans<br/>Community builds hope",
         "project_footer_CTA": "Ready to help organizations build stronger communities through better digital engagement? Let's create platforms that turn outreach into impact.",
-        "pageSummary": "Built a comprehensive multi-site Drupal platform for Way Finders supporting their organizational rebrand and three distinct business lines: Housing Center, Real Estate Development, and Community Engagement. Implemented an innovative architecture presenting four distinct site sections while maintaining a unified codebase, template system, and taxonomy structure. Created custom content types for properties, team directories, resource centers, and news/impact materials with advanced filtering capabilities. Integrated multiple third-party systems including Newton Software for careers, Eventbrite for events, Blackbaud/eTapestry for donations, and GoSection8 for housing search. Implemented Google Translate integration for 9 languages and created a dynamic navigation system with contextual logo changes and collapsible menus. Delivered a sophisticated digital ecosystem that effectively communicates Way Finders' multi-faceted mission while supporting complex operational requirements.",
+        "pageSummary": "Built multi-site Drupal platform supporting organizational rebrand across three business lines. Implemented unified architecture with four distinct sections while maintaining shared codebase. Integrated multiple third-party systems and Google Translate for 9 languages.",
         "coverImage": "project_tiles/wayfinders.jpg",
         "sub_menu": 0,
         "detailImages": [
@@ -707,7 +707,7 @@
         "projectUrl": "https://www.chemexcoffeemaker.com/",
         "project_haiku": "Coffee craft perfected<br/>Glass meets morning ritual<br/>Every cup a poem",
         "project_footer_CTA": "Ready to brew success for your e-commerce brand? Let's craft something beautiful together.",
-        "pageSummary": "Built a comprehensive Shopify e-commerce platform for Chemex Corporation showcasing their iconic coffee brewing products and reinforcing the brand's heritage. Implemented extensive product catalog navigation with categories for Classic Series, Glass Handle, Handblown, and electric units with bundled products and subscription filter packs. Created an educational hub with step-by-step brewing guides, videos, and filter-folding instructions to help visitors learn brewing techniques. Developed a quiz-style recommendation tool to help customers choose the appropriate coffeemaker size and series. Integrated newsletter sign-ups, wholesale applications, and discount banners with Shopify's subscription APIs for auto-ship functionality. Delivered a responsive design that evokes the brand's minimalist aesthetic while ensuring seamless mobile shopping experience.",
+        "pageSummary": "Built comprehensive Shopify platform showcasing iconic coffee brewing products. Implemented extensive catalog with bundled products and subscription filters. Created educational hub with brewing guides and quiz-style recommendation tool for size selection.",
         "coverImage": "project_tiles/chemex.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -731,7 +731,7 @@
         "projectUrl": "https://guardair.com/",
         "project_haiku": "Industrial strength<br/>Safety flows through every tool<br/>Protection perfected",
         "project_footer_CTA": "Ready to strengthen your industrial e-commerce presence? Let's build robust platforms that showcase safety and performance.",
-        "pageSummary": "Designed and implemented a comprehensive Shopify e-commerce platform for Guardair Corporation, a leading manufacturer of safety air guns and pneumatic tools. Built an extensive product catalog featuring safety air guns, air nozzles, air knives, air amplifiers, and pneumatic tools with detailed product specifications and safety information. Created educational content including safety guidelines, application guides, and technical resources to help customers understand proper air tool usage. Implemented advanced filtering and search capabilities allowing customers to find products by application, industry, or technical specifications. Integrated customer account management, order tracking, and technical support request forms. Delivered a professional, user-friendly platform that reflects Guardair's commitment to safety and quality while providing comprehensive product information and easy purchasing.",
+        "pageSummary": "Built Shopify platform for safety air guns and pneumatic tools manufacturer. Implemented extensive catalog with detailed specifications and safety information. Created educational content with safety guidelines and technical resources, plus advanced filtering by application and industry.",
         "coverImage": "project_tiles/guardair.png",
         "sub_menu": 1,
         "detailImages": [
@@ -754,7 +754,7 @@
         "projectUrl": "https://pioneervalleybooks.com/",
         "project_haiku": "Stories find new homes<br/>Independent spirit soars<br/>Community reads",
         "project_footer_CTA": "Ready to bring your independent bookstore online? Let's create digital spaces that celebrate the love of reading and community.",
-        "pageSummary": "Built a comprehensive Shopify e-commerce platform for Pioneer Valley Books, a leading educational publisher specializing in leveled reading materials for K-12 students. Implemented an extensive product catalog featuring leveled books, guided reading sets, and educational resources with advanced filtering by reading level, grade, and subject matter. Created educational content including reading level guides, teaching resources, and professional development materials to support educators. Developed a robust search and filtering system allowing teachers and administrators to find appropriate materials for their students. Integrated customer account management with educational institution verification and bulk ordering capabilities. Implemented a responsive design optimized for educators browsing on various devices. Delivered a platform that supports Pioneer Valley Books' mission of providing high-quality educational materials while making it easy for educators to find and purchase appropriate resources.",
+        "pageSummary": "Built Shopify platform for K-12 educational publisher specializing in leveled reading. Implemented catalog with advanced filtering by reading level, grade, and subject. Created educational resources for teachers with institution verification and bulk ordering capabilities.",
         "coverImage": "project_tiles/pvb.jpg",
         "sub_menu": 1,
         "detailImages": [
@@ -777,7 +777,7 @@
         "projectUrl": "https://sleepstudio.com/",
         "project_haiku": "Dreams find their rhythm<br/>Rest becomes an art form<br/>Sleep transforms life",
         "project_footer_CTA": "Ready to help your customers sleep better? Let's build e-commerce experiences that promote wellness and rest.",
-        "pageSummary": "Designed and implemented a comprehensive Shopify e-commerce platform for Sleep Studio, a company focused on helping people achieve deep, restorative sleep through innovative sleep solutions. Built an extensive product catalog featuring sleep tracking devices, smart mattresses, sleep accessories, and wellness products with detailed product information and sleep science content. Created educational content including sleep tips, research articles, and personalized sleep recommendations to help customers improve their sleep quality. Implemented a sleep assessment quiz to help customers find the right products for their specific sleep needs. Integrated customer account management with sleep tracking data visualization and personalized recommendations. Developed a responsive design optimized for customers researching sleep solutions on various devices. Delivered a platform that supports Sleep Studio's mission of harnessing the power of sleep while providing comprehensive product information and personalized recommendations.",
+        "pageSummary": "Built Shopify platform for innovative sleep solutions with extensive product catalog and sleep science content. Implemented sleep assessment quiz for personalized recommendations. Created educational content with sleep tips and research articles plus sleep tracking data visualization.",
         "coverImage": "project_tiles/sleep.png",
         "sub_menu": 1,
         "detailImages": [
@@ -800,7 +800,7 @@
         "projectUrl": "https://sparxhockey.com/",
         "project_haiku": "Ice meets precision<br/>Sharpening skills on and off<br/>Excellence glides forward",
         "project_footer_CTA": "Ready to sharpen your sports equipment business? Let's build e-commerce solutions that help athletes perform at their peak.",
-        "pageSummary": "Built a comprehensive Shopify e-commerce platform for Sparx Hockey, a manufacturer of automated skate-sharpening equipment for ice hockey, figure skating, and sled hockey. Implemented an extensive product catalog featuring skate sharpeners, accessories, and maintenance equipment with detailed technical specifications and usage instructions. Created educational content including sharpening guides, maintenance tutorials, and equipment care instructions to help customers maintain their equipment properly. Developed a robust search and filtering system allowing customers to find products by sport, skill level, or equipment type. Integrated customer account management with equipment registration and warranty tracking. Implemented a responsive design optimized for customers researching equipment on various devices. Delivered a platform that supports Sparx Hockey's mission of providing professional-grade equipment while making it easy for customers to find and purchase the right products for their needs.",
+        "pageSummary": "Built Shopify platform for automated skate-sharpening equipment manufacturer. Implemented catalog with technical specifications and maintenance tutorials. Created educational content with sharpening guides and equipment registration with warranty tracking.",
         "coverImage": "project_tiles/sparx_hockey.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -823,7 +823,7 @@
         "projectUrl": "https://www.trilliumbrewing.com/",
         "project_haiku": "Craft flows from passion<br/>Hops and malt meet artistry<br/>Boston beer blooms bright",
         "project_footer_CTA": "Ready to pour your craft brewery into the digital world? Let's brew e-commerce experiences that capture your unique flavor and community.",
-        "pageSummary": "Designed and implemented a comprehensive Shopify e-commerce platform for Trillium Brewing Company, a craft brewery known for their artisanal beers and lifestyle-focused brand. Built an extensive product catalog featuring their beer lineup, merchandise, and brewery accessories with detailed product descriptions and brewing information. Created educational content including beer style guides, brewing process information, and food pairing recommendations to enhance customer experience. Implemented advanced filtering and search capabilities allowing customers to find products by beer style, alcohol content, or seasonal availability. Integrated customer account management with age verification and local delivery options. Developed a responsive design that reflects Trillium's artisanal brand aesthetic while providing easy online ordering. Delivered a platform that supports Trillium's mission of creating a lifestyle centered on artisanal beer while providing comprehensive product information and seamless purchasing experience.",
+        "pageSummary": "Built Shopify platform for craft brewery with beer lineup and merchandise catalog. Created educational content with style guides and food pairing recommendations. Implemented filtering by beer style and seasonal availability with age verification and local delivery.",
         "coverImage": "project_tiles/trillium.webp",
         "sub_menu": 1,
         "detailImages": [
@@ -844,7 +844,7 @@
         "designPartner": null,
         "designPartnerUrl": null,
         "projectUrl": "https://lanshin.com/",
-        "pageSummary": "Built a comprehensive Shopify e-commerce platform for Lanshin, a company specializing in traditional Chinese medicine and wellness products. Implemented an extensive product catalog featuring herbal supplements, wellness tools, and educational materials with detailed product information and traditional medicine content. Created educational content including wellness guides, traditional medicine information, and personalized health recommendations to help customers understand their products. Developed a robust search and filtering system allowing customers to find products by health concern, traditional use, or product type. Integrated customer account management with health profile tracking and personalized recommendations. Implemented a responsive design optimized for customers researching wellness solutions on various devices. Delivered a platform that supports Lanshin's mission of providing traditional Chinese medicine solutions while making it easy for customers to find and purchase appropriate products.",
+        "pageSummary": "Built Shopify platform for traditional Chinese medicine and wellness products. Implemented catalog with detailed traditional medicine content and wellness guides. Created health profile tracking with personalized recommendations based on health concerns and traditional uses.",
         "coverImage": "project_tiles/lanshin.png",
         "sub_menu": 1,
         "detailImages": [
@@ -875,7 +875,7 @@
         "projectUrl": null,
         "project_haiku": "Code becomes canvas<br/>Pixels dance to algorithm<br/>Art born from logic",
         "project_footer_CTA": "Ready to bring your creative vision to life through code? Let's make art together.",
-        "pageSummary": "Developed a series of generative art sketches using p5.js to explore creative coding and algorithmic art generation. Built interactive sketches that demonstrate various generative techniques including particle systems, procedural geometry, and mathematical pattern generation. Created responsive designs that adapt to different screen sizes and user interactions. Implemented real-time parameter controls allowing users to adjust generative algorithms and see immediate visual feedback. Developed a collection of sketches showcasing different artistic styles and mathematical concepts. Delivered a portfolio of generative art pieces that demonstrate creative coding skills and artistic vision while providing engaging interactive experiences for viewers.",
+        "pageSummary": "Developed generative art sketches exploring creative coding and algorithmic art. Built interactive sketches with particle systems, procedural geometry, and mathematical patterns. Implemented real-time parameter controls for algorithm adjustment and immediate visual feedback.",
         "coverImage": "project_tiles/blobby.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -899,7 +899,7 @@
         "projectUrl": null,
         "project_haiku": "Machine draws with soul<br/>Lines emerge from coded dreams<br/>Analog meets digital",
         "project_footer_CTA": "Ready to explore the intersection of technology and traditional art? Let's create automated beauty that bridges digital and physical worlds.",
-        "pageSummary": "Developed a creative coding project that bridges digital and physical art by converting p5.js Bézier curve sketches into pen plotter artwork. Built a p5.js sketch that generates complex Bézier curve patterns with interactive controls for curve manipulation and pattern generation. Implemented export functionality that converts digital sketches into vector formats suitable for pen plotters and laser cutters. Created a workflow that allows for iterative design refinement between digital and physical mediums. Developed documentation and tutorials explaining the process of moving from digital sketches to physical artwork. Delivered a complete system that demonstrates the intersection of creative coding, digital fabrication, and artistic expression while providing practical tools for artists and makers.",
+        "pageSummary": "Developed creative coding project bridging digital and physical art by converting p5.js Bézier curves into pen plotter artwork. Built p5.js sketch with interactive controls and export functionality for vector formats. Created workflow for iterative design refinement between digital and physical mediums.",
         "coverImage": "project_tiles/pen.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -922,7 +922,7 @@
         "projectUrl": null,
         "project_haiku": "Stone yields to vision<br/>Ancient craft meets modern tools<br/>Form awakens space",
         "project_footer_CTA": "Ready to sculpt your creative vision into reality? Let's combine traditional craftsmanship with cutting-edge technology to bring ideas to life.",
-        "pageSummary": "Curated and designed a digital exhibition showcasing Chris Amato's first solo exhibition 'Experiments in Material and Flow' featuring sculpture works and material explorations. Built an interactive digital gallery that presents the exhibition's themes of material experimentation and artistic process. Created detailed documentation of individual artworks with high-resolution photography and artist statements. Implemented a responsive design that adapts to different viewing contexts and device types. Developed educational content explaining the artistic concepts and material processes behind the works. Delivered a comprehensive digital exhibition that extends the physical show's reach while providing engaging documentation of the artistic process and material explorations.",
+        "pageSummary": "Curated digital exhibition for Chris Amato's solo show 'Experiments in Material and Flow.' Built interactive gallery presenting material experimentation themes with detailed artwork documentation and high-resolution photography. Created educational content explaining artistic concepts and material processes.",
         "coverImage": "project_tiles/cnc.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -946,7 +946,7 @@
         "projectUrl": null,
         "project_haiku": "Geometry plays<br/>Light cuts through creative thought<br/>Form finds its function",
         "project_footer_CTA": "Ready to transform abstract concepts into tangible objects? Let's precision-cut your ideas into reality using advanced design tools.",
-        "pageSummary": "Developed Thing Y, an innovative toy concept that bridges digital and physical play experiences. Built a prototype that combines traditional toy elements with modern interactive features and educational content. Created a comprehensive design system including product specifications, user experience guidelines, and manufacturing considerations. Implemented digital companion features that enhance the physical toy experience through apps and online content. Developed marketing materials and educational content explaining the toy's unique features and benefits. Delivered a complete product concept that demonstrates innovation in toy design while providing engaging play experiences for children.",
+        "pageSummary": "Developed innovative toy concept bridging digital and physical play experiences. Built prototype combining traditional elements with modern interactive features. Created comprehensive design system with product specifications, UX guidelines, and manufacturing considerations.",
         "coverImage": "project_tiles/thingy.mp4",
         "sub_menu": 1,
         "detailImages": [
@@ -970,7 +970,7 @@
         "projectUrl": null,
         "project_haiku": "Clay spins to new life<br/>Hands shape what the heart envisions<br/>Beauty holds water",
         "project_footer_CTA": "Ready to give form to your artistic vision? Let's create functional beauty that brings joy to everyday moments.",
-        "pageSummary": "Designed and produced 'Test Tube Babies,' a distinctive series of bud vases that combine functional design with artistic expression. Created a collection of vases inspired by laboratory glassware and scientific aesthetics while maintaining practical functionality. Built a comprehensive design system including multiple vase forms, material specifications, and production processes. Implemented quality control measures ensuring each vase meets both aesthetic and functional requirements. Developed marketing materials and product photography showcasing the unique design aesthetic. Delivered a complete product line that demonstrates the intersection of art, design, and functionality while providing beautiful and practical home decor items.",
+        "pageSummary": "Designed 'Test Tube Babies' bud vase series combining laboratory aesthetics with functional design. Created collection inspired by scientific glassware while maintaining practical functionality. Developed comprehensive design system with multiple forms and quality control measures.",
         "coverImage": "project_tiles/vase.png",
         "sub_menu": 1,
         "detailImages": [
@@ -994,7 +994,7 @@
         "projectUrl": null,
         "project_haiku": "Freedom through design<br/>Four paws meet thoughtful making<br/>Home welcomes all hearts",
         "project_footer_CTA": "Ready to solve everyday problems with thoughtful design? Let's craft practical solutions that improve life for both humans and their companions.",
-        "pageSummary": "Designed and developed an innovative smart dog door solution that combines traditional pet door functionality with modern technology and aesthetic design. Built a prototype that addresses common issues with commercial pet doors including security, weather protection, and visual appeal. Created a comprehensive design system including mechanical components, electronic controls, and aesthetic considerations. Implemented smart features including access control, activity monitoring, and integration with home automation systems. Developed user-friendly controls and mobile app interface for easy management. Delivered a complete product concept that solves real problems for pet owners while providing modern, attractive design that integrates seamlessly with home aesthetics.",
+        "pageSummary": "Designed smart dog door solution combining traditional functionality with modern technology. Built prototype addressing security, weather protection, and visual appeal issues. Implemented smart features including access control, activity monitoring, and home automation integration.",
         "coverImage": "project_tiles/dog.png",
         "sub_menu": 1,
         "detailImages": [
