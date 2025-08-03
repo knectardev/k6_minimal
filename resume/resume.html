@@ -82,7 +82,7 @@
         
         .avatar img {
             width: 100%;
-            height: 200px;
+            height: 270px;
             border-radius: 0; /* Square profile photo */
             object-fit: cover;
             border: none;
@@ -93,7 +93,7 @@
             position: absolute;
             bottom: 15px;
             left: 15px;
-            font-family: var(--font-serif);
+            font-family: var(--font-primary);
             font-size: 1.8em;
             font-weight: 700;
             color: #000000;
@@ -157,7 +157,7 @@
         }
         
         .nav-item {
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 4px;
         }
         
         .nav-link {
@@ -166,7 +166,8 @@
             color: var(--color-sidebar);
             text-decoration: none;
             display: block;
-            padding: 1px 0;
+            padding: 0;
+            line-height: 1.2;
             transition: color 0.3s ease;
             border-left: 3px solid transparent;
             padding-left: 10px;
@@ -409,8 +410,6 @@
                 
                 <div class="languages-section">
                     <h3>Education</h3>
-                    <div class="language-item">Graduate</div>
-                    <div class="language-item">Undergraduate</div>
                 </div>
                 
                 <div class="download-section">
@@ -458,7 +457,7 @@
                 
                 // Add navigation header
                 const navHeader = document.createElement('h3');
-                navHeader.textContent = 'Project Categories';
+                navHeader.textContent = 'Work History by:';
                 navContainer.appendChild(navHeader);
                 
                 data.forEach(category => {
