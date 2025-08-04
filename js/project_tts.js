@@ -91,7 +91,7 @@
         .trim();
       
       // Take a reasonable amount of text for TTS
-      textToSpeak = cleanText.slice(0, 1000);
+      textToSpeak = cleanText.slice(0, 200);
     }
     
     console.log(`TTS Debug - Final text length: ${textToSpeak.length}`);
@@ -146,7 +146,7 @@
         
         // Check if it's a quota exceeded error
         if (err.message.includes('quota_exceeded') || err.message.includes('401')) {
-          loadingMsg.textContent = 'Audio unavailable - API quota exceeded';
+          loadingMsg.textContent = 'Audio unavailable - API quota exceeded. Please check your ElevenLabs account.';
         } else {
           loadingMsg.textContent = 'Audio unavailable';
         }
