@@ -85,9 +85,9 @@ app.post('/api/tts', async (req, res) => {
     let audioBuffer;
     if (fs.existsSync(cachePath)) {
       audioBuffer = fs.readFileSync(cachePath);
-      if (process.env.TTS_DEBUG) console.log('TTS cache hit:', hash);
+      // if (process.env.TTS_DEBUG) console.log('TTS cache hit:', hash);
     } else {
-      if (process.env.TTS_DEBUG) console.log('TTS cache miss:', hash);
+      // if (process.env.TTS_DEBUG) console.log('TTS cache miss:', hash);
       
       // Ensure cache directory exists
       if (!fs.existsSync(cacheDir)) {
@@ -178,7 +178,7 @@ app.use((err, req, res, next) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`TTS Debug: ${process.env.TTS_DEBUG || 'disabled'}`);
+    // console.log(`Server running at http://localhost:${PORT}`);
+    // console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    // console.log(`TTS Debug: ${process.env.TTS_DEBUG || 'disabled'}`);
 });
