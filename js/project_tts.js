@@ -4,10 +4,6 @@
   const audioEl = document.getElementById('ttsAudio');
   if (!audioEl) return; // not on project page
 
-  // Check if we're on a static deployment (no server-side TTS)
-  const isStaticDeployment = window.location.protocol === 'file:' || 
-                            window.location.hostname === 'localhost' && window.location.port === '';
-
   // Enhanced text extraction that handles HTML content
   const extractText = el => {
     // First try to get the raw HTML content
@@ -47,8 +43,6 @@
         setTimeout(() => waitForContent(attempts + 1), 50);
       } else {
         console.log('TTS Debug - Timeout: Description element never appeared');
-        // Hide TTS widget if no content found
-        hideTTSWidget();
       }
       return;
     }
@@ -79,13 +73,6 @@
     }
   }
 
-  function hideTTSWidget() {
-    const ttsContainer = audioEl.closest('.tts-player') || audioEl.parentElement;
-    if (ttsContainer) {
-      ttsContainer.style.display = 'none';
-    }
-  }
-
   function startTTS(fullText) {
     // First try with very simple text to test the connection
     const testMode = localStorage.getItem('tts_test_mode');
@@ -103,7 +90,7 @@
         .replace(/\s+/g, ' ')  // normalize whitespace
         .trim();
       
-      // Take a reasonable amount of text for TTS (increased since user has more credits)
+      // Take a reasonable amount of text for TTS
       textToSpeak = cleanText.slice(0, 1000);
     }
     
@@ -160,10 +147,6 @@
         // Check if it's a quota exceeded error
         if (err.message.includes('quota_exceeded') || err.message.includes('401')) {
           loadingMsg.textContent = 'Audio unavailable - API quota exceeded';
-        } else if (err.message.includes('404') || err.message.includes('NOT_FOUND')) {
-          // For static deployments, hide the widget entirely
-          console.log('TTS Debug - Static deployment detected, hiding TTS widget');
-          hideTTSWidget();
         } else {
           loadingMsg.textContent = 'Audio unavailable';
         }
