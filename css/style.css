@@ -2257,9 +2257,8 @@ a:visited {
   }
 }
 
-/* === Project Haiku Grainy Effect === */
+/* === Project Haiku === */
 .project-haiku {
-    filter: url(#roughpaper);
     position: relative;
     background: #f8f8f8;
     border: 1px solid rgba(179, 179, 179, 0.1);
