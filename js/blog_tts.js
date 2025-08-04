@@ -22,7 +22,7 @@
     const textToSpeak = fullText.slice(0, 4900); // ElevenLabs limit
 
     if (localStorage.getItem('tts_debug')) {
-      console.log(`TTS payload (chars): ${textToSpeak.length}`, textToSpeak.slice(0,120)+'…');
+      // console.log(`TTS payload (chars): ${textToSpeak.length}`, textToSpeak.slice(0,120)+'…');
     }
 
     // UI feedback
@@ -33,10 +33,14 @@
     loadingMsg.style.marginLeft = '8px';
     audioEl.parentElement.appendChild(loadingMsg);
 
+    const payload = JSON.stringify({ text: textToSpeak });
+    
+    // console.log(`TTS payload (chars): ${textToSpeak.length}`, textToSpeak.slice(0,120)+'…');
+    
     fetch('/api/tts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: textToSpeak })
+      body: payload
     })
       .then(res => {
         if (!res.ok) throw new Error(`TTS request failed (status ${res.status})`);
