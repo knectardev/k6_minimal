@@ -144,8 +144,9 @@
         console.error('ElevenLabs TTS error:', err);
         console.error('TTS Debug - Full error details:', err.message);
         
-        // Check if it's a quota exceeded error
+        // Log the full error response for debugging
         if (err.message.includes('quota_exceeded') || err.message.includes('401')) {
+          console.error('TTS Debug - Quota exceeded error. Full response:', err);
           loadingMsg.textContent = 'Audio unavailable - API quota exceeded. Please check your ElevenLabs account.';
         } else {
           loadingMsg.textContent = 'Audio unavailable';

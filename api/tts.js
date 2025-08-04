@@ -67,9 +67,10 @@ module.exports = async (req, res) => {
       if (!upstream.ok) {
         const errText = await upstream.text();
         console.error('ElevenLabs API error:', upstream.status, errText);
+        console.error('ElevenLabs API response headers:', upstream.headers);
         return res.status(500).json({ 
           error: 'TTS service unavailable',
-          details: `API returned ${upstream.status}`,
+          details: `API returned ${upstream.status}: ${errText}`,
           timestamp: new Date().toISOString()
         });
       }
