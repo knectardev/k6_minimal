@@ -1,6 +1,10 @@
-// project_tts.js – auto-generates speech for project descriptions via ElevenLabs
+// ElevenLabs Text-to-Speech Integration
+// DISABLED - Removed for priority issues
 
 (() => {
+  // Early return - TTS disabled
+  return;
+  
   const audioEl = document.getElementById('ttsAudio');
   if (!audioEl) return; // not on project page
 
