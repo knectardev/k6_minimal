@@ -1014,7 +1014,7 @@
   {
     "label": "Resume",
     "icon": "work.svg",
-    "url": "resume/resume.html",
+    "url": "resume/resume_static.html",
     "more": 0
   },
   {
