@@ -115,54 +115,7 @@
     }
   }
 
-  // Enhanced menu data management for CMS
-  window.menuDataManager = {
-    // Get current menu data (prioritizing CMS edits)
-    getCurrentData() {
-      // If user is logged in and has edits, use those
-      if (window.authManager && window.authManager.isLoggedIn) {
-        const edits = localStorage.getItem('menu_json_edits');
-        if (edits) {
-          try {
-            return JSON.parse(edits);
-          } catch (e) {
-            console.warn('Invalid edit cache, clearing');
-            localStorage.removeItem('menu_json_edits');
-          }
-        }
-      }
-      
-      // Otherwise use the main menu data
-      return window.__MENU_DATA;
-    },
 
-    // Update menu data (both in memory and cache)
-    updateData(newData) {
-      window.__MENU_DATA = newData;
-      
-      // Update edit cache if logged in
-      if (window.authManager && window.authManager.isLoggedIn) {
-        localStorage.setItem('menu_json_edits', JSON.stringify(newData));
-      }
-      
-      // Clear main cache to force refresh
-      cacheManager.clearCache();
-    },
-
-    // Clear all caches
-    clearAllCaches() {
-      cacheManager.clearCache();
-      localStorage.removeItem('menu_json_edits');
-    },
-
-    // Force refresh from server
-    async refreshFromServer() {
-      cacheManager.clearCache();
-      const freshData = await fetchMenuData();
-      window.__MENU_DATA = freshData;
-      return freshData;
-    }
-  };
 
   function buildMenu(menu) {
     const overlay = document.createElement('div');
@@ -306,25 +259,18 @@
     window.__MENU_DATA = menuData;
     buildMenu(menuData);
   }).then(() => {
-    // dynamically load auth script first, then main site script
-    const authScript = document.createElement('script');
-    authScript.src = 'js/auth.js';
-    document.body.appendChild(authScript);
-    
-    authScript.onload = () => {
-      // Load main site script after auth script
-      const mainScript = document.createElement('script');
-      mainScript.src = 'js/script.js';
-      document.body.appendChild(mainScript);
-      mainScript.onload = () => {
-        // Load GitHub fork button after main script
-        const githubForkScript = document.createElement('script');
-        githubForkScript.src = 'js/github_fork.js';
-        document.body.appendChild(githubForkScript);
-        
-        const evt = new Event('DOMContentLoaded', { bubbles: true, cancelable: true });
-        document.dispatchEvent(evt);
-      };
+    // Load main site script
+    const mainScript = document.createElement('script');
+    mainScript.src = 'js/script.js';
+    document.body.appendChild(mainScript);
+    mainScript.onload = () => {
+      // Load GitHub fork button after main script
+      const githubForkScript = document.createElement('script');
+      githubForkScript.src = 'js/github_fork.js';
+      document.body.appendChild(githubForkScript);
+      
+      const evt = new Event('DOMContentLoaded', { bubbles: true, cancelable: true });
+      document.dispatchEvent(evt);
     };
   });
 })(); 

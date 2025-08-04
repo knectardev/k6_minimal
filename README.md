@@ -52,8 +52,6 @@ cp .env.example .env
 
 Edit `.env` with your actual values:
 ```env
-# Required for menu editing authentication
-EDIT_SECRET=your-secure-secret-here
 
 # Required for TTS functionality
 ELEVEN_API_KEY=your-elevenlabs-api-key
@@ -236,7 +234,7 @@ npm run optimize-images
 
 4. **Configure environment variables**
    - Set up environment variables on your hosting platform
-   - Ensure `EDIT_SECRET` and `ELEVEN_API_KEY` are configured
+   - Ensure `ELEVEN_API_KEY` is configured
 
 5. **Start the server**
    ```bash
@@ -321,8 +319,7 @@ npm run optimize-images
 
 ## API Endpoints
 
-### Menu Management
-- `POST /api/update-menu` - Update menu.json (requires EDIT_SECRET)
+
 
 ### Text-to-Speech
 - `POST /api/tts` - Generate TTS audio (requires ELEVEN_API_KEY)
@@ -333,7 +330,7 @@ npm run optimize-images
 ## Security Considerations
 
 - **API keys** are stored in environment variables
-- **Menu updates** require authentication via EDIT_SECRET
+
 - **TTS requests** are proxied to keep API keys server-side
 - **Input validation** on all API endpoints
 - **Security headers** prevent XSS and clickjacking
@@ -387,10 +384,7 @@ npm run optimize-images
    - Verify API key is valid
    - Check network connectivity
 
-3. **Menu updates failing**
-   - Verify EDIT_SECRET is set
-   - Check file permissions on data/ directory
-   - Ensure server has write access
+
 
 4. **Image optimization failing**
    - Check TinyPNG API key
