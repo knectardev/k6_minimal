@@ -4,8 +4,28 @@
   const audioEl = document.getElementById('ttsAudio');
   if (!audioEl) return; // not on project page
 
-  // Collapse whitespace helper
-  const extractText = el => el.innerText.replace(/\s+/g, ' ').trim();
+  // Enhanced text extraction that handles HTML content
+  const extractText = el => {
+    // First try to get the raw HTML content
+    const htmlContent = el.innerHTML;
+    console.log('TTS Debug - Raw HTML content:', htmlContent);
+    
+    // Convert HTML to clean text by creating a temporary element
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlContent;
+    
+    // Get the text content (this strips all HTML tags)
+    let textContent = tempDiv.textContent || tempDiv.innerText || '';
+    
+    // Clean up the text
+    textContent = textContent
+      .replace(/\s+/g, ' ')  // normalize whitespace
+      .replace(/\n+/g, ' ')  // replace newlines with spaces
+      .trim();
+    
+    console.log('TTS Debug - Extracted text content:', textContent);
+    return textContent;
+  };
 
   // Prevent multiple TTS attempts
   let ttsInitialized = false;
@@ -27,14 +47,29 @@
       return;
     }
     
-    const txt = extractText(descriptionEl);
-    console.log(`TTS Debug - Attempt ${attempts}: Found description with ${txt.length} characters`);
-    console.log(`TTS Debug - Content preview:`, txt.slice(0, 200));
+    // Get the project title
+    const titleEl = document.querySelector('.project-info h1');
+    const projectTitle = titleEl ? titleEl.textContent.trim() : '';
     
-    if (txt.length > 50 || attempts > 20) { // Lower threshold since we're only reading description
-      console.log(`TTS Debug - Starting TTS with ${txt.length} characters`);
+    // Get the description content
+    const descriptionText = extractText(descriptionEl);
+    
+    // Combine title and description
+    let fullText = '';
+    if (projectTitle) {
+      fullText += `${projectTitle}. `;
+    }
+    fullText += descriptionText;
+    
+    console.log(`TTS Debug - Attempt ${attempts}: Found content with ${fullText.length} characters`);
+    console.log(`TTS Debug - Project title:`, projectTitle);
+    console.log(`TTS Debug - Content preview:`, fullText.slice(0, 200));
+    console.log(`TTS Debug - Full extracted text:`, fullText);
+    
+    if (fullText.length > 50 || attempts > 20) { // Lower threshold since we're only reading description
+      console.log(`TTS Debug - Starting TTS with ${fullText.length} characters`);
       ttsInitialized = true; // Mark as initialized to prevent duplicates
-      startTTS(txt);
+      startTTS(fullText);
     } else {
       setTimeout(() => waitForContent(attempts + 1), 50);
     }
@@ -49,15 +84,16 @@
       textToSpeak = "This is a test of the text to speech system.";
       console.log('TTS Debug - Test mode: using simple test text');
     } else {
-      // Clean the text more aggressively
+      // Clean the text more aggressively for TTS
       let cleanText = fullText
-        .replace(/<[^>]*>/g, ' ')  // remove any HTML tags
+        .replace(/<[^>]*>/g, ' ')  // remove any remaining HTML tags
         .replace(/&[a-zA-Z0-9#]+;/g, ' ')  // remove HTML entities
         .replace(/[^\w\s\.\,\!\?\-\(\)]/g, ' ')  // remove special characters
         .replace(/\s+/g, ' ')  // normalize whitespace
         .trim();
       
-      textToSpeak = cleanText.slice(0, 500); // Even more conservative for testing
+      // Take a reasonable amount of text for TTS (increased from 50 to 1000 characters)
+      textToSpeak = cleanText.slice(0, 1000);
     }
     
     console.log(`TTS Debug - Final text length: ${textToSpeak.length}`);
@@ -88,19 +124,34 @@
       body: payload
     })
       .then(res => {
-        if (!res.ok) throw new Error(`TTS request failed (status ${res.status})`);
+        console.log('TTS Debug - Response status:', res.status);
+        console.log('TTS Debug - Response headers:', res.headers);
+        if (!res.ok) {
+          return res.text().then(text => {
+            console.log('TTS Debug - Error response body:', text);
+            throw new Error(`TTS request failed (status ${res.status}): ${text}`);
+          });
+        }
         return res.blob();
       })
       .then(blob => {
+        console.log('TTS Debug - Received blob:', blob);
         const objectUrl = URL.createObjectURL(blob);
         audioEl.src = objectUrl;
         audioEl.removeAttribute('disabled');
         loadingMsg.remove();
+        console.log('TTS Debug - Audio loaded successfully');
       })
       .catch(err => {
         console.error('ElevenLabs TTS error:', err);
         console.error('TTS Debug - Full error details:', err.message);
-        loadingMsg.textContent = 'Audio unavailable';
+        
+        // Check if it's a quota exceeded error
+        if (err.message.includes('quota_exceeded') || err.message.includes('401')) {
+          loadingMsg.textContent = 'Audio unavailable - API quota exceeded';
+        } else {
+          loadingMsg.textContent = 'Audio unavailable';
+        }
       });
   }
 
