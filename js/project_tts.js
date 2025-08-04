@@ -5,6 +5,7 @@
   if (!audioEl) return; // not on project page
 
   // Enhanced text extraction that handles HTML content
+  // Updated for new API key deployment
   const extractText = el => {
     // First try to get the raw HTML content
     const htmlContent = el.innerHTML;
