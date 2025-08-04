@@ -1,10 +1,7 @@
 // Vercel serverless function for TTS
-import fetch from 'node-fetch';
-import crypto from 'crypto';
-import fs from 'fs';
-import path from 'path';
+const fetch = require('node-fetch');
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -99,4 +96,4 @@ export default async function handler(req, res) {
       timestamp: new Date().toISOString()
     });
   }
-} 
+}; 
