@@ -78,15 +78,24 @@
         .avatar {
             position: relative;
             margin-bottom: var(--spacing-lg);
+            background: white;
+            border-radius: 4px 4px 0 0; /* Rounded top corners to match main content */
+            overflow: hidden;
         }
         
         .avatar img {
             width: 100%;
-            height: 270px;
+            height: 340px;
             border-radius: 0; /* Square profile photo */
             object-fit: cover;
             border: none;
             margin-bottom: 0;
+            filter: grayscale(100%); /* Black and white filter */
+            transition: filter 0.3s ease; /* Smooth transition for hover effect */
+        }
+        
+        .avatar img:hover {
+            filter: grayscale(0%); /* Full color on hover */
         }
         
         .avatar h2 {
@@ -372,9 +381,16 @@
                 padding: var(--spacing-lg);
             }
             
+            .avatar {
+                margin-bottom: var(--spacing-lg);
+                border-radius: 0; /* Remove rounded corners on mobile for full-width effect */
+            }
+            
             .avatar img {
-                width: 100px;
-                height: 100px;
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+                object-fit: cover;
             }
         }
     </style>
@@ -385,7 +401,7 @@
             <!-- Fixed Sidebar -->
             <div class="sidebar">
                 <div class="avatar">
-                    <img src="../about/me/chris_amato_1.jpg" alt="Chris Amato">
+                    <img src="../about/me/chris_amato_1.png" alt="Chris Amato">
                     <h2>Chris Amato</h2>
                 </div>
                 
