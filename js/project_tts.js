@@ -4,6 +4,10 @@
   const audioEl = document.getElementById('ttsAudio');
   if (!audioEl) return; // not on project page
 
+  // Check if we're on a static deployment (no server-side TTS)
+  const isStaticDeployment = window.location.protocol === 'file:' || 
+                            window.location.hostname === 'localhost' && window.location.port === '';
+
   // Enhanced text extraction that handles HTML content
   const extractText = el => {
     // First try to get the raw HTML content
@@ -43,35 +47,42 @@
         setTimeout(() => waitForContent(attempts + 1), 50);
       } else {
         console.log('TTS Debug - Timeout: Description element never appeared');
+        // Hide TTS widget if no content found
+        hideTTSWidget();
       }
       return;
     }
     
-    // Get the project title
-    const titleEl = document.querySelector('.project-info h1');
-    const projectTitle = titleEl ? titleEl.textContent.trim() : '';
+    const txt = extractText(descriptionEl);
+    console.log(`TTS Debug - Attempt ${attempts}: Found description with ${txt.length} characters`);
+    console.log(`TTS Debug - Content preview:`, txt.slice(0, 200));
+    console.log(`TTS Debug - Full extracted text:`, txt);
     
-    // Get the description content
-    const descriptionText = extractText(descriptionEl);
-    
-    // Combine title and description
-    let fullText = '';
-    if (projectTitle) {
-      fullText += `${projectTitle}. `;
-    }
-    fullText += descriptionText;
-    
-    console.log(`TTS Debug - Attempt ${attempts}: Found content with ${fullText.length} characters`);
-    console.log(`TTS Debug - Project title:`, projectTitle);
-    console.log(`TTS Debug - Content preview:`, fullText.slice(0, 200));
-    console.log(`TTS Debug - Full extracted text:`, fullText);
-    
-    if (fullText.length > 50 || attempts > 20) { // Lower threshold since we're only reading description
-      console.log(`TTS Debug - Starting TTS with ${fullText.length} characters`);
+    if (txt.length > 50 || attempts > 20) { // Lower threshold since we're only reading description
+      console.log(`TTS Debug - Starting TTS with ${txt.length} characters`);
       ttsInitialized = true; // Mark as initialized to prevent duplicates
+      
+      // Get the project title to make the audio more meaningful
+      const titleEl = document.querySelector('.project-info h1');
+      const projectTitle = titleEl ? titleEl.textContent.trim() : '';
+      
+      // Combine title and description for better context
+      let fullText = '';
+      if (projectTitle) {
+        fullText += `${projectTitle}. `;
+      }
+      fullText += txt;
+      
       startTTS(fullText);
     } else {
       setTimeout(() => waitForContent(attempts + 1), 50);
+    }
+  }
+
+  function hideTTSWidget() {
+    const ttsContainer = audioEl.closest('.tts-player') || audioEl.parentElement;
+    if (ttsContainer) {
+      ttsContainer.style.display = 'none';
     }
   }
 
@@ -92,7 +103,7 @@
         .replace(/\s+/g, ' ')  // normalize whitespace
         .trim();
       
-      // Take a reasonable amount of text for TTS (increased from 50 to 1000 characters)
+      // Take a reasonable amount of text for TTS (increased since user has more credits)
       textToSpeak = cleanText.slice(0, 1000);
     }
     
@@ -149,6 +160,10 @@
         // Check if it's a quota exceeded error
         if (err.message.includes('quota_exceeded') || err.message.includes('401')) {
           loadingMsg.textContent = 'Audio unavailable - API quota exceeded';
+        } else if (err.message.includes('404') || err.message.includes('NOT_FOUND')) {
+          // For static deployments, hide the widget entirely
+          console.log('TTS Debug - Static deployment detected, hiding TTS widget');
+          hideTTSWidget();
         } else {
           loadingMsg.textContent = 'Audio unavailable';
         }
