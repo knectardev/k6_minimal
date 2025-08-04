@@ -483,4 +483,5 @@ To enable TTS on your production server:
 - `ELEVEN_API_KEY`: Your ElevenLabs API key (required for TTS)
 - `ELEVEN_VOICE_ID`: Optional voice ID override (default: "Rachel")
 - `TTS_DEBUG`: Set to "true" to enable debug logging
- 
+ #   T T S   E n v i r o n m e n t   V a r i a b l e   F i x  
+ 
