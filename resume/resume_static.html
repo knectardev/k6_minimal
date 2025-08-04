@@ -77,24 +77,25 @@
             box-shadow: 4px 0 15px rgba(0,0,0,0.15);
         }
         
-        .avatar {
-            position: relative;
-            margin-bottom: var(--spacing-lg);
-            background: white;
-            border-radius: 4px 4px 0 0; /* Rounded top corners to match main content */
-            overflow: hidden;
-        }
+                 .avatar {
+             position: relative;
+             margin-bottom: var(--spacing-lg);
+             background: white;
+             border-radius: 4px 4px 0 0; /* Rounded top corners to match main content */
+             overflow: hidden;
+             height: 400px; /* Increased height for the avatar container */
+         }
         
-        .avatar img {
-            width: 100%;
-            height: 340px;
-            border-radius: 0; /* Square profile photo */
-            object-fit: cover;
-            border: none;
-            margin-bottom: 0;
-            filter: grayscale(100%); /* Black and white filter */
-            transition: filter 0.3s ease; /* Smooth transition for hover effect */
-        }
+                 .avatar img {
+             width: 100%;
+             height: 100%;
+             border-radius: 0; /* Square profile photo */
+             object-fit: cover;
+             border: none;
+             margin-bottom: 0;
+             filter: grayscale(100%); /* Black and white filter */
+             transition: filter 0.3s ease; /* Smooth transition for hover effect */
+         }
         
         .avatar img:hover {
             filter: grayscale(0%); /* Full color on hover */
@@ -231,23 +232,23 @@
             margin-top: var(--spacing-xl);
         }
         
-        .download-cv-btn {
-            display: block;
-            width: 50%;
-            margin: 0 auto;
-            padding: 12px 16px;
-            background-color: white;
-            color: var(--color-text-primary);
-            text-decoration: none;
-            text-align: center;
-            border: 2px solid var(--color-primary);
-            border-radius: 6px;
-            font-family: var(--font-primary);
-            font-size: 0.9em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+                 .download-cv-btn {
+             display: block;
+             width: 50%;
+             margin: 0 0 20px 0;
+             padding: 12px 16px;
+             background-color: white;
+             color: var(--color-text-primary);
+             text-decoration: none;
+             text-align: center;
+             border: 2px solid var(--color-primary);
+             border-radius: 6px;
+             font-family: var(--font-primary);
+             font-size: 0.9em;
+             font-weight: 500;
+             transition: all 0.3s ease;
+             cursor: pointer;
+         }
         
         .download-cv-btn:hover {
             background-color: var(--color-primary);
@@ -503,22 +504,27 @@
                 box-shadow: none;
             }
             
-            .main-content {
-                margin-left: 0;
-                padding: var(--spacing-lg);
-            }
+                         .main-content {
+                 margin-left: 0;
+                 margin-right: 0;
+                 padding: var(--spacing-lg);
+             }
             
-            .avatar {
-                margin-bottom: var(--spacing-lg);
-                border-radius: 0; /* Remove rounded corners on mobile for full-width effect */
-            }
+                         .avatar {
+                 margin-bottom: var(--spacing-lg);
+                 border-radius: 0; /* Remove rounded corners on mobile for full-width effect */
+                 height: 450px; /* Increased height for mobile */
+                 background: transparent; /* Remove white background on mobile */
+             }
             
-            .avatar img {
-                width: 100%;
-                height: auto;
-                max-height: 300px;
-                object-fit: cover;
-            }
+                         .avatar img {
+                 width: 100%;
+                 height: 100%;
+                 object-fit: cover;
+                 max-height: none;
+                 margin: 0;
+                 padding: 0;
+             }
             
             .proficiency-grid {
                 grid-template-columns: 1fr;
@@ -610,7 +616,7 @@
                     <div class="experience-item">
                         <div class="experience-header">
                             <div class="experience-title">Founder, CEO & Principal Product Strategist</div>
-                            <div class="experience-company">Knectar Design, New York, NY</div>
+                            <div class="experience-company">Knectar Design, Northampton, MA</div>
                             <div class="experience-date">2005 – Present</div>
                         </div>
                         <div class="experience-description">
