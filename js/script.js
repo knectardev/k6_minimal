@@ -742,7 +742,7 @@ function buildProjectInfoHTML(data) {
         }
         
         // Apply haiku grainy effect after content is injected
-        if (document.querySelector('.project-haiku')) {
+        if (document.querySelector('.project-haiku') && typeof initializeHaikuGrainyEffect === 'function') {
             initializeHaikuGrainyEffect();
         }
     }
