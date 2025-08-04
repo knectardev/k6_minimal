@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         galleryContainer.addEventListener('click', function(e) {
             const link = e.target.closest('.people-gallery-item');
             if (link && link.href !== '#') {
-                console.log(`Clicked on ${link.title} - ${link.href}`);
+                // console.log(`Clicked on ${link.title} - ${link.href}`);
             }
         });
     }

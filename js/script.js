@@ -561,7 +561,10 @@ function findBySlug(arr, slug, parentLabel = null) {
 function cleanLegacyContent(content) {
     if (!content) return '';
     
-    console.log('cleanLegacyContent input:', content);
+    // Remove console.log to clean up console output
+    // console.log('cleanLegacyContent input:', content);
+    
+    // Convert legacy content to modern format
     
     // If content contains HTML tags, preserve the structure
     if (content.includes('<') && content.includes('>')) {

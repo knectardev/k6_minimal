@@ -77,14 +77,14 @@
       const cached = cacheManager.getCache();
       const serverVersion = await cacheManager.getServerVersion();
       
-      // If we have cached data and server version matches, use cache
-      if (cached && cached.version === serverVersion) {
-        console.log('Using cached menu data');
-        return cached.data;
+      // Use cached data if available and not expired
+      if (cached && cached.timestamp && (Date.now() - cached.timestamp) < CACHE_DURATION) {
+          // console.log('Using cached menu data');
+          return cached.data;
       }
       
       // Fetch fresh data from server
-      console.log('Fetching fresh menu data from server');
+      // console.log('Fetching fresh menu data from server');
       const response = await fetch(MENU_JSON, { 
         cache: 'no-cache',
         headers: {
@@ -93,22 +93,32 @@
         }
       });
       
-      if (!response.ok) throw new Error('Menu JSON fetch failed');
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
       
       const data = await response.json();
       
       // Cache the fresh data
-      cacheManager.setCache(data, serverVersion);
+      const cacheData = {
+          data: data,
+          timestamp: Date.now()
+      };
+      localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
       
       return data;
-    } catch (err) {
-      console.warn('Menu JSON unavailable, using fallback data');
+    } catch (error) {
+      // console.log('Server unavailable, using cached data');
       
-      // Try to use cached data even if server is down
-      const cached = cacheManager.getCache();
-      if (cached) {
-        console.log('Server unavailable, using cached data');
-        return cached.data;
+      // Fallback to cached data even if expired
+      const cachedData = localStorage.getItem(CACHE_KEY);
+      if (cachedData) {
+          try {
+              const parsed = JSON.parse(cachedData);
+              return parsed.data;
+          } catch (e) {
+              // Invalid cached data, continue to fallback
+          }
       }
       
       return window.__MENU_FALLBACK;
