@@ -492,7 +492,6 @@ function injectPageData() {
     if (!pageData) return;
 
     // Update Open Graph meta tags for social media sharing
-    console.log('About to call updateOpenGraphTags with:', pageData.projectTitle || pageData.label);
     updateOpenGraphTags(pageData, result ? result.parentLabel : null);
 
     // Cover image if present
@@ -548,12 +547,7 @@ function injectPageData() {
 function updateOpenGraphTags(pageData, parentLabel) {
     if (!pageData) return;
     
-    // Debug logging to verify the function is being called
-    console.log('Updating Open Graph tags for:', pageData.projectTitle || pageData.label, pageData);
-    
-    // Additional debug: check if meta tags are actually being updated
-    console.log('Current title before update:', document.title);
-    console.log('Current og:title before update:', document.querySelector('meta[property="og:title"]')?.content);
+
     
     // Helper function to safely update or create meta tags
     function updateMetaTag(property, content, isName = false) {
@@ -641,7 +635,6 @@ function updateOpenGraphTags(pageData, parentLabel) {
     
     // Update document title
     document.title = fullTitle;
-    console.log('Updated title to:', fullTitle);
     
     // Update basic meta tags
     updateMetaTag('description', description, true);
@@ -652,7 +645,6 @@ function updateOpenGraphTags(pageData, parentLabel) {
     updateMetaTag('og:description', description);
     updateMetaTag('og:url', currentUrl);
     updateMetaTag('og:image', ogImage);
-    console.log('Updated og:image to:', ogImage);
     updateMetaTag('og:image:width', '1200');
     updateMetaTag('og:image:height', '630');
     updateMetaTag('og:image:alt', `${projectTitle} - Project screenshot and details`);
@@ -682,15 +674,7 @@ function updateOpenGraphTags(pageData, parentLabel) {
     if (parentLabel) {
         updateMetaTag('article:section', parentLabel);
     }
-    
-    // Log final meta tag values for debugging
-    console.log('Final meta tags:');
-    console.log('- Title:', document.title);
-    console.log('- Description:', document.querySelector('meta[name="description"]')?.content);
-    console.log('- OG Title:', document.querySelector('meta[property="og:title"]')?.content);
-    console.log('- OG Description:', document.querySelector('meta[property="og:description"]')?.content);
-    console.log('- OG Image:', document.querySelector('meta[property="og:image"]')?.content);
-    console.log('- OG URL:', document.querySelector('meta[property="og:url"]')?.content);
+
 }
 
 function findPageData(arr, path, parentLabel = null) {
