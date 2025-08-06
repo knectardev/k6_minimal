@@ -125,19 +125,29 @@
     window.gtag = gtag;
     gtag('js', new Date());
     
-    // Enable debug mode for all domains (temporarily for testing)
+    // Enable debug mode for all domains with device names
+    const deviceName = window.location.hostname === 'localhost' ? 'Localhost Dev' :
+                      window.location.hostname.includes('vercel.app') ? 'Vercel Dev' :
+                      window.location.hostname.includes('knectar.com') ? 'Production' :
+                      'Unknown Device';
+    
     gtag('config', 'G-V6ZCD1GDBX', {
-        debug_mode: true
+        debug_mode: true,
+        custom_map: {
+            'custom_parameter_1': 'device_name'
+        }
     });
     
-    // Send a test event to verify connection
+    // Send a test event to verify connection with device identification
     setTimeout(() => {
         gtag('event', 'debug_test', {
             debug_mode: true,
             custom_parameter: 'test_value',
-            current_domain: window.location.hostname
+            current_domain: window.location.hostname,
+            device_name: deviceName,
+            custom_parameter_1: deviceName
         });
-        console.log('Debug test event sent to GA4 from:', window.location.hostname);
+        console.log(`Debug test event sent to GA4 from: ${deviceName} (${window.location.hostname})`);
     }, 2000);
 
     // Set default consent based on previous user choices (Google Consent Mode v2)
