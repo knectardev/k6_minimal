@@ -797,14 +797,6 @@ function toggleReadMore(button) {
             container.classList.remove('expanding');
         }, 650); // Slightly longer than CSS transition
         
-        // Track analytics for read more clicks
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'read_more_click', {
-                'event_category': 'engagement',
-                'event_label': window.location.pathname + window.location.search
-            });
-        }
-        
         // Optional: Log to console for debugging
         console.log('Read More clicked for:', window.location.pathname + window.location.search);
     } else {
