@@ -60,8 +60,31 @@
                 </section>
             </div>
         </main>
+        
+        <!-- Interactive Lines Section -->
+        <section id="interactive-lines" class="interactive-lines-section">
+            <div id="controls">
+                <span id="clickPrompt" class="click-prompt">click spacebar to play</span>
+                <button id="playPauseBtn" aria-label="Play/Pause animation" aria-pressed="false">
+                    <img src="assets/simple_play.svg" alt="Play icon" class="play-icon">
+                </button>
+            </div>
+            <div id="beatControls" role="group" aria-label="Beat controls">
+                <div class="beatDot" data-index="0" role="button" tabindex="0" aria-label="Beat 1"></div>
+                <div class="beatDot" data-index="1" role="button" tabindex="0" aria-label="Beat 2"></div>
+                <div class="beatDot" data-index="2" role="button" tabindex="0" aria-label="Beat 3"></div>
+                <div class="beatDot" data-index="3" role="button" tabindex="0" aria-label="Beat 4"></div>
+                <div class="beatDot" data-index="4" role="button" tabindex="0" aria-label="Beat 5"></div>
+                <div class="beatDot" data-index="5" role="button" tabindex="0" aria-label="Beat 6"></div>
+                <div class="beatDot" data-index="6" role="button" tabindex="0" aria-label="Beat 7"></div>
+                <div class="beatDot" data-index="7" role="button" tabindex="0" aria-label="Beat 8"></div>
+            </div>
+            <canvas id="patternCanvas" role="img" aria-label="Interactive lines animation"></canvas>
+        </section>
     </div>
     
+    <!-- Lines animation script -->
+    <script src="js/lines.js"></script>
     <!-- Footer loaded by footer loader -->
     <script src="js/load_footer.js"></script>
 </body>
