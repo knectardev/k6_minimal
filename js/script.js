@@ -1,15 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Populate dynamic page content (project / blog meta) from menu.json
-    // Wait for menu data to be available before injecting page data
-    function waitForMenuDataAndInject() {
-        if (window.__MENU_DATA) {
-            injectPageData();
-        } else {
-            // Retry after a short delay if menu data isn't ready yet
-            setTimeout(waitForMenuDataAndInject, 50);
-        }
-    }
-    waitForMenuDataAndInject();
+    injectPageData();
 
     const hamburgerButton = document.getElementById('hamburger-button');
     const sidebar = document.getElementById('sidebar');
@@ -491,9 +482,6 @@ function injectPageData() {
     }
     if (!pageData) return;
 
-    // Update Open Graph meta tags for social media sharing
-    updateOpenGraphTags(pageData, result ? result.parentLabel : null);
-
     // Cover image if present
     const cover = document.querySelector('.project-gallery img[data-field="coverImage"]');
     if (cover && pageData.coverImage) cover.src = pageData.coverImage;
@@ -542,139 +530,6 @@ function injectPageData() {
 
     // Feature flags
     // TTS functionality removed
-}
-
-function updateOpenGraphTags(pageData, parentLabel) {
-    if (!pageData) return;
-    
-
-    
-    // Helper function to safely update or create meta tags
-    function updateMetaTag(property, content, isName = false) {
-        if (!content) return;
-        
-        const selector = isName ? `meta[name="${property}"]` : `meta[property="${property}"]`;
-        let meta = document.querySelector(selector);
-        
-        if (!meta) {
-            meta = document.createElement('meta');
-            if (isName) {
-                meta.setAttribute('name', property);
-            } else {
-                meta.setAttribute('property', property);
-            }
-            document.head.appendChild(meta);
-        }
-        
-        meta.setAttribute('content', content);
-    }
-    
-    // Helper function to create a clean description from pageSummary
-    function createDescription(pageSummary, maxLength = 160) {
-        if (!pageSummary) return '';
-        
-        // Remove HTML tags and clean up text
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = pageSummary;
-        let text = tempDiv.textContent || tempDiv.innerText || '';
-        
-        // Clean up whitespace and line breaks
-        text = text.replace(/\s+/g, ' ').trim();
-        
-        // Truncate to maxLength with smart word boundary
-        if (text.length > maxLength) {
-            text = text.substring(0, maxLength);
-            const lastSpace = text.lastIndexOf(' ');
-            if (lastSpace > maxLength - 30) { // Only cut at word boundary if not too short
-                text = text.substring(0, lastSpace);
-            }
-            text += '...';
-        }
-        
-        return text;
-    }
-    
-    // Determine the best image for social sharing
-    function getOpenGraphImage() {
-        // Priority 1: First detail image (most representative of the project)
-        if (pageData.detailImages && pageData.detailImages.length > 0) {
-            const firstDetailImage = pageData.detailImages[0];
-            // Make sure it's not a video file
-            if (!firstDetailImage.match(/\.(mp4|webm|ogg)$/i)) {
-                return `https://knectar.com/${firstDetailImage}`;
-            }
-        }
-        
-        // Priority 2: Cover image from project tiles
-        if (pageData.coverImage && !pageData.coverImage.match(/\.(mp4|webm|ogg)$/i)) {
-            return `https://knectar.com/${pageData.coverImage}`;
-        }
-        
-        // Priority 3: Default to logo
-        return 'https://knectar.com/assets/logo.svg';
-    }
-    
-    // Build dynamic title
-    const projectTitle = pageData.projectTitle || pageData.label || 'Project';
-    const categoryPrefix = parentLabel ? `${parentLabel} - ` : '';
-    const fullTitle = `${categoryPrefix}${projectTitle} | Knectar Portfolio`;
-    
-    // Build dynamic description
-    let description = createDescription(pageData.pageSummary);
-    if (!description && pageData.role && pageData.technology) {
-        description = `${pageData.role} project using ${pageData.technology}. View detailed case study and project information.`;
-    } else if (!description) {
-        description = `View detailed project information and case study for ${projectTitle} from Knectar's portfolio.`;
-    }
-    
-    // Get the current URL with query parameters for proper sharing
-    const currentUrl = window.location.href;
-    
-    // Get the optimal image for sharing
-    const ogImage = getOpenGraphImage();
-    
-    // Update document title
-    document.title = fullTitle;
-    
-    // Update basic meta tags
-    updateMetaTag('description', description, true);
-    updateMetaTag('keywords', `${projectTitle}, ${pageData.technology || 'web development'}, ${parentLabel || 'portfolio'}, knectar, case study`, true);
-    
-    // Update Open Graph tags
-    updateMetaTag('og:title', fullTitle);
-    updateMetaTag('og:description', description);
-    updateMetaTag('og:url', currentUrl);
-    updateMetaTag('og:image', ogImage);
-    updateMetaTag('og:image:width', '1200');
-    updateMetaTag('og:image:height', '630');
-    updateMetaTag('og:image:alt', `${projectTitle} - Project screenshot and details`);
-    
-    // Update Twitter Card tags
-    updateMetaTag('twitter:title', fullTitle);
-    updateMetaTag('twitter:description', description);
-    updateMetaTag('twitter:url', currentUrl);
-    updateMetaTag('twitter:image', ogImage);
-    updateMetaTag('twitter:image:alt', `${projectTitle} - Project screenshot and details`);
-    
-    // Update canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', currentUrl);
-    
-    // Update additional structured data for better social sharing
-    updateMetaTag('og:type', 'article');
-    updateMetaTag('og:site_name', 'Knectar');
-    if (pageData.technology) {
-        updateMetaTag('article:tag', pageData.technology);
-    }
-    if (parentLabel) {
-        updateMetaTag('article:section', parentLabel);
-    }
-
 }
 
 function findPageData(arr, path, parentLabel = null) {
