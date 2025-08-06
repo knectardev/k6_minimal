@@ -75,7 +75,7 @@ body {
 }
 
 .read-more-container.collapsed .read-more-content {
-    max-height: 220px; /* Show approximately first paragraph plus some buffer */
+    max-height: 320px; /* Show approximately first paragraph plus some buffer */
 }
 
 .read-more-container:not(.collapsed) .read-more-content {
