@@ -54,6 +54,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-bottom: 120px; /* Space for fixed footer */
 }
 
 /* Font utility classes */
@@ -2956,10 +2957,18 @@ svg {
    ======================================== */
 
 .site-footer {
-    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     padding: var(--spacing-lg) var(--spacing-xl);
     font-family: var(--font-primary);
+    background-color: var(--color-background);
+    z-index: 10;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     flex-shrink: 0; /* Prevent footer from shrinking */
+    padding-right: calc(var(--spacing-xl)); /* Moved right by 30px (75px + 30px = 105px) */
 }
 
 .footer-content {
@@ -2997,6 +3006,7 @@ svg {
 @media (max-width: 768px) {
     .site-footer {
         padding: var(--spacing-md) var(--spacing-lg);
+        /* Keep fixed positioning on mobile */
     }
     
     .footer-content {
@@ -3009,5 +3019,39 @@ svg {
     .footer-right {
         flex: none;
         text-align: center;
+    }
+    
+    /* Adjust body padding for smaller mobile footer */
+    body {
+        padding-bottom: 100px;
+    }
+}
+
+/* ========================================
+   COOKIE CONSENT ICON FIXES
+   ======================================== */
+
+/* Fix cookie icon visibility - ensure red background with white icon */
+#silktide-cookie-icon {
+    background-color: var(--color-primary, #FF0000) !important;
+    border: 2px solid var(--color-primary, #FF0000) !important;
+    width: 45px !important; /* Smaller than default 60px */
+    height: 45px !important;
+}
+
+#silktide-cookie-icon svg {
+    fill: #FFFFFF !important;
+}
+
+/* Ensure cookie icon doesn't interfere with footer */
+#silktide-cookie-icon.bottomRight {
+    bottom: 110px !important; /* Lowered by 10px from 120px */
+    right: 20px !important;
+}
+
+@media (max-width: 768px) {
+    #silktide-cookie-icon.bottomRight {
+        bottom: 100px !important; /* Lowered by 10px from 110px */
+        right: 15px !important;
     }
 }
