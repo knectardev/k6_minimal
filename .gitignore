@@ -208,8 +208,7 @@ optimized/
 temp_images/
 *.optimized.*
 
-# TTS cache (if you want to exclude it)
-tts_cache/
+
 
 # Data backup files
 data/*.backup

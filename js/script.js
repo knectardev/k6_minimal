@@ -529,10 +529,7 @@ function injectPageData() {
     }
 
     // Feature flags
-    if (pageData.textToAudioWidgetDisplayed === false) {
-        const ttsPlayer = document.querySelector('.tts-player');
-        if (ttsPlayer) ttsPlayer.style.display = 'none';
-    }
+    // TTS functionality removed
 }
 
 function findPageData(arr, path, parentLabel = null) {
