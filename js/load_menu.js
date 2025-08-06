@@ -125,21 +125,20 @@
     window.gtag = gtag;
     gtag('js', new Date());
     
-    // Enable debug mode for development (remove for production)
-    if (window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app')) {
-        gtag('config', 'G-V6ZCD1SDBX', {
-            debug_mode: true
+    // Enable debug mode for all domains (temporarily for testing)
+    gtag('config', 'G-V6ZCD1GDBX', {
+        debug_mode: true
+    });
+    
+    // Send a test event to verify connection
+    setTimeout(() => {
+        gtag('event', 'debug_test', {
+            debug_mode: true,
+            custom_parameter: 'test_value',
+            current_domain: window.location.hostname
         });
-        
-        // Send a test event to verify connection
-        setTimeout(() => {
-            gtag('event', 'debug_test', {
-                debug_mode: true,
-                custom_parameter: 'test_value'
-            });
-            console.log('Debug test event sent to GA4');
-        }, 2000);
-    }
+        console.log('Debug test event sent to GA4 from:', window.location.hostname);
+    }, 2000);
 
     // Set default consent based on previous user choices (Google Consent Mode v2)
     gtag('consent', 'default', {
