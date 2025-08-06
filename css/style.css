@@ -51,6 +51,9 @@ body {
     font-family: var(--font-primary);
     margin: 0;
     color: var(--color-text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Font utility classes */
@@ -325,6 +328,8 @@ body {
 /* Layout Components */
 .container {
     display: flex;
+    flex: 1;
+    min-height: 0; /* Allow container to shrink if needed */
 }
 
 .sidebar {
@@ -887,6 +892,7 @@ a:visited {
 
     .container {
         flex-direction: column;
+        flex: 1;
     }
 
     .logo-desktop {
@@ -2953,6 +2959,7 @@ svg {
     margin-top: auto;
     padding: var(--spacing-lg) var(--spacing-xl);
     font-family: var(--font-primary);
+    flex-shrink: 0; /* Prevent footer from shrinking */
 }
 
 .footer-content {
