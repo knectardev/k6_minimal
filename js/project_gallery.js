@@ -149,7 +149,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         Your browser does not support the video tag.
                     </video>`;
         } else {
-            return `<img src="project_images/${mediaFile}" alt="${alt}" loading="lazy">`;
+            // For now, just use regular img tags until WebP conversion is complete
+            return `<img src="project_images/${mediaFile}" 
+                         alt="${alt}" 
+                         loading="lazy"
+                         decoding="async">`;
         }
     }
 

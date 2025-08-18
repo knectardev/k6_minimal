@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "optimize-images": "python scripts/optimize_conservative.py",
+    "optimize-images": "node scripts/optimize_images.js",
+    "optimize-images-python": "python scripts/optimize_conservative.py",
     "test-optimization": "python scripts/test_conservative.py",
     "deploy": "git push origin main"
   },
@@ -16,7 +17,8 @@
   "dependencies": {
     "dotenv": "^17.1.0",
     "express": "^4.18.2",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "sharp": "^0.33.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.0"

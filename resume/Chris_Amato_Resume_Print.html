@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chris Amato — Resume</title>
+<style>
+  /* Base */
+  :root{
+    --text: #111;
+    --muted: #4a4a4a;
+    --accent: #000;
+  }
+  html, body { height: 100%; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family: Calibri, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.32;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Page sizing for screen */
+  .page {
+    box-sizing: border-box;
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.7in;
+    margin: 0 auto;
+    background: white;
+  }
+  /* Visual gap between pages on screen */
+  .page + .page { border-top: 1px dashed #ddd; }
+
+  h1, h2 { margin: 0; }
+  h1 {
+    font-size: 20pt;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  .subtitle {
+    font-size: 12pt;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 4px;
+  }
+  .contact {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 6px;
+  }
+  .section {
+    margin-top: 14pt;
+  }
+  .section h2 {
+    font-size: 12pt;
+    font-weight: 700;
+    border: 0;
+    margin-bottom: 4pt;
+    letter-spacing: 0.2px;
+  }
+  p { font-size: 10.5pt; margin: 0 0 6pt; }
+  .small { font-size: 9pt; color: var(--muted); }
+
+  /* Lists */
+  ul { margin: 0 0 6pt 18pt; padding: 0; }
+  li { margin: 0 0 4pt; }
+
+  /* Role headers */
+  .role { font-weight: 700; font-size: 10.5pt; }
+  .wherewhen { font-size: 9pt; color: var(--muted); margin-top: 2pt; }
+
+  /* Two-column table for tech proficiencies */
+  .twocol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8pt 18pt;
+    margin-top: 6pt;
+  }
+  .twocol div { font-size: 10.5pt; }
+  .twocol b { font-weight: 700; }
+
+  /* Page break to ensure 2 pages when printing */
+  .break { page-break-before: always; }
+
+  /* Print setup */
+  @page {
+    size: Letter;
+    margin: 0.7in;
+  }
+  @media print {
+    body { background: none; }
+    .page { box-shadow: none; border: 0; }
+    .page + .page { border-top: 0; }
+    a[href^="http"]::after { content: ""; } /* suppress url after links */
+  }
+
+  /* Optional subtle screen shadow for on-screen reading only */
+  @media screen {
+    .page { box-shadow: 0 0 0.5in rgba(0,0,0,0.05); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Page 1 -->
+<section class="page">
+  <h1>Chris Amato</h1>
+  <div class="subtitle">Senior Product Manager</div>
+  <div class="contact">Northampton, MA • chris.amato@knectar.com • 917.750.9954 • knectar.com</div>
+
+  <div class="section">
+    <h2>Summary</h2>
+    <p>Senior technical product leader with 20+ years of experience defining strategy and directing end-to-end execution of large-scale digital products for global brands including L’Oréal, Jack Daniel’s, and Harvard Medical School. Expert in architecting scalable, interoperable systems with deep focus on AI integration. Proven track record leading C‑level stakeholder engagement, negotiating complex enterprise contracts, and building high‑performing engineering and design teams of 15+ professionals.</p>
+  </div>
+
+  <div class="section">
+    <h2>Professional Experience</h2>
+    <p class="role">Founder, CEO &amp; Principal Product Strategist — Knectar Design</p>
+    <p class="wherewhen">Northampton, MA • 2005 – Present</p>
+    <ul>
+      <li>Own the full product lifecycle from roadmap definition through launch for enterprise-scale platforms; translate complex business objectives into actionable, measurable product outcomes.</li>
+      <li>Negotiate multi‑year, seven‑figure service contracts; manage vendor procurement; recruit and lead senior technical and creative teams.</li>
+    </ul>
+
+    <p class="role">AB InBev — B2B Ordering Portal &amp; System Architecture</p>
+    <p>Built a scalable, multilingual Magento Enterprise B2B portal with Docker; created custom AB API adapters and Mulesoft integration for real‑time backend communications; directed integrations with SAP, DAM, and PIM; implemented secure SSO for thousands of global employees.</p>
+
+    <p class="role">SmartLabs — Digital Ecosystem for Modern Biotech Infrastructure</p>
+    <p>Architected the product strategy and MVP for a three‑tier ecosystem (marketing site, multi‑tenant member portal, vivarium compliance platform) with badge management, third‑party integrations (BioRAFT, TEEM, Zendesk), and SSO authentication; supports expansion across Boston, Cambridge, and San Francisco.</p>
+
+    <p class="role">Jack Daniel’s — Global Digital Brand Ecosystem</p>
+    <p>Led product vision in partnership with Arnold Worldwide; implemented multi‑market CMS, interactive tours, product showcases, and analytics; managed parallel tracks for sites, native apps, and e‑commerce with international age‑gating and compliance.</p>
+
+    <p class="role">Carnegie Mellon University — Distributed CMS Platform</p>
+    <p>Led redesign of CMU’s flagship site and distributed CMS across 50+ departments; built scalable component architecture in Drupal with 50+ reusable components; achieved WCAG 2.1 AA; reduced new site build time by ~90%.</p>
+
+    <p class="role">Yale Center for British Art — Website &amp; Collections</p>
+    <p>Built Drupal 10 museum site and headless Drupal 11 collections search on Apache Solr supporting tens of thousands of items with faceted search; achieved WCAG 2.0 AA; authored custom Solr integration for Drupal community.</p>
+
+    <p class="role">L’Oréal Paris — Beauté Concierge (iOS)</p>
+    <p>Implemented iOS API infrastructure and content administration for invite‑only tablet app enabling browsing/purchase, appointment scheduling, social sharing, and concierge access; delivered dashboards with granular analytics (time‑on‑app, conversion, add‑to‑bag, per‑product views).</p>
+
+    <p class="role">Product &amp; Technology Advisor — SaaS &amp; Tech Startups</p>
+    <p>Advised Buzztala, Dragonfly, Carv.io, and Glassica on foundational architecture, MVP definition, prototyping, and go‑to‑market strategy.</p>
+  </div>
+</section>
+
+<!-- Page 2 -->
+<section class="page break">
+  <div class="section">
+    <h2>Key Achievements &amp; Metrics</h2>
+    <p><b>Product Portfolio —</b> 150+ successful product launches with 98% client satisfaction rate</p>
+    <p><b>Team Building —</b> Recruited and managed 100+ technical professionals across engineering, design, and product roles</p>
+    <p><b>Revenue Impact —</b> Generated $50M+ in client revenue through product launches and optimizations</p>
+    <p><b>Performance —</b> Consistently delivered products with &lt;2s load times and &gt;99.9% uptime</p>
+    <p><b>Compliance —</b> Achieved 100% compliance for accessibility, security, and industry‑specific regulations</p>
+    <p><b>Cross‑functional Leadership —</b> Managed programs with 20+ stakeholders across multiple organizations</p>
+  </div>
+
+  <div class="section">
+    <h2>Technical Proficiencies</h2>
+    <div class="twocol">
+      <div><b>AI Development:</b> Cursor; Loveable; Anthropic; Google AI Studio</div>
+      <div><b>Product Management:</b> GitLab; Jira; Asana; Teamwork; Trello; Notion</div>
+      <div><b>Wireframing &amp; Design:</b> Axure; Figma; Inkscape; Rhino3D</div>
+      <div><b>Development Frameworks:</b> Drupal; Django; Node.js; Ruby on Rails; Unity</div>
+      <div><b>Mobile:</b> iOS &amp; Android Native Development</div>
+      <div><b>Infrastructure &amp; DevOps:</b> AWS; Google Cloud; Docker; Kubernetes; CI/CD; GitHub</div>
+      <div><b>Analytics &amp; Data:</b> Google Analytics; Tableau; SQL; A/B Testing Platforms</div>
+      <div><b>E‑commerce Platforms:</b> Shopify Plus; Magento Enterprise; Custom Solutions</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Education</h2>
+    <p><b>Certificate, .NET Programming &amp; Software Architecture —</b> Baruch College, NY — 2001</p>
+    <p><b>Post‑Graduate Coursework, Geology —</b> Brown University — 1999</p>
+    <p><b>M.S., Geology —</b> Indiana University — 1996</p>
+    <p><b>B.S., Geology —</b> Queens College, NY — 1993</p>
+    <p><b>The Bronx High School of Science —</b> 1989</p>
+  </div>
+</section>
+
+</body>
+</html>
