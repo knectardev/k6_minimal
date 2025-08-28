@@ -1004,13 +1004,7 @@
       }
     ]
   },
-  {
-    "label": "Blog Posts",
-    "icon": "hash.svg",
-    "categoryDescription": "Explore our insights, stories, and technical deep-dives. The Knectar blog is where we share our expertise and passion for digital innovation.",
-    "more": 0,
-    "submenu": []
-  },
+
   {
     "label": "Resume",
     "icon": "work.svg",

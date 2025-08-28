@@ -273,7 +273,7 @@ function initProjects() {
                 'Web & iOS Apps': 'assets/web.svg',
                 'Informational': 'assets/info.svg',
                 'E-Commerce': 'assets/money.svg',
-                'Blog Posts': 'assets/hash.svg',
+
                 'Music & Art': 'assets/music.svg',
                 'All': 'assets/360.svg'
             };
@@ -293,7 +293,7 @@ function initProjects() {
             'Web & iOS Apps': 'WEB & IOS APPS',
             'Informational': 'INFORMATIONAL',
             'E-Commerce': 'E-COMMERCE',
-            'Blog Posts': 'BLOG POSTS',
+
             'Music & Art': 'MUSIC & ART',
             'All': ''
         };

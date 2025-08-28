@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Populate dynamic page content (project / blog meta) from menu.json
+    // Populate dynamic page content (project meta) from menu.json
     injectPageData();
 
     const hamburgerButton = document.getElementById('hamburger-button');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'INTRANETS & PORTALS': 'Intranets & Portals',
         'WEB & IOS APPS': 'Web & iOS Apps',
         'INFORMATIONAL': 'Informational',
-        'BLOG POSTS': 'Blog Posts',
+        
         'MUSIC & ART': 'Music & Art',
         'E-COMMERCE': 'E-Commerce'
     };
@@ -522,14 +522,10 @@ function injectPageData() {
         projectInfo.innerHTML = buildProjectInfoHTML(pageData);
     }
 
-    // Blog-post template
-    const blogPost = document.querySelector('.blog-post');
-    if (blogPost) {
-        buildBlogPostHTML(blogPost, pageData);
-    }
+
 
     // Feature flags
-    // TTS functionality removed
+
 }
 
 function findPageData(arr, path, parentLabel = null) {
@@ -763,17 +759,7 @@ function buildProjectInfoHTML(data) {
     }
 })();
 
-function buildBlogPostHTML(articleEl, data) {
-    const title = articleEl.querySelector('h1');
-    if (title && data.projectTitle) title.textContent = data.projectTitle;
 
-    const meta = articleEl.querySelector('.blog-meta');
-    if (meta) {
-        const metaRows = [];
-        if (data.author) metaRows.push(`<li><span class="label">Author:</span> <span>${data.author}</span></li>`);
-        if (data.technology) metaRows.push(`<li><span class="label">Technology:</span> <span>${data.technology}</span></li>`);
-    }
-}
 
 // Read More functionality
 function toggleReadMore(button) {

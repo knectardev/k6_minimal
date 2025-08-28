@@ -1330,7 +1330,7 @@ a:visited {
 .project-tile[data-category="E-Commerce"] .project-category::before {
     background-image: url('../assets/money.svg');
 }
-.project-tile[data-category="Blog Posts"] .project-category::before {
+
     background-image: url('../assets/hash.svg');
 }
 .project-tile[data-category="Music & Art"] .project-category::before {
@@ -1465,7 +1465,7 @@ a:visited {
 #categoryFilter option[value="Web & iOS Apps"] { background-image: url('../assets/web.svg'); }
 #categoryFilter option[value="Informational"] { background-image: url('../assets/info.svg'); }
 #categoryFilter option[value="E-Commerce"] { background-image: url('../assets/money.svg'); }
-#categoryFilter option[value="Blog Posts"] { background-image: url('../assets/hash.svg'); }
+
 #categoryFilter option[value="Music & Art"] { background-image: url('../assets/music.svg'); }
 
 /* icon inside custom select */
@@ -1541,7 +1541,7 @@ a:visited {
     background-image: url('../assets/360.svg');
 }
 
-.select-options li[data-value="Blog Posts"] .option-icon { background-image: url('../assets/hash.svg'); }
+
 .select-options li[data-value="Music & Art"] .option-icon { background-image: url('../assets/music.svg'); }
 
 .custom-select::after { display: none; }
@@ -1567,51 +1567,9 @@ a:visited {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s;
 }
 
-/* === Blog Post Styles === */
-.blog-post {
-    max-width: 720px;
-}
-.blog-post h1 {
-    font-size: 32px;
-    margin-bottom: var(--spacing-md);
-}
-.blog-lead {
-    font-style: italic;
-    margin: 0 0 var(--spacing-lg) 0;
-    color: var(--color-text-primary);
-}
-.blog-meta {
-    list-style: none;
-    padding: 0;
-    margin: var(--spacing-lg) 0;
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    row-gap: var(--spacing-xs);
-    column-gap: var(--spacing-sm);
-    font-size: 16px;
-    color: var(--color-text-secondary);
-}
-.blog-meta .label {
-    color: var(--color-primary);
-    font-weight: bolder;
-    font-size: 13px;
-    text-transform: uppercase;
-}
-.blog-summary {
-    margin: var(--spacing-lg) 0;
-    line-height: 1.6;
-}
-.summary-label {
-    color: var(--color-primary);
-    font-weight: bolder;
-    text-transform: uppercase;
-    margin-right: 4px;
-}
 
-/* === TTS Player === */
-.tts-player {
-    margin: var(--spacing-lg) 0;
-}
+
+
 
 /* === Tablet breakpoint: show hamburger too === */
 @media (max-width: 1024px) {
@@ -1849,7 +1807,7 @@ a:visited {
 .project-category[data-category="E-Commerce"]::before {
     background-image: url('../assets/money.svg');
 }
-.project-category[data-category="Blog Posts"]::before {
+
     background-image: url('../assets/hash.svg');
 }
 .project-category[data-category="Music & Art"]::before {
@@ -2295,7 +2253,7 @@ a:visited {
 .dynamic-body ul li::marker,
 .description ul li::marker,
 .wysiwyg-editor ul li::marker,
-.blog-post ul li::marker {
+
     color: #FF0000;      /* red */
     font-size: 1.15em;   /* slightly larger */
     /* You can further adjust weight or font-family if needed */

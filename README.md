@@ -453,35 +453,16 @@ This project is proprietary to Knectar.
 
 For questions about this portfolio or technical issues, contact the development team.
  
-## TTS (Text-to-Speech) Setup
 
-The portfolio includes ElevenLabs text-to-speech functionality for project descriptions.
 
-### Local Development
-1. Create a `.env` file in the root directory with:
-   ```
-   ELEVEN_API_KEY=your_elevenlabs_api_key_here
-   ```
-2. Install dependencies: `npm install`
-3. Start the server: `npm start`
-4. Access the site at `http://localhost:8000`
 
-### Production Deployment
-To enable TTS on your production server:
 
-1. **Deploy the Node.js application** (not just static files):
-   - Upload `server.js`, `package.json`, and all dependencies
-   - Install dependencies: `npm install --production`
-   - Set up environment variables with your ElevenLabs API key
-   - Start the server: `npm start`
 
-2. **Alternative: Use a static-only deployment** (TTS will be disabled):
-   - Upload only the HTML/CSS/JS files
-   - The TTS widget will show "Audio unavailable" but the site will work normally
 
-### Environment Variables
-- `ELEVEN_API_KEY`: Your ElevenLabs API key (required for TTS)
-- `ELEVEN_VOICE_ID`: Optional voice ID override (default: "Rachel")
-- `TTS_DEBUG`: Set to "true" to enable debug logging
- #   T T S   E n v i r o n m e n t   V a r i a b l e   F i x  
+
+
+
+
+ #   T T S   E n v i r o n m e n t   V a r i a b l e   F i x 
+ 
  
