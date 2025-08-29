@@ -2252,8 +2252,7 @@ a:visited {
 .project-info ul li::marker,
 .dynamic-body ul li::marker,
 .description ul li::marker,
-.wysiwyg-editor ul li::marker,
-
+.wysiwyg-editor ul li::marker {
     color: #FF0000;      /* red */
     font-size: 1.15em;   /* slightly larger */
     /* You can further adjust weight or font-family if needed */
