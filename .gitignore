@@ -210,10 +210,35 @@ temp_images/
 
 
 
-# Data backup files
-data/*.backup
-data/*.bak
+# Data backup files (not needed for production)
+data/menu_backup_*.json
+data/M-back.json
+
+# Development scripts (not needed for production)
+scripts/fix_favicon.js
+scripts/test_single_image.js
+scripts/optimize_images.js
+scripts/update_detail_images.js
+scripts/cleanup_backups.js
+
+# Generated favicon files (SVG is sufficient)
+assets/logo_16.png
+assets/logo_32.png
+assets/logo_48.png
 
 # Local development files
 local/
 dev/
+
+# Node.js runtime files (not needed for Vercel static hosting)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Development server (not needed for Vercel)
+server.js
+
+# Temporary files
+*.tmp
+*.temp

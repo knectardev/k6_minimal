@@ -11,14 +11,19 @@
     "test-optimization": "python scripts/test_conservative.py",
     "deploy": "git push origin main"
   },
-  "keywords": ["portfolio", "web-development", "design", "knectar"],
+  "keywords": [
+    "portfolio",
+    "web-development",
+    "design",
+    "knectar"
+  ],
   "author": "Knectar",
   "license": "UNLICENSED",
   "dependencies": {
     "dotenv": "^17.1.0",
     "express": "^4.18.2",
     "node-fetch": "^2.7.0",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "nodemon": "^3.0.0"
