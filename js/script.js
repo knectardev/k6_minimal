@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --------------------------------------------------------------
     const introText = document.querySelector('.intro-text');
     if (introText) {
-        // Wrap each word in spans for individual movement
+        // Wrap each word in spans for individual movement, preserving existing highlights
         introText.querySelectorAll('p').forEach(paragraph => {
             const words = paragraph.innerText.split(' ');
             paragraph.innerHTML = '';
@@ -412,7 +412,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     const span = document.createElement('span');
                     span.textContent = word;
-                    if (cleanWord === 'node' || cleanWord === 'knectar') {
+                    // Check for all the words that should be highlighted
+                    if (cleanWord === 'node' || cleanWord === 'knectar' || cleanWord === 'intersection' || 
+                        cleanWord === 'converge' || cleanWord === 'bridge' || cleanWord === 'clarity' || 
+                        cleanWord === 'progress' || cleanWord === 'hold' || cleanWord === 'center') {
                         span.classList.add('highlight-red');
                     }
                     span.style.display = 'inline-block';

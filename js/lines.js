@@ -318,9 +318,6 @@
     // UI Bindings
     playPauseBtn.addEventListener('click', () => {
         isPlaying ? stopPlayback() : startPlayback();
-        if (clickPrompt) {
-            clickPrompt.style.display = 'none';
-        }
     });
 
     window.addEventListener('resize', generateLines);
@@ -330,9 +327,6 @@
         if (e.code === 'Space') {
             e.preventDefault();
             isPlaying ? stopPlayback() : startPlayback();
-            if (clickPrompt) {
-                clickPrompt.style.display = 'none';
-            }
         }
     });
 
@@ -388,10 +382,6 @@
     }
     // -------------------------------------------------------------------------
 
-    // Hide the prompt after the first user click on the page
-    window.addEventListener('click', () => {
-        if (clickPrompt) {
-            clickPrompt.style.display = 'none';
-        }
-    }, { once: true });
+    // Keep the prompt visible for user guidance
+    // Removed the code that hides the prompt after first click
 })(); 
