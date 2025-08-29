@@ -601,7 +601,7 @@
                 </div>
                 
                 <div class="download-section">
-                    <a href="#" class="download-cv-btn" onclick="downloadCV()">Download CV</a>
+                    <a href="Chris_Amato_Senior_Product.2025.pdf" class="download-cv-btn" download>Download CV</a>
                 </div>
             </div>
             
@@ -804,26 +804,27 @@
                     <h2>Education</h2>
                     <div class="education-item">
                         <div class="education-degree">Certificate, .NET Programming & Software Architecture</div>
-                        <div class="education-school">Baruch College, NY</div>
+                        <div class="education-school"><a href="https://www.baruch.cuny.edu/" target="_blank">Baruch College, NY</a></div>
                         <div class="education-year">2001</div>
                     </div>
                     <div class="education-item">
                         <div class="education-degree">Post-Graduate Coursework, Geology</div>
-                        <div class="education-school">Brown University</div>
+                        <div class="education-school"><a href="https://www.brown.edu/" target="_blank">Brown University</a></div>
                         <div class="education-year">1999</div>
                     </div>
                     <div class="education-item">
                         <div class="education-degree">M.S., Geology</div>
-                        <div class="education-school">Indiana University</div>
+                        <div class="education-school"><a href="https://www.indiana.edu/" target="_blank">Indiana University</a></div>
                         <div class="education-year">1996</div>
                     </div>
                     <div class="education-item">
                         <div class="education-degree">B.S., Geology</div>
-                        <div class="education-school">Queens College, NY</div>
+                        <div class="education-school"><a href="https://www.qc.cuny.edu/" target="_blank">Queens College, NY</a></div>
                         <div class="education-year">1993</div>
                     </div>
                     <div class="education-item">
-                        <div class="education-degree">The Bronx High School of Science</div>
+                        <div class="education-degree">High School Diploma</div>
+                        <div class="education-school"><a href="https://www.bxscience.edu/" target="_blank">The Bronx High School of Science</a></div>
                         <div class="education-year">1989</div>
                     </div>
                 </div>
@@ -865,22 +866,7 @@
             });
         });
         
-        // Download CV function
-        function downloadCV() {
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'resume_static.html'; // Point to this static version
-            link.download = 'Chris_Amato_Resume.html';
-            link.style.display = 'none';
-            
-            // Append to body, click, and remove
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Optional: Show a success message
-            console.log('Resume download initiated');
-        }
+
     </script>
 
 </body>
