@@ -1365,6 +1365,7 @@ a:visited {
     margin: var(--spacing-xs) 0 var(--spacing-md) 0;
     font-size: 22px;
     font-family: 'Benne', serif;
+    line-height: 1.2;
 }
 
 /* Project Tile sub-heading styles */
