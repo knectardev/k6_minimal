@@ -63,9 +63,13 @@ app.use((err, req, res, next) => {
   handleError(err, 'global error handler', res);
 });
 
-// Start the server
-app.listen(PORT, () => {
-    // console.log(`Server running at http://localhost:${PORT}`);
-    // console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-    
-});
+// Export the app for Vercel
+module.exports = app;
+
+// Start the server only in development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  });
+}
