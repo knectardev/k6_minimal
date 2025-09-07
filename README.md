@@ -52,7 +52,6 @@ cp .env.example .env
 
 Edit `.env` with your actual values:
 ```env
-
 # Required for TTS functionality
 ELEVEN_API_KEY=your-elevenlabs-api-key
 
@@ -82,12 +81,12 @@ npm run dev
 
 ### Available Scripts
 ```bash
-npm start          # Start production server
-npm run dev        # Start development server with auto-reload
-npm run build      # Build project (runs image optimization)
-npm run optimize-images    # Optimize project images
-npm run test-optimization  # Test image optimization process
-npm run deploy     # Build and deploy to production
+npm start                    # Start production server
+npm run dev                  # Start development server with auto-reload
+npm run build                # Build project (runs image optimization)
+npm run optimize-images      # Optimize project images
+npm run test-optimization    # Test image optimization process
+npm run deploy               # Build and deploy to production
 ```
 
 ### Local Development
@@ -140,6 +139,26 @@ The site includes a content management system with:
 1. **Add project images** to `project_tiles/` directory
 2. **Optimize images** using `npm run optimize-images`
 3. **Update menu.json** via edit.html interface
+4. **Add project details** including:
+   - Project title and description
+   - Role and technology used
+   - Budget range and design partner
+   - Project URL and cover image
+
+### Image Optimization
+The project includes automated image optimization:
+- **Size threshold**: Only optimizes files > 200KB
+- **Quality preservation**: Skips files that would lose > 30% size
+- **Supported formats**: PNG, JPG, JPEG, WebP
+- **API integration**: Uses TinyPNG API
+
+```bash
+# Test optimization first
+npm run test-optimization
+
+# Run full optimization
+npm run optimize-images
+```
 
 ### CMS Troubleshooting
 
@@ -192,26 +211,6 @@ window.menuDataManager.refreshFromServer();
 
 // Check current data source
 console.log(window.menuDataManager.getCurrentData());
-```
-4. **Add project details** including:
-   - Project title and description
-   - Role and technology used
-   - Budget range and design partner
-   - Project URL and cover image
-
-### Image Optimization
-The project includes automated image optimization:
-- **Size threshold**: Only optimizes files > 200KB
-- **Quality preservation**: Skips files that would lose > 30% size
-- **Supported formats**: PNG, JPG, JPEG, WebP
-- **API integration**: Uses TinyPNG API
-
-```bash
-# Test optimization first
-npm run test-optimization
-
-# Run full optimization
-npm run optimize-images
 ```
 
 ## Deployment
@@ -319,8 +318,6 @@ npm run optimize-images
 
 ## API Endpoints
 
-
-
 ### Text-to-Speech
 - `POST /api/tts` - Generate TTS audio (requires ELEVEN_API_KEY)
 
@@ -330,7 +327,6 @@ npm run optimize-images
 ## Security Considerations
 
 - **API keys** are stored in environment variables
-
 - **TTS requests** are proxied to keep API keys server-side
 - **Input validation** on all API endpoints
 - **Security headers** prevent XSS and clickjacking
@@ -384,9 +380,7 @@ npm run optimize-images
    - Verify API key is valid
    - Check network connectivity
 
-
-
-4. **Image optimization failing**
+3. **Image optimization failing**
    - Check TinyPNG API key
    - Verify Python and requests package installed
    - Check file permissions
@@ -452,17 +446,3 @@ This project is proprietary to Knectar.
 ## Contact
 
 For questions about this portfolio or technical issues, contact the development team.
- 
-
-
-
-
-
-
-
-
-
-
- #   T T S   E n v i r o n m e n t   V a r i a b l e   F i x 
- 
- 
