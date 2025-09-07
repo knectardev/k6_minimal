@@ -1,5 +1,51 @@
 {
   "version": 2,
+  "rewrites": [
+    {
+      "source": "/css/(.*)",
+      "destination": "/css/$1"
+    },
+    {
+      "source": "/js/(.*)",
+      "destination": "/js/$1"
+    },
+    {
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1"
+    },
+    {
+      "source": "/project_images/(.*)",
+      "destination": "/project_images/$1"
+    },
+    {
+      "source": "/project_tiles/(.*)",
+      "destination": "/project_tiles/$1"
+    },
+    {
+      "source": "/about/(.*)",
+      "destination": "/about/$1"
+    },
+    {
+      "source": "/data/(.*)",
+      "destination": "/data/$1"
+    },
+    {
+      "source": "/includes/(.*)",
+      "destination": "/includes/$1"
+    },
+    {
+      "source": "/tools/(.*)",
+      "destination": "/tools/$1"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/server.js"
+    }
+  ],
   "redirects": [
     {
       "source": "/(.*)",
@@ -9,22 +55,6 @@
         {
           "type": "host",
           "value": "www.knectar.com"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "destination": "https://knectar.com/$1",
-      "permanent": true,
-      "has": [
-        {
-          "type": "host",
-          "value": "www.knectar.com"
-        },
-        {
-          "type": "header",
-          "key": "x-forwarded-proto",
-          "value": "http"
         }
       ]
     },
@@ -488,52 +518,6 @@
     {
       "src": "tools/**",
       "use": "@vercel/static"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/css/(.*)",
-      "destination": "/css/$1"
-    },
-    {
-      "source": "/js/(.*)",
-      "destination": "/js/$1"
-    },
-    {
-      "source": "/assets/(.*)",
-      "destination": "/assets/$1"
-    },
-    {
-      "source": "/project_images/(.*)",
-      "destination": "/project_images/$1"
-    },
-    {
-      "source": "/project_tiles/(.*)",
-      "destination": "/project_tiles/$1"
-    },
-    {
-      "source": "/about/(.*)",
-      "destination": "/about/$1"
-    },
-    {
-      "source": "/data/(.*)",
-      "destination": "/data/$1"
-    },
-    {
-      "source": "/includes/(.*)",
-      "destination": "/includes/$1"
-    },
-    {
-      "source": "/tools/(.*)",
-      "destination": "/tools/$1"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/server.js"
     }
   ],
   "env": {
