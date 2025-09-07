@@ -3,17 +3,17 @@
   "redirects": [
     {
       "source": "/portfolio/design-refresh-glenmede-trust-company/",
-      "destination": "/projects.html",
+      "destination": "/project.html?item=glenmede-trust",
       "permanent": true
     },
     {
       "source": "/portfolio/jack-daniels-website-project/",
-      "destination": "/projects.html",
+      "destination": "/project.html?item=jack-daniels",
       "permanent": true
     },
     {
       "source": "/portfolio/mit-university-web-development/",
-      "destination": "/projects.html",
+      "destination": "/project.html?item=mit-university",
       "permanent": true
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "source": "/portfolio/anheuser-busch-inbev-new-mi-modelo-application/",
-      "destination": "/projects.html",
+      "destination": "/project.html?item=anheuser-busch",
       "permanent": true
     },
     {
@@ -93,7 +93,7 @@
     },
     {
       "source": "/portfolio/smma-long-format-drupal-website/",
-      "destination": "/projects.html",
+      "destination": "/project.html?item=smma-architecture",
       "permanent": true
     },
     {
@@ -113,7 +113,7 @@
     },
     {
       "source": "/portfolio/isabella-stewart-gardner-museum/",
-      "destination": "/projects.html",
+      "destination": "/project.html?item=isabella-stewart-gardner",
       "permanent": true
     },
     {
@@ -347,4 +347,4 @@
       "permanent": true
     }
   ]
-}
+} 
