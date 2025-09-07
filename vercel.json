@@ -352,7 +352,7 @@
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/((?!css|js|assets|images|project_images|project_tiles|about|favicon.ico|robots.txt|sitemap.xml).*)",
       "destination": "/",
       "permanent": true
     }
