@@ -345,6 +345,16 @@
       "source": "/wp-includes/:path*",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/portfolio_category-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ]
 } 
