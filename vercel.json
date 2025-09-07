@@ -1,3 +1,542 @@
 {
-  "version": 2
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://knectar.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.knectar.com"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://knectar.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.knectar.com"
+        },
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "http"
+        }
+      ]
+    },
+    {
+      "source": "/:year/:month/:day/:slug/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/:year/:month/:day/:slug",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/:year/:month/:slug/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/:year/:month/:slug",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/category/:category/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/category/:category",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:tag/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:tag",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/author/:author/",
+      "destination": "https://knectar.com/about",
+      "permanent": true
+    },
+    {
+      "source": "/author/:author",
+      "destination": "https://knectar.com/about",
+      "permanent": true
+    },
+    {
+      "source": "/page/:page/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/page/:page",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/feed/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "https://knectar.com",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "https://knectar.com",
+      "permanent": true
+    },
+    {
+      "source": "/wp-includes/:path*",
+      "destination": "https://knectar.com",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/american-institute-for-economic-research-drupal-7-redesign/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/chemexs-new-sleek-and-modern-site/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/crocker-communications-responsive-user-friendly-site/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/university-web-design-mit/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/the-new-fully-responsive-eze-software-site/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/fox-chase-new-user-friendly-drupal-site/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/design-refresh-glenmede-trust-company/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/guardair-shopify-websites/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/kavli-institute-university-web-development/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/jack-daniels-website-project/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/temples-new-responsive-drupal-site/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/mit-university-web-development/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/anheuser-busch-inbev-new-mi-modelo-application/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/corporate-web-development-opm/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/new-shopify-plus-site-pioneer-valley-books/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/riverbends-corporate-drupal-website/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/sleep-studio-ecommerce-web-design/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/website-planning-smartlabs/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/smma-long-format-drupal-website/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/quick-efficient-build-of-sparx-hockey-static-site/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/saci-florence/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/forsyths-new-drupal-site/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/isabella-stewart-gardner-museum/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/umass-humanities-and-fine-arts/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/university-massachusetts-continuing-professional-education/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/drupal-higher-education-case-study-umass-summer/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/way-finders/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/:slug/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/:slug",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/wentworth-institute-education-web-design/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/ecommerce-case-study-deans-beans/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/hubspot-integration-cornerstone-software/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/professional-web-design-and-development-partners/",
+      "destination": "https://knectar.com/about",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-services/mobile-web-responsive-web-design/",
+      "destination": "https://knectar.com/services",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-services/magento-web-development-services/",
+      "destination": "https://knectar.com/services",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-services/",
+      "destination": "https://knectar.com/services",
+      "permanent": true
+    },
+    {
+      "source": "/drupal-web-development-blog/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "https://knectar.com/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "https://knectar.com/contact",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-services/web-interface-experience-design/",
+      "destination": "https://knectar.com/services",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-services/information-architecture-wire-framing/",
+      "destination": "https://knectar.com/services",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-services/website-maintenance/",
+      "destination": "https://knectar.com/services",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-services/salesforce-integration/",
+      "destination": "https://knectar.com/services",
+      "permanent": true
+    },
+    {
+      "source": "/drupal-web-development-portfolio/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/shopify-support-e-commerce-business/",
+      "destination": "https://knectar.com/services",
+      "permanent": true
+    },
+    {
+      "source": "/category/api-integration/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/category/magento-web-development/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/category/web-development-process/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/category/web-programming/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2020/03/23/knectar-receives-another-5-star-review-on-clutch-profile/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2019/10/04/how-to-budget-for-a-web-development-project/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2016/05/04/web-development-to-spec-or-not-to-spec/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2016/06/29/website-hosting-service-why-knectar-loves-pantheon/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2016/03/01/the-ez-speedy-make-me-a-grid-for-admin-method/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2016/03/01/the-definitive-magento-controller/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2016/05/12/why-we-chose-drupal-insights-from-a-web-development-company/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2016/03/02/linkit-target-module-released-on-drupal-org/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2015/12/11/standing-up-to-a-torrent/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2016/03/02/drupal-hubspot-integration/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-category/corporate/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-category/drupal/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-category/non-profit-web-development/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-category/education-web-development/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-category/magento-web-development/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2015/11/09/web-development-exhibit-fractal-nature/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    },
+    {
+      "source": "/2015/11/30/knectars-new-vision-for-drupal-blocks/",
+      "destination": "https://knectar.com/projects",
+      "permanent": true
+    }
+  ],
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "css/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "js/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "assets/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "project_images/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "project_tiles/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "about/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "data/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "includes/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "tools/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/css/(.*)",
+      "dest": "/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/js/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/project_images/(.*)",
+      "dest": "/project_images/$1"
+    },
+    {
+      "src": "/project_tiles/(.*)",
+      "dest": "/project_tiles/$1"
+    },
+    {
+      "src": "/about/(.*)",
+      "dest": "/about/$1"
+    },
+    {
+      "src": "/data/(.*)",
+      "dest": "/data/$1"
+    },
+    {
+      "src": "/includes/(.*)",
+      "dest": "/includes/$1"
+    },
+    {
+      "src": "/tools/(.*)",
+      "dest": "/tools/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 } 
