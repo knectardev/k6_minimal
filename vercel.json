@@ -46,347 +46,347 @@
     {
       "source": "/portfolio/american-institute-for-economic-research-drupal-7-redesign/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/chemexs-new-sleek-and-modern-site/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/crocker-communications-responsive-user-friendly-site/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/university-web-design-mit/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/the-new-fully-responsive-eze-software-site/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/fox-chase-new-user-friendly-drupal-site/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/design-refresh-glenmede-trust-company/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/guardair-shopify-websites/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/kavli-institute-university-web-development/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/jack-daniels-website-project/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/temples-new-responsive-drupal-site/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/mit-university-web-development/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/anheuser-busch-inbev-new-mi-modelo-application/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/corporate-web-development-opm/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/new-shopify-plus-site-pioneer-valley-books/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/riverbends-corporate-drupal-website/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/sleep-studio-ecommerce-web-design/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/website-planning-smartlabs/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/smma-long-format-drupal-website/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/quick-efficient-build-of-sparx-hockey-static-site/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/saci-florence/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/forsyths-new-drupal-site/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/isabella-stewart-gardner-museum/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/umass-humanities-and-fine-arts/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/university-massachusetts-continuing-professional-education/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/drupal-higher-education-case-study-umass-summer/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/way-finders/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/wentworth-institute-education-web-design/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/ecommerce-case-study-deans-beans/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio/hubspot-integration-cornerstone-software/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/professional-web-design-and-development-partners/",
       "destination": "/about.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/web-development-services/mobile-web-responsive-web-design/",
       "destination": "/services.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/web-development-services/magento-web-development-services/",
       "destination": "/services.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/web-development-services/",
       "destination": "/services.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/drupal-web-development-blog/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/privacy-policy/",
       "destination": "/privacy-policy.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/contact/",
       "destination": "/contact.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/web-development-services/web-interface-experience-design/",
       "destination": "/services.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/web-development-services/information-architecture-wire-framing/",
       "destination": "/services.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/web-development-services/website-maintenance/",
       "destination": "/services.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/web-development-services/salesforce-integration/",
       "destination": "/services.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/drupal-web-development-portfolio/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/shopify-support-e-commerce-business/",
       "destination": "/services.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/category/api-integration/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/category/magento-web-development/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/category/web-development-process/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/category/web-programming/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio-category/corporate/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio-category/drupal/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio-category/non-profit-web-development/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio-category/education-web-development/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/portfolio-category/magento-web-development/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/:year/:month/:day/:slug/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/:year/:month/:day/:slug",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/:year/:month/:slug/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/:year/:month/:slug",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/category/:category/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/category/:category",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/tag/:tag/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/tag/:tag",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/author/:author/",
       "destination": "/about.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/author/:author",
       "destination": "/about.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/page/:page/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/page/:page",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/feed/",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/feed",
       "destination": "/projects.html",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/wp-admin/:path*",
       "destination": "/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/wp-content/:path*",
       "destination": "/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/wp-includes/:path*",
       "destination": "/",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "routes": [
