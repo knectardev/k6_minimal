@@ -490,52 +490,6 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
-    {
-      "src": "/css/(.*)",
-      "dest": "/css/$1"
-    },
-    {
-      "src": "/js/(.*)",
-      "dest": "/js/$1"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/project_images/(.*)",
-      "dest": "/project_images/$1"
-    },
-    {
-      "src": "/project_tiles/(.*)",
-      "dest": "/project_tiles/$1"
-    },
-    {
-      "src": "/about/(.*)",
-      "dest": "/about/$1"
-    },
-    {
-      "src": "/data/(.*)",
-      "dest": "/data/$1"
-    },
-    {
-      "src": "/includes/(.*)",
-      "dest": "/includes/$1"
-    },
-    {
-      "src": "/tools/(.*)",
-      "dest": "/tools/$1"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/server.js"
-    }
-  ],
   "env": {
     "NODE_ENV": "production"
   }
