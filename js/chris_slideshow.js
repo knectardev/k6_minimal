@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Array of image paths (relative to about.html)
     const images = [
-        'about/me/chris_amato_1a.png',
-        'about/me/chris_amato_2a.png',
-        'about/me/chris_amato_3a.png',
-        'about/me/chris_amato_4a.png'
+        'about/chris_amato_1a.png',
+        'about/chris_amato_2a.png',
+        'about/chris_amato_3a.png',
+        'about/chris_amato_4a.png'
     ];
 
     let index = 0;
