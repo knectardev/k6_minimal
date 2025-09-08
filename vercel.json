@@ -2,158 +2,18 @@
   "version": 2,
   "redirects": [
     {
-      "source": "/portfolio/design-refresh-glenmede-trust-company/",
-      "destination": "/project.html?item=glenmede-trust",
+      "source": "/privacy-policy/",
+      "destination": "/privacy-policy.html",
       "permanent": true
     },
     {
-      "source": "/portfolio/jack-daniels-website-project/",
-      "destination": "/project.html?item=jack-daniels",
+      "source": "/contact/",
+      "destination": "/contact.html",
       "permanent": true
     },
     {
-      "source": "/portfolio/mit-university-web-development/",
-      "destination": "/project.html?item=mit-university",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/american-institute-for-economic-research-drupal-7-redesign/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/chemexs-new-sleek-and-modern-site/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/crocker-communications-responsive-user-friendly-site/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/university-web-design-mit/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/the-new-fully-responsive-eze-software-site/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/fox-chase-new-user-friendly-drupal-site/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/guardair-shopify-websites/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/kavli-institute-university-web-development/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/temples-new-responsive-drupal-site/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/anheuser-busch-inbev-new-mi-modelo-application/",
-      "destination": "/project.html?item=anheuser-busch",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/corporate-web-development-opm/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/new-shopify-plus-site-pioneer-valley-books/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/riverbends-corporate-drupal-website/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/sleep-studio-ecommerce-web-design/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/website-planning-smartlabs/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/smma-long-format-drupal-website/",
-      "destination": "/project.html?item=smma-architecture",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/quick-efficient-build-of-sparx-hockey-static-site/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/saci-florence/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/forsyths-new-drupal-site/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/isabella-stewart-gardner-museum/",
-      "destination": "/project.html?item=isabella-stewart-gardner",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/umass-humanities-and-fine-arts/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/university-massachusetts-continuing-professional-education/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/drupal-higher-education-case-study-umass-summer/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/way-finders/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/wentworth-institute-education-web-design/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/ecommerce-case-study-deans-beans/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio/hubspot-integration-cornerstone-software/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/professional-web-design-and-development-partners/",
-      "destination": "/about.html",
+      "source": "/web-development-services/",
+      "destination": "/services.html",
       "permanent": true
     },
     {
@@ -164,26 +24,6 @@
     {
       "source": "/web-development-services/magento-web-development-services/",
       "destination": "/services.html",
-      "permanent": true
-    },
-    {
-      "source": "/web-development-services/",
-      "destination": "/services.html",
-      "permanent": true
-    },
-    {
-      "source": "/drupal-web-development-blog/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/privacy-policy/",
-      "destination": "/privacy-policy.html",
-      "permanent": true
-    },
-    {
-      "source": "/contact/",
-      "destination": "/contact.html",
       "permanent": true
     },
     {
@@ -207,57 +47,232 @@
       "permanent": true
     },
     {
-      "source": "/drupal-web-development-portfolio/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
       "source": "/shopify-support-e-commerce-business/",
       "destination": "/services.html",
       "permanent": true
     },
     {
+      "source": "/professional-web-design-and-development-partners/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/umass-humanities-and-fine-arts/",
+      "destination": "/project.html?item=university-of-massachusetts-amherst",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/quick-efficient-build-of-sparx-hockey-static-site/",
+      "destination": "/project.html?item=sparx-hockey",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/fox-chase-new-user-friendly-drupal-site/",
+      "destination": "/project.html?item=fox-chase-cancer-research",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/sleep-studio-ecommerce-web-design/",
+      "destination": "/project.html?item=sleep-studio",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/smma-long-format-drupal-website/",
+      "destination": "/project.html?item=smma-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/jack-daniels-website-project/",
+      "destination": "/project.html?item=jack-daniels",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/chemexs-new-sleek-and-modern-site/",
+      "destination": "/project.html?item=chemex-coffee-maker",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/saci-florence/",
+      "destination": "/project.html?item=studio-arts-consortium-international-saci-florence",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/website-planning-smartlabs/",
+      "destination": "/project.html?item=smartlabs",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/anheuser-busch-inbev-new-mi-modelo-application/",
+      "destination": "/project.html?item=ab_inbev",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/temples-new-responsive-drupal-site/",
+      "destination": "/project.html?item=lewis-katz-school-of-medicine-temple-university",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/mit-university-web-development/",
+      "destination": "/project.html?item=mit",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/university-web-design-mit/",
+      "destination": "/project.html?item=mit",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/isabella-stewart-gardner-museum/",
+      "destination": "/project.html?item=the-isabella-stewart-gardner-museum",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/drupal-higher-education-case-study-umass-summer/",
+      "destination": "/project.html?item=university-of-massachusetts-amherst",
+      "permanent": true
+    },
+    {
+      "source": "/drupal-web-development-blog/",
+      "destination": "/lines.html",
+      "permanent": true
+    },
+    {
       "source": "/category/api-integration/",
-      "destination": "/projects.html",
+      "destination": "/lines.html",
       "permanent": true
     },
     {
       "source": "/category/magento-web-development/",
-      "destination": "/projects.html",
+      "destination": "/lines.html",
       "permanent": true
     },
     {
       "source": "/category/web-development-process/",
-      "destination": "/projects.html",
+      "destination": "/lines.html",
       "permanent": true
     },
     {
       "source": "/category/web-programming/",
-      "destination": "/projects.html",
+      "destination": "/lines.html",
+      "permanent": true
+    },
+    {
+      "source": "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug/",
+      "destination": "/lines.html",
+      "permanent": true
+    },
+    {
+      "source": "/drupal-web-development-portfolio/",
+      "destination": "https://www.knectar.com/projects.html",
       "permanent": true
     },
     {
       "source": "/portfolio-category/corporate/",
-      "destination": "/projects.html",
+      "destination": "https://www.knectar.com/projects.html",
       "permanent": true
     },
     {
       "source": "/portfolio-category/drupal/",
-      "destination": "/projects.html",
+      "destination": "https://www.knectar.com/projects.html",
       "permanent": true
     },
     {
       "source": "/portfolio-category/non-profit-web-development/",
-      "destination": "/projects.html",
+      "destination": "https://www.knectar.com/projects.html",
       "permanent": true
     },
     {
       "source": "/portfolio-category/education-web-development/",
-      "destination": "/projects.html",
+      "destination": "https://www.knectar.com/projects.html",
       "permanent": true
     },
     {
       "source": "/portfolio-category/magento-web-development/",
+      "destination": "https://www.knectar.com/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/:rest*",
+      "destination": "https://www.knectar.com/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-services/:path*",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/design-refresh-glenmede-trust-company/",
+      "destination": "/project.html?item=glenmede-trust",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/american-institute-for-economic-research-drupal-7-redesign/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/crocker-communications-responsive-user-friendly-site/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/the-new-fully-responsive-eze-software-site/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/guardair-shopify-websites/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/kavli-institute-university-web-development/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/corporate-web-development-opm/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/new-shopify-plus-site-pioneer-valley-books/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/riverbends-corporate-drupal-website/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/forsyths-new-drupal-site/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/university-massachusetts-continuing-professional-education/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/way-finders/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/wentworth-institute-education-web-design/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/ecommerce-case-study-deans-beans/",
+      "destination": "/projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/hubspot-integration-cornerstone-software/",
       "destination": "/projects.html",
       "permanent": true
     },
@@ -347,4 +362,4 @@
       "permanent": true
     }
   ]
-} 
+}
