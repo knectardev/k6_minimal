@@ -9,6 +9,7 @@
     "optimize-images": "node scripts/optimize_images.js",
     "optimize-images-python": "python scripts/optimize_conservative.py",
     "test-optimization": "python scripts/test_conservative.py",
+    "generate-sitemap": "node scripts/generate_sitemap.js",
     "deploy": "git push origin main"
   },
   "keywords": [
