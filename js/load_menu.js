@@ -240,54 +240,14 @@
 
   async function fetchMenuData() {
     try {
-      // Check if we have valid cached data
-      const cached = cacheManager.getCache();
-      const serverVersion = await cacheManager.getServerVersion();
-      
-      // Use cached data if available and not expired
-      if (cached && cached.timestamp && (Date.now() - cached.timestamp) < CACHE_DURATION) {
-          // console.log('Using cached menu data');
-          return cached.data;
-      }
-      
-      // Fetch fresh data from server
-      // console.log('Fetching fresh menu data from server');
-      const response = await fetch(MENU_JSON, { 
-        cache: 'no-cache',
-        headers: {
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache'
-        }
-      });
-      
+      // Rely on HTTP caching/CDN: fetch JSON without cache-busting
+      const response = await fetch(MENU_JSON);
       if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
-      const data = await response.json();
-      
-      // Cache the fresh data
-      const cacheData = {
-          data: data,
-          timestamp: Date.now()
-      };
-      localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
-      
-      return data;
+      return await response.json();
     } catch (error) {
-      // console.log('Server unavailable, using cached data');
-      
-      // Fallback to cached data even if expired
-      const cachedData = localStorage.getItem(CACHE_KEY);
-      if (cachedData) {
-          try {
-              const parsed = JSON.parse(cachedData);
-              return parsed.data;
-          } catch (e) {
-              // Invalid cached data, continue to fallback
-          }
-      }
-      
+      // Network failure fallback
       return window.__MENU_FALLBACK;
     }
   }
@@ -446,8 +406,12 @@
       githubForkScript.src = 'js/github_fork.js';
       document.body.appendChild(githubForkScript);
       
-      const evt = new Event('DOMContentLoaded', { bubbles: true, cancelable: true });
-      document.dispatchEvent(evt);
+      // Only dispatch a synthetic DOMContentLoaded if the DOM is already parsed.
+      // If the document is still loading, allow the real DOMContentLoaded to fire naturally.
+      if (document.readyState !== 'loading') {
+        const evt = new Event('DOMContentLoaded', { bubbles: true, cancelable: true });
+        document.dispatchEvent(evt);
+      }
     };
   });
 })();

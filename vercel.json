@@ -361,5 +361,32 @@
       "destination": "/",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/data/menu.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800" },
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/js/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, s-maxage=31536000, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/css/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, s-maxage=31536000, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/(assets|project_images|project_tiles)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, s-maxage=31536000" }
+      ]
+    }
   ]
 }
