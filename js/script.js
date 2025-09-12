@@ -505,10 +505,12 @@ function injectPageData() {
     // ------------ Breadcrumb parent link -------------
     const crumbParent = document.getElementById('crumbCategoryLink');
     if (crumbParent) {
-        // determine parentLabel (if not already cached)
-        let parentLabel = null;
-        const lookup = findBySlug(window.__MENU_DATA, pageData.slug || '', null) || findPageData(window.__MENU_DATA, pageData.url || '', null);
-        if (lookup) parentLabel = lookup.parentLabel;
+        // Prefer parent from earlier slug lookup; fall back to URL-based lookup
+        let parentLabel = (result && result.parentLabel) || null;
+        if (!parentLabel) {
+            const lookup = findPageData(window.__MENU_DATA, pageData.url || '', null);
+            if (lookup) parentLabel = lookup.parentLabel;
+        }
 
         if (parentLabel) {
             crumbParent.textContent = parentLabel;
@@ -522,7 +524,18 @@ function injectPageData() {
     // Project-detail template
     const projectInfo = document.querySelector('.project-info');
     if (projectInfo) {
+        // Preserve any existing mobile slideshow so it isn't wiped by innerHTML
+        const preservedMobileGallery = projectInfo.querySelector('.mobile-gallery');
         projectInfo.innerHTML = buildProjectInfoHTML(pageData);
+        if (preservedMobileGallery) {
+            // Reinsert after the metadata list if present, else prepend
+            const metaList = projectInfo.querySelector('ul');
+            if (metaList && metaList.parentNode === projectInfo) {
+                metaList.after(preservedMobileGallery);
+            } else {
+                projectInfo.prepend(preservedMobileGallery);
+            }
+        }
     }
 
 
@@ -544,7 +557,10 @@ function findPageData(arr, path, parentLabel = null) {
 
 function findBySlug(arr, slug, parentLabel = null) {
     for (const entry of arr) {
-        if (entry.slug && entry.slug === slug) return { item: entry, parentLabel };
+        // Match either an explicit slug property OR the slug embedded in the URL param (?item=<slug>)
+        const hasSlugMatch = entry.slug && entry.slug === slug;
+        const hasUrlSlugMatch = entry.url && typeof entry.url === 'string' && entry.url.includes(slug);
+        if (hasSlugMatch || hasUrlSlugMatch) return { item: entry, parentLabel };
         if (entry.submenu) {
             const res = findBySlug(entry.submenu, slug, entry.label);
             if (res) return res;
