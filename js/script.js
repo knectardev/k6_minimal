@@ -725,21 +725,8 @@ function buildProjectInfoHTML(data) {
     // Description: static text only
     if (data.pageSummary) {
         const cleanedContent = cleanLegacyContent(data.pageSummary);
-        // Check if content is long enough to warrant read more functionality
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = cleanedContent;
-        const textLength = tempDiv.textContent || tempDiv.innerText || '';
-        
-        if (textLength.length > 800) { // Only add read more for long content
-            html += `
-                <div class="description read-more-container collapsed">
-                    <div class="read-more-content">${cleanedContent}</div>
-                    <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
-                </div>
-            `;
-        } else {
-            html += `<div class="description">${cleanedContent}</div>`;
-        }
+        // Always show full content without Read More functionality
+        html += `<div class="description">${cleanedContent}</div>`;
     }
     if (data.pageBody) html += `<div class="dynamic-body">${data.pageBody}</div>`;
     
@@ -806,39 +793,4 @@ function buildProjectInfoHTML(data) {
 
 
 
-// Read More functionality
-function toggleReadMore(button) {
-    const container = button.closest('.read-more-container');
-    if (!container) return;
-    
-    const isCollapsed = container.classList.contains('collapsed');
-    
-    if (isCollapsed) {
-        // Start expansion animation
-        container.classList.add('expanding');
-        
-        // Small delay to start the button fade
-        setTimeout(() => {
-            container.classList.remove('collapsed');
-        }, 50);
-        
-        // Update button text and clean up after animation completes
-        setTimeout(() => {
-            button.textContent = 'Read Less';
-            container.classList.remove('expanding');
-        }, 650); // Slightly longer than CSS transition
-        
-        // Optional: Log to console for debugging
-        console.log('Read More clicked for:', window.location.pathname + window.location.search);
-    } else {
-        // Collapse content
-        container.classList.add('collapsed');
-        button.textContent = 'Read More';
-        
-        // Scroll back to the top of the content
-        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
-
-// Make toggleReadMore globally available
-window.toggleReadMore = toggleReadMore;
+// Read More functionality removed - content is now always fully displayed
