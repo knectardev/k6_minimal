@@ -227,7 +227,16 @@
 
         // Data-driven detail images logic (multiple images, random tilt)
         document.addEventListener('DOMContentLoaded', function() {
-            if (!window.__MENU_DATA) return;
+            // Wait for menu data to be available
+            function waitForMenuData() {
+                if (!window.__MENU_DATA) {
+                    setTimeout(waitForMenuData, 50);
+                    return;
+                }
+                processProjectData();
+            }
+            
+            function processProjectData() {
             const urlParams = new URLSearchParams(window.location.search);
             const slugParam = urlParams.get('item');
             let pageData;
@@ -417,6 +426,10 @@
             setTimeout(fixCodeBlockLineBreaks, 100);
             // Apply line height after content is loaded
             setTimeout(applyLineHeightToProjectInfo, 100);
+            }
+            
+            // Start waiting for menu data
+            waitForMenuData();
         });
 
         // Modal helper
