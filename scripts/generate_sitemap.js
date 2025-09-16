@@ -79,7 +79,7 @@ function getProjectSlugs() {
           if (slug) {
             projects.push({
               slug: slug,
-              url: item.url,
+              url: `/project/${slug}/`, // Use pretty URL instead of parameterized URL
               category: getProjectCategory(item)
             });
           }
@@ -165,7 +165,7 @@ function generateSitemap() {
   Object.entries(projectsByCategory).forEach(([category, categoryProjects]) => {
     const config = PROJECT_CATEGORIES[category] || { priority: '0.7', changefreq: 'monthly' };
     categoryProjects.forEach(project => {
-      const url = CONFIG.baseUrl + '/' + project.url;
+      const url = CONFIG.baseUrl + project.url;
       urls.push(generateUrlEntry(url, config.priority, config.changefreq));
     });
   });
