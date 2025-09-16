@@ -501,7 +501,12 @@ function injectPageData() {
     let result;
     if (slugParam) {
         result = findBySlug(window.__MENU_DATA, slugParam);
-        if (result) pageData = result.item;
+        if (result) {
+            pageData = result.item;
+            console.log('Found project data for slug:', slugParam, 'detailImages:', pageData.detailImages);
+        } else {
+            console.log('No project data found for slug:', slugParam);
+        }
     }
 
     if (!pageData) {
@@ -509,7 +514,12 @@ function injectPageData() {
         const res2 = findPageData(window.__MENU_DATA, pagePath);
         if (res2) pageData = res2.item;
     }
-    if (!pageData) return;
+    if (!pageData) {
+        console.log('No page data found, exiting injectPageData');
+        return;
+    }
+    
+    console.log('Injecting page data for project:', pageData.projectTitle);
 
     // Cover image if present
     const cover = document.querySelector('.project-gallery img[data-field="coverImage"]');

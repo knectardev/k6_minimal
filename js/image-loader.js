@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
             checkCount++;
             
             // Wait for menu data to be available (critical for page functionality)
+            console.log(`checkAndHideLoader check ${checkCount}: __MENU_DATA=${!!window.__MENU_DATA}, isHome=${isHome}, __HOME_MEDIA_READY=${!!window.__HOME_MEDIA_READY}`);
             if (window.__MENU_DATA && (!isHome || window.__HOME_MEDIA_READY)) {
+                console.log('Menu data available, hiding loader');
                 setTimeout(hideLoader, 200); // Small delay for smooth transition once everything important is ready
                 return; // Exit the function to prevent further checks
             } else if (checkCount > 60) { // Failsafe: hide after 3 seconds max (60 * 50ms)
