@@ -168,7 +168,7 @@
     })(window,document,'script','dataLayer','GTM-MQ8X9HLL');
     // End Google Tag Manager
 
-  const MENU_JSON = 'data/menu.json';
+  const MENU_JSON = '/data/menu.json';
   const CACHE_KEY = 'menu_json_cache';
   const CACHE_VERSION_KEY = 'menu_cache_version';
   const CACHE_TIMESTAMP_KEY = 'menu_cache_timestamp';
@@ -264,7 +264,7 @@
 
     const logo = document.createElement('div');
     logo.className = 'logo logo-desktop logo-active';
-    logo.innerHTML = '<a href="index.html"><img src="assets/logo.svg" class="logo-icon" alt="">KNECTAR</a>';
+    logo.innerHTML = '<a href="/index.html"><img src="/assets/logo.svg" class="logo-icon" alt="">KNECTAR</a>';
 
     const nav = document.createElement('nav');
     nav.className = 'main-nav';
@@ -424,12 +424,12 @@
   }).then(() => {
     // Load main site script
     const mainScript = document.createElement('script');
-    mainScript.src = 'js/script.js';
+    mainScript.src = '/js/script.js';
     document.body.appendChild(mainScript);
     mainScript.onload = () => {
       // Load GitHub fork button after main script
       const githubForkScript = document.createElement('script');
-      githubForkScript.src = 'js/github_fork.js';
+      githubForkScript.src = '/js/github_fork.js';
       document.body.appendChild(githubForkScript);
       
       // Only dispatch a synthetic DOMContentLoaded if the DOM is already parsed.
