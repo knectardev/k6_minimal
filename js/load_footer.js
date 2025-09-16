@@ -8,15 +8,8 @@
         
         try {
             // Determine the correct path based on current location
-            const currentPath = window.location.pathname;
-            let footerPath = 'includes/footer.html';
-            
-            // Adjust path for subdirectories
-            if (currentPath.includes('/resume/')) {
-                footerPath = '../includes/footer.html';
-            } else if (currentPath.includes('/projects/')) {
-                footerPath = '../../includes/footer.html';
-            }
+            // Always fetch footer from site root so it works under pretty URLs
+            const footerPath = '/includes/footer.html';
             
             const response = await fetch(footerPath);
             if (!response.ok) {
@@ -38,7 +31,7 @@
             footer.innerHTML = `
                 <div class="footer-content">
                     <div class="footer-right">
-                        <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
+                        <a href="/privacy-policy.html" class="privacy-link">Privacy Policy</a>
                         <span class="copyright">© 2025 Knectar Design Corp.</span>
                     </div>
                 </div>

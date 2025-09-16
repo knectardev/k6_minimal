@@ -55,7 +55,24 @@ function initProjects() {
 
     // Apply initial filter (from query-string or default value)
     const params = new URLSearchParams(window.location.search);
-    const initial = params.get('category');
+    let initial = params.get('category');
+    // Support pretty path /projects/<slug>/ → map to known labels
+    if (!initial) {
+        const m = window.location.pathname.match(/\/projects\/([^\/]+)\/?$/i);
+        if (m && m[1]) {
+            const slug = decodeURIComponent(m[1]);
+            // Map slug back to proper category label
+            const categoryMap = {
+                'higher-education': 'Higher Education',
+                'intranets-&-portals': 'Intranets & Portals',
+                'web-&-ios-apps': 'Web & iOS Apps',
+                'informational': 'Informational',
+                'e-commerce': 'E-Commerce',
+                'music-&-art': 'Music & Art'
+            };
+            initial = categoryMap[slug] || slug.replace(/-/g, ' ');
+        }
+    }
     if (initial) {
         filterSelect.value = initial;
     }
@@ -257,8 +274,26 @@ function initProjects() {
         animateVisibleTiles();
 
         // Update address bar without reloading page
-        const newUrl = `projects.html${queryString}`;
-        if (window.location.href.split('#')[0].split('?')[0].endsWith('projects.html')) {
+        // Prefer pretty path for category-only selections
+        let newUrl;
+        if (currentCat !== 'All' && (currentTech === 'All')) {
+            // Map category label to proper slug
+            const categoryToSlug = {
+                'Higher Education': 'higher-education',
+                'Intranets & Portals': 'intranets-&-portals',
+                'Web & iOS Apps': 'web-&-ios-apps',
+                'Informational': 'informational',
+                'E-Commerce': 'e-commerce',
+                'Music & Art': 'music-&-art'
+            };
+            const slug = categoryToSlug[currentCat] || currentCat.toLowerCase().replace(/\s+/g, '-');
+            newUrl = `/projects/${encodeURIComponent(slug)}/`;
+        } else {
+            newUrl = `/projects.html${queryString}`;
+        }
+        // Update URL if we're on the projects page (either projects.html or pretty URL)
+        const currentPath = window.location.pathname;
+        if (currentPath === '/projects.html' || currentPath.startsWith('/projects/')) {
             // Preserve hash (if any)
             const hash = window.location.hash || '';
             history.replaceState(null, '', newUrl + hash);
@@ -268,14 +303,14 @@ function initProjects() {
         if (dropdownLabel) dropdownLabel.textContent = currentCat;
         if (dropdownIcon) {
             const iconMap = {
-                'Higher Education': 'assets/grad.svg',
-                'Intranets & Portals': 'assets/intranet.svg',
-                'Web & iOS Apps': 'assets/web.svg',
-                'Informational': 'assets/info.svg',
-                'E-Commerce': 'assets/money.svg',
+                'Higher Education': '/assets/grad.svg',
+                'Intranets & Portals': '/assets/intranet.svg',
+                'Web & iOS Apps': '/assets/web.svg',
+                'Informational': '/assets/info.svg',
+                'E-Commerce': '/assets/money.svg',
 
-                'Music & Art': 'assets/music.svg',
-                'All': 'assets/360.svg'
+                'Music & Art': '/assets/music.svg',
+                'All': '/assets/360.svg'
             };
             dropdownIcon.style.backgroundImage = iconMap[currentCat] ? `url('${iconMap[currentCat]}')` : 'none';
         }
@@ -345,6 +380,44 @@ function initProjects() {
 
     // Initial animation on page load
     animateVisibleTiles();
+
+    // Update canonical/social URLs to reflect current filter as canonicalized parameters
+    function updateCanonicalTags() {
+        const currentCat = filterSelect.value;
+        const currentTech = techFilterSelect ? techFilterSelect.value : 'All';
+        
+        // Use pretty URLs for category-only selections, query params for combined filters
+        let canonicalHref;
+        if (currentCat !== 'All' && currentTech === 'All') {
+            // Map category label to proper slug
+            const categoryToSlug = {
+                'Higher Education': 'higher-education',
+                'Intranets & Portals': 'intranets-&-portals',
+                'Web & iOS Apps': 'web-&-ios-apps',
+                'Informational': 'informational',
+                'E-Commerce': 'e-commerce',
+                'Music & Art': 'music-&-art'
+            };
+            const slug = categoryToSlug[currentCat] || currentCat.toLowerCase().replace(/\s+/g, '-');
+            canonicalHref = `${window.location.origin}/projects/${encodeURIComponent(slug)}/`;
+        } else {
+            const queryParts = [];
+            if (currentCat !== 'All') queryParts.push(`category=${encodeURIComponent(currentCat)}`);
+            if (currentTech !== 'All') queryParts.push(`technology=${encodeURIComponent(currentTech)}`);
+            const qs = queryParts.length ? `?${queryParts.join('&')}` : '';
+            canonicalHref = `${window.location.origin}/projects.html${qs}`;
+        }
+        
+        const can = document.getElementById('canonical-link');
+        if (can) can.setAttribute('href', canonicalHref);
+        const og = document.getElementById('og-url');
+        if (og) og.setAttribute('content', canonicalHref);
+        const tw = document.getElementById('twitter-url');
+        if (tw) tw.setAttribute('content', canonicalHref);
+    }
+    updateCanonicalTags();
+    filterSelect.addEventListener('change', updateCanonicalTags);
+    if (techFilterSelect) techFilterSelect.addEventListener('change', updateCanonicalTags);
 }
 
 // If script is loaded after DOMContentLoaded, call immediately
@@ -395,21 +468,29 @@ function buildTilesFromData(menu) {
         }
         article.dataset.technology = canonicalList.join('|');
 
-        // link
-        const link = item.url;
+        // link – prefer pretty path /project/<slug>/ if item.url uses query param
+        let link = item.url || '#';
+        if (typeof link === 'string' && link.includes('project.html?item=')) {
+            const m = link.match(/project\.html\?item=([^&#]+)/i);
+            if (m && m[1]) {
+                const slug = decodeURIComponent(m[1]);
+                link = `/project/${slug}/`;
+            }
+        }
 
         // --- Video or Image logic with loading states ---
         let mediaHTML = '';
         if (item.coverImage && item.coverImage.match(/\.mp4$/i)) {
-            mediaHTML = `<video src="${item.coverImage}" autoplay loop muted playsinline style="width:100%;height:200px;object-fit:cover;border-radius:var(--border-radius) 0 0 var(--border-radius);"></video>`;
+            const videoSrc = item.coverImage.startsWith('/') ? item.coverImage : '/' + item.coverImage;
+            mediaHTML = `<video src="${videoSrc}" autoplay loop muted playsinline style="width:100%;height:200px;object-fit:cover;border-radius:var(--border-radius) 0 0 var(--border-radius);"></video>`;
         } else {
-            const imageSrc = item.coverImage || 'project_tiles/sample_tile1.png';
+            const imageSrc = item.coverImage || '/project_tiles/sample_tile1.png';
             const imageId = `img-${idx}`;
             mediaHTML = `
                 <div class="image-container" style="position: relative; width: 100%; height: 200px;">
                     <div class="image-skeleton" style="width: 100%; height: 200px; position: absolute; top: 0; left: 0;"></div>
                     <img id="${imageId}" 
-                         src="${imageSrc}" 
+                         src="${imageSrc.startsWith('/') ? imageSrc : '/' + imageSrc}" 
                          alt="${item.projectTitle || item.label} image" 
                          loading="lazy"
                          class="fade-in-image"

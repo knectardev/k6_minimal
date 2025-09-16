@@ -168,7 +168,7 @@
     })(window,document,'script','dataLayer','GTM-MQ8X9HLL');
     // End Google Tag Manager
 
-  const MENU_JSON = 'data/menu.json';
+  const MENU_JSON = '/data/menu.json';
   const CACHE_KEY = 'menu_json_cache';
   const CACHE_VERSION_KEY = 'menu_cache_version';
   const CACHE_TIMESTAMP_KEY = 'menu_cache_timestamp';
@@ -254,6 +254,14 @@
 
 
 
+  function runWhenBodyReady(fn) {
+    if (document.body) {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn, { once: true });
+    }
+  }
+
   function buildMenu(menu) {
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
@@ -264,7 +272,7 @@
 
     const logo = document.createElement('div');
     logo.className = 'logo logo-desktop logo-active';
-    logo.innerHTML = '<a href="index.html"><img src="assets/logo.svg" class="logo-icon" alt="">KNECTAR</a>';
+    logo.innerHTML = '<a href="/index.html"><img src="/assets/logo.svg" class="logo-icon" alt="">KNECTAR</a>';
 
     const nav = document.createElement('nav');
     nav.className = 'main-nav';
@@ -276,8 +284,10 @@
     aside.appendChild(logo);
     aside.appendChild(nav);
 
-    document.body.insertAdjacentElement('afterbegin', overlay);
-    document.body.insertAdjacentElement('afterbegin', aside);
+    runWhenBodyReady(() => {
+      document.body.insertAdjacentElement('afterbegin', overlay);
+      document.body.insertAdjacentElement('afterbegin', aside);
+    });
 
     // Highlight current page if it exists in the menu
     setActiveFromURL();
@@ -346,13 +356,23 @@
     if (item.url) {
       a.href = item.url;
     } else if (item.submenu) {
-      // Parent menu items with submenus should link to their category page
-      a.href = `projects.html?category=${encodeURIComponent(item.label)}`;
+      // Parent menu items with submenus should link to their category page (pretty path)
+      // Map category label to proper slug (same as in projects.js)
+      const categoryToSlug = {
+        'Higher Education': 'higher-education',
+        'Intranets & Portals': 'intranets-&-portals',
+        'Web & iOS Apps': 'web-&-ios-apps',
+        'Informational': 'informational',
+        'E-Commerce': 'e-commerce',
+        'Music & Art': 'music-&-art'
+      };
+      const slug = categoryToSlug[item.label] || (item.label || '').toLowerCase().replace(/\s+/g, '-');
+      a.href = `/projects/${encodeURIComponent(slug)}/`;
     } else {
       a.href = '#';
     }
     
-    a.innerHTML = `<img src="assets/${item.icon}" class="nav-icon" alt="">${item.label.toUpperCase()}`;
+    a.innerHTML = `<img src="/assets/${item.icon}" class="nav-icon" alt="">${item.label.toUpperCase()}`;
 
     if (item.submenu) a.classList.add('menu-parent');
     li.appendChild(a);
@@ -365,7 +385,13 @@
         if (sub.label === 'more...') return; // old placeholders ignored
         const subLi = document.createElement('li');
         const subA = document.createElement('a');
-        subA.href = sub.url;
+        // Prefer pretty path if submenu item is a project link
+        if (sub.url && typeof sub.url === 'string' && sub.url.includes('project.html?item=')) {
+          const m = sub.url.match(/project\.html\?item=([^&#]+)/i);
+          subA.href = m && m[1] ? `/project/${decodeURIComponent(m[1])}/` : sub.url;
+        } else {
+          subA.href = sub.url;
+        }
         // Use menuDisplayName if present, else label, else projectTitle
         subA.textContent = sub.menuDisplayName || sub.label || sub.projectTitle || '';
         subLi.appendChild(subA);
@@ -376,7 +402,17 @@
       if (item.more) {
         const moreLi = document.createElement('li');
         const moreA = document.createElement('a');
-        moreA.href = `projects.html?category=${encodeURIComponent(item.label)}`;
+        // Map category label to proper slug (same as in projects.js)
+        const categoryToSlug = {
+          'Higher Education': 'higher-education',
+          'Intranets & Portals': 'intranets-&-portals',
+          'Web & iOS Apps': 'web-&-ios-apps',
+          'Informational': 'informational',
+          'E-Commerce': 'e-commerce',
+          'Music & Art': 'music-&-art'
+        };
+        const catSlug = categoryToSlug[item.label] || (item.label || '').toLowerCase().replace(/\s+/g, '-');
+        moreA.href = `/projects/${encodeURIComponent(catSlug)}/`;
         moreA.textContent = 'more...';
         moreLi.appendChild(moreA);
         subUl.appendChild(moreLi);
@@ -396,15 +432,15 @@
     window.__MENU_DATA = menuData;
     buildMenu(menuData);
   }).then(() => {
-    // Load main site script
+    // Load main site script (root-absolute so it works under pretty URLs)
     const mainScript = document.createElement('script');
-    mainScript.src = 'js/script.js';
-    document.body.appendChild(mainScript);
+    mainScript.src = '/js/script.js';
+    runWhenBodyReady(() => document.body.appendChild(mainScript));
     mainScript.onload = () => {
       // Load GitHub fork button after main script
       const githubForkScript = document.createElement('script');
-      githubForkScript.src = 'js/github_fork.js';
-      document.body.appendChild(githubForkScript);
+      githubForkScript.src = '/js/github_fork.js';
+      runWhenBodyReady(() => document.body.appendChild(githubForkScript));
       
       // Only dispatch a synthetic DOMContentLoaded if the DOM is already parsed.
       // If the document is still loading, allow the real DOMContentLoaded to fire naturally.

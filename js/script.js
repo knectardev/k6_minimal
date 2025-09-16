@@ -78,7 +78,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (crumb) crumb.textContent = chosen;
                 }
             } else {
-                window.location.href = `projects.html?category=${encodeURIComponent(chosen)}`;
+                // Use pretty URL for category navigation
+                const categoryToSlug = {
+                    'Higher Education': 'higher-education',
+                    'Intranets & Portals': 'intranets-&-portals',
+                    'Web & iOS Apps': 'web-&-ios-apps',
+                    'Informational': 'informational',
+                    'E-Commerce': 'e-commerce',
+                    'Music & Art': 'music-&-art'
+                };
+                const slug = categoryToSlug[chosen] || chosen.toLowerCase().replace(/\s+/g, '-');
+                window.location.href = `/projects/${encodeURIComponent(slug)}/`;
             }
         });
     });
@@ -469,7 +479,12 @@ function injectPageData() {
     if (!window.__MENU_DATA) return;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const slugParam = urlParams.get('item');
+    // Support both query param (?item=slug) and pretty path (/project/slug/)
+    let slugParam = urlParams.get('item');
+    if (!slugParam) {
+        const m = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+        if (m && m[1]) slugParam = decodeURIComponent(m[1]);
+    }
 
     let pageData;
     let result;
@@ -514,7 +529,9 @@ function injectPageData() {
 
         if (parentLabel) {
             crumbParent.textContent = parentLabel;
-            crumbParent.href = `projects.html?category=${encodeURIComponent(parentLabel)}`;
+            // Link to pretty path
+            const slug = parentLabel.toLowerCase().replace(/\s+/g, '-');
+            crumbParent.href = `/projects/${encodeURIComponent(slug)}/`;
         } else {
             // hide dangling separator if no parent
             crumbParent.remove();
@@ -699,21 +716,7 @@ function buildProjectInfoHTML(data) {
     // Description: static text only
     if (data.pageSummary) {
         const cleanedContent = cleanLegacyContent(data.pageSummary);
-        // Check if content is long enough to warrant read more functionality
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = cleanedContent;
-        const textLength = tempDiv.textContent || tempDiv.innerText || '';
-        
-        if (textLength.length > 800) { // Only add read more for long content
-            html += `
-                <div class="description read-more-container collapsed">
-                    <div class="read-more-content">${cleanedContent}</div>
-                    <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
-                </div>
-            `;
-        } else {
-            html += `<div class="description">${cleanedContent}</div>`;
-        }
+        html += `<div class="description">${cleanedContent}</div>`;
     }
     if (data.pageBody) html += `<div class="dynamic-body">${data.pageBody}</div>`;
     
@@ -780,39 +783,3 @@ function buildProjectInfoHTML(data) {
 
 
 
-// Read More functionality
-function toggleReadMore(button) {
-    const container = button.closest('.read-more-container');
-    if (!container) return;
-    
-    const isCollapsed = container.classList.contains('collapsed');
-    
-    if (isCollapsed) {
-        // Start expansion animation
-        container.classList.add('expanding');
-        
-        // Small delay to start the button fade
-        setTimeout(() => {
-            container.classList.remove('collapsed');
-        }, 50);
-        
-        // Update button text and clean up after animation completes
-        setTimeout(() => {
-            button.textContent = 'Read Less';
-            container.classList.remove('expanding');
-        }, 650); // Slightly longer than CSS transition
-        
-        // Optional: Log to console for debugging
-        console.log('Read More clicked for:', window.location.pathname + window.location.search);
-    } else {
-        // Collapse content
-        container.classList.add('collapsed');
-        button.textContent = 'Read More';
-        
-        // Scroll back to the top of the content
-        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
-
-// Make toggleReadMore globally available
-window.toggleReadMore = toggleReadMore;

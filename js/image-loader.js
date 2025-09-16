@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Preload only essential images (logo only)
 function preloadCriticalImages() {
     const criticalImages = [
-        'assets/logo.svg'
+        '/assets/logo.svg'
     ];
     
     criticalImages.forEach(src => {

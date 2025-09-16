@@ -8,6 +8,12 @@ Disallow: /api/
 Disallow: /data/
 Disallow: /scripts/
 
+# Avoid crawling duplicate listing pages created by filter parameters
+Disallow: /*?category=
+Disallow: /*&category=
+Disallow: /*?technology=
+Disallow: /*&technology=
+
 # Allow important files
 Allow: /sitemap.xml
 Allow: /assets/

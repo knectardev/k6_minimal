@@ -30,9 +30,15 @@ const PAGE_CONFIG = {
   'projects.html': { priority: '0.9', changefreq: 'weekly' },
   'lines.html': { priority: '0.6', changefreq: 'monthly' },
   'contact.html': { priority: '0.8', changefreq: 'monthly' },
-  'contact_confirmation.html': { priority: '0.3', changefreq: 'yearly' },
+  // Do not include contact_confirmation or other noindex/utility pages
   'privacy-policy.html': { priority: '0.3', changefreq: 'yearly' },
   'resume/resume_static.html': { priority: '0.7', changefreq: 'monthly' }
+};
+
+// Pretty URL mappings for main pages
+const PRETTY_URLS = {
+  'about.html': '/about/',
+  'services.html': '/services/'
 };
 
 // Project categories and their priorities
@@ -73,7 +79,7 @@ function getProjectSlugs() {
           if (slug) {
             projects.push({
               slug: slug,
-              url: item.url,
+              url: `/project/${slug}/`,
               category: getProjectCategory(item)
             });
           }
@@ -131,7 +137,14 @@ function generateSitemap() {
   // Add main site pages
   console.log('Adding main site pages...');
   Object.entries(PAGE_CONFIG).forEach(([file, config]) => {
-    const url = file === 'index.html' ? CONFIG.baseUrl + '/' : CONFIG.baseUrl + '/' + file;
+    let url;
+    if (file === 'index.html') {
+      url = CONFIG.baseUrl + '/';
+    } else if (PRETTY_URLS[file]) {
+      url = CONFIG.baseUrl + PRETTY_URLS[file];
+    } else {
+      url = CONFIG.baseUrl + '/' + file;
+    }
     urls.push(generateUrlEntry(url, config.priority, config.changefreq));
   });
   
@@ -148,11 +161,23 @@ function generateSitemap() {
     projectsByCategory[project.category].push(project);
   });
   
-  // Add projects organized by category
+  // Add projects organized by category using pretty canonical URLs
   Object.entries(projectsByCategory).forEach(([category, categoryProjects]) => {
     const config = PROJECT_CATEGORIES[category] || { priority: '0.7', changefreq: 'monthly' };
+    // Add category landing page canonical
+    // Map category label to proper slug (same as in projects.js)
+    const categoryToSlug = {
+      'Higher Education': 'higher-education',
+      'Intranets & Portals': 'intranets-&-portals',
+      'Web & iOS Apps': 'web-&-ios-apps',
+      'Informational': 'informational',
+      'E-Commerce': 'e-commerce',
+      'Music & Art': 'music-&-art'
+    };
+    const catSlug = categoryToSlug[category] || category.toLowerCase().replace(/\s+/g, '-');
+    urls.push(generateUrlEntry(`${CONFIG.baseUrl}/projects/${encodeURIComponent(catSlug)}/`, config.priority, config.changefreq));
     categoryProjects.forEach(project => {
-      const url = CONFIG.baseUrl + '/' + project.url;
+      const url = CONFIG.baseUrl + project.url; // project.url already starts with /
       urls.push(generateUrlEntry(url, config.priority, config.changefreq));
     });
   });
