@@ -7,16 +7,8 @@
         }
         
         try {
-            // Determine the correct path based on current location
-            const currentPath = window.location.pathname;
-            let footerPath = 'includes/footer.html';
-            
-            // Adjust path for subdirectories
-            if (currentPath.includes('/resume/')) {
-                footerPath = '../includes/footer.html';
-            } else if (currentPath.includes('/projects/')) {
-                footerPath = '../../includes/footer.html';
-            }
+            // Use root-absolute path for footer
+            const footerPath = '/includes/footer.html';
             
             const response = await fetch(footerPath);
             if (!response.ok) {

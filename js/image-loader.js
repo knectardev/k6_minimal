@@ -37,9 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Wait for menu data to be available (critical for page functionality)
             if (window.__MENU_DATA && (!isHome || window.__HOME_MEDIA_READY)) {
                 setTimeout(hideLoader, 200); // Small delay for smooth transition once everything important is ready
+                return; // Exit the function to prevent further checks
             } else if (checkCount > 60) { // Failsafe: hide after 3 seconds max (60 * 50ms)
                 console.warn('Menu data not loaded, hiding loader anyway');
                 hideLoader();
+                return; // Exit the function to prevent further checks
             } else {
                 setTimeout(checkAndHideLoader, 50); // Check again soon
             }
@@ -166,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Preload only essential images (logo only)
 function preloadCriticalImages() {
     const criticalImages = [
-        'assets/logo.svg'
+        '/assets/logo.svg'
     ];
     
     criticalImages.forEach(src => {

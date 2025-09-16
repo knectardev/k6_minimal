@@ -276,8 +276,21 @@
     aside.appendChild(logo);
     aside.appendChild(nav);
 
-    document.body.insertAdjacentElement('afterbegin', overlay);
-    document.body.insertAdjacentElement('afterbegin', aside);
+    // Ensure document.body exists before inserting elements
+    if (document.body) {
+      document.body.insertAdjacentElement('afterbegin', overlay);
+      document.body.insertAdjacentElement('afterbegin', aside);
+    } else {
+      // If body doesn't exist yet, wait for it
+      const observer = new MutationObserver((mutations, obs) => {
+        if (document.body) {
+          document.body.insertAdjacentElement('afterbegin', overlay);
+          document.body.insertAdjacentElement('afterbegin', aside);
+          obs.disconnect();
+        }
+      });
+      observer.observe(document.documentElement, { childList: true });
+    }
 
     // Highlight current page if it exists in the menu
     setActiveFromURL();
@@ -425,12 +438,27 @@
     // Load main site script
     const mainScript = document.createElement('script');
     mainScript.src = '/js/script.js';
-    document.body.appendChild(mainScript);
+    // Ensure document.body exists before appending scripts
+    if (document.body) {
+      document.body.appendChild(mainScript);
+    } else {
+      // Wait for body to be ready
+      const waitForBody = () => {
+        if (document.body) {
+          document.body.appendChild(mainScript);
+        } else {
+          setTimeout(waitForBody, 10);
+        }
+      };
+      waitForBody();
+    }
     mainScript.onload = () => {
       // Load GitHub fork button after main script
       const githubForkScript = document.createElement('script');
       githubForkScript.src = '/js/github_fork.js';
-      document.body.appendChild(githubForkScript);
+      if (document.body) {
+        document.body.appendChild(githubForkScript);
+      }
       
       // Only dispatch a synthetic DOMContentLoaded if the DOM is already parsed.
       // If the document is still loading, allow the real DOMContentLoaded to fire naturally.
