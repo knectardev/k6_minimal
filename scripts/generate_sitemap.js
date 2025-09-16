@@ -170,6 +170,24 @@ function generateSitemap() {
     });
   });
   
+  // Add category pages
+  const categoryToSlug = {
+    'Higher Education': 'higher-education',
+    'Intranets & Portals': 'intranets-&-portals',
+    'Web & iOS Apps': 'web-&-ios-apps',
+    'Informational': 'informational',
+    'E-Commerce': 'e-commerce',
+    'Music & Art': 'music-&-art'
+  };
+  
+  Object.entries(PROJECT_CATEGORIES).forEach(([categoryLabel, config]) => {
+    if (categoryLabel !== 'All') { // Exclude 'All' category from sitemap
+      const slug = categoryToSlug[categoryLabel] || categoryLabel.toLowerCase().replace(/\s+/g, '-');
+      const url = `${CONFIG.baseUrl}/projects/${encodeURIComponent(slug)}/`;
+      urls.push(generateUrlEntry(url, config.priority, config.changefreq));
+    }
+  });
+  
   // Generate final XML
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
