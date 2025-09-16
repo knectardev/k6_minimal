@@ -240,13 +240,18 @@
 
   async function fetchMenuData() {
     try {
+      console.log('Fetching menu data from:', MENU_JSON);
       // Rely on HTTP caching/CDN: fetch JSON without cache-busting
       const response = await fetch(MENU_JSON);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      return await response.json();
+      const data = await response.json();
+      console.log('Menu data loaded successfully, items count:', data.length);
+      return data;
     } catch (error) {
+      console.error('Failed to fetch menu data:', error);
+      console.log('Using fallback data');
       // Network failure fallback
       return window.__MENU_FALLBACK;
     }

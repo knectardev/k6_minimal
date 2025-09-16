@@ -476,7 +476,12 @@ document.addEventListener('DOMContentLoaded', () => {
 ============================================================= */
 
 function injectPageData() {
-    if (!window.__MENU_DATA) return;
+    if (!window.__MENU_DATA) {
+        console.log('No menu data available yet');
+        return;
+    }
+
+    console.log('Menu data available, items count:', window.__MENU_DATA.length);
 
     const urlParams = new URLSearchParams(window.location.search);
     let slugParam = urlParams.get('item');
@@ -486,7 +491,10 @@ function injectPageData() {
         const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
         if (pathMatch && pathMatch[1]) {
             slugParam = decodeURIComponent(pathMatch[1]);
+            console.log('Extracted slug from pretty URL:', slugParam);
         }
+    } else {
+        console.log('Found slug from query param:', slugParam);
     }
 
     let pageData;
