@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Detect if we are on the home page (index.html or root).
-        const isHome = /(?:^|\/)(index\.html)?$/.test(window.location.pathname);
+        const isHome = /^\/?(index\.html)?$/.test(window.location.pathname);
 
         // Hide loader after DOM is ready and menu is loaded (much faster than waiting for all images)
         let checkCount = 0;
