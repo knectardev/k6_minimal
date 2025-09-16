@@ -238,7 +238,19 @@
             
             function processProjectData() {
             const urlParams = new URLSearchParams(window.location.search);
-            const slugParam = urlParams.get('item');
+            let slugParam = urlParams.get('item');
+            
+            // If no query param, try to extract slug from pretty URL path
+            if (!slugParam) {
+                const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+                if (pathMatch && pathMatch[1]) {
+                    slugParam = decodeURIComponent(pathMatch[1]);
+                    console.log('project.html inline script - extracted slug from pretty URL:', slugParam);
+                }
+            } else {
+                console.log('project.html inline script - found slug from query param:', slugParam);
+            }
+            
             let pageData;
             if (slugParam) {
                 const findBySlug = (arr, slug) => {
