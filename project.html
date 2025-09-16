@@ -257,7 +257,9 @@
                 pageData.detailImages.forEach((src, i) => {
                     const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
                     const media = document.createElement(isVideo ? 'video' : 'img');
-                    media.src = src;
+                    // Normalize image paths to be root-absolute for pretty URL compatibility
+                    const normalizedSrc = src.startsWith('/') ? src : '/' + src;
+                    media.src = normalizedSrc;
                     if (isVideo) {
                         media.muted = true;
                         media.loop = true;
@@ -325,7 +327,9 @@
                         mobileGallery.innerHTML = '';
                         const isVid = /\.(mp4|webm|ogg)$/i.test(pageData.detailImages[idx]);
                         const media = document.createElement(isVid ? 'video' : 'img');
-                        media.src = pageData.detailImages[idx];
+                        // Normalize image paths to be root-absolute for pretty URL compatibility
+                        const normalizedSrc = pageData.detailImages[idx].startsWith('/') ? pageData.detailImages[idx] : '/' + pageData.detailImages[idx];
+                        media.src = normalizedSrc;
                         if (isVid) {
                             media.playsInline = true;
                             media.autoplay = true;

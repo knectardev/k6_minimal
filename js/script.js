@@ -513,7 +513,11 @@ function injectPageData() {
 
     // Cover image if present
     const cover = document.querySelector('.project-gallery img[data-field="coverImage"]');
-    if (cover && pageData.coverImage) cover.src = pageData.coverImage;
+    if (cover && pageData.coverImage) {
+        // Normalize cover image path to be root-absolute for pretty URL compatibility
+        const normalizedCoverSrc = pageData.coverImage.startsWith('/') ? pageData.coverImage : '/' + pageData.coverImage;
+        cover.src = normalizedCoverSrc;
+    }
     
     // Generic attribute replacement via [data-field]
     document.querySelectorAll('[data-field]').forEach(el => {
