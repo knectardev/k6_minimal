@@ -243,6 +243,7 @@
                     return null;
                 };
                 pageData = findBySlug(window.__MENU_DATA, slugParam);
+                console.log('project.html inline script - pageData found:', !!pageData, 'detailImages:', pageData?.detailImages);
                 // Expose images for modal
                 window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
             }
@@ -253,6 +254,7 @@
             const gallery = document.querySelector('.project-gallery');
             if (gallery) gallery.innerHTML = '';
             if (pageData && Array.isArray(pageData.detailImages)) {
+                console.log('project.html - populating gallery with', pageData.detailImages.length, 'images');
                 window.__DETAIL_IMAGES = pageData.detailImages;
                 pageData.detailImages.forEach((src, i) => {
                     const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
