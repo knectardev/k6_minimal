@@ -35,6 +35,12 @@ const PAGE_CONFIG = {
   'resume/resume_static.html': { priority: '0.7', changefreq: 'monthly' }
 };
 
+// Pretty URL mappings for main pages
+const PRETTY_URLS = {
+  'about.html': '/about/',
+  'services.html': '/services/'
+};
+
 // Project categories and their priorities
 const PROJECT_CATEGORIES = {
   'Higher Education': { priority: '0.8', changefreq: 'monthly' },
@@ -131,7 +137,14 @@ function generateSitemap() {
   // Add main site pages
   console.log('Adding main site pages...');
   Object.entries(PAGE_CONFIG).forEach(([file, config]) => {
-    const url = file === 'index.html' ? CONFIG.baseUrl + '/' : CONFIG.baseUrl + '/' + file;
+    let url;
+    if (file === 'index.html') {
+      url = CONFIG.baseUrl + '/';
+    } else if (PRETTY_URLS[file]) {
+      url = CONFIG.baseUrl + PRETTY_URLS[file];
+    } else {
+      url = CONFIG.baseUrl + '/' + file;
+    }
     urls.push(generateUrlEntry(url, config.priority, config.changefreq));
   });
   

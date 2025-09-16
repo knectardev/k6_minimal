@@ -20,6 +20,36 @@ app.use((req, res, next) => {
 // Middleware to parse JSON bodies with size limit
 app.use(express.json({ limit: '1mb' }));
 
+// Pretty URL routes for local development (e.g., /project/<slug>/)
+app.get('/project/:slug', (req, res) => {
+  res.sendFile(path.join(__dirname, 'project.html'));
+});
+app.get('/project/:slug/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'project.html'));
+});
+
+// Pretty routes for project category listing: /projects/<slug>/
+app.get('/projects/:cat', (req, res) => {
+  res.sendFile(path.join(__dirname, 'projects.html'));
+});
+app.get('/projects/:cat/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'projects.html'));
+});
+
+// Pretty routes for about and services pages
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+app.get('/about/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+app.get('/services', (req, res) => {
+  res.sendFile(path.join(__dirname, 'services.html'));
+});
+app.get('/services/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'services.html'));
+});
+
 // Serve static files (your site)
 app.use(express.static(__dirname));
 
