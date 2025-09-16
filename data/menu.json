@@ -2,13 +2,13 @@
   {
     "label": "About",
     "icon": "about.svg",
-    "url": "about.html",
+    "url": "/about/",
     "more": 0
   },
   {
     "label": "Services",
     "icon": "tools.svg",
-    "url": "services.html",
+    "url": "/services/",
     "more": 0
   },
   {
@@ -1008,13 +1008,13 @@
   {
     "label": "Resume",
     "icon": "work.svg",
-    "url": "resume/resume_static.html",
+    "url": "/resume/resume_static.html",
     "more": 0
   },
   {
     "label": "Contact",
     "icon": "phone.svg",
-    "url": "contact.html",
+    "url": "/contact.html",
     "more": 0
   }
 ]

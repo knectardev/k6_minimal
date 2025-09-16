@@ -78,7 +78,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (crumb) crumb.textContent = chosen;
                 }
             } else {
-                window.location.href = `projects.html?category=${encodeURIComponent(chosen)}`;
+                // Use pretty URL for category navigation
+                const categoryToSlug = {
+                    'Higher Education': 'higher-education',
+                    'Intranets & Portals': 'intranets-&-portals',
+                    'Web & iOS Apps': 'web-&-ios-apps',
+                    'Informational': 'informational',
+                    'E-Commerce': 'e-commerce',
+                    'Music & Art': 'music-&-art'
+                };
+                const slug = categoryToSlug[chosen] || chosen.toLowerCase().replace(/\s+/g, '-');
+                window.location.href = `/projects/${encodeURIComponent(slug)}/`;
             }
         });
     });
