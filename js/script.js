@@ -479,7 +479,15 @@ function injectPageData() {
     if (!window.__MENU_DATA) return;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const slugParam = urlParams.get('item');
+    let slugParam = urlParams.get('item');
+
+    // If no query param, try to extract slug from pretty URL path
+    if (!slugParam) {
+        const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+        if (pathMatch && pathMatch[1]) {
+            slugParam = decodeURIComponent(pathMatch[1]);
+        }
+    }
 
     let pageData;
     let result;
