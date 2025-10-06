@@ -1,5 +1,39 @@
 {
   "version": 2,
+  "rewrites": [
+    {
+      "source": "/projects/:category",
+      "destination": "/projects.html"
+    },
+    {
+      "source": "/projects/:category/",
+      "destination": "/projects.html"
+    },
+    {
+      "source": "/project/:slug",
+      "destination": "/project.html"
+    },
+    {
+      "source": "/project/:slug/",
+      "destination": "/project.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/about/",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html"
+    },
+    {
+      "source": "/services/",
+      "destination": "/services.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/privacy-policy/",
