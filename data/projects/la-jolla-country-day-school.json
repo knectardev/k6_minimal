@@ -1,0 +1,19 @@
+{
+  "slug": "la-jolla-country-day-school",
+  "projectTitle": "La Jolla Country Day School",
+  "role": "Technical Lead, Developer",
+  "budget": "$25,000 - $50,000",
+  "technology": "WordPress",
+  "designPartner": "Verso Design",
+  "designPartnerUrl": "https://www.versodesign.co/",
+  "projectUrl": "https://www.ljcds.org/",
+  "project_haiku": "Young minds flourish here<br/>Ocean breeze carries new dreams<br/>Excellence takes root",
+  "project_footer_CTA": "Ready to cultivate excellence in your school's digital presence? Let's grow together.",
+  "pageSummary": "<p><b>What makes the school special</b><br> La Jolla Country Day School is an independent, college‑preparatory school serving about 1,175 students from age 3 through grade 12. The school prides itself on teaching students to think for themselves; it offers a balanced program enabling students to reach their potential as scholars, artists and athletes and values diversity <a href=\"https://idealist.org\" target=\"_blank\">idealist.org</a>.</p><p><b>Case study: LJCDS website with Verso Design</b><br> Verso Design is a woman‑owned studio that creates purposeful brands and designs grounded in truth <a href=\"https://versodesign.co\" target=\"_blank\">versodesign.co</a>. Working with Verso, we built a Drupal site that reflects La Jolla Country Day School's mission of nurturing well‑rounded learners. Our team structured the information architecture around the school's three divisions (lower, middle and upper schools) and added custom content types for academics, arts, athletics and community service. Verso created a warm, welcoming visual identity and wrote purpose‑driven messaging that celebrates independent thinking. We incorporated a customizable event calendar, faculty directory and admission inquiry forms. The collaboration produced a responsive site that conveys LJCDS's focus on balanced education and community values.</p>",
+  "coverImage": "project_tiles/lajolla.jpg",
+  "detailImages": [
+    "project_images/la-jolla-country-day-school_1.png",
+    "project_images/la-jolla-country-day-school_2.png",
+    "project_images/la-jolla-country-day-school_3.png"
+  ]
+}

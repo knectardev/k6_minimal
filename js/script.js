@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
    Dynamic Page Content Helpers (injected from menu.json)
 ============================================================= */
 
-function injectPageData() {
+async function injectPageData() {
     if (!window.__MENU_DATA) {
         console.log('No menu data available yet');
         return;
@@ -499,7 +499,23 @@ function injectPageData() {
 
     let pageData;
     let result;
-    if (slugParam) {
+    
+    // Try new lazy-loading system first (if enabled)
+    if (slugParam && window.menuDataManager && window.menuDataManager.enabled) {
+        try {
+            console.log('⚡ Lazy-loading project data:', slugParam);
+            pageData = await window.menuDataManager.loadProjectData(slugParam);
+            if (pageData) {
+                console.log('✅ Loaded via lazy-loading:', slugParam);
+                result = { item: pageData, parentLabel: null }; // For breadcrumb compatibility
+            }
+        } catch (error) {
+            console.warn('⚠️ Lazy-loading failed, falling back to legacy:', error);
+        }
+    }
+    
+    // Fallback to legacy system
+    if (!pageData && slugParam) {
         result = findBySlug(window.__MENU_DATA, slugParam);
         if (result) {
             pageData = result.item;

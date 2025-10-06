@@ -1,0 +1,19 @@
+{
+  "slug": "sleep-studio",
+  "projectTitle": "Sleep Studio",
+  "role": "Technical Lead, Developer",
+  "budget": "$50,000 - $100,000",
+  "technology": "Magento",
+  "designPartner": null,
+  "designPartnerUrl": null,
+  "projectUrl": null,
+  "project_haiku": "Dreams find their rhythm<br/>Rest becomes an art form<br/>Sleep transforms life",
+  "project_footer_CTA": "Ready to help your customers sleep better? Let's build e-commerce experiences that promote wellness and rest.",
+  "pageSummary": "<p><b>Company background.</b><br> Sleep Studio aims to \"harness the power of sleep\" by helping people achieve deep, restorative rest. Their SleepJoy line features gel memory foam, copper‑infused foam and other materials designed to cool and support the body, and the brand emphasises that foam is made in the U.S. and produced with environmentally friendly practices. The company promotes a 100‑night trial and free shipping to demonstrate confidence in its products. On the home page, Sleep Studio highlights the antimicrobial benefits of copper technology to keep beds fresher.</p><p><b>What we delivered.</b><br> The Magento site conveys product benefits while simplifying the purchase process:</p><p><b>Feature Implementation & Impact</b></p><ul><li><b>Product categories & landing pages</b><br>We organized mattress toppers, pillows and seasonal collections like \"Back to College\" into clear categories. Landing pages feature lifestyle photography and product highlights such as copper's antimicrobial properties and the cooling foam technology.</li><li><b>Educational & mission content</b><br>The \"About\" page explains the company's mission, the importance of restful sleep and the materials used (gel memory foam, extra support foam, wave foam, copper technology, micro‑cushions). This fosters trust and supports SEO.</li><li><b>Customer support features</b><br>Customers can register products, read FAQs, and access sizing guides. Chat integration and contact forms provide assistance without leaving the site. A press page links to media coverage.</li><li><b>Trust & promotions</b><br>Highlighting free shipping, the 100‑night trial and payment options encourages conversion. Reviews and star ratings display social proof. Magento's promotional rules are used to create seasonal sales banners.</li><li><b>Efficient checkout</b><br>A simplified checkout allows guest or account‑based purchasing and supports promotional codes and tax calculation.</li></ul>",
+  "coverImage": "project_tiles/sleep.png",
+  "detailImages": [
+    "project_images/sleep-studio_1.png",
+    "project_images/sleep-studio_2.png",
+    "project_images/sleep-studio_3.png"
+  ]
+}

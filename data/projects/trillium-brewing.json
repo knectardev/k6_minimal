@@ -1,0 +1,19 @@
+{
+  "slug": "trillium-brewing",
+  "projectTitle": "Trillium Brewing",
+  "role": "Technical Lead, Developer",
+  "budget": "$25,000 - $50,000",
+  "technology": "Shopify",
+  "designPartner": " ",
+  "designPartnerUrl": null,
+  "projectUrl": null,
+  "project_haiku": "Craft flows from passion<br/>Hops and malt meet artistry<br/>Boston beer blooms bright",
+  "project_footer_CTA": "Ready to pour your craft brewery into the digital world? Let's brew e-commerce experiences that capture your unique flavor and community.",
+  "pageSummary": "<p><b>Company background.</b><br> JC and Esther Tetreault founded Trillium Brewing Company in Boston's Fort Point neighborhood in March 2013 to create a lifestyle centered on artisanal beer. Starting with three employees, they grew the company to over 300 people across multiple locations. Trillium adheres to values of quality, hospitality, innovation, sustainability and passion. It crafts a broad range of beverages—from New England IPAs to mixed‑fermentation ales, hard seltzers and wine—while partnering with local farms and investing in regenerative agriculture and CO₂ recapture. The brewery operates taprooms in Fort Point and Fenway, a seasonal beer garden on the Greenway, a production brewery and restaurant in Canton, and a working farm in North Stonington.</p><p><b>What we delivered.</b><br> On Shopify, the site brings together storytelling, multiple order flows and community engagement:</p><p><b>Feature Implementation & Impact</b></p><ul><li><b>Age‑gated shopping experience</b><br>An entry modal verifies visitors are over 21, complying with regulations. Once approved, customers can browse categories for beer, hard seltzers, spirits and merchandise.</li><li><b>Location‑specific ordering</b><br>Because laws vary by state, we built separate flows: local pickup at Fort Point, Fenway or Canton; home delivery within Massachusetts; and shipping of merchandise. Each flow guides customers to the correct menu and inventory and integrates with third‑party systems such as Toast for reservations and Tock for event booking.</li><li><b>Farm & philanthropy integration</b><br>The site features stories about the Trillium Farm, sustainability initiatives (CO₂ recapture, regenerative agriculture) and philanthropic partnerships. Customers can donate to charitable initiatives, attend farm dinners and learn about community programs.</li><li><b>Events & reservations</b><br>Taproom events, beer‑garden reservations and brewery tours are available through integrated calendars and forms. Users can order catering or book private events, and those pages integrate with scheduling software.</li><li><b>Merchandising & loyalty</b><br>Product pages include limited releases, beer shipping, gift cards and subscription memberships. Real‑time inventory and release notifications help customers secure sought‑after products.</li></ul>",
+  "coverImage": "project_tiles/trillium.webp",
+  "detailImages": [
+    "project_images/trillium-brewing_1.png",
+    "project_images/trillium-brewing_2.png",
+    "project_images/trillium-brewing_3.png"
+  ]
+}

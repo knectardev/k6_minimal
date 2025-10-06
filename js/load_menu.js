@@ -239,6 +239,19 @@
   };
 
   async function fetchMenuData() {
+    // Try new lazy-loading system if enabled
+    if (window.menuDataManager && window.menuDataManager.enabled) {
+      try {
+        console.log('🚀 Using new menu index system');
+        const data = await window.menuDataManager.loadMenuIndex();
+        return data;
+      } catch (error) {
+        console.warn('⚠️ New system failed, falling back to legacy:', error);
+        // Continue to legacy system below
+      }
+    }
+    
+    // Legacy system (default)
     try {
       console.log('Fetching menu data from:', MENU_JSON);
       // Rely on HTTP caching/CDN: fetch JSON without cache-busting

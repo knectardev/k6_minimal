@@ -1,0 +1,19 @@
+{
+  "slug": "pioneer-valley-books",
+  "projectTitle": "Pioneer Valley Books",
+  "role": "Technical Lead, Developer",
+  "budget": "$50,000 - $100,000",
+  "technology": "Shopify",
+  "designPartner": "Tunnel7",
+  "designPartnerUrl": "https://tunnel7.com/",
+  "projectUrl": null,
+  "project_haiku": "Stories find new homes<br/>Independent spirit soars<br/>Community reads",
+  "project_footer_CTA": "Ready to bring your independent bookstore online? Let's create digital spaces that celebrate the love of reading and community.",
+  "pageSummary": "<p><b>Company background.</b><br> In the late 1990s reading coach Michèle Dufresne struggled to find engaging leveled books for her students. She began writing her own stories, and the positive reception led her to found Pioneer Valley Books in 1998. The company has grown into a leader in K‑6 literacy, offering comprehensive reading programs, digital tools and professional development. Its mission is to empower educators with effective literacy materials while nurturing kindness, respect and collaboration.</p><p><b>What we delivered.</b><br> Using Shopify Plus, we built a feature‑rich platform for schools and educators:</p><p><b>Feature Implementation & Impact</b></p><ul><li><b>Multi‑tier catalog</b><br>The site organizes books and teaching materials by reading programs, books & libraries, phonics and tools (digital reader, assessments, decodable books). Each program page outlines learning objectives, scope and sequence and product bundles. For example, the In Tandem program description integrates the systematic phonics and authentic text approach, and lists components such as lesson plans, decodable books, activity books, teacher handbooks and progress assessments.</li><li><b>Quote & sample requests</b><br>Because schools often need approval before purchasing, we added request‑a‑quote and request‑a‑sample workflows. These forms feed into a sales CRM for follow‑up and provide price proposals based on enrollment numbers.</li><li><b>BookBuilder & digital tools</b><br>Teachers can subscribe to BookBuilder Online to personalize stories with student names and print them, while license management features handle multi‑user subscriptions. A digital reader and assessment tool integrate with the commerce platform so customers can add software seats to their cart.</li><li><b>Research & professional learning hub</b><br>The site hosts a research library, blog, webinar registration and professional development courses. Educators can search by topic or grade level, and resources are locked behind account creation to encourage sign‑ups.</li><li><b>Accessibility & search</b><br>Advanced search helps teachers filter by reading level, genre or theme. B2B features support purchase orders and tax‑exempt status.</li></ul>",
+  "coverImage": "project_tiles/pvb.jpg",
+  "detailImages": [
+    "project_images/pioneer-valley-books_1.png",
+    "project_images/pioneer-valley-books_2.png",
+    "project_images/pioneer-valley-books_3.png"
+  ]
+}

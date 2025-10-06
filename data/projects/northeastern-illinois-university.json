@@ -1,0 +1,19 @@
+{
+  "slug": "northeastern-illinois-university",
+  "projectTitle": "Northeastern Illinois University",
+  "role": "Technical Lead, Developer",
+  "budget": "$25,000 - $50,000",
+  "technology": "Drupal",
+  "designPartner": "Carnegie Dartlet ",
+  "designPartnerUrl": "https://www.carnegiehighered.com/",
+  "projectUrl": "https://www.neiu.edu/",
+  "project_haiku": "Diverse voices unite<br/>Knowledge bridges every culture<br/>Wisdom grows with care",
+  "project_footer_CTA": "Ready to celebrate diversity through digital innovation? Let's create inclusive educational platforms that welcome everyone.",
+  "pageSummary": "<p><b>What makes the school special</b><br> Northeastern Illinois University, located in Chicago, is consistently ranked as one of the most diverse campuses in the Midwest. The Wall Street Journal/Times Higher Education College Ranking places NEIU first for diversity among Midwest colleges, and U.S. News ranks it third for diversity and eighth for economic diversity among Midwest regional universities. The university serves a diverse student body at multiple Chicago‑area locations and focuses on providing accessible education.</p><p><b>Case study: NEIU website with Carnegie Higher Ed</b><br> Carnegie Higher Ed's expertise in creating enrollment‑driven websites informed our collaboration on NEIU's Drupal site. We designed the site to celebrate NEIU's diversity and accessibility. Custom program pages showcase academic offerings alongside student testimonials and success metrics. An interactive campus map helps prospective students explore the university's four Chicago locations. Carnegie Higher Ed provided design direction and content strategy to ensure that the site resonated with NEIU's diverse audience and aligned with the university's branding. Our development team implemented ADA‑compliant design, built multilingual capability to serve NEIU's multilingual community and integrated application portals and event calendars. The result is a user‑friendly site that positions NEIU as an inclusive institution dedicated to student success.</p>",
+  "coverImage": "project_tiles/neiu.webp",
+  "detailImages": [
+    "project_images/northeastern-illinois-university_1.png",
+    "project_images/northeastern-illinois-university_2.png",
+    "project_images/northeastern-illinois-university_3.png"
+  ]
+}

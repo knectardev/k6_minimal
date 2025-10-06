@@ -1,0 +1,19 @@
+{
+  "slug": "sparx-hockey",
+  "projectTitle": "Sparx Hockey",
+  "role": "Technical Lead, Developer",
+  "budget": "$25,000 - $50,000",
+  "technology": "Shopify",
+  "designPartner": "Magnifico Design",
+  "designPartnerUrl": "https://www.magnificodesign.com/",
+  "projectUrl": null,
+  "project_haiku": "Ice meets precision<br/>Sharpening skills on and off<br/>Excellence glides forward",
+  "project_footer_CTA": "Ready to sharpen your sports equipment business? Let's build e-commerce solutions that help athletes perform at their peak.",
+  "pageSummary": "<p><b>Company background.</b><br> Founded in 2013 in Acton, Massachusetts, Sparx Hockey develops automated skate‑sharpening equipment for ice hockey, figure skating and sled hockey. The flagship Sparx Sharpener enables anyone to sharpen skates with professional accuracy. The company sells to individuals, families, teams, rink operators and pro shops worldwide and has been recognized as the preferred at‑home skate sharpener of the NHL. Sparx continues to innovate, offering sensors, apps and service plans to support customers.</p><p><b>What we delivered.</b><br> The Shopify site functions as both a D2C store and an educational hub:</p><p><b>Feature Implementation & Impact</b></p><ul><li><b>Product ecosystem</b><br>Navigation highlights sharpeners, grinding rings, accessories, bundles, service plans, replacement parts and the Sparx BEAM edge‑monitoring device. Bundling options encourage customers to purchase sharpeners with grinding rings, saving money and increasing average order value.</li><li><b>Interactive tools</b><br>We built a payback calculator that shows how quickly a Sparx sharpener pays for itself versus pro‑shop sharpening. A 3D print center provides downloadable files for printing custom skate holders. The site also includes a \"Find a Sharpener\" directory and integration with the Sparx Hockey App.</li><li><b>Content & education</b><br>The \"Edgeucation\" section features sharpening tips, how‑to videos and a blog. A support center offers manuals, warranties and how‑to videos, and a Wall of Thanks honors Kickstarter supporters.</li><li><b>Multi‑currency & financing</b><br>Shopify's multi‑currency feature allows customers to shop in various currencies, and financing options (e.g., Klarna) lower the barrier to purchase.</li><li><b>Community & loyalty</b><br>We added a reviews system, referral incentives, and a job board. Customers can sign up for newsletters and view trending products with real‑time stock indicators.</li></ul>",
+  "coverImage": "project_tiles/sparx_hockey.mp4",
+  "detailImages": [
+    "project_images/sparx-hockey_1.png",
+    "project_images/sparx-hockey_2.png",
+    "project_images/sparx-hockey_3.png"
+  ]
+}

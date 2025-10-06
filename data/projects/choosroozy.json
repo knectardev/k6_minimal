@@ -1,0 +1,18 @@
+{
+  "slug": "choosroozy",
+  "projectTitle": "Choosroozy",
+  "role": "Concept, Design, Developer",
+  "budget": "< $10,000",
+  "technology": "JavaScript",
+  "designPartner": null,
+  "designPartnerUrl": null,
+  "projectUrl": "https://editor.p5js.org/knectar/full/fIJ2pBpyz",
+  "project_haiku": "Choices dance and play<br/>Random becomes meaningful<br/>Decision delights",
+  "project_footer_CTA": "Ready to gamify your decision-making process? Let's create playful tools that make choices engaging and fun.",
+  "pageSummary": "<p><b>ChoozRoozy: Making Decisions Visible</b></p><p><b>The Problem We Faced</b><br>We've all been there—standing at a crossroads, our minds racing through countless factors, only to choose based on whatever thought happened to be loudest. Whether it's picking between job offers or deciding whether to go for a run, we often feel swept along by impulse rather than making deliberate choices.</p><p>This frustration sparked ChoozRoozy, a tool that transforms the invisible process of weighing options into something you can see and manipulate.</p><p><b>A Visual Approach to Choice</b><br>ChoozRoozy presents two options on a digital canvas—maybe \"Go for a run\" versus \"Take a nap.\" Each decision factor becomes a draggable circle. Pull a circle left to favor one option, right for the other. Drag up to make it bigger when that factor feels crucial, down when it's minor. Red and blue circles show which option each factor supports, while purple indicates neutral factors.</p><p>The interface is deliberately simple. Users can rename options, customize factors, and toggle a \"SHOW RESULT\" line that summarizes the weighted outcome. An export feature captures decision snapshots for reference.</p><p><b>Transparent by Design</b><br>The underlying algorithm is intentionally straightforward. Each circle's position and size becomes a numerical weight. The system multiplies importance by directional pull, sums contributions, and displays the result. We kept the math transparent because our goal is prompting reflection, not mystifying outcomes.</p><p>Built with p5.js for its accessible, creative coding environment, the tool creates smooth interactions without technical overhead. Users remain in control—the algorithm reflects their priorities rather than imposing judgment.</p><p><b>Real Impact</b><br>Early users appreciate seeing how their priorities influence decisions. One described finally understanding their career change procrastination when fear appeared as an unexpectedly large factor. Another used it with their partner for financial decisions, finding the visual interface helped communicate priorities they'd struggled to articulate.</p><p>The tool became more than a decision aid—it helps people understand themselves.</p><p><b>What's Next</b><br>Future iterations could include saving decision scenarios, voice input for qualitative reasoning, different weighting models for complex preferences, and accessibility improvements to serve all users.</p><p><b>The Bigger Picture</b><br>ChoozRoozy isn't about algorithms—it's about reclaiming agency in decision-making. By turning abstract criteria into draggable circles, it helps users examine and refine their thinking rather than being victims of whatever thought happens to be loudest.</p><p>Sometimes the most powerful tools don't think for us, but help us think more clearly for ourselves.</p>",
+  "coverImage": "project_tiles/choosroozy.png",
+  "detailImages": [
+    "project_images/choosroozy_1.png",
+    "project_images/choosroozy_2.png"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "mit",
+  "projectTitle": "MIT",
+  "role": "Technical Lead, Developer",
+  "budget": "$50,000 - $100,000",
+  "technology": "Drupal",
+  "designPartner": null,
+  "designPartnerUrl": null,
+  "projectUrl": "https://solve.mit.edu/",
+  "project_haiku": "Minds solve global needs<br/>Technology meets purpose here<br/>Future takes its shape",
+  "project_footer_CTA": "Ready to solve complex challenges through technology? Let's build solutions that matter.",
+  "pageSummary": "You're MIT, arguably the world's most prestigious technology institution, running a global initiative to solve humanity's biggest challenges—but your platform for connecting brilliant minds with urgent problems feels more like navigating a research paper than inspiring collaborative innovation. MIT Solve needed a digital ecosystem that could match the ambition of their mission: bringing together entrepreneurs, researchers, and change-makers to tackle everything from climate change to education inequality.</p><p>That's where Knectar stepped in to build what's essentially a digital innovation lab that could scale globally. We created a Drupal platform that works like a sophisticated matchmaking service—connecting challenge-seekers with solution-builders, researchers with entrepreneurs, and big ideas with the resources they need to become reality. Think of it as building mission control for changing the world, where every interaction could spark the next breakthrough that improves millions of lives.</p><p>The magic was in creating a user experience that could serve everyone from Nobel laureates to startup founders without making anyone feel lost or overwhelmed. We built features that let MIT showcase global challenges in compelling ways, allowed innovators to submit and refine their solutions collaboratively, and created pathways for supporters and investors to discover and fund the most promising initiatives. The platform needed to handle everything from initial ideation to ongoing project management and impact tracking.</p><p>The transformation gave MIT Solve a digital presence worthy of their world-changing ambitions—a platform where the most pressing challenges of our time could meet the most innovative minds on the planet. Sometimes the best technology solutions are the ones that get out of the way and let human brilliance do what it does best: solve problems that matter.</p>",
+  "coverImage": "project_tiles/mit.jpg",
+  "detailImages": [
+    "project_images/mit_1.png",
+    "project_images/mit_2.png",
+    "project_images/mit_3.png"
+  ]
+}

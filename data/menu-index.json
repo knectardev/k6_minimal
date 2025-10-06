@@ -1,0 +1,525 @@
+[
+  {
+    "label": "About",
+    "icon": "about.svg",
+    "url": "/about/",
+    "more": 0
+  },
+  {
+    "label": "Services",
+    "icon": "tools.svg",
+    "url": "/services/",
+    "more": 0
+  },
+  {
+    "label": "Higher Education",
+    "icon": "grad.svg",
+    "categoryDescription": "Knectar partners with leading educational institutions to deliver digital solutions that empower learning, collaboration, and innovation. Knectar partners with leading educational institutions to deliver digital solutions that empower learning, collaboration, and innovation.",
+    "more": 1,
+    "submenu": [
+      {
+        "label": "Carnegie Mellon University",
+        "slug": "carnegie-mellon-university",
+        "menuDisplayName": "Carnegie Mellon",
+        "url": "project.html?item=carnegie-mellon-university",
+        "projectTitle": "Carnegie Mellon University",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/cmu.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/carnegie-mellon-university.json"
+      },
+      {
+        "label": "Clarkson University",
+        "slug": "clarkson-university",
+        "menuDisplayName": "Clarkson",
+        "url": "project.html?item=clarkson-university",
+        "projectTitle": "Clarkson University",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/clarkson.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/clarkson-university.json"
+      },
+      {
+        "label": "Yale Center for British Art",
+        "slug": "yale-center-for-british-art",
+        "menuDisplayName": "Yale",
+        "url": "project.html?item=yale-center-for-british-art",
+        "projectTitle": "Yale Center for British Art: Website and Collections",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/ycba.jpg",
+        "sub_menu": 1,
+        "_dataFile": "projects/yale-center-for-british-art.json"
+      },
+      {
+        "label": "Fox Chase Cancer Research",
+        "slug": "fox-chase-cancer-research",
+        "menuDisplayName": "Fox Chase",
+        "url": "project.html?item=fox-chase-cancer-research",
+        "projectTitle": "Fox Chase Cancer Research: Website Redesign and Implementation",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/fox.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/fox-chase-cancer-research.json"
+      },
+      {
+        "label": "Kettering University",
+        "slug": "kettering-university",
+        "menuDisplayName": "Kettering University",
+        "url": "project.html?item=kettering-university",
+        "projectTitle": "Kettering University: Implementing a University Website",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/kettering.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/kettering-university.json"
+      },
+      {
+        "label": "La Jolla Country Day School",
+        "slug": "la-jolla-country-day-school",
+        "menuDisplayName": "La Jolla",
+        "url": "project.html?item=la-jolla-country-day-school",
+        "projectTitle": "La Jolla Country Day School",
+        "technology": "WordPress",
+        "coverImage": "project_tiles/lajolla.jpg",
+        "sub_menu": 0,
+        "_dataFile": "projects/la-jolla-country-day-school.json"
+      },
+      {
+        "label": "Lewis Katz School of Medicine - Temple University",
+        "slug": "lewis-katz-school-of-medicine-temple-university",
+        "menuDisplayName": "Temple Medicine",
+        "url": "project.html?item=lewis-katz-school-of-medicine-temple-university",
+        "projectTitle": "Lewis Katz School of Medicine - Temple University",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/temple.jpg",
+        "sub_menu": 0,
+        "_dataFile": "projects/lewis-katz-school-of-medicine-temple-university.json"
+      },
+      {
+        "label": "LIM College",
+        "slug": "lim-college",
+        "menuDisplayName": "LIM",
+        "url": "project.html?item=lim-college",
+        "projectTitle": "LIM College: College Website Refresh",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/lim.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/lim-college.json"
+      },
+      {
+        "label": "Madison Country Day School",
+        "slug": "madison-country-day-school",
+        "menuDisplayName": "Madison",
+        "url": "project.html?item=madison-country-day-school",
+        "projectTitle": "Madison Country Day School",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/mad2.png",
+        "sub_menu": 0,
+        "_dataFile": "projects/madison-country-day-school.json"
+      },
+      {
+        "label": "MIT",
+        "slug": "mit",
+        "menuDisplayName": "MIT",
+        "url": "project.html?item=mit",
+        "projectTitle": "MIT",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/mit.jpg",
+        "sub_menu": 1,
+        "_dataFile": "projects/mit.json"
+      },
+      {
+        "label": "Northeastern Illinois University",
+        "slug": "northeastern-illinois-university",
+        "menuDisplayName": "NEIU",
+        "url": "project.html?item=northeastern-illinois-university",
+        "projectTitle": "Northeastern Illinois University",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/neiu.webp",
+        "sub_menu": 0,
+        "_dataFile": "projects/northeastern-illinois-university.json"
+      },
+      {
+        "label": "University of Massachusetts, Amherst",
+        "slug": "university-of-massachusetts-amherst",
+        "menuDisplayName": "UMass",
+        "url": "project.html?item=university-of-massachusetts-amherst",
+        "projectTitle": "University of Massachusetts Amherst",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/umass.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/university-of-massachusetts-amherst.json"
+      }
+    ]
+  },
+  {
+    "label": "Intranets & Portals",
+    "icon": "intranet.svg",
+    "categoryDescription": "From robust intranets to dynamic portals, Knectar builds secure, scalable platforms that streamline communication and collaboration for organizations of all sizes.",
+    "more": 0,
+    "submenu": [
+      {
+        "label": "Massachusetts Municipal Wholesale Electric Company",
+        "slug": "massachusetts-municipal-wholesale-electric-company",
+        "menuDisplayName": "MMWEC",
+        "url": "project.html?item=massachusetts-municipal-wholesale-electric-company",
+        "projectTitle": "MMWEC Member Portal & NextZero Rebate Application",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/mmwec.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/massachusetts-municipal-wholesale-electric-company.json"
+      },
+      {
+        "label": "AB InBev",
+        "slug": "ab_inbev",
+        "menuDisplayName": "AB InBev",
+        "url": "project.html?item=ab_inbev",
+        "projectTitle": "AB InBev: B2B Ordering Portal & System Architecture",
+        "technology": "Magento",
+        "coverImage": "project_tiles/ab.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/ab_inbev.json"
+      },
+      {
+        "label": "SmartLabs",
+        "slug": "smartlabs",
+        "menuDisplayName": "SmartLabs",
+        "url": "project.html?item=smartlabs",
+        "projectTitle": "SmartLabs: Building a Digital Ecosystem for Modern Biotech Infrastructure",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/smart.jpeg",
+        "sub_menu": 1,
+        "_dataFile": "projects/smartlabs.json"
+      }
+    ]
+  },
+  {
+    "label": "Web & iOS Apps",
+    "icon": "web.svg",
+    "categoryDescription": "We design and develop custom web and iOS applications that delight users and drive results. Our apps are crafted for performance, accessibility, and seamless integration.",
+    "more": 0,
+    "submenu": [
+      {
+        "label": "Carv Resource Management",
+        "slug": "carv-resource-management",
+        "menuDisplayName": "Carv",
+        "url": "project.html?item=carv-resource-management",
+        "projectTitle": "Carv Resource Management",
+        "technology": "Django, Angular",
+        "coverImage": "project_tiles/carv.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/carv-resource-management.json"
+      },
+      {
+        "label": "Glassica App",
+        "slug": "glassica-app",
+        "menuDisplayName": "Glassica",
+        "url": "project.html?item=glassica-app",
+        "projectTitle": "Glassica App",
+        "technology": "C#, Unity",
+        "coverImage": "project_tiles/glass.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/glassica-app.json"
+      },
+      {
+        "label": "Music apps",
+        "slug": "music-app-experiments",
+        "menuDisplayName": "Music apps",
+        "url": "project.html?item=music-app-experiments",
+        "projectTitle": "Music app experiments",
+        "technology": "Cursor, Javascript",
+        "coverImage": "project_tiles/jazz.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/music-app-experiments.json"
+      },
+      {
+        "label": "Choosroozy",
+        "slug": "choosroozy",
+        "menuDisplayName": "Choosroozy",
+        "url": "project.html?item=choosroozy",
+        "projectTitle": "Choosroozy",
+        "technology": "JavaScript",
+        "coverImage": "project_tiles/choosroozy.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/choosroozy.json"
+      },
+      {
+        "label": "Paragraphs Stats Module",
+        "slug": "paragraphs-stats-module",
+        "menuDisplayName": "Paragraphs Stats",
+        "url": "project.html?item=paragraphs-stats-module",
+        "projectTitle": "Paragraphs Stats Module",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/stats.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/paragraphs-stats-module.json"
+      }
+    ]
+  },
+  {
+    "label": "Informational",
+    "icon": "info.svg",
+    "categoryDescription": "Knectar specializes in creating engaging informational sites that inform, inspire, and connect audiences. We turn complex ideas into clear, accessible digital experiences.",
+    "more": 1,
+    "submenu": [
+      {
+        "label": "AIER:  American Institute for Economic Research.",
+        "slug": "aier-american-institute-for-economic-research",
+        "menuDisplayName": "AIER",
+        "url": "project.html?item=aier-american-institute-for-economic-research",
+        "projectTitle": "AIER:  American Institute for Economic Research.",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/aier.png",
+        "sub_menu": 0,
+        "_dataFile": "projects/aier-american-institute-for-economic-research.json"
+      },
+      {
+        "label": "SMMA Architecture",
+        "slug": "smma-architecture",
+        "menuDisplayName": "SMMA",
+        "url": "project.html?item=smma-architecture",
+        "projectTitle": "SMMA Architecture: Website Redesign & CMS Integration",
+        "technology": "WordPress",
+        "coverImage": "project_tiles/smma.jpg",
+        "sub_menu": 1,
+        "_dataFile": "projects/smma-architecture.json"
+      },
+      {
+        "label": "Monadnock Media",
+        "slug": "monadnock-media",
+        "menuDisplayName": "Monadnock",
+        "url": "project.html?item=monadnock-media",
+        "projectTitle": "Monadnock Media: Designing Innovative Digital Experiences",
+        "technology": "Other",
+        "coverImage": "project_tiles/monad2.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/monadnock-media.json"
+      },
+      {
+        "label": "Robert Rauschenberg Foundation",
+        "slug": "robert-rauschenberg-foundation",
+        "menuDisplayName": "Rauschenberg",
+        "url": "project.html?item=robert-rauschenberg-foundation",
+        "projectTitle": "Robert Rauschenberg Foundation: Drupal 7 to 10 Website Migration",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/rrf.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/robert-rauschenberg-foundation.json"
+      },
+      {
+        "label": "Jack Daniels",
+        "slug": "jack-daniels",
+        "menuDisplayName": "Jack Daniels",
+        "url": "project.html?item=jack-daniels",
+        "projectTitle": "Jack Daniels: Building A Global Website with Arnold Worldwide",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/jack_daniels.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/jack-daniels.json"
+      },
+      {
+        "label": "Studio Arts Consortium International (SACI), Florence",
+        "slug": "studio-arts-consortium-international-saci-florence",
+        "menuDisplayName": "SACI",
+        "url": "project.html?item=studio-arts-consortium-international-saci-florence",
+        "projectTitle": "Studio Arts Consortium International (SACI), Florence",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/saci.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/studio-arts-consortium-international-saci-florence.json"
+      },
+      {
+        "label": "The Isabella Stewart Gardner Museum",
+        "slug": "the-isabella-stewart-gardner-museum",
+        "menuDisplayName": "Gardner",
+        "url": "project.html?item=the-isabella-stewart-gardner-museum",
+        "projectTitle": "The Isabella Stewart Gardner Museum Digital Experience",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/isgm.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/the-isabella-stewart-gardner-museum.json"
+      },
+      {
+        "label": "Way Finders",
+        "slug": "way-finders",
+        "menuDisplayName": "Way Finders",
+        "url": "project.html?item=way-finders",
+        "projectTitle": "Way Finders: Reimagining a Community Portal",
+        "technology": "Drupal",
+        "coverImage": "project_tiles/wayfinders.jpg",
+        "sub_menu": 0,
+        "_dataFile": "projects/way-finders.json"
+      }
+    ]
+  },
+  {
+    "label": "E-Commerce",
+    "icon": "money.svg",
+    "categoryDescription": "Our e-commerce solutions empower businesses to grow online. From custom storefronts to seamless integrations, we help brands reach new customers and maximize sales.",
+    "more": 0,
+    "submenu": [
+      {
+        "label": "Chemex Coffee Maker",
+        "slug": "chemex-coffee-maker",
+        "menuDisplayName": "Chemex",
+        "url": "project.html?item=chemex-coffee-maker",
+        "projectTitle": "Chemex Coffee Maker",
+        "technology": "Shopify",
+        "coverImage": "project_tiles/chemex.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/chemex-coffee-maker.json"
+      },
+      {
+        "label": "Guardair",
+        "slug": "guardair",
+        "menuDisplayName": "Guardair",
+        "url": "project.html?item=guardair",
+        "projectTitle": "Guardair",
+        "technology": "Shopify",
+        "coverImage": "project_tiles/guardair.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/guardair.json"
+      },
+      {
+        "label": "Pioneer Valley Books",
+        "slug": "pioneer-valley-books",
+        "menuDisplayName": "Pioneer Valley",
+        "url": "project.html?item=pioneer-valley-books",
+        "projectTitle": "Pioneer Valley Books",
+        "technology": "Shopify",
+        "coverImage": "project_tiles/pvb.jpg",
+        "sub_menu": 1,
+        "_dataFile": "projects/pioneer-valley-books.json"
+      },
+      {
+        "label": "Sleep Studio",
+        "slug": "sleep-studio",
+        "menuDisplayName": "Sleep Studio",
+        "url": "project.html?item=sleep-studio",
+        "projectTitle": "Sleep Studio",
+        "technology": "Magento",
+        "coverImage": "project_tiles/sleep.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/sleep-studio.json"
+      },
+      {
+        "label": "Sparx Hockey",
+        "slug": "sparx-hockey",
+        "menuDisplayName": "Sparx Hockey",
+        "url": "project.html?item=sparx-hockey",
+        "projectTitle": "Sparx Hockey",
+        "technology": "Shopify",
+        "coverImage": "project_tiles/sparx_hockey.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/sparx-hockey.json"
+      },
+      {
+        "label": "Trillium Brewing",
+        "slug": "trillium-brewing",
+        "menuDisplayName": "Trillium",
+        "url": "project.html?item=trillium-brewing",
+        "projectTitle": "Trillium Brewing",
+        "technology": "Shopify",
+        "coverImage": "project_tiles/trillium.webp",
+        "sub_menu": 1,
+        "_dataFile": "projects/trillium-brewing.json"
+      },
+      {
+        "label": "Lanshin",
+        "slug": "lanshin",
+        "menuDisplayName": "Lanshin Wellness",
+        "url": "project.html?item=lanshin",
+        "projectTitle": "Lanshin by Sandra Chiu",
+        "technology": "Shopify",
+        "coverImage": "project_tiles/lanshin.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/lanshin.json"
+      }
+    ]
+  },
+  {
+    "label": "Music & Art",
+    "icon": "music.svg",
+    "categoryDescription": "We celebrate creativity through digital projects in music and art. Discover how Knectar brings artistic visions to life with technology.",
+    "more": 0,
+    "submenu": [
+      {
+        "label": "P5 Projects",
+        "slug": "p5-projects",
+        "menuDisplayName": "P5 Projects",
+        "url": "project.html?item=p5-projects",
+        "projectTitle": "P5 Projects",
+        "technology": "P5.js",
+        "coverImage": "project_tiles/blobby.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/p5-projects.json"
+      },
+      {
+        "label": "Pen plotting works",
+        "slug": "pen-plotting-works",
+        "menuDisplayName": "Pen Plotting",
+        "url": "project.html?item=pen-plotting-works",
+        "projectTitle": "Pen plotting works",
+        "technology": "Inkscape, Pen Plotter",
+        "coverImage": "project_tiles/pen.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/pen-plotting-works.json"
+      },
+      {
+        "label": "Sculpture works",
+        "slug": "sculpture-works",
+        "menuDisplayName": "Sculpture",
+        "url": "project.html?item=sculpture-works",
+        "projectTitle": "Sculpture works",
+        "technology": "CNC, Traditional tools",
+        "coverImage": "project_tiles/cnc.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/sculpture-works.json"
+      },
+      {
+        "label": "Thing Y",
+        "slug": "thing-y",
+        "menuDisplayName": "Thing Y",
+        "url": "project.html?item=thing-y",
+        "projectTitle": "Thing Y",
+        "technology": "Rhino 3D, Laser cutting",
+        "coverImage": "project_tiles/thingy.mp4",
+        "sub_menu": 1,
+        "_dataFile": "projects/thing-y.json"
+      },
+      {
+        "label": "Vases",
+        "slug": "vases",
+        "menuDisplayName": "Vases",
+        "url": "project.html?item=vases",
+        "projectTitle": "Vases",
+        "technology": "Traditional tools",
+        "coverImage": "project_tiles/vase.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/vases.json"
+      },
+      {
+        "label": "Dog Door",
+        "slug": "dog-door",
+        "menuDisplayName": "Dog Door",
+        "url": "project.html?item=dog-door",
+        "projectTitle": "Dog Door",
+        "technology": "CNC, Traditional tools",
+        "coverImage": "project_tiles/dog.png",
+        "sub_menu": 1,
+        "_dataFile": "projects/dog-door.json"
+      }
+    ]
+  },
+  {
+    "label": "Resume",
+    "icon": "work.svg",
+    "url": "/resume/resume_static.html",
+    "more": 0
+  },
+  {
+    "label": "Contact",
+    "icon": "phone.svg",
+    "url": "/contact.html",
+    "more": 0
+  }
+]

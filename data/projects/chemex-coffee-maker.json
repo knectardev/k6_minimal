@@ -1,0 +1,20 @@
+{
+  "slug": "chemex-coffee-maker",
+  "projectTitle": "Chemex Coffee Maker",
+  "role": "Technical Lead, Developer",
+  "budget": "$10,000 - $20,000",
+  "technology": "Shopify",
+  "designPartner": null,
+  "designPartnerUrl": null,
+  "projectUrl": null,
+  "project_haiku": "Coffee craft perfected<br/>Glass meets morning ritual<br/>Every cup a poem",
+  "project_footer_CTA": "Ready to brew success for your e-commerce brand? Let's craft something beautiful together.",
+  "pageSummary": "<p><b>Company background.</b><br> Chemex Corporation manufactures the iconic Chemex coffeemaker. Chemist Dr. Peter Schlumbohm designed and patented the hour‑glass shaped pour‑over brewer in 1941 to make brewing at home both beautiful and simple. The elegant borosilicate‑glass carafe and bonded paper filter were influenced by Bauhaus design and laboratory glassware and have been recognized by art and design institutions such as the Museum of Modern Art. Today the family‑owned company assembles each coffeemaker at its Chicopee, Massachusetts factory and continues to focus on sustainability, producing compostable filters and operating responsibly.</p><p><b>What we delivered.</b><br> Built on Shopify, Chemex's site showcases the full range of coffee‑brewing products and reinforces the brand's heritage. We implemented:</p><p><b>Feature Implementation & Impact</b></p><ul><li><b>Large product catalog</b><br>Extensive navigation categories (Classic Series, Glass Handle, Handblown, Ottomatic & ChemAer electric units, single‑serve makers, bonded filters and accessories) enable customers to browse or filter by size or series. Bundled products and subscription filter packs drive repeat business.</li><li><b>Education hub</b><br>A \"How to Brew with CHEMEX\" resource provides step‑by‑step brewing guides, videos, and filter‑folding instructions. Integrating this content into Shopify helps visitors learn brewing techniques and reduces support questions.</li><li><b>Guided shopping</b><br>A quiz‑style \"Which coffeemaker is right for me?\" tool recommends the appropriate size and series. The site also includes a store‑locator and wholesale signup to support retail partners.</li><li><b>Subscriptions & forms</b><br>Newsletter sign‑ups, a wholesale application and discount banners capture customer data. Integration with Shopify's subscription APIs supports auto‑ship of filters and accessories.</li><li><b>Responsive design</b><br>The design evokes the brand's minimalist aesthetic while ensuring mobile shoppers can watch brewing videos or purchase equipment seamlessly.</li></ul>",
+  "coverImage": "project_tiles/chemex.mp4",
+  "detailImages": [
+    "project_images/chemex-coffee-maker_1.png",
+    "project_images/chemex-coffee-maker_2.png",
+    "project_images/chemex-coffee-maker_3.png",
+    "project_images/chemex-coffee-maker_4.png"
+  ]
+}

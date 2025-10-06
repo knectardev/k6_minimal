@@ -1,0 +1,19 @@
+{
+  "slug": "guardair",
+  "projectTitle": "Guardair",
+  "role": "Technical Lead, Developer",
+  "budget": "$50,000 - $100,000",
+  "technology": "Shopify",
+  "designPartner": "Tunnel7",
+  "designPartnerUrl": "https://tunnel7.com/",
+  "projectUrl": null,
+  "project_haiku": "Industrial strength<br/>Safety flows through every tool<br/>Protection perfected",
+  "project_footer_CTA": "Ready to strengthen your industrial e-commerce presence? Let's build robust platforms that showcase safety and performance.",
+  "pageSummary": "<p><b>Company background.</b><br> Guardair traces its roots to Bridgeport, Connecticut where it invented the first safety air gun in 1942. In 1959 Union Engineering of South Hadley, Massachusetts acquired the company, and in 1970 it collaborated with OSHA to design an air gun that met new safety regulations. The firm later returned to the Guardair name and expanded by acquiring Allpax Gasket Cutter Systems (1999), Nortech Vacuum Products (2004), and Air‑Spade (2008). Today Guardair manufactures pneumatic vacuums, syphon spray guns and industrial safety equipment.</p><p><b>What we delivered.</b><br> Built on Shopify Plus, Guardair's site caters to industrial buyers with self‑service commerce and compliance resources:</p><p><b>Feature Implementation & Impact</b></p><ul><li><b>Comprehensive product catalog</b><br>The navigation organizes hundreds of SKUs into safety air guns (multiple series), pneumatic vacuums (standard, NED, ATEX‑certified and dust extractors), syphon spray guns, air hose assemblies and accessories. Category pages include technical specs, part drawings and OSH‑compliant details.</li><li><b>Resources & compliance</b><br>Customers can download an OSHA compliance kit, a cross‑reference chart for parts and a vacuum recommendation quiz directly from the site. These resources reduce calls to customer service and position Guardair as a compliance partner.</li><li><b>Catalog & newsletter sign‑up</b><br>Visitors can request a PDF catalog or sign up for a 10 % discount newsletter. Forms integrate with the company's CRM and marketing automation tools.</li><li><b>B2B features</b><br>Shopify Plus functions like volume pricing, quick order pads and the ability to request quotes help industrial customers reorder quickly. The site also lists distributors, contact information and warranty policies.</li></ul>",
+  "coverImage": "project_tiles/guardair.png",
+  "detailImages": [
+    "project_images/guardair_1.png",
+    "project_images/guardair_2.png",
+    "project_images/guardair_3.png"
+  ]
+}

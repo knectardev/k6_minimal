@@ -1,0 +1,19 @@
+{
+  "slug": "madison-country-day-school",
+  "projectTitle": "Madison Country Day School",
+  "role": "Technical Lead, Developer",
+  "budget": "$25,000 - $50,000",
+  "technology": "Drupal",
+  "designPartner": "Verso Design",
+  "designPartnerUrl": "https://www.versodesign.co/",
+  "projectUrl": "https://www.madisoncountryday.org/",
+  "project_haiku": "Midwest traditions<br/>Technology shapes bright futures<br/>Community thrives here",
+  "project_footer_CTA": "Ready to strengthen your school's digital community? Let's build educational experiences that bring families together.",
+  "pageSummary": "<p><b>What makes the school special</b><br> Madison Country Day School is an independent, college‑preparatory, Pre‑K–12 International Baccalaureate World School. Its mission is to inspire each student to discover their extraordinary capacity to learn and thrive by cultivating a challenging environment and a supportive community <a href=\"https://madisoncountryday.org\" target=\"_blank\">madisoncountryday.org</a>.</p><p><b>Case study: MCDS website with Verso Design</b><br> Verso Design's purpose‑driven philosophy emphasizes uncovering truth and fostering positive impact <a href=\"https://versodesign.co\" target=\"_blank\">versodesign.co</a>. Working with them, we designed a Drupal site that captures Madison Country Day School's commitment to challenge and support. Our team implemented a versatile page builder using Drupal Paragraphs so that teachers and administrators can craft pages for the IB curriculum, arts, athletics and admissions. Verso created an inviting visual identity and messaging that celebrates student curiosity. We integrated an event calendar, news blog and parent portal. The site provides prospective families with clear pathways to learn about the IB program and schedule campus visits while offering current families secure access to resources. The collaboration harmonizes purposeful design with functional flexibility.</p>",
+  "coverImage": "project_tiles/mad2.png",
+  "detailImages": [
+    "project_images/madison-country-day-school_1.png",
+    "project_images/madison-country-day-school_2.png",
+    "project_images/madison-country-day-school_3.png"
+  ]
+}

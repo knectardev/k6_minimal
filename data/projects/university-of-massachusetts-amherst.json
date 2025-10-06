@@ -1,0 +1,19 @@
+{
+  "slug": "university-of-massachusetts-amherst",
+  "projectTitle": "University of Massachusetts Amherst",
+  "role": "Technical Lead, Developer",
+  "budget": "$50,000 - $100,000",
+  "technology": "Drupal",
+  "designPartner": null,
+  "designPartnerUrl": null,
+  "projectUrl": "https://www.umass.edu/uww/programs/pre-college",
+  "project_haiku": "New England learning<br/>Pre-college dreams take root here<br/>Pathways to success",
+  "project_footer_CTA": "Ready to nurture the next generation of leaders? Let's build pre-college programs that inspire and prepare students for excellence.",
+  "pageSummary": "<p><b>What makes the college special</b><br> The UMass Amherst College of Humanities and Fine Arts (HFA) offers diverse arts and humanities programs within a large public research university. It houses more than 20 departments, programs and centers.</p><p><b>Case study: multi‑department distro with Transit Authority Figures</b><br> HFA needed a Drupal platform that would serve more than 20 departments while maintaining consistent branding across the college. Working with Transit Authority Figures, we built a Drupal distribution that allows each department to launch its own site with the same design framework. The platform includes pre‑made content types and taxonomies for academic programs, faculty bios and events and features a Blocks Placer interface that lets editors position and customize blocks such as slideshows and accent colors. The design includes a rotating footer background and a moving logo to create visual interest while reinforcing the college's identity. Transit Authority Figures provided design strategy and user‑experience guidance. The resulting network of departmental sites reduces duplication of effort: content can be shared across departments and updated once, while each department retains the flexibility to highlight its unique offerings.</p>",
+  "coverImage": "project_tiles/umass.png",
+  "detailImages": [
+    "project_images/university-of-massachusetts-amherst_1.png",
+    "project_images/university-of-massachusetts-amherst_2.png",
+    "project_images/university-of-massachusetts-amherst_3.png"
+  ]
+}
