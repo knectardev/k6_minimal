@@ -1,7 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const fs = require('fs');
-const crypto = require('crypto');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -67,18 +65,6 @@ const handleError = (error, context, res) => {
     });
   }
 };
-
-
-
-
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'healthy',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime()
-  });
-});
 
 // 404 handler for API routes
 app.use('/api/*', (req, res) => {

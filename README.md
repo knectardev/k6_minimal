@@ -6,7 +6,6 @@ A modern, responsive portfolio website showcasing web development and design pro
 
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3
 - **Backend**: Node.js with Express.js
-- **APIs**: ElevenLabs TTS, TinyPNG
 - **Deployment**: Static hosting with server-side components
 - **Content Management**: JSON-based with API endpoints
 
@@ -17,7 +16,6 @@ A modern, responsive portfolio website showcasing web development and design pro
 - **Responsive Layout**: Mobile-first design approach
 - **Performance Optimized**: Optimized images and assets
 - **Content Management**: Server-side menu editing system
-- **TTS Integration**: ElevenLabs text-to-speech with caching
 - **Dynamic Navigation**: JSON-driven menu system
 
 ## Prerequisites
@@ -25,11 +23,6 @@ A modern, responsive portfolio website showcasing web development and design pro
 ### Required Software
 - **Node.js 16+** - [Download here](https://nodejs.org/)
 - **Git** - [Download here](https://git-scm.com/)
-- **Python 3.7+** - [Download here](https://python.org/) (for image optimization scripts)
-
-### Required Accounts & API Keys
-- **ElevenLabs Account** - [Sign up here](https://elevenlabs.io/) for TTS functionality
-- **TinyPNG API Key** - [Get free API key here](https://tinypng.com/developers) for image optimization
 
 ## Quick Start
 
@@ -44,23 +37,9 @@ cd K6_MINIMAL
 npm install
 ```
 
-### 3. Configure Environment Variables
-Create a `.env` file in the root directory:
-```bash
-cp .env.example .env
-```
-
-Edit `.env` with your actual values:
+### 3. Configure Environment Variables (Optional)
+Create a `.env` file in the root directory if you need custom configuration:
 ```env
-# Required for TTS functionality
-ELEVEN_API_KEY=your-elevenlabs-api-key
-
-# Optional: Voice ID for TTS (default: "Rachel")
-ELEVEN_VOICE_ID=21m00Tcm4TlvDq8ikWAM
-
-# Optional: Enable TTS debugging
-TTS_DEBUG=true
-
 # Optional: Server port (default: 8000)
 PORT=8000
 
@@ -146,17 +125,14 @@ The site includes a content management system with:
    - Project URL and cover image
 
 ### Image Optimization
-The project includes automated image optimization:
-- **Size threshold**: Only optimizes files > 200KB
-- **Quality preservation**: Skips files that would lose > 30% size
-- **Supported formats**: PNG, JPG, JPEG, WebP
-- **API integration**: Uses TinyPNG API
+The project includes automated image optimization using Sharp:
+- **Local processing**: No external API required
+- **WebP conversion**: Converts images to modern WebP format
+- **Quality preservation**: Maintains 85% quality setting
+- **Supported formats**: PNG, JPG, JPEG
 
 ```bash
-# Test optimization first
-npm run test-optimization
-
-# Run full optimization
+# Run image optimization
 npm run optimize-images
 ```
 
@@ -231,9 +207,8 @@ console.log(window.menuDataManager.getCurrentData());
    npm install --production
    ```
 
-4. **Configure environment variables**
-   - Set up environment variables on your hosting platform
-   - Ensure `ELEVEN_API_KEY` is configured
+4. **Configure environment variables (if needed)**
+   - Set up optional environment variables on your hosting platform (PORT, NODE_ENV)
 
 5. **Start the server**
    ```bash
@@ -318,38 +293,30 @@ console.log(window.menuDataManager.getCurrentData());
 
 ## API Endpoints
 
-### Text-to-Speech
-- `POST /api/tts` - Generate TTS audio (requires ELEVEN_API_KEY)
-
-### Health Check
-- `GET /api/health` - Server health status
+Currently, this site is primarily static with no active API endpoints. All routing is handled via Express.js server-side routing for pretty URLs.
 
 ## Security Considerations
 
-- **API keys** are stored in environment variables
-- **TTS requests** are proxied to keep API keys server-side
-- **Input validation** on all API endpoints
 - **Security headers** prevent XSS and clickjacking
 - **Request size limits** prevent abuse
+- **Static file serving** with appropriate cache headers
 
 ## Performance Features
 
-- **Image Optimization**: Automated compression pipeline
-- **TTS Caching**: Audio files cached to reduce API calls
+- **Image Optimization**: Automated WebP conversion with Sharp
 - **Static Asset Serving**: Optimized delivery of CSS/JS/images
 - **Responsive Images**: Multiple formats and sizes
-- **Browser Caching**: Appropriate cache headers
+- **Browser Caching**: Appropriate cache headers via Vercel CDN
 
 ## Monitoring and Maintenance
 
 ### Health Checks
-- Monitor `/api/health` endpoint
-- Set up uptime monitoring (UptimeRobot, Pingdom)
+- Set up uptime monitoring (UptimeRobot, Pingdom) for main domain
+- Monitor Vercel deployment logs
 
 ### Logs
-- Monitor server logs for errors
-- Check TTS cache directory size
-- Review API usage and limits
+- Monitor server logs for errors via Vercel dashboard
+- Review site analytics and performance metrics
 
 ### Updates
 1. **Pull latest changes**
@@ -373,17 +340,12 @@ console.log(window.menuDataManager.getCurrentData());
 
 1. **Port already in use**
    - Change PORT in .env file
-   - Kill existing process: `lsof -ti:8000 | xargs kill`
+   - Kill existing process: `lsof -ti:8000 | xargs kill` (Mac/Linux) or `netstat -ano | findstr :8000` (Windows)
 
-2. **TTS not working**
-   - Check ELEVEN_API_KEY is set
-   - Verify API key is valid
-   - Check network connectivity
-
-3. **Image optimization failing**
-   - Check TinyPNG API key
-   - Verify Python and requests package installed
-   - Check file permissions
+2. **Image optimization failing**
+   - Ensure Sharp is installed: `npm install sharp`
+   - Check file permissions on image directories
+   - Verify sufficient disk space
 
 ### Support
 For issues, check:
