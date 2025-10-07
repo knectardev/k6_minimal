@@ -43,13 +43,13 @@ const PRETTY_URLS = {
 
 // Project categories and their priorities
 const PROJECT_CATEGORIES = {
-  'Higher Education': { priority: '0.8', changefreq: 'monthly' },
-  'Intranets & Portals': { priority: '0.8', changefreq: 'monthly' },
-  'Web & iOS Apps': { priority: '0.7', changefreq: 'monthly' },
-  'Informational': { priority: '0.7', changefreq: 'monthly' },
-  'E-Commerce': { priority: '0.7', changefreq: 'monthly' },
-  'Programming & Technical': { priority: '0.6', changefreq: 'monthly' },
-  'Music & Art': { priority: '0.6', changefreq: 'monthly' }
+  'Higher Education': { priority: '0.8', changefreq: 'monthly', slug: 'higher-education' },
+  'Intranets & Portals': { priority: '0.8', changefreq: 'monthly', slug: 'intranets-&-portals' },
+  'Web & iOS Apps': { priority: '0.7', changefreq: 'monthly', slug: 'web-&-ios-apps' },
+  'Informational': { priority: '0.7', changefreq: 'monthly', slug: 'informational' },
+  'E-Commerce': { priority: '0.7', changefreq: 'monthly', slug: 'e-commerce' },
+  'Programming & Technical': { priority: '0.6', changefreq: 'monthly', slug: 'programming-&-technical' },
+  'Music & Art': { priority: '0.6', changefreq: 'monthly', slug: 'music-&-art' }
 };
 
 /**
