@@ -123,7 +123,7 @@
         "url": "project.html?item=mit",
         "projectTitle": "MIT",
         "technology": "Drupal",
-        "coverImage": "project_tiles/mit.jpg",
+        "coverImage": "project_tiles/mit.png",
         "sub_menu": 1,
         "_dataFile": "projects/mit.json"
       },

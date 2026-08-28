@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to create media element (video or image)
     function createMediaElement(mediaFile, alt) {
         if (isVideoFile(mediaFile)) {
-            return `<video src="project_images/${mediaFile}" 
+            return `<video src="/project_images/${mediaFile}" 
                            alt="${alt}" 
                            autoplay 
                            muted 
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </video>`;
         } else {
             // For now, just use regular img tags until WebP conversion is complete
-            return `<img src="project_images/${mediaFile}" 
+            return `<img src="/project_images/${mediaFile}" 
                          alt="${alt}" 
                          loading="lazy"
                          decoding="async">`;
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const mediaPromises = selectedMedia.map((file) => {
-            const path = `project_images/${file}`;
+            const path = `/project_images/${file}`;
             return isVideoFile(file) ? preloadVideo(path) : preloadImage(path);
         });
 
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="project-gallery-header">
             <h2 class="project-gallery-title">Project Gallery</h2>
             <button class="refresh-gallery-btn" aria-label="Refresh gallery with new random images">
-                <img src="assets/refresh.svg" alt="Refresh" class="refresh-icon">
+                <img src="/assets/refresh.svg" alt="Refresh" class="refresh-icon">
             </button>
         </div>
         <div class="project-gallery-grid">

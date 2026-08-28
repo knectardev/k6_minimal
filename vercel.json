@@ -311,26 +311,6 @@
       "permanent": true
     },
     {
-      "source": "/:year/:month/:day/:slug/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/:year/:month/:day/:slug",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/:year/:month/:slug/",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
-      "source": "/:year/:month/:slug",
-      "destination": "/projects.html",
-      "permanent": true
-    },
-    {
       "source": "/category/:category/",
       "destination": "/projects.html",
       "permanent": true

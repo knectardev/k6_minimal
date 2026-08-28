@@ -2,8 +2,9 @@
 // Automatically loads all images from about folder and displays them in a circular grid
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Only run on about page
-    if (!window.location.pathname.includes('about.html')) {
+    // Only run on about page (including pretty URLs)
+    const pathname = window.location.pathname;
+    if (!pathname.includes('about.html') && !pathname.match(/\/about\/?$/)) {
         return;
     }
 
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const galleryHTML = shuffledPeopleImages.map(imageFile => {
             const linkedInUrl = peopleToLinkedInMap[imageFile] || '#';
             const displayName = getDisplayName(imageFile);
-            const imagePath = `about/${imageFile}`;
+            const imagePath = `/about/${imageFile}`;
             
             return `
                 <div class="people-gallery-wrapper">
