@@ -1,58 +1,43 @@
-// load_footer.js – loads shared footer HTML
-(function() {
-    function setCopyrightYear(root) {
-        const year = new Date().getFullYear();
+// load_footer.js – injects shared footer synchronously (no fetch race)
+(function () {
+    function copyrightText() {
+        return `© ${new Date().getFullYear()} Knectar Design Corp.`;
+    }
+
+    function populateCopyright(root) {
         root.querySelectorAll('.copyright').forEach((el) => {
-            el.textContent = `© ${year} Knectar Design Corp.`;
+            el.textContent = copyrightText();
         });
     }
 
-    async function loadFooter() {
-        // Prevent duplicate footers
-        if (document.querySelector('.site-footer')) {
-            return;
-        }
-        
-        try {
-            // Use root-absolute path for footer
-            const footerPath = '/includes/footer.html';
-            
-            const response = await fetch(footerPath);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const footerHTML = await response.text();
-            
-            // Insert footer before closing body tag
-            document.body.insertAdjacentHTML('beforeend', footerHTML);
-            const footer = document.querySelector('.site-footer');
-            if (footer) setCopyrightYear(footer);
-        } catch (error) {
-            console.warn('Footer loading failed:', error);
-            // Prevent duplicate footers in fallback too
-            if (document.querySelector('.site-footer')) {
-                return;
-            }
-            // Fallback: create footer directly
-            const footer = document.createElement('footer');
-            footer.className = 'site-footer';
-            footer.innerHTML = `
-                <div class="footer-content">
-                    <div class="footer-right">
-                        <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
-                        <span class="copyright"></span>
-                    </div>
+    function buildFooter() {
+        const footer = document.createElement('footer');
+        footer.className = 'site-footer';
+        footer.innerHTML = `
+            <div class="footer-content">
+                <div class="footer-right">
+                    <a href="/privacy-policy.html" class="privacy-link">Privacy Policy</a>
+                    <span class="copyright">${copyrightText()}</span>
                 </div>
-            `;
-            setCopyrightYear(footer);
-            document.body.appendChild(footer);
-        }
+            </div>
+        `;
+        return footer;
     }
 
-    // Load footer when DOM is ready
+    function ensureFooter() {
+        const existing = document.querySelector('.site-footer');
+        if (existing) {
+            populateCopyright(existing);
+            return;
+        }
+
+        if (!document.body) return;
+        document.body.appendChild(buildFooter());
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadFooter);
+        document.addEventListener('DOMContentLoaded', ensureFooter);
     } else {
-        loadFooter();
+        ensureFooter();
     }
 })();
