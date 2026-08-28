@@ -1,5 +1,12 @@
 // load_footer.js – loads shared footer HTML
 (function() {
+    function setCopyrightYear(root) {
+        const year = new Date().getFullYear();
+        root.querySelectorAll('.copyright').forEach((el) => {
+            el.textContent = `© ${year} Knectar Design Corp.`;
+        });
+    }
+
     async function loadFooter() {
         // Prevent duplicate footers
         if (document.querySelector('.site-footer')) {
@@ -18,6 +25,8 @@
             
             // Insert footer before closing body tag
             document.body.insertAdjacentHTML('beforeend', footerHTML);
+            const footer = document.querySelector('.site-footer');
+            if (footer) setCopyrightYear(footer);
         } catch (error) {
             console.warn('Footer loading failed:', error);
             // Prevent duplicate footers in fallback too
@@ -31,10 +40,11 @@
                 <div class="footer-content">
                     <div class="footer-right">
                         <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
-                        <span class="copyright">© 2025 Knectar Design Corp.</span>
+                        <span class="copyright"></span>
                     </div>
                 </div>
             `;
+            setCopyrightYear(footer);
             document.body.appendChild(footer);
         }
     }
