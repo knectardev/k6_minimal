@@ -22,90 +22,10 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- Cookie Consent Manager -->
-    <link rel="stylesheet" id="silktide-consent-manager-css" href="cookies-banner/silktide-consent-manager.css">
-    <script src="cookies-banner/silktide-consent-manager.js"></script>
-
-      background: {
-        showBackground: true
-      },
-      cookieIcon: {
-        position: "bottomRight"
-      },
-      cookieTypes: [
-        {
-          id: "necessary",
-          name: "Necessary",
-          description: "<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>",
-          required: true,
-          onAccept: function() {
-            console.log('Add logic for the required Necessary here');
-          }
-        },
-        {
-          id: "analytics",
-          name: "Analytical",
-          description: "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
-          defaultValue: true,
-          onAccept: function() {
-            gtag('consent', 'update', {
-              analytics_storage: 'granted',
-            });
-            dataLayer.push({
-              'event': 'consent_accepted_analytics',
-            });
-          },
-          onReject: function() {
-            gtag('consent', 'update', {
-              analytics_storage: 'denied',
-            });
-          }
-        },
-        {
-          id: "advertising",
-          name: "Advertising",
-          description: "<p>These cookies provide extra features and personalization to improve your experience. They may be set by us or by partners whose services we use.</p>",
-          onAccept: function() {
-            gtag('consent', 'update', {
-              ad_storage: 'granted',
-              ad_user_data: 'granted',
-              ad_personalization: 'granted',
-            });
-            dataLayer.push({
-              'event': 'consent_accepted_advertising',
-            });
-          },
-          onReject: function() {
-            gtag('consent', 'update', {
-              ad_storage: 'denied',
-              ad_user_data: 'denied',
-              ad_personalization: 'denied',
-            });
-          }
-        }
-      ],
-      text: {
-        banner: {
-          description: "<p>We use cookies on our site to enhance your user experience, provide personalized content, and analyze our traffic. <a href=\"privacy-policy.html\" target=\"_blank\">Cookie Policy.</a></p>",
-          acceptAllButtonText: "Accept all",
-          acceptAllButtonAccessibleLabel: "Accept all cookies",
-          rejectNonEssentialButtonText: "Reject non-essential",
-          rejectNonEssentialButtonAccessibleLabel: "Reject non-essential",
-          preferencesButtonText: "Preferences",
-          preferencesButtonAccessibleLabel: "Toggle preferences"
-        },
-        preferences: {
-          title: "Customize your cookie preferences",
-          description: "<p>We respect your right to privacy. You can choose not to allow some types of cookies. Your cookie preferences will apply across our website.</p>",
-          creditLinkText: "Get this banner for free",
-          creditLinkAccessibleLabel: "Get this banner for free"
-        }
-      }
-    });
-    </script>
-    
     <!-- Data Manager (lazy-loading system) -->
     <script src="js/dataManager.js"></script>
+    <!-- Cookie consent + Google Consent Mode (must load before GTM) -->
+    <script src="js/consent.js"></script>
     <!-- Shared menu loader -->
     <script src="js/load_menu.js"></script>
 </head>
@@ -140,6 +60,15 @@
                         <h2 style="margin: 32px 0 16px 0; font-size: 1.4rem;">How We Use Your Information</h2>
                         <p style="margin-bottom: 24px;">We use the information we collect to respond to your inquiries, provide our services, and improve our website and offerings.</p>
                         
+                        <h2 style="margin: 32px 0 16px 0; font-size: 1.4rem;">Cookies &amp; Analytics</h2>
+                        <p style="margin-bottom: 16px;">We use cookies and similar technologies to operate this website and understand how visitors use it. You can accept or reject non-essential cookies at any time using the cookie preferences icon in the corner of the page.</p>
+                        <ul style="margin-bottom: 24px; padding-left: 24px;">
+                            <li style="margin-bottom: 8px;"><strong>Necessary cookies</strong> — required for core site functionality and to remember your cookie preferences.</li>
+                            <li style="margin-bottom: 8px;"><strong>Analytical cookies</strong> — help us measure traffic and improve the site via Google Analytics (loaded through Google Tag Manager).</li>
+                            <li style="margin-bottom: 8px;"><strong>Advertising cookies</strong> — used only if you opt in; they support ad measurement and personalization through Google services.</li>
+                        </ul>
+                        <p style="margin-bottom: 24px;">We use <a href="https://support.google.com/tagmanager/answer/10718549" style="color: var(--color-primary);" target="_blank" rel="noopener">Google Consent Mode</a> so analytics and advertising tags respect your choices. Non-essential cookies are disabled until you accept them.</p>
+
                         <h2 style="margin: 32px 0 16px 0; font-size: 1.4rem;">Information Sharing</h2>
                         <p style="margin-bottom: 24px;">We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy.</p>
                         
