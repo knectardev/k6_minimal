@@ -510,7 +510,8 @@
                 const isVid = /\.(mp4|webm|ogg)$/i.test(src);
                 if (mediaEl) mediaEl.remove();
                 mediaEl = document.createElement(isVid ? 'video' : 'img');
-                mediaEl.src = src;
+                // Root-absolute path required for pretty URLs (/project/:slug/)
+                mediaEl.src = src.startsWith('/') ? src : '/' + src;
                 if (isVid) {
                     mediaEl.autoplay = true;
                     mediaEl.loop = true;
