@@ -6,28 +6,31 @@
     <title>Knectar Portfolio – Project | Web Development & Design</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work across various technologies and industries.">
+    <meta name="description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work across various technologies and industries." id="meta-description">
     <meta name="keywords" content="project, portfolio, web development, design, knectar, case study">
     <meta name="author" content="Knectar">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://knectar.com/project.html">
-    <meta property="og:title" content="Knectar Portfolio – Project | Web Development & Design">
-    <meta property="og:description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work.">
-    <meta property="og:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="og:url" content="https://www.knectar.com/project.html" id="og-url">
+    <meta property="og:title" content="Knectar Portfolio – Project | Web Development & Design" id="og-title">
+    <meta property="og:description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:site_name" content="Knectar">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://knectar.com/project.html">
-    <meta property="twitter:title" content="Knectar Portfolio – Project | Web Development & Design">
-    <meta property="twitter:description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work.">
-    <meta property="twitter:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="twitter:url" content="https://www.knectar.com/project.html" id="twitter-url">
+    <meta property="twitter:title" content="Knectar Portfolio – Project | Web Development & Design" id="twitter-title">
+    <meta property="twitter:description" content="View detailed project information from Knectar's portfolio. Explore our web development and design work." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/assets/og-image.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://knectar.com/project.html">
+    <link rel="canonical" href="https://www.knectar.com/project.html" id="canonical-link">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
@@ -232,6 +235,55 @@
             });
         }
 
+        // SEO: per-project <title>, meta description, canonical and Open Graph / Twitter URLs.
+        // Without this every /project/:slug/ URL declares project.html as its canonical.
+        function updateProjectSeoTags(pageData, slug) {
+            const SITE_ORIGIN = 'https://www.knectar.com';
+            const setContent = (id, value) => {
+                const el = document.getElementById(id);
+                if (el && value) el.setAttribute('content', value);
+            };
+
+            const cleanSlug = (pageData && pageData.slug) || slug;
+            if (!cleanSlug) return;
+
+            const canonicalHref = `${SITE_ORIGIN}/project/${encodeURIComponent(cleanSlug)}/`;
+            const canonical = document.getElementById('canonical-link');
+            if (canonical) canonical.setAttribute('href', canonicalHref);
+            setContent('og-url', canonicalHref);
+            setContent('twitter-url', canonicalHref);
+
+            if (!pageData) return;
+
+            const projectTitle = pageData.projectTitle || pageData.label || '';
+            if (projectTitle) {
+                const fullTitle = `${projectTitle} | Knectar Portfolio`;
+                document.title = fullTitle;
+                setContent('og-title', fullTitle);
+                setContent('twitter-title', fullTitle);
+            }
+
+            // Build a plain-text description from the first paragraph of the page summary
+            if (pageData.pageSummary) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = pageData.pageSummary;
+                let text = (tmp.textContent || '').replace(/\s+/g, ' ').trim();
+                // Drop a leading bold label such as "Background and project goals"
+                const firstBold = tmp.querySelector('b, strong');
+                if (firstBold && text.startsWith(firstBold.textContent.trim())) {
+                    text = text.slice(firstBold.textContent.trim().length).trim();
+                }
+                if (text.length > 155) {
+                    text = text.slice(0, 152).replace(/\s+\S*$/, '') + '...';
+                }
+                if (text) {
+                    setContent('meta-description', text);
+                    setContent('og-description', text);
+                    setContent('twitter-description', text);
+                }
+            }
+        }
+
         // Data-driven detail images logic (multiple images, random tilt)
         document.addEventListener('DOMContentLoaded', function() {
             // Wait for menu data to be available
@@ -274,6 +326,8 @@
                 console.log('project.html inline script - pageData found:', !!pageData, 'detailImages:', pageData?.detailImages);
                 // Expose images for modal
                 window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
+                // SEO: give each project its own title / canonical / social tags
+                updateProjectSeoTags(pageData, slugParam);
             }
             // Remove old single image
             const oldImg = document.getElementById('project-detail-image');

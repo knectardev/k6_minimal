@@ -18,6 +18,12 @@ app.use((req, res, next) => {
 // Middleware to parse JSON bodies with size limit
 app.use(express.json({ limit: '1mb' }));
 
+// Recover relative projects.html links from pretty project URLs
+app.get('/project/:slug/projects.html', (req, res) => {
+  const qs = new URLSearchParams(req.query).toString();
+  res.redirect(302, '/projects.html' + (qs ? '?' + qs : ''));
+});
+
 // Pretty URL routes for local development (e.g., /project/<slug>/)
 app.get('/project/:slug', (req, res) => {
   res.sendFile(path.join(__dirname, 'project.html'));
@@ -32,6 +38,20 @@ app.get('/projects/:cat', (req, res) => {
 });
 app.get('/projects/:cat/', (req, res) => {
   res.sendFile(path.join(__dirname, 'projects.html'));
+});
+
+// Pretty routes for blog: /blog/ (list) and /blog/<slug>/ (post)
+app.get('/blog', (req, res) => {
+  res.sendFile(path.join(__dirname, 'blog.html'));
+});
+app.get('/blog/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'blog.html'));
+});
+app.get('/blog/:slug', (req, res) => {
+  res.sendFile(path.join(__dirname, 'blog-post.html'));
+});
+app.get('/blog/:slug/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'blog-post.html'));
 });
 
 // Pretty routes for about and services pages

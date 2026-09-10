@@ -12,6 +12,12 @@
     "more": 0
   },
   {
+    "label": "Blog",
+    "icon": "hash.svg",
+    "url": "/blog/",
+    "more": 0
+  },
+  {
     "label": "Higher Education",
     "icon": "grad.svg",
     "categoryDescription": "Knectar partners with leading educational institutions to deliver digital solutions that empower learning, collaboration, and innovation. Knectar partners with leading educational institutions to deliver digital solutions that empower learning, collaboration, and innovation.",

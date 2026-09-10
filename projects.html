@@ -13,21 +13,24 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://knectar.com/projects.html">
+    <meta property="og:url" content="https://www.knectar.com/projects.html" id="og-url">
     <meta property="og:title" content="Knectar Portfolio – Projects | Web Development & Design">
     <meta property="og:description" content="Explore Knectar's portfolio of web development and design projects across higher education, intranets, web apps, and more.">
-    <meta property="og:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="og:image" content="https://www.knectar.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:site_name" content="Knectar">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://knectar.com/projects.html">
+    <meta property="twitter:url" content="https://www.knectar.com/projects.html" id="twitter-url">
     <meta property="twitter:title" content="Knectar Portfolio – Projects | Web Development & Design">
     <meta property="twitter:description" content="Explore Knectar's portfolio of web development and design projects across higher education, intranets, web apps, and more.">
-    <meta property="twitter:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="twitter:image" content="https://www.knectar.com/assets/og-image.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://knectar.com/projects.html">
+    <link rel="canonical" href="https://www.knectar.com/projects.html" id="canonical-link">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
@@ -60,7 +63,7 @@
                     </button>
                 </div>
                 <div class="breadcrumbs">
-                    <a href="index.html" class="breadcrumb-link">Home</a> &gt; <a href="projects.html" class="breadcrumb-link" id="crumbProjects">Projects</a> &gt; <span id="crumbCategoryLink">All</span>
+                    <a href="/index.html" class="breadcrumb-link">Home</a> &gt; <a href="/projects.html" class="breadcrumb-link" id="crumbProjects">Projects</a> &gt; <span id="crumbCategoryLink">All</span>
                 </div>
             </header>
 
@@ -73,13 +76,12 @@
                 </button>
                 <ul class="select-options" id="dropdownOptions" role="listbox">
                     <li data-value="All" role="option"><span class="option-icon"></span>All</li>
-                    <li data-value="Higher Education" role="option"><span class="option-icon" style="background-image:url('assets/grad.svg')"></span>Higher Education</li>
-                    <li data-value="Intranets & Portals" role="option"><span class="option-icon" style="background-image:url('assets/intranet.svg')"></span>Intranets & Portals</li>
-                    <li data-value="Web & iOS Apps" role="option"><span class="option-icon" style="background-image:url('assets/web.svg')"></span>Web & iOS Apps</li>
-                    <li data-value="Informational" role="option"><span class="option-icon" style="background-image:url('assets/info.svg')"></span>Informational</li>
-                    <li data-value="E-Commerce" role="option"><span class="option-icon" style="background-image:url('assets/money.svg')"></span>E-Commerce</li>
-
-                    <li data-value="Music & Art" role="option"><span class="option-icon" style="background-image:url('assets/music.svg')"></span>Music & Art</li>
+                    <li data-value="Higher Education" role="option"><span class="option-icon"></span>Higher Education</li>
+                    <li data-value="Intranets & Portals" role="option"><span class="option-icon"></span>Intranets & Portals</li>
+                    <li data-value="Web & iOS Apps" role="option"><span class="option-icon"></span>Web & iOS Apps</li>
+                    <li data-value="Informational" role="option"><span class="option-icon"></span>Informational</li>
+                    <li data-value="E-Commerce" role="option"><span class="option-icon"></span>E-Commerce</li>
+                    <li data-value="Music & Art" role="option"><span class="option-icon"></span>Music & Art</li>
                 </ul>
                 <!-- Hidden native select for accessibility & existing JS hooks -->
                 <select id="categoryFilter" style="display:none;" aria-label="Project category filter">

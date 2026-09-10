@@ -18,6 +18,22 @@
       "destination": "/project.html"
     },
     {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog-post.html"
+    },
+    {
+      "source": "/blog/:slug/",
+      "destination": "/blog-post.html"
+    },
+    {
       "source": "/about",
       "destination": "/about.html"
     },
@@ -35,6 +51,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/project/:slug/projects.html",
+      "destination": "/projects.html",
+      "permanent": false
+    },
     {
       "source": "/privacy-policy/",
       "destination": "/privacy-policy.html",
@@ -167,7 +188,7 @@
     },
     {
       "source": "/drupal-web-development-blog/",
-      "destination": "/lines.html",
+      "destination": "/blog/",
       "permanent": true
     },
     {
@@ -192,7 +213,7 @@
     },
     {
       "source": "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug/",
-      "destination": "/lines.html",
+      "destination": "/blog/",
       "permanent": true
     },
     {
@@ -397,7 +418,7 @@
       ]
     },
     {
-      "source": "/(assets|project_images|project_tiles)/(.*)",
+      "source": "/(assets|project_images|project_tiles|blog_images)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=604800, s-maxage=31536000" }
       ]

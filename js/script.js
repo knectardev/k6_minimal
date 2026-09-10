@@ -570,7 +570,17 @@ async function injectPageData() {
 
         if (parentLabel) {
             crumbParent.textContent = parentLabel;
-            crumbParent.href = `projects.html?category=${encodeURIComponent(parentLabel)}`;
+            // Root-absolute pretty URL so this works from /project/:slug/
+            const categoryToSlug = {
+                'Higher Education': 'higher-education',
+                'Intranets & Portals': 'intranets-&-portals',
+                'Web & iOS Apps': 'web-&-ios-apps',
+                'Informational': 'informational',
+                'E-Commerce': 'e-commerce',
+                'Music & Art': 'music-&-art'
+            };
+            const slug = categoryToSlug[parentLabel] || parentLabel.toLowerCase().replace(/\s+/g, '-');
+            crumbParent.href = `/projects/${encodeURIComponent(slug)}/`;
         } else {
             // hide dangling separator if no parent
             crumbParent.remove();
@@ -724,7 +734,7 @@ function buildProjectInfoHTML(data) {
     if (data.technology) {
         // Support multiple technologies separated by comma
         const techs = data.technology.split(',').map(t => t.trim()).filter(Boolean);
-        const techLinks = techs.map(t => `<a href="projects.html?technology=${encodeURIComponent(t)}" class="tech-link">${t}</a>`).join(', ');
+        const techLinks = techs.map(t => `<a href="/projects.html?technology=${encodeURIComponent(t)}" class="tech-link">${t}</a>`).join(', ');
         rows.push(`<li><strong>TECHNOLOGY:</strong> ${techLinks}</li>`);
     }
     if (data.years) rows.push(`<li><strong>YEARS:</strong> ${data.years}</li>`);

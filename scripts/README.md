@@ -57,6 +57,14 @@ Run the sitemap generator whenever you:
 ### Output
 The script generates a valid XML sitemap that can be submitted to search engines like Google Search Console.
 
+## Open Graph Image Generator
+
+`generate_og_image.js` renders `assets/og-image.png` (1200x630) from the site logo and wordmark using `sharp`. Social networks do not render SVG `og:image` files, so every page's `og:image` / `twitter:image` points at this PNG. Re-run it if the logo, colors or tagline change:
+
+```bash
+npm run generate-og-image
+```
+
 ## Other Scripts
 
 - `optimize_images.js` - Image optimization utility

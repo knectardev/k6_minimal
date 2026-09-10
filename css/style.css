@@ -542,7 +542,7 @@ body {
 .project-details {
     display: block;
     width: 100%;
-    padding: 0;
+    padding: var(--spacing-xxl) 0 0 0;
     margin: 0;
 }
 
@@ -941,7 +941,7 @@ a:visited {
 
     .project-details {
         flex-direction: column;
-        padding: var(--spacing-md);
+        padding: var(--spacing-xxl) var(--spacing-md) var(--spacing-md);
     }
 
     .hamburger {
@@ -1561,11 +1561,15 @@ a:visited {
 
 /* Icon for "All" category */
 .select-options li[data-value="All"] .option-icon {
-    background-image: url('../assets/360.svg');
+    background-image: url('/assets/360.svg');
 }
 
-
-.select-options li[data-value="Music & Art"] .option-icon { background-image: url('../assets/music.svg'); }
+.select-options li[data-value="Higher Education"] .option-icon { background-image: url('/assets/grad.svg'); }
+.select-options li[data-value="Intranets & Portals"] .option-icon { background-image: url('/assets/intranet.svg'); }
+.select-options li[data-value="Web & iOS Apps"] .option-icon { background-image: url('/assets/web.svg'); }
+.select-options li[data-value="Informational"] .option-icon { background-image: url('/assets/info.svg'); }
+.select-options li[data-value="E-Commerce"] .option-icon { background-image: url('/assets/money.svg'); }
+.select-options li[data-value="Music & Art"] .option-icon { background-image: url('/assets/music.svg'); }
 
 .custom-select::after { display: none; }
 
@@ -1602,11 +1606,31 @@ a:visited {
 } 
 
 /* GitHub Fork Button Styles */
-.github-fork-btn {
+/* Lower-left floating actions: "Contact Us" CTA + GitHub fork icon (injected by js/github_fork.js) */
+.floating-actions {
     position: fixed;
     left: 32px;
     bottom: 32px;
     z-index: 12000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.github-fork-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--color-text-primary);
+    opacity: 0.6;
+    transition: color 0.2s, opacity 0.2s;
+}
+.github-fork-icon:hover, .github-fork-icon:focus {
+    color: var(--color-primary);
+    opacity: 1;
+}
+.github-fork-btn {
     display: flex;
     align-items: center;
     background: var(--color-primary);
@@ -1628,21 +1652,19 @@ a:visited {
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 @media (max-width: 900px) {
-    .github-fork-btn {
+    .floating-actions {
         left: 10px;
         bottom: 10px;
+        gap: 8px;
+    }
+    .github-fork-btn {
         padding: 6px 10px;
         font-size: 13px;
         color: #fff;
     }
-    .github-fork-btn svg {
-        margin-right: 4px !important;
-    }
 }
 @media (max-width: 768px) {
     .github-fork-btn {
-        left: 10px;
-        bottom: 10px;
         border-radius: 6px;
         font-size: 12px;
         color: #fff;
@@ -2306,16 +2328,19 @@ a:visited {
     font-size: 1.15em;
 }
 
-/* --- Mobile overrides: GitHub fork button anchored to content footer --- */
+/* --- Mobile overrides: floating actions (CTA + fork icon) anchored to content footer --- */
 @media (max-width: 768px) {
-  .github-fork-btn {
+  .floating-actions {
     position: static !important;
     left: auto !important;
     bottom: auto !important;
-    display: block !important;
+    display: flex !important;
+    justify-content: center;
     width: max-content;
     margin: 24px auto 0 auto;
     z-index: auto !important;
+  }
+  .github-fork-btn {
     color: #fff !important;
   }
 }
@@ -2977,6 +3002,19 @@ svg {
     text-decoration: underline;
 }
 
+/* Privacy Policy | LinkedIn on a single footer line */
+.footer-links {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.footer-divider {
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
+
 .copyright {
     color: var(--color-text-primary);
     font-size: 0.9rem;
@@ -3036,6 +3074,7 @@ svg {
 }
 
 .service-item {
+    position: relative; /* anchor for the stretched .service-link::after */
     background: white;
     padding: var(--spacing-xl);
     border-radius: 8px;
@@ -3100,15 +3139,29 @@ svg {
     margin-bottom: 0;
 }
 
-/* Service link styling */
+/* Service link styling.
+   The anchor wraps only the heading text (short, descriptive anchor text for SEO);
+   the ::after pseudo element stretches its hit area over the whole card so the
+   entire tile stays clickable. */
 .service-link {
     text-decoration: none;
     color: inherit;
-    display: block;
+}
+
+.service-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
 }
 
 .service-link:focus {
     outline: none;
+}
+
+.service-item:focus-within {
+    border-color: var(--color-primary, #FF0000);
 }
 
 /* Mobile responsive for Services */
@@ -3164,4 +3217,174 @@ svg {
         bottom: 100px !important; /* Lowered by 10px from 110px */
         right: 15px !important;
     }
+}
+
+/* ------- Blog (blog.html / blog-post.html) ------- */
+/* .blog-post-info mirrors the .project-info layout/typography. It is a separate
+   class on purpose: script.js injectPageData() rewrites any .project-info it finds. */
+.blog-post-info {
+    max-width: 500px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 1024px) {
+    .blog-post-info {
+        max-width: 720px;
+    }
+}
+
+.blog-post-info h1 {
+    margin-top: 0;
+    font-family: 'Benne', serif;
+}
+
+.blog-post-info h1,
+.blog-post-info h2,
+.blog-post-info h3,
+.blog-post-info h4,
+.blog-post-info h5,
+.blog-post-info h6 {
+    line-height: var(--line-height-heading);
+}
+
+@media (max-width: 768px) {
+    .blog-post-info h1 {
+        line-height: 1.15;
+    }
+}
+
+/* Metadata list (DATE / AUTHOR / CATEGORY) */
+.blog-post-info > ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-lg) 0;
+    color: var(--color-text-secondary);
+}
+
+.blog-post-info > ul li {
+    margin-bottom: var(--spacing-sm);
+    font-size: 16px;
+    line-height: var(--line-height-metadata);
+}
+
+.blog-post-info > ul li strong {
+    color: var(--color-primary);
+    font-weight: normal;
+    font-size: 13px;
+}
+
+/* Post body */
+.blog-post-info .description,
+.blog-post-info .description * {
+    line-height: var(--line-height-description);
+    font-size: 16px;
+}
+
+.blog-post-info .description p,
+.blog-post-info .description li {
+    margin-bottom: 0.5em;
+}
+
+.blog-post-info .description ul,
+.blog-post-info .description ol {
+    padding-left: 1.25em;
+}
+
+.blog-post-info .description li::marker {
+    color: var(--color-primary);
+}
+
+.blog-post-info .description pre,
+.blog-post-info .description code,
+.blog-post-info .description .hljs {
+    line-height: var(--line-height-code);
+}
+
+.blog-post-info .description img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.blog-back-link {
+    margin-top: var(--spacing-xl);
+}
+
+/* Single hero image in the right column, where the first stacked project image sits.
+   Selector matches the specificity of .project-gallery .detail-stack-image.active so the
+   spotlight scale/translate does not apply to a static hero. */
+.project-gallery .detail-stack-image.blog-hero {
+    top: 100px;
+    left: calc(50% + 100px);
+    right: auto;
+    width: 340px;
+    transform: none;
+    filter: grayscale(0%);
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.20);
+    cursor: pointer;
+}
+
+/* Image zoom modal (same overlay as project.html; needed here because that
+   markup lives in a page-local <style> block, not the shared stylesheet). */
+.image-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20000;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-modal-overlay img,
+.image-modal-overlay video {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.image-modal-overlay.active {
+    opacity: 1;
+}
+
+.image-modal-overlay.active img,
+.image-modal-overlay.active video {
+    transform: scale(1);
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+
+.image-modal-arrow.left { left: 16px; }
+.image-modal-arrow.right { right: 16px; }
+
+.image-modal-overlay .image-modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Blog tile excerpt on the list page */
+.project-tile .blog-excerpt {
+    color: var(--color-text-secondary);
 }

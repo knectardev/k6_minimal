@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knectar Portfolio - Web Development & Design</title>
+    <title>Knectar | Web Development, Design & Product Strategy</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Knectar - Professional web development and design services. We operate at the intersection of vision, execution, and connection, bridging disciplines and translating complexity into clarity.">
+    <meta name="description" content="Knectar designs and builds websites, intranets, web apps and e-commerce for higher education and business. Strategy, engineering and design under one roof.">
     <meta name="keywords" content="web development, design, portfolio, knectar, drupal, wordpress, higher education, intranets">
     <meta name="author" content="Knectar">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://knectar.com/">
-    <meta property="og:title" content="Knectar Portfolio - Web Development & Design">
-    <meta property="og:description" content="Professional web development and design services. We bridge disciplines, align teams, and translate complexity into clarity.">
-    <meta property="og:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="og:url" content="https://www.knectar.com/">
+    <meta property="og:title" content="Knectar | Web Development, Design & Product Strategy">
+    <meta property="og:description" content="Knectar designs and builds websites, intranets, web apps and e-commerce for higher education and business. Strategy, engineering and design under one roof.">
+    <meta property="og:image" content="https://www.knectar.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:site_name" content="Knectar">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://knectar.com/">
-    <meta property="twitter:title" content="Knectar Portfolio - Web Development & Design">
-    <meta property="twitter:description" content="Professional web development and design services. We bridge disciplines, align teams, and translate complexity into clarity.">
-    <meta property="twitter:image" content="https://knectar.com/assets/logo.svg">
+    <meta property="twitter:url" content="https://www.knectar.com/">
+    <meta property="twitter:title" content="Knectar | Web Development, Design & Product Strategy">
+    <meta property="twitter:description" content="Knectar designs and builds websites, intranets, web apps and e-commerce for higher education and business. Strategy, engineering and design under one roof.">
+    <meta property="twitter:image" content="https://www.knectar.com/assets/og-image.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://knectar.com/">
+    <link rel="canonical" href="https://www.knectar.com/">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
@@ -54,6 +57,32 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!--
+      Static top-level navigation (crawlable without JavaScript).
+      js/load_menu.js replaces this with the full data-driven menu from data/menu.json;
+      keep the top-level labels/URLs here in sync with that file.
+    -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo logo-desktop logo-active">
+            <a href="/index.html"><img src="/assets/logo.svg" class="logo-icon" alt="">KNECTAR</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li class="menu-item-parent"><a href="/about/"><img src="/assets/about.svg" class="nav-icon" alt="">ABOUT</a></li>
+                <li class="menu-item-parent"><a href="/services/"><img src="/assets/tools.svg" class="nav-icon" alt="">SERVICES</a></li>
+                <li class="menu-item-parent"><a href="/blog/"><img src="/assets/hash.svg" class="nav-icon" alt="">BLOG</a></li>
+                <li class="menu-item-parent"><a href="/projects/higher-education/" class="menu-parent"><img src="/assets/grad.svg" class="nav-icon" alt="">HIGHER EDUCATION</a></li>
+                <li class="menu-item-parent"><a href="/projects/intranets-%26-portals/" class="menu-parent"><img src="/assets/intranet.svg" class="nav-icon" alt="">INTRANETS &amp; PORTALS</a></li>
+                <li class="menu-item-parent"><a href="/projects/web-%26-ios-apps/" class="menu-parent"><img src="/assets/web.svg" class="nav-icon" alt="">WEB &amp; IOS APPS</a></li>
+                <li class="menu-item-parent"><a href="/projects/informational/" class="menu-parent"><img src="/assets/info.svg" class="nav-icon" alt="">INFORMATIONAL</a></li>
+                <li class="menu-item-parent"><a href="/projects/e-commerce/" class="menu-parent"><img src="/assets/money.svg" class="nav-icon" alt="">E-COMMERCE</a></li>
+                <li class="menu-item-parent"><a href="/projects/music-%26-art/" class="menu-parent"><img src="/assets/music.svg" class="nav-icon" alt="">MUSIC &amp; ART</a></li>
+                <li class="menu-item-parent"><a href="/resume/resume_static.html"><img src="/assets/work.svg" class="nav-icon" alt="">RESUME</a></li>
+                <li class="menu-item-parent"><a href="/contact.html"><img src="/assets/phone.svg" class="nav-icon" alt="">CONTACT</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="overlay"></div>
     <div class="container">
         <main class="main-content">
             <header class="page-header">
@@ -83,7 +112,7 @@
                     <div class="intro-text">
                         <p>As a node in a network of clients, creators, services, and API's, 
                             we at Knectar operate at the intersection of vision, execution, and connection — 
-                            where product design, engineering, and user needs converge. 
+                            where web development, product design, engineering, and user needs converge. 
                             We bridge disciplines, align teams, and translate complexity into clarity. 
                             Whether guiding a cross-functional group through a tight launch or architecting a 
                             user-centered experience within a demanding technical landscape, 
@@ -117,131 +146,126 @@
                 <h2 class="services-title">Services</h2>
                 <div class="services-grid">
                     <div class="service-item">
-                        <a href="services.html#user-centered-design" class="service-link">
-                            <div class="service-header">
-                                <img src="assets/tools_design.svg" alt="User-Centered Design & Strategy icon" width="32" height="32" class="service-icon">
-                                <h3>User-Centered Design & Strategy</h3>
-                            </div>
-                            <ul class="service-list">
-                                <li>Customer interviews and surveys to understand real needs</li>
-                                <li>Interactive mockups and user journey mapping</li>
-                                <li>Design guidelines and reusable component systems</li>
-                                <li>Regular user testing to validate design decisions</li>
-                            </ul>
-                        </a>
+                        <div class="service-header">
+                            <img src="assets/tools_design.svg" alt="User-Centered Design & Strategy icon" width="32" height="32" class="service-icon">
+                            <h3><a href="services.html#user-centered-design" class="service-link">User-Centered Design & Strategy</a></h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Customer interviews and surveys to understand real needs</li>
+                            <li>Interactive mockups and user journey mapping</li>
+                            <li>Design guidelines and reusable component systems</li>
+                            <li>Regular user testing to validate design decisions</li>
+                        </ul>
                     </div>
 
                     <div class="service-item">
-                        <a href="services.html#strategic-roadmapping" class="service-link">
-                            <div class="service-header">
-                                <img src="assets/tools_roadmap.svg" alt="Strategic Roadmapping & Prioritization icon" width="32" height="32" class="service-icon">
-                                <h3>Strategic Roadmapping & Prioritization</h3>
-                            </div>
-                            <ul class="service-list">
-                                <li>Feature prioritization using proven frameworks</li>
-                                <li>Clear roadmaps connecting work to business goals</li>
-                                <li>Flexible project boards and tracking systems</li>
-                                <li>Transparent stakeholder communication</li>
-                            </ul>
-                        </a>
+                        <div class="service-header">
+                            <img src="assets/tools_roadmap.svg" alt="Strategic Roadmapping & Prioritization icon" width="32" height="32" class="service-icon">
+                            <h3><a href="services.html#strategic-roadmapping" class="service-link">Strategic Roadmapping & Prioritization</a></h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Feature prioritization using proven frameworks</li>
+                            <li>Clear roadmaps connecting work to business goals</li>
+                            <li>Flexible project boards and tracking systems</li>
+                            <li>Transparent stakeholder communication</li>
+                        </ul>
                     </div>
 
                     <div class="service-item">
-                        <a href="services.html#technical-architecture" class="service-link">
-                            <div class="service-header">
-                                <img src="assets/tools_documentation.svg" alt="Technical Architecture & Documentation icon" width="32" height="32" class="service-icon">
-                                <h3>Technical Architecture & Documentation</h3>
-                            </div>
-                            <ul class="service-list">
-                                <li>Detailed technical specifications and blueprints</li>
-                                <li>Comprehensive system documentation</li>
-                                <li>Visual diagrams for complex relationships</li>
-                                <li>Smooth handoffs between team members</li>
-                            </ul>
-                        </a>
+                        <div class="service-header">
+                            <img src="assets/tools_documentation.svg" alt="Technical Architecture & Documentation icon" width="32" height="32" class="service-icon">
+                            <h3><a href="services.html#technical-architecture" class="service-link">Technical Architecture & Documentation</a></h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Detailed technical specifications and blueprints</li>
+                            <li>Comprehensive system documentation</li>
+                            <li>Visual diagrams for complex relationships</li>
+                            <li>Smooth handoffs between team members</li>
+                        </ul>
                     </div>
 
                     <div class="service-item">
-                        <a href="services.html#smart-buy-build" class="service-link">
-                            <div class="service-header">
-                                <img src="assets/tools_buy_v_build.svg" alt="Smart Buy vs. Build Decisions icon" width="32" height="32" class="service-icon">
-                                <h3>Smart Buy vs. Build Decisions</h3>
-                            </div>
-                            <ul class="service-list">
-                                <li>Cost-benefit analysis of software options</li>
-                                <li>Cloud platform and software comparisons</li>
-                                <li>Custom system design for unique requirements</li>
-                                <li>Future growth and ownership considerations</li>
-                            </ul>
-                        </a>
+                        <div class="service-header">
+                            <img src="assets/tools_buy_v_build.svg" alt="Smart Buy vs. Build Decisions icon" width="32" height="32" class="service-icon">
+                            <h3><a href="services.html#smart-buy-build" class="service-link">Smart Buy vs. Build Decisions</a></h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Cost-benefit analysis of software options</li>
+                            <li>Cloud platform and software comparisons</li>
+                            <li>Custom system design for unique requirements</li>
+                            <li>Future growth and ownership considerations</li>
+                        </ul>
                     </div>
 
                     <div class="service-item">
-                        <a href="services.html#modern-frameworks" class="service-link">
-                            <div class="service-header">
-                                <img src="assets/tools_framework.svg" alt="Modern Development Frameworks icon" width="32" height="32" class="service-icon">
-                                <h3>Modern Development Frameworks</h3>
-                            </div>
-                            <ul class="service-list">
-                                <li>Battle-tested, community-supported frameworks</li>
-                                <li>Faster delivery with lower costs</li>
-                                <li>Seamless integration with data sources</li>
-                                <li>Flexible systems that grow with your business</li>
-                            </ul>
-                        </a>
+                        <div class="service-header">
+                            <img src="assets/tools_framework.svg" alt="Modern Development Frameworks icon" width="32" height="32" class="service-icon">
+                            <h3><a href="services.html#modern-frameworks" class="service-link">Modern Development Frameworks</a></h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Battle-tested, community-supported frameworks</li>
+                            <li>Faster delivery with lower costs</li>
+                            <li>Seamless integration with data sources</li>
+                            <li>Flexible systems that grow with your business</li>
+                        </ul>
                     </div>
 
                     <div class="service-item">
-                        <a href="services.html#quality-assurance" class="service-link">
-                            <div class="service-header">
-                                <img src="assets/tool_testing.svg" alt="Quality Assurance & Testing icon" width="32" height="32" class="service-icon">
-                                <h3>Quality Assurance & Testing</h3>
-                            </div>
-                            <ul class="service-list">
-                                <li>Comprehensive testing before user deployment</li>
-                                <li>Automated monitoring and issue detection</li>
-                                <li>Performance optimization and accessibility checks</li>
-                                <li>Real-world device and condition testing</li>
-                            </ul>
-                        </a>
+                        <div class="service-header">
+                            <img src="assets/tool_testing.svg" alt="Quality Assurance & Testing icon" width="32" height="32" class="service-icon">
+                            <h3><a href="services.html#quality-assurance" class="service-link">Quality Assurance & Testing</a></h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Comprehensive testing before user deployment</li>
+                            <li>Automated monitoring and issue detection</li>
+                            <li>Performance optimization and accessibility checks</li>
+                            <li>Real-world device and condition testing</li>
+                        </ul>
                     </div>
 
                     <div class="service-item">
-                        <a href="services.html#intelligent-ai" class="service-link">
-                            <div class="service-header">
-                                <img src="assets/tools_robot.svg" alt="Intelligent AI Integration icon" width="32" height="32" class="service-icon">
-                                <h3>Intelligent AI Integration</h3>
-                            </div>
-                            <ul class="service-list">
-                                <li>Advanced language models and smart systems</li>
-                                <li>Practical AI applications for real problems</li>
-                                <li>Better search, automated responses, recommendations</li>
-                                <li>Reliable frameworks with reusable templates</li>
-                            </ul>
-                        </a>
+                        <div class="service-header">
+                            <img src="assets/tools_robot.svg" alt="Intelligent AI Integration icon" width="32" height="32" class="service-icon">
+                            <h3><a href="services.html#intelligent-ai" class="service-link">Intelligent AI Integration</a></h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Advanced language models and smart systems</li>
+                            <li>Practical AI applications for real problems</li>
+                            <li>Better search, automated responses, recommendations</li>
+                            <li>Reliable frameworks with reusable templates</li>
+                        </ul>
                     </div>
 
                     <div class="service-item">
-                        <a href="services.html#physical-prototyping" class="service-link">
-                            <div class="service-header">
-                                <img src="assets/tools_measuring.svg" alt="Physical Product Prototyping icon" width="32" height="32" class="service-icon">
-                                <h3>Physical Product Prototyping</h3>
-                            </div>
-                            <ul class="service-list">
-                                <li>Microcontrollers, sensors, and custom electronics</li>
-                                <li>3D printing and precision fabrication</li>
-                                <li>Mechanical component design</li>
-                                <li>Concept validation and production preparation</li>
-                            </ul>
-                        </a>
+                        <div class="service-header">
+                            <img src="assets/tools_measuring.svg" alt="Physical Product Prototyping icon" width="32" height="32" class="service-icon">
+                            <h3><a href="services.html#physical-prototyping" class="service-link">Physical Product Prototyping</a></h3>
+                        </div>
+                        <ul class="service-list">
+                            <li>Microcontrollers, sensors, and custom electronics</li>
+                            <li>3D printing and precision fabrication</li>
+                            <li>Mechanical component design</li>
+                            <li>Concept validation and production preparation</li>
+                        </ul>
                     </div>
                 </div>
             </section>
         </main>
     </div>
-    
+    <!-- Static footer (crawlable). js/load_footer.js keeps the copyright year current. Kept in sync with includes/footer.html -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-right">
+                <span class="footer-links">
+                    <a href="/privacy-policy.html" class="privacy-link">Privacy Policy</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="https://www.linkedin.com/in/chris-amato/" class="privacy-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </span>
+                <span class="copyright">© 2026 Knectar Design Corp.</span>
+            </div>
+        </div>
+    </footer>
 
-    
     <!-- main site script loaded by loader -->
     <script src="js/lines.js"></script>
     <!-- Footer loaded by footer loader -->

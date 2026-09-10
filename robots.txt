@@ -17,7 +17,7 @@ Allow: /project_tiles/
 Allow: /project_images/
 
 # Sitemap location
-Sitemap: https://knectar.com/sitemap.xml
+Sitemap: https://www.knectar.com/sitemap.xml
 
 # Crawl delay (optional)
 Crawl-delay: 1 

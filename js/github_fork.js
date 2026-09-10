@@ -1,14 +1,36 @@
-// Injects a 'Fork on GitHub' button in the lower left corner under the sidebar
+// Injects the lower-left floating actions: a "Contact Us" CTA (red pill) and an
+// icon-only "Fork on GitHub" link. Loaded on every page by js/load_menu.js.
 (function() {
     const repoUrl = 'https://github.com/knectardev/k6_minimal';
-    const forkBtn = document.createElement('a');
-    forkBtn.href = repoUrl;
-    forkBtn.target = '_blank';
-    forkBtn.rel = 'noopener noreferrer';
-    forkBtn.className = 'github-fork-btn';
-    forkBtn.innerHTML = `
-        <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="vertical-align:middle;margin-right:8px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-        <span>Fork on GitHub</span>
+    const contactUrl = '/contact.html';
+
+    // Do not show a "Contact Us" CTA on the contact pages themselves
+    const path = window.location.pathname.toLowerCase();
+    const onContactPage = /\/contact(_confirmation)?\.html$/.test(path) || /\/contact\/?$/.test(path);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'floating-actions';
+
+    if (!onContactPage) {
+        const cta = document.createElement('a');
+        cta.href = contactUrl;
+        cta.className = 'github-fork-btn cta-contact';
+        cta.textContent = 'Contact Us';
+        wrap.appendChild(cta);
+    }
+
+    const forkLink = document.createElement('a');
+    forkLink.href = repoUrl;
+    forkLink.target = '_blank';
+    forkLink.rel = 'noopener noreferrer';
+    forkLink.className = 'github-fork-icon';
+    forkLink.setAttribute('aria-label', 'Fork on GitHub');
+    forkLink.title = 'Fork on GitHub';
+    // Git fork glyph (Octicons "repo-forked", MIT)
+    forkLink.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path></svg>
     `;
-    document.body.appendChild(forkBtn);
-})(); 
+    wrap.appendChild(forkLink);
+
+    document.body.appendChild(wrap);
+})();

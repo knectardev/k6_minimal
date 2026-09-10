@@ -1,59 +1,26 @@
-<!-- Menu partial: overlay and sidebar navigation -->
-<div class="overlay"></div>
+<!--
+  Menu partial: static, crawlable top-level navigation.
+  This is the same markup embedded in index.html. js/load_menu.js replaces it at runtime
+  with the full data-driven menu built from data/menu.json; keep labels/URLs in sync with that file.
+-->
 <aside class="sidebar" id="sidebar">
     <div class="logo logo-desktop logo-active">
-        <a href="index.html"><img src="assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+        <a href="/index.html"><img src="/assets/logo.svg" class="logo-icon" alt="">KNECTAR</a>
     </div>
     <nav class="main-nav">
         <ul>
-            <li><a href="#"><img src="assets/about.svg" alt="" class="nav-icon">ABOUT</a></li>
-            <li><a href="#" class="menu-parent"><img src="assets/grad.svg" alt="" class="nav-icon">HIGHER EDUCATION</a>
-                <ul class="submenu">
-                    <li><a href="#">MIT</a></li>
-                    <li><a href="#">UMass</a></li>
-                    <li><a href="#">Carnegie Mellon</a></li>
-                    <li><a href="project.html?item=yale-center-for-british-art">Yale</a></li>
-                    <li><a href="#">Temple</a></li>
-                    <li><a href="#">Harvard</a></li>
-                    <li><a href="#">more...</a></li>
-                </ul>
-            </li>
-            <li><a href="#" class="menu-parent"><img src="assets/intranet.svg" alt="" class="nav-icon">INTRANETS & PORTALS</a>
-                <ul class="submenu">
-                    <li><a href="page1-intranets.html">Page 1</a></li>
-                    <li><a href="page2-intranets.html">Page 2</a></li>
-                    <li><a href="page3-intranets.html">Page 3</a></li>
-                </ul>
-            </li>
-            <li><a href="#" class="menu-parent"><img src="assets/web.svg" alt="" class="nav-icon">WEB & iOS APPS</a>
-                <ul class="submenu">
-                    <li><a href="web-apps.html">Page 1</a></li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
-                </ul>
-            </li>
-            <li><a href="#" class="menu-parent"><img src="assets/info.svg" alt="" class="nav-icon">INFORMATIONAL</a>
-                <ul class="submenu">
-                    <li><a href="informational.html">Page 1</a></li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
-                </ul>
-            </li>
-            <li><a href="#" class="menu-parent"><img src="assets/money.svg" alt="" class="nav-icon">E-COMMERCE</a>
-                <ul class="submenu">
-                    <li><a href="project.html?item=ecom1">Shopify Redesign</a></li>
-                    <li><a href="project.html?item=ecom2">Magento Optimization</a></li>
-                    <li><a href="project.html?item=ecom3">Custom React Store</a></li>
-                </ul>
-            </li>
-
-            <li><a href="#" class="menu-parent"><img src="assets/music.svg" alt="" class="nav-icon">MUSIC & ART</a>
-                <ul class="submenu">
-                    <li><a href="projects.html?category=Music%20%26%20Art">Experimental Soundscapes</a></li>
-                </ul>
-            </li>
-            <li><a href="#"><img src="assets/work.svg" alt="" class="nav-icon">RESUME</a></li>
-            <li><a href="contact.html"><img src="assets/phone.svg" alt="" class="nav-icon">CONTACT</a></li>
+            <li class="menu-item-parent"><a href="/about/"><img src="/assets/about.svg" class="nav-icon" alt="">ABOUT</a></li>
+            <li class="menu-item-parent"><a href="/services/"><img src="/assets/tools.svg" class="nav-icon" alt="">SERVICES</a></li>
+            <li class="menu-item-parent"><a href="/blog/"><img src="/assets/hash.svg" class="nav-icon" alt="">BLOG</a></li>
+            <li class="menu-item-parent"><a href="/projects/higher-education/" class="menu-parent"><img src="/assets/grad.svg" class="nav-icon" alt="">HIGHER EDUCATION</a></li>
+            <li class="menu-item-parent"><a href="/projects/intranets-%26-portals/" class="menu-parent"><img src="/assets/intranet.svg" class="nav-icon" alt="">INTRANETS &amp; PORTALS</a></li>
+            <li class="menu-item-parent"><a href="/projects/web-%26-ios-apps/" class="menu-parent"><img src="/assets/web.svg" class="nav-icon" alt="">WEB &amp; IOS APPS</a></li>
+            <li class="menu-item-parent"><a href="/projects/informational/" class="menu-parent"><img src="/assets/info.svg" class="nav-icon" alt="">INFORMATIONAL</a></li>
+            <li class="menu-item-parent"><a href="/projects/e-commerce/" class="menu-parent"><img src="/assets/money.svg" class="nav-icon" alt="">E-COMMERCE</a></li>
+            <li class="menu-item-parent"><a href="/projects/music-%26-art/" class="menu-parent"><img src="/assets/music.svg" class="nav-icon" alt="">MUSIC &amp; ART</a></li>
+            <li class="menu-item-parent"><a href="/resume/resume_static.html"><img src="/assets/work.svg" class="nav-icon" alt="">RESUME</a></li>
+            <li class="menu-item-parent"><a href="/contact.html"><img src="/assets/phone.svg" class="nav-icon" alt="">CONTACT</a></li>
         </ul>
     </nav>
-</aside> 
+</aside>
+<div class="overlay"></div>

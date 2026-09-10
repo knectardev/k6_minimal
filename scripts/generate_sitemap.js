@@ -19,8 +19,12 @@ const CONFIG = {
   baseUrl: 'https://www.knectar.com',
   lastmod: new Date().toISOString().split('T')[0], // YYYY-MM-DD format
   menuFile: 'data/menu.json',
+  blogFile: 'data/blog.json',
   outputFile: 'sitemap.xml'
 };
+
+// Blog post entries
+const BLOG_POST_CONFIG = { priority: '0.6', changefreq: 'monthly' };
 
 // Priority and change frequency mappings
 const PAGE_CONFIG = {
@@ -28,6 +32,7 @@ const PAGE_CONFIG = {
   'about.html': { priority: '0.9', changefreq: 'monthly' },
   'services.html': { priority: '0.8', changefreq: 'monthly' },
   'projects.html': { priority: '0.9', changefreq: 'weekly' },
+  'blog.html': { priority: '0.7', changefreq: 'weekly' },
   'lines.html': { priority: '0.6', changefreq: 'monthly' },
   'contact.html': { priority: '0.8', changefreq: 'monthly' },
   'contact_confirmation.html': { priority: '0.3', changefreq: 'yearly' },
@@ -38,7 +43,8 @@ const PAGE_CONFIG = {
 // Pretty URL mappings for main pages
 const PRETTY_URLS = {
   'about.html': '/about/',
-  'services.html': '/services/'
+  'services.html': '/services/',
+  'blog.html': '/blog/'
 };
 
 // Project categories and their priorities
@@ -94,6 +100,26 @@ function getProjectSlugs() {
     return projects;
   } catch (error) {
     console.error('Error reading menu.json:', error.message);
+    return [];
+  }
+}
+
+/**
+ * Get all blog post slugs from blog.json (optional file)
+ */
+function getBlogPostSlugs() {
+  if (!fs.existsSync(CONFIG.blogFile)) {
+    console.log(`No ${CONFIG.blogFile} found, skipping blog posts`);
+    return [];
+  }
+  try {
+    const posts = JSON.parse(fs.readFileSync(CONFIG.blogFile, 'utf8'));
+    if (!Array.isArray(posts)) return [];
+    return posts
+      .filter(post => post && post.slug)
+      .map(post => ({ slug: post.slug, url: `/blog/${encodeURIComponent(post.slug)}/` }));
+  } catch (error) {
+    console.error('Error reading blog.json:', error.message);
     return [];
   }
 }
@@ -186,6 +212,12 @@ function generateSitemap() {
       const url = `${CONFIG.baseUrl}/projects/${encodeURIComponent(slug)}/`;
       urls.push(generateUrlEntry(url, config.priority, config.changefreq));
     }
+  });
+  
+  // Add blog post pages
+  console.log('Adding blog post pages...');
+  getBlogPostSlugs().forEach(post => {
+    urls.push(generateUrlEntry(CONFIG.baseUrl + post.url, BLOG_POST_CONFIG.priority, BLOG_POST_CONFIG.changefreq));
   });
   
   // Generate final XML

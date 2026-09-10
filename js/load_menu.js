@@ -128,14 +128,28 @@
     aside.appendChild(logo);
     aside.appendChild(nav);
 
+    // Some pages (e.g. index.html) ship a static, crawlable copy of the sidebar so
+    // links exist without JavaScript. Replace it so we never render two sidebars.
+    function removeStaticMenu() {
+      document.querySelectorAll('aside#sidebar, body > .overlay').forEach(el => {
+        if (el !== aside && el !== overlay) el.remove();
+      });
+    }
+    // If the parser has not reached the static markup yet, sweep again once the DOM is complete.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', removeStaticMenu, { once: true });
+    }
+
     // Ensure document.body exists before inserting elements
     if (document.body) {
+      removeStaticMenu();
       document.body.insertAdjacentElement('afterbegin', overlay);
       document.body.insertAdjacentElement('afterbegin', aside);
     } else {
       // If body doesn't exist yet, wait for it
       const observer = new MutationObserver((mutations, obs) => {
         if (document.body) {
+          removeStaticMenu();
           document.body.insertAdjacentElement('afterbegin', overlay);
           document.body.insertAdjacentElement('afterbegin', aside);
           obs.disconnect();

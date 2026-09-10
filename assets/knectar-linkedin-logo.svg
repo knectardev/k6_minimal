@@ -1,0 +1,15 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="white"/>
+
+  <!-- Current Knectar website mark, scaled from assets/logo.svg -->
+  <g transform="translate(166 535) scale(8.25)">
+    <path d="M0.666668 15.5834V0.416748L12.5833 8.00008L0.666668 15.5834ZM2.83333 11.6292L8.52083 8.00008L2.83333 4.37091V11.6292Z" fill="#FF0000"/>
+  </g>
+
+  <text x="306" y="666"
+        fill="#000000"
+        font-family="Karla, Arial, sans-serif"
+        font-size="168"
+        font-weight="700"
+        letter-spacing="2">KNECTAR</text>
+</svg>
