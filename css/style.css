@@ -666,18 +666,12 @@ body {
     line-height: var(--line-height-description) !important;
 }
 
-/* Nuclear option - force line-height on ALL project info content */
+/* Nuclear option - force line-height on ALL project info content (headings excluded, see below) */
 .project-info,
 .project-info *,
 .project-info p,
 .project-info div,
 .project-info span,
-.project-info h1,
-.project-info h2,
-.project-info h3,
-.project-info h4,
-.project-info h5,
-.project-info h6,
 .project-info li,
 .project-info ul,
 .project-info ol,
@@ -714,12 +708,6 @@ body {
 .project-info p:not(.description-display),
 .project-info div:not(.description-display),
 .project-info span:not(.description-display),
-.project-info h1,
-.project-info h2,
-.project-info h3,
-.project-info h4,
-.project-info h5,
-.project-info h6,
 .project-info li:not(.project-info ul li),
 .project-info ol,
 .project-info ol li,
@@ -730,6 +718,16 @@ body {
 .project-info i,
 .project-info a:not(.project-info ul li a) {
     line-height: var(--line-height-description) !important;
+}
+
+/* Headings - use the heading line height so wrapped titles don't get tall gaps */
+.project-info h1,
+.project-info h2,
+.project-info h3,
+.project-info h4,
+.project-info h5,
+.project-info h6 {
+    line-height: var(--line-height-heading) !important;
 }
 
 /* External Link Styles */

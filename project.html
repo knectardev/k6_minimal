@@ -215,6 +215,7 @@
             const computedStyle = getComputedStyle(document.documentElement);
             const descriptionLineHeight = computedStyle.getPropertyValue('--line-height-description');
             const codeLineHeight = computedStyle.getPropertyValue('--line-height-code');
+            const headingLineHeight = computedStyle.getPropertyValue('--line-height-heading');
             
             // Apply to all text content (excluding code blocks)
             const textElements = projectInfo.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote, strong, em, b, i, a');
@@ -222,6 +223,9 @@
                 // Skip if it's a code element or inside a code block
                 if (el.closest('pre') || el.closest('code') || el.tagName === 'PRE' || el.tagName === 'CODE') {
                     el.style.lineHeight = codeLineHeight;
+                } else if (/^H[1-6]$/.test(el.tagName)) {
+                    // Headings use the tighter heading line height
+                    el.style.lineHeight = headingLineHeight;
                 } else {
                     el.style.lineHeight = descriptionLineHeight;
                 }
