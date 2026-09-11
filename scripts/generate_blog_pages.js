@@ -67,7 +67,7 @@ function applyPostMeta(html, post, imageUrl, imageType, width, height) {
     const title = post.title || 'Knectar Blog';
     const desc = post.excerpt || title;
     const pageTitle = `${title} | Knectar Blog`;
-    const alt = post.coverIframeTitle || post.title || 'Knectar';
+    const alt = post.title || 'Knectar';
 
     html = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeAttr(pageTitle)}</title>`);
     html = replaceAttrById(html, 'canonical-link', 'href', url);
