@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU fluid simulation after Amanda Ghassaei</title>
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #faf1d7;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+            cursor: crosshair;
+        }
+        body.tile canvas {
+            cursor: default;
+        }
+        #fallback {
+            display: none;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 1.25rem;
+            font: 14px/1.4 Georgia, "Times New Roman", serif;
+            color: #1a1a2a;
+            background: #faf1d7;
+        }
+        body.fallback #fallback { display: flex; align-items: center; justify-content: center; text-align: center; }
+        body.fallback canvas { display: none; }
+    </style>
+</head>
+<body>
+    <p id="fallback">This Navier–Stokes sketch needs WebGL 2.</p>
+    <!--
+      Fluid example adapted from Amanda Ghassaei's gpu-io (MIT):
+      https://github.com/amandaghassaei/gpu-io/tree/main/examples/fluid
+      https://apps.amandaghassaei.com/gpu-io/examples/fluid/
+    -->
+    <script src="/embeds/vendor/gpu-io.min.js"></script>
+    <script src="/embeds/gpu-fluid.js"></script>
+</body>
+</html>

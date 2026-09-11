@@ -25,6 +25,24 @@
         return src.startsWith('/') || /^https?:\/\//i.test(src) ? src : '/' + src;
     }
 
+    function prefersReducedMotion() {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function coverIframeSrc(post, tile) {
+        const raw = rootPath(post.coverIframe);
+        const url = new URL(raw, window.location.origin);
+        if (tile) {
+            url.searchParams.set('tile', '1');
+            url.searchParams.set('interactive', '0');
+        }
+        return url.pathname + url.search;
+    }
+
+    function useCoverIframe(post) {
+        return !!(post.coverIframe && !prefersReducedMotion());
+    }
+
     // "2026-08-18" -> "August 18, 2026" (parsed as UTC to avoid off-by-one)
     function formatDate(iso) {
         if (!iso) return '';
@@ -93,7 +111,18 @@
 
             const imageSrc = rootPath(post.tileImage || post.coverImage || 'project_tiles/sample_tile1.png');
             const imageId = `blog-img-${idx}`;
-            const mediaHTML = `
+            let mediaHTML;
+            if (useCoverIframe(post)) {
+                mediaHTML = `
+                <div class="image-container blog-tile-embed" style="position: relative; width: 100%; height: 200px;">
+                    <iframe class="blog-tile-iframe"
+                            src="${escapeHtml(coverIframeSrc(post, true))}"
+                            title="${escapeHtml(post.coverIframeTitle || post.title)}"
+                            loading="lazy"
+                            tabindex="-1"></iframe>
+                </div>`;
+            } else {
+                mediaHTML = `
                 <div class="image-container" style="position: relative; width: 100%; height: 200px;">
                     <div class="image-skeleton" style="width: 100%; height: 200px; position: absolute; top: 0; left: 0;"></div>
                     <img id="${imageId}"
@@ -105,6 +134,7 @@
                          onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
                          onerror="this.previousElementSibling.style.display='none';">
                 </div>`;
+            }
 
             article.innerHTML = `
                 <div class="project-image">${mediaHTML}</div>
@@ -279,18 +309,49 @@
         return html;
     }
 
+    function createCoverCredit(post) {
+        if (!post.coverIframeCredit) return null;
+        const caption = document.createElement('p');
+        caption.className = 'blog-hero-caption';
+        const url = post.coverIframeCreditUrl || '';
+        if (url) {
+            caption.append('After ');
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.textContent = post.coverIframeCredit;
+            caption.appendChild(link);
+            caption.append('.');
+        } else {
+            caption.textContent = `After ${post.coverIframeCredit}.`;
+        }
+        return caption;
+    }
+
     function insertMobileHero(container, post) {
-        if (!post.coverImage) return;
+        if (!useCoverIframe(post) && !post.coverImage) return;
         if (!window.matchMedia('(max-width: 768px)').matches) return;
         const gallery = document.createElement('div');
         gallery.className = 'mobile-gallery';
-        gallery.setAttribute('aria-label', 'Post image');
-        const img = document.createElement('img');
-        img.src = rootPath(post.coverImage);
-        img.alt = `${post.title} image`;
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', () => showImageModal(rootPath(post.coverImage)));
-        gallery.appendChild(img);
+        gallery.setAttribute('aria-label', useCoverIframe(post) ? 'Post simulation' : 'Post image');
+        if (useCoverIframe(post)) {
+            const iframe = document.createElement('iframe');
+            iframe.className = 'blog-mobile-iframe';
+            iframe.src = coverIframeSrc(post, false);
+            iframe.title = post.coverIframeTitle || post.title;
+            iframe.setAttribute('aria-label', post.coverIframeTitle || post.title);
+            gallery.appendChild(iframe);
+            const credit = createCoverCredit(post);
+            if (credit) gallery.appendChild(credit);
+        } else {
+            const img = document.createElement('img');
+            img.src = rootPath(post.coverImage);
+            img.alt = `${post.title} image`;
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => showImageModal(rootPath(post.coverImage)));
+            gallery.appendChild(img);
+        }
         const metaList = container.querySelector('ul');
         if (metaList && metaList.parentNode === container) {
             metaList.after(gallery);
@@ -301,7 +362,27 @@
 
     function insertDesktopHero(post) {
         if (window.matchMedia('(max-width: 768px)').matches) return;
+        const gallery = document.querySelector('.project-gallery');
         const hero = document.getElementById('blogHeroImage');
+        if (useCoverIframe(post) && gallery) {
+            if (hero) {
+                hero.removeAttribute('src');
+                hero.style.display = 'none';
+            }
+            const iframe = document.createElement('iframe');
+            iframe.className = 'blog-hero-iframe';
+            iframe.src = coverIframeSrc(post, false);
+            iframe.title = post.coverIframeTitle || post.title;
+            iframe.setAttribute('aria-label', post.coverIframeTitle || post.title);
+            const wrap = document.createElement('div');
+            wrap.className = 'blog-hero-embed';
+            wrap.appendChild(iframe);
+            const credit = createCoverCredit(post);
+            if (credit) wrap.appendChild(credit);
+            gallery.appendChild(wrap);
+            gallery.setAttribute('aria-label', 'Post simulation');
+            return;
+        }
         if (hero && post.coverImage) {
             const src = rootPath(post.coverImage);
             hero.src = src;

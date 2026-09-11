@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 8000;
 app.use((req, res, next) => {
   // Security headers
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
+  // Blog posts frame /embeds/ on this origin. Everything else stays unframeable.
+  res.setHeader('X-Frame-Options', req.path.startsWith('/embeds/') ? 'SAMEORIGIN' : 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');

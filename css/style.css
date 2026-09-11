@@ -3331,6 +3331,74 @@ svg {
     display: none !important;
 }
 
+.project-gallery .blog-hero-embed {
+    position: absolute;
+    top: 100px;
+    left: calc(50% + 100px);
+    right: auto;
+    width: 340px;
+}
+
+.project-gallery .blog-hero-iframe {
+    width: 100%;
+    height: 420px;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.20);
+    background: #faf1d7;
+    display: block;
+}
+
+.blog-hero-caption {
+    margin: 8px 0 0;
+    font-size: 0.75rem;
+    font-style: italic;
+    line-height: 1.35;
+    color: #9a9a9a;
+}
+
+.blog-hero-caption a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.blog-hero-caption a:hover {
+    color: #6e6e6e;
+}
+
+.mobile-gallery .blog-hero-caption {
+    max-width: 100%;
+}
+
+.blog-tile-embed {
+    overflow: hidden;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    background: #faf1d7;
+}
+
+.project-tile.reverse .blog-tile-embed {
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.blog-tile-iframe {
+    width: 100%;
+    height: 200px;
+    border: 0;
+    display: block;
+    pointer-events: none;
+}
+
+.mobile-gallery .blog-mobile-iframe {
+    width: 100%;
+    height: 320px;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.20);
+    background: #faf1d7;
+    display: block;
+}
+
 /* Image zoom modal (same overlay as project.html; needed here because that
    markup lives in a page-local <style> block, not the shared stylesheet). */
 .image-modal-overlay {
