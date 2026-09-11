@@ -6,7 +6,7 @@
 (function () {
     const BLOG_JSON = '/data/blog.json';
     const BLOG_BASE = '/blog/';
-    const SITE_ORIGIN = 'https://knectar.com';
+    const SITE_ORIGIN = 'https://www.knectar.com';
 
     // ---------------------------------------------------------------
     // Helpers
@@ -23,6 +23,15 @@
     function rootPath(src) {
         if (!src) return '';
         return src.startsWith('/') || /^https?:\/\//i.test(src) ? src : '/' + src;
+    }
+
+    function mountFluid(canvas, options) {
+        if (!canvas) return;
+        if (window.KnectarFluid && typeof window.KnectarFluid.mount === 'function') {
+            window.KnectarFluid.mount(canvas, options);
+            return;
+        }
+        canvas.style.background = '#087a82';
     }
 
     // "2026-08-18" -> "August 18, 2026" (parsed as UTC to avoid off-by-one)
@@ -93,7 +102,16 @@
 
             const imageSrc = rootPath(post.tileImage || post.coverImage || 'project_tiles/sample_tile1.png');
             const imageId = `blog-img-${idx}`;
-            const mediaHTML = `
+            let mediaHTML;
+            if (post.coverIframe) {
+                mediaHTML = `
+                <div class="image-container blog-tile-embed" style="position: relative; width: 100%; height: 200px;">
+                    <canvas class="blog-tile-fluid"
+                            role="img"
+                            aria-label="${escapeHtml(post.coverIframeTitle || post.title)}"></canvas>
+                </div>`;
+            } else {
+                mediaHTML = `
                 <div class="image-container" style="position: relative; width: 100%; height: 200px;">
                     <div class="image-skeleton" style="width: 100%; height: 200px; position: absolute; top: 0; left: 0;"></div>
                     <img id="${imageId}"
@@ -105,6 +123,7 @@
                          onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
                          onerror="this.previousElementSibling.style.display='none';">
                 </div>`;
+            }
 
             article.innerHTML = `
                 <div class="project-image">${mediaHTML}</div>
@@ -119,6 +138,7 @@
             article.addEventListener('click', () => { window.location.href = href; });
             article.style.cursor = 'pointer';
             container.appendChild(article);
+            mountFluid(article.querySelector('.blog-tile-fluid'), { tile: true, interactive: false });
         });
 
         const tiles = container.querySelectorAll('.project-tile');
@@ -273,6 +293,15 @@
         }
         if (rows.length) html += `<ul>${rows.join('\n')}</ul>`;
 
+        if (post.coverIframeCredit) {
+            const creditUrl = post.coverIframeCreditUrl || post.coverIframe || '';
+            const creditLabel = escapeHtml(post.coverIframeCredit);
+            const creditLink = creditUrl
+                ? `<a href="${escapeHtml(creditUrl)}" target="_blank" rel="noopener" class="external-link">${creditLabel}</a>`
+                : creditLabel;
+            html += `<p class="blog-embed-credit">Visual after ${creditLink}. Drag the simulation to stir the dye.</p>`;
+        }
+
         if (post.body) html += `<div class="description">${cleanBody(post.body)}</div>`;
 
         html += `<p class="blog-back-link"><a href="${BLOG_BASE}" class="tech-link">&larr; All posts</a></p>`;
@@ -280,22 +309,59 @@
     }
 
     function insertMobileHero(container, post) {
-        if (!post.coverImage) return;
+        if (!post.coverIframe && !post.coverImage) return;
         if (!window.matchMedia('(max-width: 768px)').matches) return;
         const gallery = document.createElement('div');
         gallery.className = 'mobile-gallery';
-        gallery.setAttribute('aria-label', 'Post image');
-        const img = document.createElement('img');
-        img.src = rootPath(post.coverImage);
-        img.alt = `${post.title} image`;
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', () => showImageModal(rootPath(post.coverImage)));
-        gallery.appendChild(img);
+        gallery.setAttribute('aria-label', post.coverIframe ? 'Post simulation' : 'Post image');
+        if (post.coverIframe) {
+            const canvas = document.createElement('canvas');
+            canvas.className = 'blog-mobile-fluid';
+            canvas.setAttribute('role', 'img');
+            canvas.setAttribute('aria-label', post.coverIframeTitle || post.title);
+            gallery.appendChild(canvas);
+            mountFluid(canvas, { tile: false, interactive: true });
+        } else {
+            const img = document.createElement('img');
+            img.src = rootPath(post.coverImage);
+            img.alt = `${post.title} image`;
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => showImageModal(rootPath(post.coverImage)));
+            gallery.appendChild(img);
+        }
         const metaList = container.querySelector('ul');
         if (metaList && metaList.parentNode === container) {
             metaList.after(gallery);
         } else {
             container.prepend(gallery);
+        }
+    }
+
+    function insertDesktopHero(post) {
+        if (window.matchMedia('(max-width: 768px)').matches) return;
+        const gallery = document.querySelector('.project-gallery');
+        const hero = document.getElementById('blogHeroImage');
+        if (post.coverIframe && gallery) {
+            if (hero) {
+                hero.removeAttribute('src');
+                hero.style.display = 'none';
+            }
+            const canvas = document.createElement('canvas');
+            canvas.className = 'blog-hero-fluid';
+            canvas.setAttribute('role', 'img');
+            canvas.setAttribute('aria-label', post.coverIframeTitle || post.title);
+            gallery.appendChild(canvas);
+            gallery.setAttribute('aria-label', 'Post simulation');
+            mountFluid(canvas, { tile: false, interactive: true });
+            return;
+        }
+        if (hero && post.coverImage) {
+            const src = rootPath(post.coverImage);
+            hero.src = src;
+            hero.alt = `${post.title} image`;
+            hero.style.display = 'block';
+            hero.style.cursor = 'pointer';
+            hero.addEventListener('click', () => showImageModal(src));
         }
     }
 
@@ -311,17 +377,7 @@
 
         container.innerHTML = buildPostHTML(post);
         insertMobileHero(container, post);
-
-        // Desktop hero image — click opens the same zoom overlay as project pages
-        const hero = document.getElementById('blogHeroImage');
-        if (hero && post.coverImage) {
-            const src = rootPath(post.coverImage);
-            hero.src = src;
-            hero.alt = `${post.title} image`;
-            hero.style.display = 'block';
-            hero.style.cursor = 'pointer';
-            hero.addEventListener('click', () => showImageModal(src));
-        }
+        insertDesktopHero(post);
 
         // Title, breadcrumb, meta tags
         document.title = `${post.title} | Knectar Blog`;
@@ -330,6 +386,9 @@
 
         const canonical = `${SITE_ORIGIN}${postUrl(post)}`;
         const desc = post.excerpt || '';
+        const shareImage = post.coverImage
+            ? `${SITE_ORIGIN}${rootPath(post.coverImage).replace(/(\.[a-z0-9]+)$/i, '-og.jpg')}`
+            : null;
         const image = post.coverImage ? `${SITE_ORIGIN}${rootPath(post.coverImage)}` : null;
         setMeta('canonical-link', 'href', canonical);
         setMeta('og-url', 'content', canonical);
@@ -341,7 +400,16 @@
             setMeta('og-description', 'content', desc);
             setMeta('twitter-description', 'content', desc);
         }
-        if (image) {
+        if (shareImage) {
+            setMeta('og-image', 'content', shareImage);
+            setMeta('og-image-secure', 'content', shareImage);
+            setMeta('twitter-image', 'content', shareImage);
+            setMeta('image-src', 'href', shareImage);
+            setMeta('og-image-alt', 'content', post.title);
+            setMeta('og-image-type', 'content', 'image/jpeg');
+            setMeta('og-image-width', 'content', '1200');
+            setMeta('og-image-height', 'content', '630');
+        } else if (image) {
             setMeta('og-image', 'content', image);
             setMeta('twitter-image', 'content', image);
         }

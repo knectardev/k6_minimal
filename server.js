@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -8,7 +9,8 @@ const PORT = process.env.PORT || 8000;
 app.use((req, res, next) => {
   // Security headers
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
+  // Embeds are framed by blog-post.html on this origin. Everything else stays unframeable.
+  res.setHeader('X-Frame-Options', req.path.startsWith('/embeds/') ? 'SAMEORIGIN' : 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
@@ -48,9 +50,17 @@ app.get('/blog/', (req, res) => {
   res.sendFile(path.join(__dirname, 'blog.html'));
 });
 app.get('/blog/:slug', (req, res) => {
+  const generated = path.join(__dirname, 'blog', req.params.slug, 'index.html');
+  if (fs.existsSync(generated)) {
+    return res.sendFile(generated);
+  }
   res.sendFile(path.join(__dirname, 'blog-post.html'));
 });
 app.get('/blog/:slug/', (req, res) => {
+  const generated = path.join(__dirname, 'blog', req.params.slug, 'index.html');
+  if (fs.existsSync(generated)) {
+    return res.sendFile(generated);
+  }
   res.sendFile(path.join(__dirname, 'blog-post.html'));
 });
 

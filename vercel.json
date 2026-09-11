@@ -27,11 +27,11 @@
     },
     {
       "source": "/blog/:slug",
-      "destination": "/blog-post.html"
+      "destination": "/blog/:slug/index.html"
     },
     {
       "source": "/blog/:slug/",
-      "destination": "/blog-post.html"
+      "destination": "/blog/:slug/index.html"
     },
     {
       "source": "/about",

@@ -9,6 +9,7 @@
     "optimize-images": "node scripts/optimize_images.js",
     "generate-sitemap": "node scripts/generate_sitemap.js",
     "generate-og-image": "node scripts/generate_og_image.js",
+    "generate-blog-pages": "node scripts/generate_blog_pages.js",
     "deploy": "git push origin main"
   },
   "keywords": [
