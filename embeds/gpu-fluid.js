@@ -42,7 +42,7 @@
         return;
     }
 
-    const PARAMS = { trailLength: isTile ? 10 : 15 };
+    const PARAMS = { trailLength: isTile ? 14 : 22 };
     const TOUCH_FORCE_SCALE = 2;
     const PARTICLE_DENSITY = isTile ? 0.06 : 0.1;
     const MAX_NUM_PARTICLES = isTile ? 18000 : 100000;
@@ -52,9 +52,14 @@
     const PRESSURE_CALC_BETA = 0.25;
     const NUM_RENDER_STEPS = isTile ? 2 : 3;
     const VELOCITY_SCALE_FACTOR = isTile ? 10 : 8;
-    const MAX_VELOCITY = 30;
+    const MAX_VELOCITY = 12;
+    const VELOCITY_DAMP = 0.994;
+    const MAX_SPEED = 11;
     const POSITION_NUM_COMPONENTS = 4;
-    const STIR_AMPLIFY = 10;
+    const STIR_AMPLIFY = 3.6;
+    const STIR_MAX_DELTA = 5.5;
+    const STIR_THICKNESS = isTile ? 14 : 18;
+    const STIR_EVERY_FRAMES = 2;
 
     const canvas = document.createElement('canvas');
     document.body.appendChild(canvas);
@@ -150,6 +155,25 @@
             { name: 'u_state', value: 0, type: INT },
             { name: 'u_velocity', value: 1, type: INT },
             { name: 'u_dimensions', value: [canvas.width, canvas.height], type: FLOAT },
+        ],
+    });
+    const dampVelocity = new GPUProgram(composer, {
+        name: 'dampVelocity',
+        fragmentShader: `
+            in vec2 v_uv;
+            uniform sampler2D u_velocity;
+            uniform float u_damp;
+            uniform float u_maxSpeed;
+            out vec2 out_velocity;
+            void main() {
+                vec2 v = texture(u_velocity, v_uv).xy * u_damp;
+                float mag = length(v);
+                out_velocity = v * (min(mag, u_maxSpeed) / max(mag, 0.0001));
+            }`,
+        uniforms: [
+            { name: 'u_velocity', value: 0, type: INT },
+            { name: 'u_damp', value: VELOCITY_DAMP, type: FLOAT },
+            { name: 'u_maxSpeed', value: MAX_SPEED, type: FLOAT },
         ],
     });
     const divergence2D = new GPUProgram(composer, {
@@ -349,30 +373,51 @@
     }
 
     const stirrers = [
-        { wx: 0.00115, wy: 0.00173, rx: 0.34, ry: 0.30, phase: 0.4, last: null },
-        { wx: 0.00082, wy: 0.00141, rx: 0.22, ry: 0.38, phase: 2.6, last: null },
-        { wx: 0.00158, wy: 0.00097, rx: 0.40, ry: 0.18, phase: 4.1, last: null },
+        { wx: 0.00072, wy: 0.00105, rx: 0.22, ry: 0.26, phase: 0.4, last: null },
+        { wx: 0.00118, wy: 0.00083, rx: 0.28, ry: 0.18, phase: 2.8, last: null },
     ];
     let userActiveUntil = 0;
+    let stirFrame = 0;
 
     function stir(now) {
         const w = canvas.clientWidth;
         const h = canvas.clientHeight;
         if (w < 2 || h < 2) return;
+        const pulse = 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(now * 0.0009));
         stirrers.forEach((s) => {
             const x = w * (0.5 + s.rx * Math.sin(now * s.wx + s.phase));
             const y = h * (0.5 + s.ry * Math.sin(now * s.wy + s.phase * 1.7));
-            if (s.last) applyForce(x, y, s.last[0], s.last[1], STIR_AMPLIFY);
+            if (s.last) {
+                const dx = x - s.last[0];
+                const dy = y - s.last[1];
+                // Prefer swirl (perpendicular) over a straight shove so eddies stay local.
+                const vx = dx * 0.25 - dy;
+                const vy = dy * 0.25 + dx;
+                const mag = Math.hypot(vx, vy) || 1;
+                const capped = Math.min(mag * STIR_AMPLIFY * pulse, STIR_MAX_DELTA);
+                touch.setUniform('u_vector', [(vx / mag) * capped, -(vy / mag) * capped]);
+                composer.stepSegment({
+                    program: touch,
+                    input: velocityState,
+                    output: velocityState,
+                    position1: [x, canvas.clientHeight - y],
+                    position2: [s.last[0], canvas.clientHeight - s.last[1]],
+                    thickness: STIR_THICKNESS,
+                    endCaps: true,
+                });
+            }
             s.last = [x, y];
         });
     }
 
     function loop() {
         if (autoStir && performance.now() > userActiveUntil) {
-            stir(performance.now());
+            stirFrame++;
+            if (stirFrame % STIR_EVERY_FRAMES === 0) stir(performance.now());
         }
 
         composer.step({ program: advection, input: [velocityState, velocityState], output: velocityState });
+        composer.step({ program: dampVelocity, input: velocityState, output: velocityState });
         composer.step({ program: divergence2D, input: velocityState, output: divergenceState });
         for (let i = 0; i < NUM_JACOBI_STEPS; i++) {
             composer.step({ program: jacobi, input: [pressureState, divergenceState], output: pressureState });
@@ -474,15 +519,20 @@
     }
     onResize();
 
-    // Seed the field so the first paint is not an empty cream square.
+    // Seed a few local eddies so the first paint is not an empty cream square.
     const seedAt = performance.now();
-    for (let i = 0; i < 24; i++) stir(seedAt + i * 40);
+    for (let i = 0; i < 12; i++) stir(seedAt + i * 70);
 
     function frame() {
         window.requestAnimationFrame(frame);
         if (document.hidden) return;
-        if (composer.tick) composer.tick();
-        loop();
+        try {
+            if (composer.tick) composer.tick();
+            loop();
+        } catch (err) {
+            console.error(err);
+            fail('The fluid simulation hit an error.');
+        }
     }
     frame();
 })();

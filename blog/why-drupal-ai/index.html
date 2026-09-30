@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Drupal, If an LLM Can Build the Site? | Knectar Blog</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Generating a full-stack app is cheap. Governing tens of thousands of content entities, with real permissions and editorial workflows, is where that kind of building runs out." id="meta-description">
+    <meta name="keywords" content="blog, web development, drupal, process, knectar">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook. Crawlers do not run JS; per-post values are
+         baked into /blog/<slug>/index.html by scripts/generate_blog_pages.js. -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.knectar.com/blog/why-drupal-ai/" id="og-url">
+    <meta property="og:title" content="Why Drupal, If an LLM Can Build the Site?" id="og-title">
+    <meta property="og:description" content="Generating a full-stack app is cheap. Governing tens of thousands of content entities, with real permissions and editorial workflows, is where that kind of building runs out." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/blog_images/why-drupal-ai-og.jpg" id="og-image">
+    <meta property="og:image:secure_url" content="https://www.knectar.com/blog_images/why-drupal-ai-og.jpg" id="og-image-secure">
+    <meta property="og:image:alt" content="Why Drupal, If an LLM Can Build the Site?" id="og-image-alt">
+    <meta property="og:image:width" content="1200" id="og-image-width">
+    <meta property="og:image:height" content="630" id="og-image-height">
+    <meta property="og:image:type" content="image/jpeg" id="og-image-type">
+    <meta property="og:site_name" content="Knectar">
+    <link rel="image_src" href="https://www.knectar.com/blog_images/why-drupal-ai-og.jpg" id="image-src">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.knectar.com/blog/why-drupal-ai/" id="twitter-url">
+    <meta property="twitter:title" content="Why Drupal, If an LLM Can Build the Site?" id="twitter-title">
+    <meta property="twitter:description" content="Generating a full-stack app is cheap. Governing tens of thousands of content entities, with real permissions and editorial workflows, is where that kind of building runs out." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/blog_images/why-drupal-ai-og.jpg" id="twitter-image">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.knectar.com/blog/why-drupal-ai/" id="canonical-link">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="apple-touch-icon" href="/assets/logo.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Scripts -->
+    <script src="/js/consent.js"></script>
+    <script src="/js/load_menu.js"></script>
+    <!-- Image Loading Enhancements -->
+    <script src="/js/image-loader.js" defer></script>
+    <!-- Highlight.js for syntax highlighting in post bodies -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        /* Keep code blocks readable inside the post column */
+        .blog-post-info pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .blog-post-info pre code {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="/index.html"><img src="/assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <!-- Dynamic breadcrumbs -->
+                <div class="breadcrumbs">
+                    <a href="/index.html" class="breadcrumb-link">Home</a> &gt; <a href="/blog/" class="breadcrumb-link">Blog</a> &gt; <span id="crumbPostTitle"></span>
+                </div>
+            </header>
+            <section class="project-details">
+                <div class="project-gallery" aria-label="Post image">
+                    <img id="blogHeroImage" class="detail-stack-image active blog-hero" alt="" style="display:none;" />
+                </div>
+
+                <!-- Post content; populated by /js/blog.js. Intentionally NOT .project-info
+                     so script.js injectPageData() does not overwrite it. -->
+                <div class="blog-post-info" id="blogPost" aria-label="Blog post"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Blog list/detail renderer -->
+    <script src="/js/blog.js"></script>
+    <!-- Footer loaded by footer loader -->
+    <script src="/js/load_footer.js"></script>
+</body>
+</html>
