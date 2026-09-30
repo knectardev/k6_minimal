@@ -3460,3 +3460,12 @@ svg {
 .project-tile .blog-excerpt {
     color: var(--color-text-secondary);
 }
+
+/* Blog categories have no icon. Drop the icon gutter so the label
+   shares the title's left edge, the way a project tile's icon does. */
+#blogList .project-category {
+    padding-left: 0;
+}
+#blogList .project-category::before {
+    content: none;
+}
