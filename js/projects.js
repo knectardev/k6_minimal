@@ -432,6 +432,20 @@ function buildTilesFromData(menu) {
     const container = document.getElementById('projectList');
     if (!container) return;
 
+    if (container.hasAttribute('data-static-projects') && container.querySelector('a[href^="/project/"]')) {
+        container.querySelectorAll('.project-tile').forEach(tile => {
+            const link = tile.querySelector('a[href]');
+            if (!link || tile.dataset.cardClick === '1') return;
+            tile.dataset.cardClick = '1';
+            tile.style.cursor = 'pointer';
+            tile.addEventListener('click', (event) => {
+                if (event.target.closest('a')) return;
+                window.location.href = link.getAttribute('href');
+            });
+        });
+        return;
+    }
+
     // Clear any placeholder tiles
     container.innerHTML = '';
 

@@ -286,7 +286,21 @@
 
         // Data-driven detail images logic (multiple images, random tilt)
         document.addEventListener('DOMContentLoaded', function() {
-            // Wait for menu data to be available
+            function currentSlug() {
+                const urlParams = new URLSearchParams(window.location.search);
+                let slugParam = urlParams.get('item');
+                if (!slugParam) {
+                    const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+                    if (pathMatch && pathMatch[1]) slugParam = decodeURIComponent(pathMatch[1]);
+                }
+                return slugParam;
+            }
+
+            function staticProjectReady(slugParam) {
+                const info = document.querySelector('.project-info[data-static-project]');
+                return !!(info && slugParam && info.getAttribute('data-static-project') === slugParam);
+            }
+
             function waitForMenuData() {
                 if (!window.__MENU_DATA) {
                     setTimeout(waitForMenuData, 50);
@@ -296,22 +310,21 @@
             }
             
             function processProjectData() {
-            const urlParams = new URLSearchParams(window.location.search);
-            let slugParam = urlParams.get('item');
-            
-            // If no query param, try to extract slug from pretty URL path
-            if (!slugParam) {
-                const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
-                if (pathMatch && pathMatch[1]) {
-                    slugParam = decodeURIComponent(pathMatch[1]);
-                    console.log('project.html inline script - extracted slug from pretty URL:', slugParam);
-                }
-            } else {
-                console.log('project.html inline script - found slug from query param:', slugParam);
-            }
+            const slugParam = currentSlug();
+            if (slugParam) console.log('project.html inline script - slug:', slugParam);
             
             let pageData;
-            if (slugParam) {
+            if (staticProjectReady(slugParam)) {
+                const srcs = Array.from(document.querySelectorAll('.project-gallery .detail-stack-image'))
+                    .map(function (el) { return el.getAttribute('src'); })
+                    .filter(Boolean);
+                window.__DETAIL_IMAGES = srcs;
+                pageData = { detailImages: srcs, slug: slugParam };
+                document.querySelectorAll('.project-gallery .detail-stack-image').forEach(function (media, i) {
+                    media.addEventListener('click', function () { showImageModal(i); });
+                });
+                setupImageScrollActivation();
+            } else if (slugParam) {
                 const findBySlug = (arr, slug) => {
                     for (const entry of arr) {
                         if (entry.url && entry.url.includes(slug)) return entry;
@@ -328,7 +341,6 @@
                 window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
                 // SEO: give each project its own title / canonical / social tags
                 updateProjectSeoTags(pageData, slugParam);
-            }
             // Remove old single image
             const oldImg = document.getElementById('project-detail-image');
             if (oldImg) oldImg.remove();
@@ -376,6 +388,7 @@
                 
                 // Set up scroll-based single image activation (spotlight effect)
                 setupImageScrollActivation();
+            }
             }
             // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
@@ -502,7 +515,8 @@
             }
             
             // Start waiting for menu data
-            waitForMenuData();
+            if (staticProjectReady(currentSlug())) processProjectData();
+            else waitForMenuData();
         });
 
         // Modal helper

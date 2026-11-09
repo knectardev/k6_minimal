@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Studio | Knectar Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Sleep Studio aims to &quot;harness the power of sleep&quot; by helping people achieve deep, restorative rest. Their SleepJoy line features gel memory foam,..." id="meta-description">
+    <meta name="keywords" content="project, portfolio, web development, design, knectar, case study">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.knectar.com/project/sleep-studio/" id="og-url">
+    <meta property="og:title" content="Sleep Studio | Knectar Portfolio" id="og-title">
+    <meta property="og:description" content="Sleep Studio aims to &quot;harness the power of sleep&quot; by helping people achieve deep, restorative rest. Their SleepJoy line features gel memory foam,..." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/project_tiles/sleep.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.knectar.com/project/sleep-studio/" id="twitter-url">
+    <meta property="twitter:title" content="Sleep Studio | Knectar Portfolio" id="twitter-title">
+    <meta property="twitter:description" content="Sleep Studio aims to &quot;harness the power of sleep&quot; by helping people achieve deep, restorative rest. Their SleepJoy line features gel memory foam,..." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/project_tiles/sleep.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.knectar.com/project/sleep-studio/" id="canonical-link">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="apple-touch-icon" href="/assets/logo.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Cookie Consent Manager -->
+    <!-- Now loaded centrally via js/consent.js -->
+    
+    <!-- Scripts -->
+    <!-- Data Manager (lazy-loading system) -->
+    <script src="/js/consent.js"></script>
+    <script src="/js/dataManager.js"></script>
+    <script src="/js/load_menu.js"></script>
+    <!-- Image Loading Enhancements -->
+    <script src="/js/image-loader.js" defer></script>
+    <!-- Highlight.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Override highlight.js styles for proper line breaks -->
+    <style>
+        /* Force line breaks for highlight.js code blocks */
+        .description-edit-wrap .description-display pre code.hljs,
+        /* Code block line height now controlled via CSS variables */
+        .description-edit-wrap .description-display pre code.hljs.language-javascript,
+        .description-edit-wrap .description-display pre code.hljs.language-python,
+        .description-edit-wrap .description-display pre code.hljs.language-html,
+        .description-edit-wrap .description-display pre code.hljs.language-css {
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+            font-family: 'Courier New', monospace !important;
+            line-height: var(--line-height-code) !important;
+        }
+        
+        .description-edit-wrap .description-display pre {
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+        
+        /* Force line breaks for highlight.js span elements */
+        .description-edit-wrap .description-display pre code.hljs span {
+            white-space: pre-wrap !important;
+            display: inline !important;
+        }
+        
+        /* Handle line breaks within highlight.js content */
+        .description-edit-wrap .description-display pre code.hljs br {
+            display: block !important;
+            content: "" !important;
+            margin-top: 0.5em !important;
+        }
+        
+        /* Nuclear option - force all text content to preserve whitespace */
+        .description-edit-wrap .description-display pre code.hljs * {
+            white-space: pre-wrap !important;
+        }
+
+        /* Make stack images clickable */
+        .detail-stack-image {
+            cursor: pointer;
+        }
+
+        /* Modal overlay for expanded images */
+        .image-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000; /* above GitHub button */
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal-overlay img,
+        .image-modal-overlay video {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .image-modal-overlay.active { opacity: 1; }
+        .image-modal-overlay.active img,
+        .image-modal-overlay.active video { transform: scale(1); }
+
+        /* Close button */
+        .image-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Arrow controls */
+        .image-modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            padding: 8px 16px;
+        }
+        .image-modal-arrow.left { left: 16px; }
+        .image-modal-arrow.right { right: 16px; }
+        .image-modal-arrow.disabled { opacity: 0.3; cursor: default; }
+        
+        /* Line spacing is now controlled centrally via CSS variables */
+        /* See css/style.css for --line-height-description and --line-height-code */
+    </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Sleep Studio","description":"Sleep Studio aims to \"harness the power of sleep\" by helping people achieve deep, restorative rest. Their SleepJoy line features gel memory foam,...","url":"https://www.knectar.com/project/sleep-studio/","image":"https://www.knectar.com/project_tiles/sleep.png","author":{"@type":"Organization","name":"Knectar"}}</script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="/index.html"><img src="/assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <!-- Dynamic breadcrumbs -->
+                <div class="breadcrumbs">
+                    <a href="/index.html" class="breadcrumb-link">Home</a> &gt; <a href="/projects.html" class="breadcrumb-link">Projects</a> &gt; <a href="/projects/e-commerce/" class="breadcrumb-link" id="crumbCategoryLink">E-Commerce</a> &gt; <span data-field="projectTitle">Sleep Studio</span>
+                </div>
+            </header>
+            <section class="project-details">
+                <div class="project-gallery" aria-label="Project gallery">
+
+</div>
+                <!-- Removed static .mobile-gallery -->
+
+
+                <div class="project-info" aria-label="Project information" data-static-project="sleep-studio"><h1 style="margin: 0;">Sleep Studio</h1><ul><li><span class="meta-label">Role:</span> Technical Lead, Developer</li><li><span class="meta-label">Budget:</span> $50,000 - $100,000</li><li><span class="meta-label">Technology:</span> <a href="/projects.html?technology=Magento" class="technology-link">Magento</a></li></ul><div class="project-haiku">Dreams find their rhythm<br/>Rest becomes an art form<br/>Sleep transforms life</div><div class="description"><p><b>Company background.</b><br> Sleep Studio aims to "harness the power of sleep" by helping people achieve deep, restorative rest. Their SleepJoy line features gel memory foam, copper‑infused foam and other materials designed to cool and support the body, and the brand emphasises that foam is made in the U.S. and produced with environmentally friendly practices. The company promotes a 100‑night trial and free shipping to demonstrate confidence in its products. On the home page, Sleep Studio highlights the antimicrobial benefits of copper technology to keep beds fresher.</p><p><b>What we delivered.</b><br> The Magento site conveys product benefits while simplifying the purchase process:</p><p><b>Feature Implementation & Impact</b></p><ul><li><b>Product categories & landing pages</b><br>We organized mattress toppers, pillows and seasonal collections like "Back to College" into clear categories. Landing pages feature lifestyle photography and product highlights such as copper's antimicrobial properties and the cooling foam technology.</li><li><b>Educational & mission content</b><br>The "About" page explains the company's mission, the importance of restful sleep and the materials used (gel memory foam, extra support foam, wave foam, copper technology, micro‑cushions). This fosters trust and supports SEO.</li><li><b>Customer support features</b><br>Customers can register products, read FAQs, and access sizing guides. Chat integration and contact forms provide assistance without leaving the site. A press page links to media coverage.</li><li><b>Trust & promotions</b><br>Highlighting free shipping, the 100‑night trial and payment options encourages conversion. Reviews and star ratings display social proof. Magento's promotional rules are used to create seasonal sales banners.</li><li><b>Efficient checkout</b><br>A simplified checkout allows guest or account‑based purchasing and supports promotional codes and tax calculation.</li></ul></div><div class="project-footer-cta"><h3>Ready to help your customers sleep better?</h3><p>Let&#39;s build e-commerce experiences that promote wellness and rest.</p><a href="/index.html#contact" class="cta-button">Start a Conversation</a></div></div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Fix line breaks in code blocks after highlight.js processes them
+        function fixCodeBlockLineBreaks() {
+            const codeBlocks = document.querySelectorAll('.description-edit-wrap .description-display pre code.hljs');
+            codeBlocks.forEach(codeBlock => {
+                // Find all span elements and add line breaks where needed
+                const spans = codeBlock.querySelectorAll('span');
+                spans.forEach((span, index) => {
+                    // Check if this span contains a line break
+                    if (span.textContent.includes('\n')) {
+                        // Replace \n with <br> tags
+                        span.innerHTML = span.innerHTML.replace(/\n/g, '<br>');
+                    }
+                });
+            });
+        }
+
+        // Force line-height on dynamically generated content
+        function applyLineHeightToProjectInfo() {
+            const projectInfo = document.querySelector('.project-info');
+            if (!projectInfo) return;
+            
+            // Get the CSS variable values
+            const computedStyle = getComputedStyle(document.documentElement);
+            const descriptionLineHeight = computedStyle.getPropertyValue('--line-height-description');
+            const codeLineHeight = computedStyle.getPropertyValue('--line-height-code');
+            const headingLineHeight = computedStyle.getPropertyValue('--line-height-heading');
+            
+            // Apply to all text content (excluding code blocks)
+            const textElements = projectInfo.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote, strong, em, b, i, a');
+            textElements.forEach(el => {
+                // Skip if it's a code element or inside a code block
+                if (el.closest('pre') || el.closest('code') || el.tagName === 'PRE' || el.tagName === 'CODE') {
+                    el.style.lineHeight = codeLineHeight;
+                } else if (/^H[1-6]$/.test(el.tagName)) {
+                    // Headings use the tighter heading line height
+                    el.style.lineHeight = headingLineHeight;
+                } else {
+                    el.style.lineHeight = descriptionLineHeight;
+                }
+            });
+        }
+
+        // SEO: per-project <title>, meta description, canonical and Open Graph / Twitter URLs.
+        // Without this every /project/:slug/ URL declares project.html as its canonical.
+        function updateProjectSeoTags(pageData, slug) {
+            const SITE_ORIGIN = 'https://www.knectar.com';
+            const setContent = (id, value) => {
+                const el = document.getElementById(id);
+                if (el && value) el.setAttribute('content', value);
+            };
+
+            const cleanSlug = (pageData && pageData.slug) || slug;
+            if (!cleanSlug) return;
+
+            const canonicalHref = `${SITE_ORIGIN}/project/${encodeURIComponent(cleanSlug)}/`;
+            const canonical = document.getElementById('canonical-link');
+            if (canonical) canonical.setAttribute('href', canonicalHref);
+            setContent('og-url', canonicalHref);
+            setContent('twitter-url', canonicalHref);
+
+            if (!pageData) return;
+
+            const projectTitle = pageData.projectTitle || pageData.label || '';
+            if (projectTitle) {
+                const fullTitle = `${projectTitle} | Knectar Portfolio`;
+                document.title = fullTitle;
+                setContent('og-title', fullTitle);
+                setContent('twitter-title', fullTitle);
+            }
+
+            // Build a plain-text description from the first paragraph of the page summary
+            if (pageData.pageSummary) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = pageData.pageSummary;
+                let text = (tmp.textContent || '').replace(/\s+/g, ' ').trim();
+                // Drop a leading bold label such as "Background and project goals"
+                const firstBold = tmp.querySelector('b, strong');
+                if (firstBold && text.startsWith(firstBold.textContent.trim())) {
+                    text = text.slice(firstBold.textContent.trim().length).trim();
+                }
+                if (text.length > 155) {
+                    text = text.slice(0, 152).replace(/\s+\S*$/, '') + '...';
+                }
+                if (text) {
+                    setContent('meta-description', text);
+                    setContent('og-description', text);
+                    setContent('twitter-description', text);
+                }
+            }
+        }
+
+        // Data-driven detail images logic (multiple images, random tilt)
+        document.addEventListener('DOMContentLoaded', function() {
+            function currentSlug() {
+                const urlParams = new URLSearchParams(window.location.search);
+                let slugParam = urlParams.get('item');
+                if (!slugParam) {
+                    const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+                    if (pathMatch && pathMatch[1]) slugParam = decodeURIComponent(pathMatch[1]);
+                }
+                return slugParam;
+            }
+
+            function staticProjectReady(slugParam) {
+                const info = document.querySelector('.project-info[data-static-project]');
+                return !!(info && slugParam && info.getAttribute('data-static-project') === slugParam);
+            }
+
+            function waitForMenuData() {
+                if (!window.__MENU_DATA) {
+                    setTimeout(waitForMenuData, 50);
+                    return;
+                }
+                processProjectData();
+            }
+            
+            function processProjectData() {
+            const slugParam = currentSlug();
+            if (slugParam) console.log('project.html inline script - slug:', slugParam);
+            
+            let pageData;
+            if (staticProjectReady(slugParam)) {
+                const srcs = Array.from(document.querySelectorAll('.project-gallery .detail-stack-image'))
+                    .map(function (el) { return el.getAttribute('src'); })
+                    .filter(Boolean);
+                window.__DETAIL_IMAGES = srcs;
+                pageData = { detailImages: srcs, slug: slugParam };
+                document.querySelectorAll('.project-gallery .detail-stack-image').forEach(function (media, i) {
+                    media.addEventListener('click', function () { showImageModal(i); });
+                });
+                setupImageScrollActivation();
+            } else if (slugParam) {
+                const findBySlug = (arr, slug) => {
+                    for (const entry of arr) {
+                        if (entry.url && entry.url.includes(slug)) return entry;
+                        if (entry.submenu) {
+                            const found = findBySlug(entry.submenu, slug);
+                            if (found) return found;
+                        }
+                    }
+                    return null;
+                };
+                pageData = findBySlug(window.__MENU_DATA, slugParam);
+                console.log('project.html inline script - pageData found:', !!pageData, 'detailImages:', pageData?.detailImages);
+                // Expose images for modal
+                window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
+                // SEO: give each project its own title / canonical / social tags
+                updateProjectSeoTags(pageData, slugParam);
+            // Remove old single image
+            const oldImg = document.getElementById('project-detail-image');
+            if (oldImg) oldImg.remove();
+            // Always populate .project-gallery with stacked images
+            const gallery = document.querySelector('.project-gallery');
+            if (gallery) gallery.innerHTML = '';
+            if (pageData && Array.isArray(pageData.detailImages)) {
+                console.log('project.html - populating gallery with', pageData.detailImages.length, 'images');
+                window.__DETAIL_IMAGES = pageData.detailImages;
+                pageData.detailImages.forEach((src, i) => {
+                    const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
+                    const media = document.createElement(isVideo ? 'video' : 'img');
+                    // Normalize image paths to be root-absolute for pretty URL compatibility
+                    const normalizedSrc = src.startsWith('/') ? src : '/' + src;
+                    media.src = normalizedSrc;
+                    if (isVideo) {
+                        media.muted = true;
+                        media.loop = true;
+                        media.playsInline = true;
+                        media.autoplay = true;
+                    }
+                    media.alt = `Project detail media ${i + 1}`;
+                    media.className = 'detail-stack-image detail-stack-image-base';
+                    media.style.display = 'block';
+                    media.style.position = 'absolute';
+                    media.style.width = '340px';
+                    media.style.borderRadius = '8px';
+                    media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                    media.style.cursor = 'pointer';
+                    media.addEventListener('click', () => showImageModal(i));
+                    const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
+                    media.style.setProperty('--tilt', tilt);
+                    media.dataset.origTilt = parseFloat(tilt);
+                    media.style.left = 'calc(50% + 100px)';
+                    if (i === 0) media.style.top = '100px';
+                    if (i === 1) media.style.top = '450px';
+                    if (i === 2) media.style.top = '800px';
+                    if (i === 3) media.style.top = '1150px';
+                    
+                    // Add data attribute for scroll detection
+                    media.dataset.imageIndex = i;
+                    
+                    gallery.appendChild(media);
+                });
+                
+                // Set up scroll-based single image activation (spotlight effect)
+                setupImageScrollActivation();
+            }
+            }
+            // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile && pageData && Array.isArray(pageData.detailImages)) {
+                // Wait for .project-info to be populated
+                setTimeout(() => {
+                    const projectInfo = document.querySelector('.project-info');
+                    if (!projectInfo) return;
+                    // Remove any previous .mobile-gallery
+                    const oldMobileGallery = projectInfo.querySelector('.mobile-gallery');
+                    if (oldMobileGallery) oldMobileGallery.remove();
+                    // Create new .mobile-gallery
+                    const mobileGallery = document.createElement('div');
+                    mobileGallery.className = 'mobile-gallery';
+                    mobileGallery.setAttribute('aria-label', 'Mobile project gallery');
+                    // Find the meta-data <ul> (or fallback to first <p.description> or .dynamic-body)
+                    let insertAfter = projectInfo.querySelector('ul');
+                    if (!insertAfter) {
+                        // Try to find the first .description or .dynamic-body
+                        insertAfter = projectInfo.querySelector('.description') || projectInfo.querySelector('.dynamic-body');
+                        if (insertAfter) insertAfter = insertAfter.previousElementSibling;
+                    }
+                    // Insert .mobile-gallery after meta-data <ul>
+                    if (insertAfter && insertAfter.parentNode === projectInfo) {
+                        insertAfter.after(mobileGallery);
+                    } else {
+                        // Fallback: insert at the top
+                        projectInfo.prepend(mobileGallery);
+                    }
+                    // Build simple slideshow
+                    let currentIdx = 0;
+                    function renderMobileSlide(idx) {
+                        mobileGallery.innerHTML = '';
+                        const isVid = /\.(mp4|webm|ogg)$/i.test(pageData.detailImages[idx]);
+                        const media = document.createElement(isVid ? 'video' : 'img');
+                        // Normalize image paths to be root-absolute for pretty URL compatibility
+                        const normalizedSrc = pageData.detailImages[idx].startsWith('/') ? pageData.detailImages[idx] : '/' + pageData.detailImages[idx];
+                        media.src = normalizedSrc;
+                        if (isVid) {
+                            media.playsInline = true;
+                            media.autoplay = true;
+                            media.muted = true;
+                            media.loop = true;
+                        }
+                        media.alt = `Project detail media ${idx + 1} of ${pageData.detailImages.length}`;
+                        media.style.width = '100%';
+                        media.style.maxWidth = '100%';
+                        media.style.display = 'block';
+                        media.style.margin = '0 auto 12px auto';
+                        media.style.borderRadius = '8px';
+                        media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                        // Navigation controls
+                        const nav = document.createElement('div');
+                        nav.style.display = 'flex';
+                        nav.style.justifyContent = 'center';
+                        nav.style.alignItems = 'center';
+                        nav.style.gap = '18px';
+                        nav.style.marginBottom = '8px';
+                        const prevBtn = document.createElement('button');
+                        prevBtn.textContent = '◀';
+                        prevBtn.setAttribute('aria-label', 'Previous image');
+                        prevBtn.style.fontSize = '22px';
+                        prevBtn.style.background = 'none';
+                        prevBtn.style.border = 'none';
+                        prevBtn.style.cursor = 'pointer';
+                        prevBtn.style.color = '#FF0000';
+                        prevBtn.disabled = idx === 0;
+                        prevBtn.onclick = () => { if (currentIdx > 0) { currentIdx--; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        prevBtn.style.display = 'none';
+                        const nextBtn = document.createElement('button');
+                        nextBtn.textContent = '▶';
+                        nextBtn.setAttribute('aria-label', 'Next image');
+                        nextBtn.style.fontSize = '22px';
+                        nextBtn.style.background = 'none';
+                        nextBtn.style.border = 'none';
+                        nextBtn.style.cursor = 'pointer';
+                        nextBtn.style.color = '#FF0000';
+                        nextBtn.disabled = idx === pageData.detailImages.length - 1;
+                        nextBtn.onclick = () => { if (currentIdx < pageData.detailImages.length - 1) { currentIdx++; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        nextBtn.style.display = 'none';
+                        nav.appendChild(prevBtn);
+                        nav.appendChild(media);
+                        nav.appendChild(nextBtn);
+                        // Add swipe gesture handling
+                        let touchStartX = 0;
+                        media.addEventListener('touchstart', (e) => {
+                            touchStartX = e.touches[0].clientX;
+                        });
+                        media.addEventListener('touchend', (e) => {
+                            const diffX = e.changedTouches[0].clientX - touchStartX;
+                            const threshold = 50; // minimum px swipe distance
+                            if (Math.abs(diffX) > threshold) {
+                                if (diffX < 0 && currentIdx < pageData.detailImages.length - 1) {
+                                    currentIdx++;
+                                    renderMobileSlide(currentIdx);
+                                } else if (diffX > 0 && currentIdx > 0) {
+                                    currentIdx--;
+                                    renderMobileSlide(currentIdx);
+                                }
+                            }
+                        });
+                        // Disable modal trigger on mobile
+                        media.style.cursor = 'default';
+                        mobileGallery.appendChild(nav);
+                        // Optional: show image count
+                        const count = document.createElement('div');
+                        count.style.textAlign = 'center';
+                        count.style.fontSize = '13px';
+                        count.style.color = '#888';
+                        count.textContent = `${idx + 1} / ${pageData.detailImages.length}`;
+                        count.setAttribute('aria-label', `Image ${idx + 1} of ${pageData.detailImages.length}`);
+                        mobileGallery.appendChild(count);
+                    }
+                    renderMobileSlide(currentIdx);
+                }, 0);
+            }
+            
+            // Fix line breaks in code blocks after content is loaded
+            setTimeout(fixCodeBlockLineBreaks, 100);
+            // Apply line height after content is loaded
+            setTimeout(applyLineHeightToProjectInfo, 100);
+            }
+            
+            // Start waiting for menu data
+            if (staticProjectReady(currentSlug())) processProjectData();
+            else waitForMenuData();
+        });
+
+        // Modal helper
+        function setupImageScrollActivation() {
+            const images = document.querySelectorAll('.detail-stack-image');
+            if (images.length === 0) return;
+            
+            function updateActiveImage() {
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Adjust the effective "trigger point" based on scroll position
+                // When at top (scrollY = 0), use upper portion of viewport
+                // As we scroll down, gradually transition to center of viewport
+                const scrollProgress = Math.min(scrollY / (viewportHeight * 1.5), 1);
+                const triggerPoint = scrollY + (viewportHeight * (0.25 + (scrollProgress * 0.25))); // Ranges from 25% to 50% of viewport
+                
+                let closestImage = null;
+                let closestDistance = Infinity;
+                
+                // Find which image is closest to our dynamic trigger point
+                images.forEach((image) => {
+                    const rect = image.getBoundingClientRect();
+                    const imageCenter = scrollY + rect.top + (rect.height / 2);
+                    const distance = Math.abs(triggerPoint - imageCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestImage = image;
+                    }
+                });
+                
+                // Remove active class from all images
+                images.forEach(image => image.classList.remove('active'));
+                
+                // Add active class only to the closest image (if it's reasonably visible)
+                if (closestImage && closestDistance < viewportHeight) {
+                    closestImage.classList.add('active');
+                }
+            }
+            
+            // Update on scroll with throttling for performance
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveImage, 16); // ~60fps
+            });
+            
+            // Initial update
+            updateActiveImage();
+        }
+
+        function showImageModal(startIdx) {
+            const imagesArr = Array.isArray(window.__DETAIL_IMAGES) ? window.__DETAIL_IMAGES : [];
+            if (!imagesArr.length) return;
+            let currentIdx = startIdx;
+            // Prevent multiple overlays
+            if (document.querySelector('.image-modal-overlay')) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'image-modal-overlay';
+            let mediaEl;
+            function renderMedia(idx) {
+                const src = imagesArr[idx];
+                const isVid = /\.(mp4|webm|ogg)$/i.test(src);
+                if (mediaEl) mediaEl.remove();
+                mediaEl = document.createElement(isVid ? 'video' : 'img');
+                // Root-absolute path required for pretty URLs (/project/:slug/)
+                mediaEl.src = src.startsWith('/') ? src : '/' + src;
+                if (isVid) {
+                    mediaEl.autoplay = true;
+                    mediaEl.loop = true;
+                    mediaEl.playsInline = true;
+                }
+                overlay.insertBefore(mediaEl, overlay.firstChild);
+            }
+            renderMedia(currentIdx);
+
+            // Close X
+            const closeX = document.createElement('div');
+            closeX.className = 'image-modal-close';
+            closeX.textContent = '×';
+            closeX.addEventListener('click', e => { e.stopPropagation(); overlay.remove(); });
+            overlay.appendChild(closeX);
+
+            // Arrow controls
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'image-modal-arrow left';
+            leftArrow.innerHTML = '<span class="css-arrow-left"></span>';
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'image-modal-arrow right';
+            rightArrow.innerHTML = '<span class="css-arrow-right"></span>';
+            overlay.appendChild(leftArrow);
+            overlay.appendChild(rightArrow);
+
+            function updateArrows() {
+                leftArrow.classList.toggle('disabled', currentIdx === 0);
+                rightArrow.classList.toggle('disabled', currentIdx === imagesArr.length - 1);
+            }
+
+            leftArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx > 0) {
+                    currentIdx--; renderMedia(currentIdx); updateArrows();
+                }
+            });
+            rightArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx < imagesArr.length - 1) {
+                    currentIdx++; renderMedia(currentIdx); updateArrows();
+                }
+            });
+
+            updateArrows();
+
+            // Keyboard navigation
+            function handleKey(e) {
+                if (e.key === 'ArrowLeft') {
+                    leftArrow.click();
+                } else if (e.key === 'ArrowRight') {
+                    rightArrow.click();
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+
+            document.addEventListener('keydown', handleKey);
+
+            function closeModal() {
+                document.removeEventListener('keydown', handleKey);
+                overlay.remove();
+            }
+
+            // Replace previous listeners to use closeModal
+            overlay.addEventListener('click', closeModal);
+            closeX.removeEventListener('click', () => { }); // ensure no duplicate
+            closeX.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
+            document.body.appendChild(overlay);
+            // trigger animated entrance
+            requestAnimationFrame(() => {
+                overlay.classList.add('active');
+            });
+        }
+    </script>
+
+
+    <!-- Footer loaded by footer loader -->
+    <script src="/js/load_footer.js"></script>
+</body>
+</html> 

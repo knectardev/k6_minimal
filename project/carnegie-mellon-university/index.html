@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnegie Mellon University | Knectar Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Carnegie Mellon University partnered with Carnegie Higher Ed for design strategy and Knectar for technical implementation to completely reimagine their..." id="meta-description">
+    <meta name="keywords" content="project, portfolio, web development, design, knectar, case study">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.knectar.com/project/carnegie-mellon-university/" id="og-url">
+    <meta property="og:title" content="Carnegie Mellon University | Knectar Portfolio" id="og-title">
+    <meta property="og:description" content="Carnegie Mellon University partnered with Carnegie Higher Ed for design strategy and Knectar for technical implementation to completely reimagine their..." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/project_tiles/cmu.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.knectar.com/project/carnegie-mellon-university/" id="twitter-url">
+    <meta property="twitter:title" content="Carnegie Mellon University | Knectar Portfolio" id="twitter-title">
+    <meta property="twitter:description" content="Carnegie Mellon University partnered with Carnegie Higher Ed for design strategy and Knectar for technical implementation to completely reimagine their..." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/project_tiles/cmu.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.knectar.com/project/carnegie-mellon-university/" id="canonical-link">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="apple-touch-icon" href="/assets/logo.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Cookie Consent Manager -->
+    <!-- Now loaded centrally via js/consent.js -->
+    
+    <!-- Scripts -->
+    <!-- Data Manager (lazy-loading system) -->
+    <script src="/js/consent.js"></script>
+    <script src="/js/dataManager.js"></script>
+    <script src="/js/load_menu.js"></script>
+    <!-- Image Loading Enhancements -->
+    <script src="/js/image-loader.js" defer></script>
+    <!-- Highlight.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Override highlight.js styles for proper line breaks -->
+    <style>
+        /* Force line breaks for highlight.js code blocks */
+        .description-edit-wrap .description-display pre code.hljs,
+        /* Code block line height now controlled via CSS variables */
+        .description-edit-wrap .description-display pre code.hljs.language-javascript,
+        .description-edit-wrap .description-display pre code.hljs.language-python,
+        .description-edit-wrap .description-display pre code.hljs.language-html,
+        .description-edit-wrap .description-display pre code.hljs.language-css {
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+            font-family: 'Courier New', monospace !important;
+            line-height: var(--line-height-code) !important;
+        }
+        
+        .description-edit-wrap .description-display pre {
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+        
+        /* Force line breaks for highlight.js span elements */
+        .description-edit-wrap .description-display pre code.hljs span {
+            white-space: pre-wrap !important;
+            display: inline !important;
+        }
+        
+        /* Handle line breaks within highlight.js content */
+        .description-edit-wrap .description-display pre code.hljs br {
+            display: block !important;
+            content: "" !important;
+            margin-top: 0.5em !important;
+        }
+        
+        /* Nuclear option - force all text content to preserve whitespace */
+        .description-edit-wrap .description-display pre code.hljs * {
+            white-space: pre-wrap !important;
+        }
+
+        /* Make stack images clickable */
+        .detail-stack-image {
+            cursor: pointer;
+        }
+
+        /* Modal overlay for expanded images */
+        .image-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000; /* above GitHub button */
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal-overlay img,
+        .image-modal-overlay video {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .image-modal-overlay.active { opacity: 1; }
+        .image-modal-overlay.active img,
+        .image-modal-overlay.active video { transform: scale(1); }
+
+        /* Close button */
+        .image-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Arrow controls */
+        .image-modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            padding: 8px 16px;
+        }
+        .image-modal-arrow.left { left: 16px; }
+        .image-modal-arrow.right { right: 16px; }
+        .image-modal-arrow.disabled { opacity: 0.3; cursor: default; }
+        
+        /* Line spacing is now controlled centrally via CSS variables */
+        /* See css/style.css for --line-height-description and --line-height-code */
+    </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Carnegie Mellon University","description":"Carnegie Mellon University partnered with Carnegie Higher Ed for design strategy and Knectar for technical implementation to completely reimagine their...","url":"https://www.knectar.com/project/carnegie-mellon-university/","image":"https://www.knectar.com/project_tiles/cmu.png","author":{"@type":"Organization","name":"Knectar"}}</script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="/index.html"><img src="/assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <!-- Dynamic breadcrumbs -->
+                <div class="breadcrumbs">
+                    <a href="/index.html" class="breadcrumb-link">Home</a> &gt; <a href="/projects.html" class="breadcrumb-link">Projects</a> &gt; <a href="/projects/higher-education/" class="breadcrumb-link" id="crumbCategoryLink">Higher Education</a> &gt; <span data-field="projectTitle">Carnegie Mellon University</span>
+                </div>
+            </header>
+            <section class="project-details">
+                <div class="project-gallery" aria-label="Project gallery">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/carnegie-mellon-university_1.png" alt="Project detail media 1" data-orig-tilt="-10.00" data-image-index="0" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:100px;--tilt:-10.00deg">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/carnegie-mellon-university_2.png" alt="Project detail media 2" data-orig-tilt="-3.00" data-image-index="1" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:450px;--tilt:-3.00deg">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/carnegie-mellon-university_3.png" alt="Project detail media 3" data-orig-tilt="4.00" data-image-index="2" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:800px;--tilt:4.00deg">
+</div>
+                <!-- Removed static .mobile-gallery -->
+
+
+                <div class="project-info" aria-label="Project information" data-static-project="carnegie-mellon-university"><h1 style="margin: 0;">Carnegie Mellon University</h1><ul><li><span class="meta-label">Role:</span> Technical Lead, Developer</li><li><span class="meta-label">Budget:</span> $50,000 - $100,000</li><li><span class="meta-label">Technology:</span> <a href="/projects.html?technology=Drupal" class="technology-link">Drupal</a></li><li><span class="meta-label">Design Partner:</span> <a href="https://www.carnegiehighered.com/" target="_blank" rel="noopener">Carnegie Higher Ed</a></li><li><span class="meta-label">URL:</span> <a href="https://www.cmu.edu/" target="_blank" rel="noopener">https://www.cmu.edu/</a></li></ul><div class="project-haiku">Code and wisdom merge<br/>Innovation takes its flight<br/>Learning never ends</div><div class="description"><b>Carnegie Mellon University: Flagship Website Redesign & Distributed CMS Implementation</b><br> Carnegie Mellon University partnered with Carnegie Higher Ed for design strategy and Knectar for technical implementation to completely reimagine their digital presence. This 18-month initiative resulted in a modern, scalable website ecosystem built on a distributed CMS architecture using GitLab and Pantheon Upstream, supporting both the flagship CMU.edu site and multiple unit sites across the university.</p><p><b>Key Objectives</b><br> The primary goal was to modernize Carnegie Mellon's digital brand presence while creating a scalable, distributed content management system that could serve the diverse needs of the university's many departments and units. The project aimed to streamline development workflows and governance processes that had become cumbersome over time, while significantly improving the user experience across all university digital touchpoints. Perhaps most importantly, the new system needed to enable autonomous content management for individual units while maintaining strict brand consistency across the entire university ecosystem.</p><p><b>Technical Architecture</b><br> <b>Infrastructure & Deployment</b></p><ul><li>Version Control: GitLab-based development workflow</li><li>Hosting: Pantheon Upstream architecture</li><li>Deployment Model: Merge request/pull request workflow with internal CMU dev team code review</li><li>Scalability: Component-based architecture supporting flagship and unit sites</li></ul><p><b>Development Workflow</b><br> The development process follows a collaborative model where the Knectar team develops features and components before submitting merge requests to Carnegie Mellon's internal development team. Each submission undergoes a thorough code review process conducted by CMU's technical staff, ensuring that all changes meet the university's standards for security, performance, and maintainability. Once approved, changes are merged into the production pipeline, creating a seamless flow from development to deployment. This approach maintains ongoing collaboration between external development expertise and internal institutional knowledge, supporting both rapid innovation and careful oversight.</p><p><b>Design System & Component Architecture</b><br> <b>Comprehensive Component Library</b><br> The implementation features 50+ specialized components designed to work across multiple site contexts:</p><p><b>Core Navigation & Structure</b><br> The foundation of the system rests on a sophisticated multi-level header system that adapts seamlessly between flagship and unit site variations. The responsive navigation incorporates both utility and primary menu systems, ensuring users can access essential information regardless of their entry point into the university's digital ecosystem. A globally managed emergency alert system provides the university with the ability to communicate critical information instantly across all sites, while sticky navigation and integrated search functionality enhance user experience by keeping essential tools accessible as users explore content.</p><p><b>Content Components</b><br> The content architecture centers around flexible hero variations that adapt to different contexts, from the flagship homepage hero featuring dynamic video backgrounds to specialized landing page heroes integrated with request-for-information forms and program-specific presentations. Feature panels offer sophisticated layout options with left or right media placement and light or dark variations, providing content creators with the tools to create visually compelling narratives. The stats panels bring data to life through animated statistics combined with testimonials and faculty spotlights, while various router systems including visual grids, lists, and panels create intuitive navigation pathways. The interactive timeline slider serves as a particularly innovative component, allowing the university to showcase its rich history and ongoing evolution in an engaging, visual format.</p><p><b>Specialized Functionality</b><br> The system's specialized functionality addresses the unique needs of a major research university through components like the decentralized program finder, which enables prospective students to discover academic opportunities across the institution's diverse offerings. Faculty integration components including bio blocks, listings, and profile pages create a comprehensive directory system that showcases the university's academic talent. The news system encompasses featured news presentations, comprehensive listings, and individual post templates that support the university's extensive communications needs. Events integration through LiveWhale provides dynamic content that keeps the community informed about the institution's vibrant campus life, while flexible form integration supports multiple solutions and request-for-information capabilities essential for enrollment and engagement.</p><p><b>Template System</b><br> The template architecture provides a hierarchy of layouts designed to serve different communication needs across the university. The flagship template offers a unique homepage experience with specialized components that reflect Carnegie Mellon's distinctive character and achievements. Secondary templates provide flexible layouts specifically designed for college and unit landing pages, allowing individual schools to maintain their identity while adhering to university-wide design standards. Tertiary templates focus on content presentation with sidebar navigation systems that enhance user experience on deeper pages. Specialized page templates for faculty profiles, academic programs, news listings, and marketing campaigns ensure that every type of content has an optimized presentation format.</p><p><b>Site Type Architecture</b><br> <b>Multi-Site Implementation Strategy</b><br> The system architecture supports three distinct site contexts through a sophisticated component availability matrix that ensures appropriate functionality while maintaining brand consistency. Components designated as "Flagship Only" include specialized elements like the homepage hero, impactful partnerships section, and faculty stats with testimonials that reflect the university's unique position and achievements. "Flagship & Unit Sites" share essential components such as news systems, events integration, and feature panels that serve both institutional communication and individual unit needs. "Unit Sites Only" components include specialized functionality like detailed faculty profiles, program finders, and academic program pages that address the specific requirements of individual schools and departments. This strategic approach ensures brand consistency across the entire university ecosystem while providing units with the autonomy to manage content that reflects their unique missions and audiences.</p><p><b>Key Features & Innovations</b><br> <b>Distributed Content Management</b><br> The new architecture revolutionizes how Carnegie Mellon manages content across its extensive digital ecosystem by enabling individual units to maintain their own content while adhering to established brand standards. This distributed approach eliminates previous bottlenecks in content creation and updates, allowing schools and departments to respond quickly to their communities' needs. The centralized design system ensures visual consistency and user experience standards, while decentralized content control empowers units with the autonomy they need to serve their specific audiences effectively. Streamlined governance processes provide clear guidelines and approval workflows that maintain quality while reducing administrative overhead.</p><p><b>Responsive Design System</b><br> The entire system is built on a mobile-first philosophy with comprehensive breakpoint coverage that ensures optimal user experience across all devices and screen sizes. Accessibility compliance through semantic markup and thoughtful interaction design makes the university's digital resources available to all users, regardless of their abilities or the technology they use to access content. Performance optimization is built into every component, with lazy loading, optimized images, and efficient code delivery that ensures fast page loads even on slower connections.</p><p><b>Integration Capabilities</b><br> The platform's extensive integration capabilities reflect the complex technology ecosystem of a major research university. LiveWhale events integration provides dynamic content that automatically updates across relevant pages, keeping the community informed about campus activities and academic events. Support for multiple form solutions including Wufoo and other platforms accommodates the university's diverse needs for data collection and user engagement. The faculty directory system integration creates a comprehensive resource that connects seamlessly with existing university databases, while news and content syndication capabilities ensure that important information reaches audiences across multiple touchpoints.</p><p><b>Advanced Functionality</b><br> Video integration supporting YouTube, Vimeo, and Kaltura platforms provides content creators with flexibility in how they incorporate multimedia elements into their communications. Sophisticated image carousel systems with lazy loading optimize performance while creating engaging visual experiences. Interactive timeline components enable storytelling that brings the university's rich history and ongoing achievements to life. Advanced search integration connects seamlessly with the university's existing search portal, ensuring users can find information quickly and efficiently across the entire digital ecosystem.</p><p><b>Results & Impact</b><br> <b>Brand Enhancement</b><br> The redesigned digital presence delivers a modern, cohesive visual identity that spans all university digital properties, creating a unified experience that reflects Carnegie Mellon's position as a leading research institution. The improved user experience features intuitive navigation and enhanced content discovery tools that help prospective students, current community members, and external stakeholders find the information they need quickly and efficiently. Enhanced mobile responsiveness ensures that the university's digital resources are accessible to users regardless of how they choose to engage, while comprehensive accessibility compliance demonstrates the institution's commitment to inclusive design.</p><p><b>Operational Improvements</b><br> The standardized component library has fundamentally transformed development processes, dramatically reducing the time required to deploy new sites while ensuring consistency across the university's digital ecosystem. Improved governance through clear workflow processes, comprehensive code review, and systematic approval systems has eliminated previous inefficiencies while maintaining high quality standards. Increased traffic resulting from the modern design and improved user experience demonstrates the tangible impact of strategic digital investment. The scalable architecture provides a robust foundation that supports rapid deployment of additional unit sites without requiring fundamental system changes, enabling the university to respond quickly to evolving needs.</p><p><b>Technical Benefits</b><br> The component-based architecture delivers significant reductions in maintenance overhead by eliminating redundant code and ensuring that updates can be deployed efficiently across multiple sites. Improved code quality through collaborative review processes between external development expertise and internal institutional knowledge creates a more robust and maintainable system. Enhanced security through Pantheon's managed hosting environment provides enterprise-level protection for sensitive university data and communications. Better performance optimization across all site instances ensures that users enjoy fast, responsive experiences that reflect positively on the institution's technological sophistication.</p><p><b>Ongoing Partnership Model</b><br> <b>Continuous Collaboration</b><br> The ongoing partnership model ensures regular maintenance and feature enhancements that keep the university's digital presence current with evolving technology standards and user expectations. Collaborative development between Knectar and Carnegie Mellon's internal team creates a knowledge-sharing environment that builds institutional capacity while leveraging external expertise. Iterative improvements based on user feedback and analytics data ensure that the system continues to evolve in response to actual usage patterns and community needs.</p><p><b>Governance & Maintenance</b><br> Established code review processes provide quality control that maintains high standards while enabling rapid deployment of new features and content. Clear deployment pipelines from development through staging to production ensure that changes are thoroughly tested before reaching end users. Regular security updates and performance optimization maintain the system's reliability and speed, while comprehensive training and documentation for content managers across units ensure that the sophisticated tools available through the new system are used effectively.</p><p><b>Technical Innovation Highlights</b></p><ul><li><b>Component Flexibility:</b> The system's architecture allows for sophisticated content management with components that can be enabled or disabled based on site context, providing unprecedented flexibility while maintaining consistency.</li><li><b>Workflow Integration:</b> The GitLab and Pantheon Upstream integration creates a seamless development-to-production pipeline that supports both rapid iteration and enterprise-level quality control.</li><li><b>Scalable Foundation:</b> The distributed CMS approach provides a foundation that can support dozens of additional unit sites without requiring fundamental architectural changes.</li></ul><p><b>Conclusion</b><br> The Carnegie Mellon University website redesign represents a successful collaboration between design expertise, technical innovation, and strategic implementation. By creating a scalable, component-based architecture supported by modern development workflows, the project has not only modernized CMU's digital presence but established a foundation for continued growth and innovation.</p><p>The 18-month investment has yielded a system that serves immediate needs while providing the flexibility and scalability required for long-term success. The ongoing partnership model ensures continuous improvement and adaptation to evolving university needs.</p><p><b>Key Success Factors:</b> The project's success stems from the collaborative approach between multiple specialized partners, each contributing essential expertise to create a solution greater than the sum of its parts. The component-based architecture enables unprecedented reusability and consistency while providing the flexibility individual units need to serve their unique audiences. Modern development workflows support both quality assurance and scalability, ensuring that the system can grow and evolve with the university's needs. Most importantly, the strategic focus on both immediate impact and long-term flexibility has created a digital foundation that will serve Carnegie Mellon's mission for years to come.</p><p>This case study demonstrates how strategic partnerships, modern technical architecture, and thoughtful implementation can transform complex institutional digital ecosystems while supporting autonomous content management and brand consistency.</p></div><div class="project-footer-cta"><h3>Ready to transform your institution&#39;s digital presence?</h3><p>Let&#39;s build something extraordinary together.</p><a href="/index.html#contact" class="cta-button">Start a Conversation</a></div></div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Fix line breaks in code blocks after highlight.js processes them
+        function fixCodeBlockLineBreaks() {
+            const codeBlocks = document.querySelectorAll('.description-edit-wrap .description-display pre code.hljs');
+            codeBlocks.forEach(codeBlock => {
+                // Find all span elements and add line breaks where needed
+                const spans = codeBlock.querySelectorAll('span');
+                spans.forEach((span, index) => {
+                    // Check if this span contains a line break
+                    if (span.textContent.includes('\n')) {
+                        // Replace \n with <br> tags
+                        span.innerHTML = span.innerHTML.replace(/\n/g, '<br>');
+                    }
+                });
+            });
+        }
+
+        // Force line-height on dynamically generated content
+        function applyLineHeightToProjectInfo() {
+            const projectInfo = document.querySelector('.project-info');
+            if (!projectInfo) return;
+            
+            // Get the CSS variable values
+            const computedStyle = getComputedStyle(document.documentElement);
+            const descriptionLineHeight = computedStyle.getPropertyValue('--line-height-description');
+            const codeLineHeight = computedStyle.getPropertyValue('--line-height-code');
+            const headingLineHeight = computedStyle.getPropertyValue('--line-height-heading');
+            
+            // Apply to all text content (excluding code blocks)
+            const textElements = projectInfo.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote, strong, em, b, i, a');
+            textElements.forEach(el => {
+                // Skip if it's a code element or inside a code block
+                if (el.closest('pre') || el.closest('code') || el.tagName === 'PRE' || el.tagName === 'CODE') {
+                    el.style.lineHeight = codeLineHeight;
+                } else if (/^H[1-6]$/.test(el.tagName)) {
+                    // Headings use the tighter heading line height
+                    el.style.lineHeight = headingLineHeight;
+                } else {
+                    el.style.lineHeight = descriptionLineHeight;
+                }
+            });
+        }
+
+        // SEO: per-project <title>, meta description, canonical and Open Graph / Twitter URLs.
+        // Without this every /project/:slug/ URL declares project.html as its canonical.
+        function updateProjectSeoTags(pageData, slug) {
+            const SITE_ORIGIN = 'https://www.knectar.com';
+            const setContent = (id, value) => {
+                const el = document.getElementById(id);
+                if (el && value) el.setAttribute('content', value);
+            };
+
+            const cleanSlug = (pageData && pageData.slug) || slug;
+            if (!cleanSlug) return;
+
+            const canonicalHref = `${SITE_ORIGIN}/project/${encodeURIComponent(cleanSlug)}/`;
+            const canonical = document.getElementById('canonical-link');
+            if (canonical) canonical.setAttribute('href', canonicalHref);
+            setContent('og-url', canonicalHref);
+            setContent('twitter-url', canonicalHref);
+
+            if (!pageData) return;
+
+            const projectTitle = pageData.projectTitle || pageData.label || '';
+            if (projectTitle) {
+                const fullTitle = `${projectTitle} | Knectar Portfolio`;
+                document.title = fullTitle;
+                setContent('og-title', fullTitle);
+                setContent('twitter-title', fullTitle);
+            }
+
+            // Build a plain-text description from the first paragraph of the page summary
+            if (pageData.pageSummary) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = pageData.pageSummary;
+                let text = (tmp.textContent || '').replace(/\s+/g, ' ').trim();
+                // Drop a leading bold label such as "Background and project goals"
+                const firstBold = tmp.querySelector('b, strong');
+                if (firstBold && text.startsWith(firstBold.textContent.trim())) {
+                    text = text.slice(firstBold.textContent.trim().length).trim();
+                }
+                if (text.length > 155) {
+                    text = text.slice(0, 152).replace(/\s+\S*$/, '') + '...';
+                }
+                if (text) {
+                    setContent('meta-description', text);
+                    setContent('og-description', text);
+                    setContent('twitter-description', text);
+                }
+            }
+        }
+
+        // Data-driven detail images logic (multiple images, random tilt)
+        document.addEventListener('DOMContentLoaded', function() {
+            function currentSlug() {
+                const urlParams = new URLSearchParams(window.location.search);
+                let slugParam = urlParams.get('item');
+                if (!slugParam) {
+                    const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+                    if (pathMatch && pathMatch[1]) slugParam = decodeURIComponent(pathMatch[1]);
+                }
+                return slugParam;
+            }
+
+            function staticProjectReady(slugParam) {
+                const info = document.querySelector('.project-info[data-static-project]');
+                return !!(info && slugParam && info.getAttribute('data-static-project') === slugParam);
+            }
+
+            function waitForMenuData() {
+                if (!window.__MENU_DATA) {
+                    setTimeout(waitForMenuData, 50);
+                    return;
+                }
+                processProjectData();
+            }
+            
+            function processProjectData() {
+            const slugParam = currentSlug();
+            if (slugParam) console.log('project.html inline script - slug:', slugParam);
+            
+            let pageData;
+            if (staticProjectReady(slugParam)) {
+                const srcs = Array.from(document.querySelectorAll('.project-gallery .detail-stack-image'))
+                    .map(function (el) { return el.getAttribute('src'); })
+                    .filter(Boolean);
+                window.__DETAIL_IMAGES = srcs;
+                pageData = { detailImages: srcs, slug: slugParam };
+                document.querySelectorAll('.project-gallery .detail-stack-image').forEach(function (media, i) {
+                    media.addEventListener('click', function () { showImageModal(i); });
+                });
+                setupImageScrollActivation();
+            } else if (slugParam) {
+                const findBySlug = (arr, slug) => {
+                    for (const entry of arr) {
+                        if (entry.url && entry.url.includes(slug)) return entry;
+                        if (entry.submenu) {
+                            const found = findBySlug(entry.submenu, slug);
+                            if (found) return found;
+                        }
+                    }
+                    return null;
+                };
+                pageData = findBySlug(window.__MENU_DATA, slugParam);
+                console.log('project.html inline script - pageData found:', !!pageData, 'detailImages:', pageData?.detailImages);
+                // Expose images for modal
+                window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
+                // SEO: give each project its own title / canonical / social tags
+                updateProjectSeoTags(pageData, slugParam);
+            // Remove old single image
+            const oldImg = document.getElementById('project-detail-image');
+            if (oldImg) oldImg.remove();
+            // Always populate .project-gallery with stacked images
+            const gallery = document.querySelector('.project-gallery');
+            if (gallery) gallery.innerHTML = '';
+            if (pageData && Array.isArray(pageData.detailImages)) {
+                console.log('project.html - populating gallery with', pageData.detailImages.length, 'images');
+                window.__DETAIL_IMAGES = pageData.detailImages;
+                pageData.detailImages.forEach((src, i) => {
+                    const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
+                    const media = document.createElement(isVideo ? 'video' : 'img');
+                    // Normalize image paths to be root-absolute for pretty URL compatibility
+                    const normalizedSrc = src.startsWith('/') ? src : '/' + src;
+                    media.src = normalizedSrc;
+                    if (isVideo) {
+                        media.muted = true;
+                        media.loop = true;
+                        media.playsInline = true;
+                        media.autoplay = true;
+                    }
+                    media.alt = `Project detail media ${i + 1}`;
+                    media.className = 'detail-stack-image detail-stack-image-base';
+                    media.style.display = 'block';
+                    media.style.position = 'absolute';
+                    media.style.width = '340px';
+                    media.style.borderRadius = '8px';
+                    media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                    media.style.cursor = 'pointer';
+                    media.addEventListener('click', () => showImageModal(i));
+                    const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
+                    media.style.setProperty('--tilt', tilt);
+                    media.dataset.origTilt = parseFloat(tilt);
+                    media.style.left = 'calc(50% + 100px)';
+                    if (i === 0) media.style.top = '100px';
+                    if (i === 1) media.style.top = '450px';
+                    if (i === 2) media.style.top = '800px';
+                    if (i === 3) media.style.top = '1150px';
+                    
+                    // Add data attribute for scroll detection
+                    media.dataset.imageIndex = i;
+                    
+                    gallery.appendChild(media);
+                });
+                
+                // Set up scroll-based single image activation (spotlight effect)
+                setupImageScrollActivation();
+            }
+            }
+            // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile && pageData && Array.isArray(pageData.detailImages)) {
+                // Wait for .project-info to be populated
+                setTimeout(() => {
+                    const projectInfo = document.querySelector('.project-info');
+                    if (!projectInfo) return;
+                    // Remove any previous .mobile-gallery
+                    const oldMobileGallery = projectInfo.querySelector('.mobile-gallery');
+                    if (oldMobileGallery) oldMobileGallery.remove();
+                    // Create new .mobile-gallery
+                    const mobileGallery = document.createElement('div');
+                    mobileGallery.className = 'mobile-gallery';
+                    mobileGallery.setAttribute('aria-label', 'Mobile project gallery');
+                    // Find the meta-data <ul> (or fallback to first <p.description> or .dynamic-body)
+                    let insertAfter = projectInfo.querySelector('ul');
+                    if (!insertAfter) {
+                        // Try to find the first .description or .dynamic-body
+                        insertAfter = projectInfo.querySelector('.description') || projectInfo.querySelector('.dynamic-body');
+                        if (insertAfter) insertAfter = insertAfter.previousElementSibling;
+                    }
+                    // Insert .mobile-gallery after meta-data <ul>
+                    if (insertAfter && insertAfter.parentNode === projectInfo) {
+                        insertAfter.after(mobileGallery);
+                    } else {
+                        // Fallback: insert at the top
+                        projectInfo.prepend(mobileGallery);
+                    }
+                    // Build simple slideshow
+                    let currentIdx = 0;
+                    function renderMobileSlide(idx) {
+                        mobileGallery.innerHTML = '';
+                        const isVid = /\.(mp4|webm|ogg)$/i.test(pageData.detailImages[idx]);
+                        const media = document.createElement(isVid ? 'video' : 'img');
+                        // Normalize image paths to be root-absolute for pretty URL compatibility
+                        const normalizedSrc = pageData.detailImages[idx].startsWith('/') ? pageData.detailImages[idx] : '/' + pageData.detailImages[idx];
+                        media.src = normalizedSrc;
+                        if (isVid) {
+                            media.playsInline = true;
+                            media.autoplay = true;
+                            media.muted = true;
+                            media.loop = true;
+                        }
+                        media.alt = `Project detail media ${idx + 1} of ${pageData.detailImages.length}`;
+                        media.style.width = '100%';
+                        media.style.maxWidth = '100%';
+                        media.style.display = 'block';
+                        media.style.margin = '0 auto 12px auto';
+                        media.style.borderRadius = '8px';
+                        media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                        // Navigation controls
+                        const nav = document.createElement('div');
+                        nav.style.display = 'flex';
+                        nav.style.justifyContent = 'center';
+                        nav.style.alignItems = 'center';
+                        nav.style.gap = '18px';
+                        nav.style.marginBottom = '8px';
+                        const prevBtn = document.createElement('button');
+                        prevBtn.textContent = '◀';
+                        prevBtn.setAttribute('aria-label', 'Previous image');
+                        prevBtn.style.fontSize = '22px';
+                        prevBtn.style.background = 'none';
+                        prevBtn.style.border = 'none';
+                        prevBtn.style.cursor = 'pointer';
+                        prevBtn.style.color = '#FF0000';
+                        prevBtn.disabled = idx === 0;
+                        prevBtn.onclick = () => { if (currentIdx > 0) { currentIdx--; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        prevBtn.style.display = 'none';
+                        const nextBtn = document.createElement('button');
+                        nextBtn.textContent = '▶';
+                        nextBtn.setAttribute('aria-label', 'Next image');
+                        nextBtn.style.fontSize = '22px';
+                        nextBtn.style.background = 'none';
+                        nextBtn.style.border = 'none';
+                        nextBtn.style.cursor = 'pointer';
+                        nextBtn.style.color = '#FF0000';
+                        nextBtn.disabled = idx === pageData.detailImages.length - 1;
+                        nextBtn.onclick = () => { if (currentIdx < pageData.detailImages.length - 1) { currentIdx++; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        nextBtn.style.display = 'none';
+                        nav.appendChild(prevBtn);
+                        nav.appendChild(media);
+                        nav.appendChild(nextBtn);
+                        // Add swipe gesture handling
+                        let touchStartX = 0;
+                        media.addEventListener('touchstart', (e) => {
+                            touchStartX = e.touches[0].clientX;
+                        });
+                        media.addEventListener('touchend', (e) => {
+                            const diffX = e.changedTouches[0].clientX - touchStartX;
+                            const threshold = 50; // minimum px swipe distance
+                            if (Math.abs(diffX) > threshold) {
+                                if (diffX < 0 && currentIdx < pageData.detailImages.length - 1) {
+                                    currentIdx++;
+                                    renderMobileSlide(currentIdx);
+                                } else if (diffX > 0 && currentIdx > 0) {
+                                    currentIdx--;
+                                    renderMobileSlide(currentIdx);
+                                }
+                            }
+                        });
+                        // Disable modal trigger on mobile
+                        media.style.cursor = 'default';
+                        mobileGallery.appendChild(nav);
+                        // Optional: show image count
+                        const count = document.createElement('div');
+                        count.style.textAlign = 'center';
+                        count.style.fontSize = '13px';
+                        count.style.color = '#888';
+                        count.textContent = `${idx + 1} / ${pageData.detailImages.length}`;
+                        count.setAttribute('aria-label', `Image ${idx + 1} of ${pageData.detailImages.length}`);
+                        mobileGallery.appendChild(count);
+                    }
+                    renderMobileSlide(currentIdx);
+                }, 0);
+            }
+            
+            // Fix line breaks in code blocks after content is loaded
+            setTimeout(fixCodeBlockLineBreaks, 100);
+            // Apply line height after content is loaded
+            setTimeout(applyLineHeightToProjectInfo, 100);
+            }
+            
+            // Start waiting for menu data
+            if (staticProjectReady(currentSlug())) processProjectData();
+            else waitForMenuData();
+        });
+
+        // Modal helper
+        function setupImageScrollActivation() {
+            const images = document.querySelectorAll('.detail-stack-image');
+            if (images.length === 0) return;
+            
+            function updateActiveImage() {
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Adjust the effective "trigger point" based on scroll position
+                // When at top (scrollY = 0), use upper portion of viewport
+                // As we scroll down, gradually transition to center of viewport
+                const scrollProgress = Math.min(scrollY / (viewportHeight * 1.5), 1);
+                const triggerPoint = scrollY + (viewportHeight * (0.25 + (scrollProgress * 0.25))); // Ranges from 25% to 50% of viewport
+                
+                let closestImage = null;
+                let closestDistance = Infinity;
+                
+                // Find which image is closest to our dynamic trigger point
+                images.forEach((image) => {
+                    const rect = image.getBoundingClientRect();
+                    const imageCenter = scrollY + rect.top + (rect.height / 2);
+                    const distance = Math.abs(triggerPoint - imageCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestImage = image;
+                    }
+                });
+                
+                // Remove active class from all images
+                images.forEach(image => image.classList.remove('active'));
+                
+                // Add active class only to the closest image (if it's reasonably visible)
+                if (closestImage && closestDistance < viewportHeight) {
+                    closestImage.classList.add('active');
+                }
+            }
+            
+            // Update on scroll with throttling for performance
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveImage, 16); // ~60fps
+            });
+            
+            // Initial update
+            updateActiveImage();
+        }
+
+        function showImageModal(startIdx) {
+            const imagesArr = Array.isArray(window.__DETAIL_IMAGES) ? window.__DETAIL_IMAGES : [];
+            if (!imagesArr.length) return;
+            let currentIdx = startIdx;
+            // Prevent multiple overlays
+            if (document.querySelector('.image-modal-overlay')) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'image-modal-overlay';
+            let mediaEl;
+            function renderMedia(idx) {
+                const src = imagesArr[idx];
+                const isVid = /\.(mp4|webm|ogg)$/i.test(src);
+                if (mediaEl) mediaEl.remove();
+                mediaEl = document.createElement(isVid ? 'video' : 'img');
+                // Root-absolute path required for pretty URLs (/project/:slug/)
+                mediaEl.src = src.startsWith('/') ? src : '/' + src;
+                if (isVid) {
+                    mediaEl.autoplay = true;
+                    mediaEl.loop = true;
+                    mediaEl.playsInline = true;
+                }
+                overlay.insertBefore(mediaEl, overlay.firstChild);
+            }
+            renderMedia(currentIdx);
+
+            // Close X
+            const closeX = document.createElement('div');
+            closeX.className = 'image-modal-close';
+            closeX.textContent = '×';
+            closeX.addEventListener('click', e => { e.stopPropagation(); overlay.remove(); });
+            overlay.appendChild(closeX);
+
+            // Arrow controls
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'image-modal-arrow left';
+            leftArrow.innerHTML = '<span class="css-arrow-left"></span>';
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'image-modal-arrow right';
+            rightArrow.innerHTML = '<span class="css-arrow-right"></span>';
+            overlay.appendChild(leftArrow);
+            overlay.appendChild(rightArrow);
+
+            function updateArrows() {
+                leftArrow.classList.toggle('disabled', currentIdx === 0);
+                rightArrow.classList.toggle('disabled', currentIdx === imagesArr.length - 1);
+            }
+
+            leftArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx > 0) {
+                    currentIdx--; renderMedia(currentIdx); updateArrows();
+                }
+            });
+            rightArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx < imagesArr.length - 1) {
+                    currentIdx++; renderMedia(currentIdx); updateArrows();
+                }
+            });
+
+            updateArrows();
+
+            // Keyboard navigation
+            function handleKey(e) {
+                if (e.key === 'ArrowLeft') {
+                    leftArrow.click();
+                } else if (e.key === 'ArrowRight') {
+                    rightArrow.click();
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+
+            document.addEventListener('keydown', handleKey);
+
+            function closeModal() {
+                document.removeEventListener('keydown', handleKey);
+                overlay.remove();
+            }
+
+            // Replace previous listeners to use closeModal
+            overlay.addEventListener('click', closeModal);
+            closeX.removeEventListener('click', () => { }); // ensure no duplicate
+            closeX.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
+            document.body.appendChild(overlay);
+            // trigger animated entrance
+            requestAnimationFrame(() => {
+                overlay.classList.add('active');
+            });
+        }
+    </script>
+
+
+    <!-- Footer loaded by footer loader -->
+    <script src="/js/load_footer.js"></script>
+</body>
+</html> 

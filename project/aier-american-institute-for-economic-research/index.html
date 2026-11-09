@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIER:  American Institute for Economic Research. | Knectar Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The American Institute for Economic Research (AIER), founded in 1933 by economist and financial advisor Colonel Edward C. Harwood, is the oldest..." id="meta-description">
+    <meta name="keywords" content="project, portfolio, web development, design, knectar, case study">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.knectar.com/project/aier-american-institute-for-economic-research/" id="og-url">
+    <meta property="og:title" content="AIER:  American Institute for Economic Research. | Knectar Portfolio" id="og-title">
+    <meta property="og:description" content="The American Institute for Economic Research (AIER), founded in 1933 by economist and financial advisor Colonel Edward C. Harwood, is the oldest..." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/project_tiles/aier.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.knectar.com/project/aier-american-institute-for-economic-research/" id="twitter-url">
+    <meta property="twitter:title" content="AIER:  American Institute for Economic Research. | Knectar Portfolio" id="twitter-title">
+    <meta property="twitter:description" content="The American Institute for Economic Research (AIER), founded in 1933 by economist and financial advisor Colonel Edward C. Harwood, is the oldest..." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/project_tiles/aier.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.knectar.com/project/aier-american-institute-for-economic-research/" id="canonical-link">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="apple-touch-icon" href="/assets/logo.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Cookie Consent Manager -->
+    <!-- Now loaded centrally via js/consent.js -->
+    
+    <!-- Scripts -->
+    <!-- Data Manager (lazy-loading system) -->
+    <script src="/js/consent.js"></script>
+    <script src="/js/dataManager.js"></script>
+    <script src="/js/load_menu.js"></script>
+    <!-- Image Loading Enhancements -->
+    <script src="/js/image-loader.js" defer></script>
+    <!-- Highlight.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Override highlight.js styles for proper line breaks -->
+    <style>
+        /* Force line breaks for highlight.js code blocks */
+        .description-edit-wrap .description-display pre code.hljs,
+        /* Code block line height now controlled via CSS variables */
+        .description-edit-wrap .description-display pre code.hljs.language-javascript,
+        .description-edit-wrap .description-display pre code.hljs.language-python,
+        .description-edit-wrap .description-display pre code.hljs.language-html,
+        .description-edit-wrap .description-display pre code.hljs.language-css {
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+            font-family: 'Courier New', monospace !important;
+            line-height: var(--line-height-code) !important;
+        }
+        
+        .description-edit-wrap .description-display pre {
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+        
+        /* Force line breaks for highlight.js span elements */
+        .description-edit-wrap .description-display pre code.hljs span {
+            white-space: pre-wrap !important;
+            display: inline !important;
+        }
+        
+        /* Handle line breaks within highlight.js content */
+        .description-edit-wrap .description-display pre code.hljs br {
+            display: block !important;
+            content: "" !important;
+            margin-top: 0.5em !important;
+        }
+        
+        /* Nuclear option - force all text content to preserve whitespace */
+        .description-edit-wrap .description-display pre code.hljs * {
+            white-space: pre-wrap !important;
+        }
+
+        /* Make stack images clickable */
+        .detail-stack-image {
+            cursor: pointer;
+        }
+
+        /* Modal overlay for expanded images */
+        .image-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000; /* above GitHub button */
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal-overlay img,
+        .image-modal-overlay video {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .image-modal-overlay.active { opacity: 1; }
+        .image-modal-overlay.active img,
+        .image-modal-overlay.active video { transform: scale(1); }
+
+        /* Close button */
+        .image-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Arrow controls */
+        .image-modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            padding: 8px 16px;
+        }
+        .image-modal-arrow.left { left: 16px; }
+        .image-modal-arrow.right { right: 16px; }
+        .image-modal-arrow.disabled { opacity: 0.3; cursor: default; }
+        
+        /* Line spacing is now controlled centrally via CSS variables */
+        /* See css/style.css for --line-height-description and --line-height-code */
+    </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"AIER:  American Institute for Economic Research.","description":"The American Institute for Economic Research (AIER), founded in 1933 by economist and financial advisor Colonel Edward C. Harwood, is the oldest...","url":"https://www.knectar.com/project/aier-american-institute-for-economic-research/","image":"https://www.knectar.com/project_tiles/aier.png","author":{"@type":"Organization","name":"Knectar"}}</script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="/index.html"><img src="/assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <!-- Dynamic breadcrumbs -->
+                <div class="breadcrumbs">
+                    <a href="/index.html" class="breadcrumb-link">Home</a> &gt; <a href="/projects.html" class="breadcrumb-link">Projects</a> &gt; <a href="/projects/informational/" class="breadcrumb-link" id="crumbCategoryLink">Informational</a> &gt; <span data-field="projectTitle">AIER:  American Institute for Economic Research.</span>
+                </div>
+            </header>
+            <section class="project-details">
+                <div class="project-gallery" aria-label="Project gallery">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/aier-american-institute-for-economic-research_1.png" alt="Project detail media 1" data-orig-tilt="-10.00" data-image-index="0" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:100px;--tilt:-10.00deg">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/aier-american-institute-for-economic-research_2.png" alt="Project detail media 2" data-orig-tilt="-3.00" data-image-index="1" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:450px;--tilt:-3.00deg">
+</div>
+                <!-- Removed static .mobile-gallery -->
+
+
+                <div class="project-info" aria-label="Project information" data-static-project="aier-american-institute-for-economic-research"><h1 style="margin: 0;">AIER:  American Institute for Economic Research.</h1><ul><li><span class="meta-label">Role:</span> Technical Lead, Developer</li><li><span class="meta-label">Budget:</span> $50,000 - $100,000</li><li><span class="meta-label">Technology:</span> <a href="/projects.html?technology=Drupal" class="technology-link">Drupal</a></li><li><span class="meta-label">URL:</span> <a href="https://aier.org/" target="_blank" rel="noopener">https://aier.org/</a></li></ul><div class="project-haiku">Data speaks the truth<br/>Economic insights flow freely<br/>Knowledge lights the path</div><div class="description"><p><b>Client Background</b><br>The American Institute for Economic Research (AIER), founded in 1933 by economist and financial advisor Colonel Edward C. Harwood, is the oldest economic research institute in the United States. AIER is a nonpartisan research and education nonprofit 501(c)(3) organization focused on the importance of markets, educating people on the value of personal freedom, free enterprise, property rights, limited government, and sound money. Based in Great Barrington, Massachusetts, AIER has maintained its prestigious position in economic research for over 90 years, with scholars regularly contributing to major publications and media outlets.</p><p><b>Project Goals & Challenges</b></p><p><b>Primary Objectives</b></p><ul><li>Legacy System Migration: Transition from outdated Drupal 6 to modern Drupal 7 platform</li><li>Content Consolidation: Streamline multiple content types and eliminate redundant workflows</li><li>Enhanced User Experience: Implement responsive design with mobile-first approach</li><li>Content Management Efficiency: Simplify editorial workflows for AIER staff</li><li>Performance Optimization: Improve site speed and search functionality</li></ul><p><b>Key Challenges</b></p><ul><li>Complex Content Architecture: Managing diverse content types including research papers, news articles, educational materials, and multimedia content</li><li>Workflow Simplification: Consolidating the existing dual-node system (article + bucket nodes) for homepage features</li><li>Mobile Responsiveness: Ensuring optimal experience across all devices for academic and general audiences</li><li>SEO & Archival Needs: Maintaining research document accessibility while implementing 12-month display cycles</li></ul><p><b>Technical Architecture & Solutions</b></p><p><b>Content Management Strategy</b></p><p><b>Streamlined Content Types</b><br>The project consolidated AIER's content architecture into six core content types:</p><p><b>Research Articles</b></p><ul><li>Consolidated previous "article" and "bucket" content types</li><li>Implemented "Promote to Front Page" functionality</li><li>Added comprehensive taxonomy system for categorization</li><li>Integrated multimedia assets and related article functionality</li></ul><p><b>News Integration</b></p><ul><li>External link optimization for third-party news sources</li><li>Google Analytics tracking for outbound clicks</li><li>Simplified workflow eliminating unnecessary detail pages</li></ul><p><b>Product Catalog</b></p><ul><li>Authorize.net integration for e-commerce functionality</li><li>Streamlined product display with embedded checkout</li></ul><p><b>Staff Directory</b></p><ul><li>Hierarchical staff categorization</li><li>Flexible display options for different staff types</li><li>No detail pages required, maintaining list-view efficiency</li></ul><p><b>Educational Content</b></p><ul><li>Standard page template for maximum flexibility</li><li>WYSIWYG content management</li><li>Nested block functionality</li></ul><p><b>Video Content</b></p><ul><li>YouTube integration</li><li>Homepage carousel functionality</li><li>Promotion-based display system</li></ul><p><b>Advanced Taxonomy Implementation</b></p><ul><li>Research Categories: Everyday Price Index, Business Cycle Conditions, Research Reports</li><li>Educational Classifications: Fellowships, Student Programs, Conferences</li><li>Archive Organization: Historical document categorization</li><li>Form Campaign Taxonomy: Newsletter and digital download classification</li></ul><p><b>User Experience Enhancements</b></p><p><b>Responsive Design Features</b></p><ul><li>Mobile Navigation: Consolidated utility and main navigation</li><li>Touch-Optimized Interfaces: Swipeable content carousels</li><li>Click-to-Call Integration: Direct phone connectivity for mobile users</li><li>Progressive Enhancement: Desktop features gracefully degraded for mobile</li></ul><p><b>Advanced Functionality</b></p><ul><li>Infinite Scroll: Twitter-style content loading for improved engagement</li><li>Modal Integration: Lightbox functionality for images and embedded content</li><li>Social Integration: AddThis buttons and Disqus commenting system</li><li>Cost of Living Calculator: Custom tool migration from D6 to D7</li></ul><p><b>Technical Innovations</b></p><p><b>Custom Block System</b></p><ul><li>Dual Administration: Global top-down and per-page bottom-up block management</li><li>Featured Content Blocks: Pre-rendered view modes for consistent presentation</li><li>WYSIWYG Integration: User-friendly content creation tools</li><li>Modal Functionality: Integrated lightbox capabilities</li></ul><p><b>Search & Performance Optimization</b></p><ul><li>Multi-Content Search: Comprehensive search across all content types</li><li>Google Analytics Integration: Event tracking for user interactions</li><li>SEO-Friendly URLs: Clean URL structure for research content</li><li>Archive Management: Automated 12-month display cycles with PDF backup</li></ul><p><b>Integration & Third-Party Services</b></p><p><b>E-commerce Integration</b></p><ul><li>Authorize.net Simple Checkout: Seamless product purchasing</li><li>Donation Platform: NetworkforGood integration for membership</li><li>Bookstore Functionality: Product catalog with shopping cart</li></ul><p><b>Communication Tools</b></p><ul><li>Email Marketing: Newsletter signup integration</li><li>Social Media: Multi-platform sharing capabilities</li><li>External Blog Integration: Daily Economy blog connectivity</li><li>RSS Feeds: Automated content syndication</li></ul><p><b>Implementation Highlights</b></p><p><b>Content Migration Strategy</b></p><ul><li>Legacy Content Preservation: Maintained all historical research data</li><li>URL Structure Optimization: SEO-friendly paths for research content</li><li>Asset Management: Comprehensive image and document handling</li><li>Taxonomy Mapping: Seamless category transitions</li></ul><p><b>Performance Enhancements</b></p><ul><li>Mobile-First Design: Optimized loading for smartphones and tablets</li><li>Image Optimization: Responsive images with modal enlargement</li><li>Caching Strategy: Drupal 7 performance optimizations</li><li>CDN Integration: External script loading via Cloudflare</li></ul><p><b>Quality Assurance Features</b></p><ul><li>Link Checker Module: Automated broken link detection</li><li>Email Obfuscation: Spam protection for contact information</li><li>Comment Moderation: Admin-reviewed Disqus integration</li><li>Form Validation: Comprehensive contact form security</li></ul><p><b>Results & Impact</b></p><p><b>Improved Editorial Workflow</b></p><ul><li>Simplified Publishing: Single-node system for homepage features</li><li>Enhanced Content Organization: Intuitive taxonomy-based categorization</li><li>Streamlined Asset Management: Integrated multimedia handling</li><li>Flexible Block System: User-friendly content placement tools</li></ul><p><b>Enhanced User Experience</b></p><ul><li>Mobile Accessibility: Fully responsive design across all devices</li><li>Improved Navigation: Intuitive menu structure with flyout functionality</li><li>Rich Media Integration: Seamless video and image presentation</li><li>Advanced Search: Comprehensive content discovery tools</li></ul><p><b>Technical Achievements</b></p><ul><li>Modern Platform: Successful Drupal 7 migration with future-proofing</li><li>Performance Optimization: Faster loading times and improved responsiveness</li><li>SEO Enhancement: Better search engine visibility for research content</li><li>Integration Success: Seamless third-party service connectivity</li></ul><p><b>Future Considerations</b></p><p><b>Scalability Features</b></p><ul><li>Content Type Extensions: Framework for additional content types</li><li>Advanced Charting: Prepared architecture for interactive data visualization</li><li>Event Management: Placeholder for future event functionality</li><li>Enhanced Analytics: Framework for detailed user behavior tracking</li></ul><p><b>Technical Evolution</b></p><ul><li>Module Ecosystem: Carefully selected Drupal modules for extensibility</li><li>Security Framework: Robust security measures for academic content</li><li>Performance Monitoring: Google Analytics integration for ongoing optimization</li><li>Content Archival: Systematic approach to historical content management</li></ul><p><b>Conclusion</b><br>The AIER website redesign and migration project successfully transformed a complex academic institution's digital presence from a legacy Drupal 6 system to a modern, responsive, and user-friendly Drupal 7 platform. By consolidating content types, streamlining editorial workflows, and implementing cutting-edge responsive design principles, the project delivered a comprehensive solution that serves both AIER's diverse content needs and their audience's evolving digital expectations.</p><p>The project's success lies in its balanced approach to technical innovation and practical usability, ensuring that AIER's prestigious research and educational content remains accessible and engaging across all digital platforms while providing the institutional flexibility needed for ongoing content management and growth.</p></div><div class="project-footer-cta"><h3>Ready to illuminate complex ideas through clear digital communication?</h3><p>Let&#39;s build platforms that make research accessible and actionable.</p><a href="/index.html#contact" class="cta-button">Start a Conversation</a></div></div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Fix line breaks in code blocks after highlight.js processes them
+        function fixCodeBlockLineBreaks() {
+            const codeBlocks = document.querySelectorAll('.description-edit-wrap .description-display pre code.hljs');
+            codeBlocks.forEach(codeBlock => {
+                // Find all span elements and add line breaks where needed
+                const spans = codeBlock.querySelectorAll('span');
+                spans.forEach((span, index) => {
+                    // Check if this span contains a line break
+                    if (span.textContent.includes('\n')) {
+                        // Replace \n with <br> tags
+                        span.innerHTML = span.innerHTML.replace(/\n/g, '<br>');
+                    }
+                });
+            });
+        }
+
+        // Force line-height on dynamically generated content
+        function applyLineHeightToProjectInfo() {
+            const projectInfo = document.querySelector('.project-info');
+            if (!projectInfo) return;
+            
+            // Get the CSS variable values
+            const computedStyle = getComputedStyle(document.documentElement);
+            const descriptionLineHeight = computedStyle.getPropertyValue('--line-height-description');
+            const codeLineHeight = computedStyle.getPropertyValue('--line-height-code');
+            const headingLineHeight = computedStyle.getPropertyValue('--line-height-heading');
+            
+            // Apply to all text content (excluding code blocks)
+            const textElements = projectInfo.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote, strong, em, b, i, a');
+            textElements.forEach(el => {
+                // Skip if it's a code element or inside a code block
+                if (el.closest('pre') || el.closest('code') || el.tagName === 'PRE' || el.tagName === 'CODE') {
+                    el.style.lineHeight = codeLineHeight;
+                } else if (/^H[1-6]$/.test(el.tagName)) {
+                    // Headings use the tighter heading line height
+                    el.style.lineHeight = headingLineHeight;
+                } else {
+                    el.style.lineHeight = descriptionLineHeight;
+                }
+            });
+        }
+
+        // SEO: per-project <title>, meta description, canonical and Open Graph / Twitter URLs.
+        // Without this every /project/:slug/ URL declares project.html as its canonical.
+        function updateProjectSeoTags(pageData, slug) {
+            const SITE_ORIGIN = 'https://www.knectar.com';
+            const setContent = (id, value) => {
+                const el = document.getElementById(id);
+                if (el && value) el.setAttribute('content', value);
+            };
+
+            const cleanSlug = (pageData && pageData.slug) || slug;
+            if (!cleanSlug) return;
+
+            const canonicalHref = `${SITE_ORIGIN}/project/${encodeURIComponent(cleanSlug)}/`;
+            const canonical = document.getElementById('canonical-link');
+            if (canonical) canonical.setAttribute('href', canonicalHref);
+            setContent('og-url', canonicalHref);
+            setContent('twitter-url', canonicalHref);
+
+            if (!pageData) return;
+
+            const projectTitle = pageData.projectTitle || pageData.label || '';
+            if (projectTitle) {
+                const fullTitle = `${projectTitle} | Knectar Portfolio`;
+                document.title = fullTitle;
+                setContent('og-title', fullTitle);
+                setContent('twitter-title', fullTitle);
+            }
+
+            // Build a plain-text description from the first paragraph of the page summary
+            if (pageData.pageSummary) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = pageData.pageSummary;
+                let text = (tmp.textContent || '').replace(/\s+/g, ' ').trim();
+                // Drop a leading bold label such as "Background and project goals"
+                const firstBold = tmp.querySelector('b, strong');
+                if (firstBold && text.startsWith(firstBold.textContent.trim())) {
+                    text = text.slice(firstBold.textContent.trim().length).trim();
+                }
+                if (text.length > 155) {
+                    text = text.slice(0, 152).replace(/\s+\S*$/, '') + '...';
+                }
+                if (text) {
+                    setContent('meta-description', text);
+                    setContent('og-description', text);
+                    setContent('twitter-description', text);
+                }
+            }
+        }
+
+        // Data-driven detail images logic (multiple images, random tilt)
+        document.addEventListener('DOMContentLoaded', function() {
+            function currentSlug() {
+                const urlParams = new URLSearchParams(window.location.search);
+                let slugParam = urlParams.get('item');
+                if (!slugParam) {
+                    const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+                    if (pathMatch && pathMatch[1]) slugParam = decodeURIComponent(pathMatch[1]);
+                }
+                return slugParam;
+            }
+
+            function staticProjectReady(slugParam) {
+                const info = document.querySelector('.project-info[data-static-project]');
+                return !!(info && slugParam && info.getAttribute('data-static-project') === slugParam);
+            }
+
+            function waitForMenuData() {
+                if (!window.__MENU_DATA) {
+                    setTimeout(waitForMenuData, 50);
+                    return;
+                }
+                processProjectData();
+            }
+            
+            function processProjectData() {
+            const slugParam = currentSlug();
+            if (slugParam) console.log('project.html inline script - slug:', slugParam);
+            
+            let pageData;
+            if (staticProjectReady(slugParam)) {
+                const srcs = Array.from(document.querySelectorAll('.project-gallery .detail-stack-image'))
+                    .map(function (el) { return el.getAttribute('src'); })
+                    .filter(Boolean);
+                window.__DETAIL_IMAGES = srcs;
+                pageData = { detailImages: srcs, slug: slugParam };
+                document.querySelectorAll('.project-gallery .detail-stack-image').forEach(function (media, i) {
+                    media.addEventListener('click', function () { showImageModal(i); });
+                });
+                setupImageScrollActivation();
+            } else if (slugParam) {
+                const findBySlug = (arr, slug) => {
+                    for (const entry of arr) {
+                        if (entry.url && entry.url.includes(slug)) return entry;
+                        if (entry.submenu) {
+                            const found = findBySlug(entry.submenu, slug);
+                            if (found) return found;
+                        }
+                    }
+                    return null;
+                };
+                pageData = findBySlug(window.__MENU_DATA, slugParam);
+                console.log('project.html inline script - pageData found:', !!pageData, 'detailImages:', pageData?.detailImages);
+                // Expose images for modal
+                window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
+                // SEO: give each project its own title / canonical / social tags
+                updateProjectSeoTags(pageData, slugParam);
+            // Remove old single image
+            const oldImg = document.getElementById('project-detail-image');
+            if (oldImg) oldImg.remove();
+            // Always populate .project-gallery with stacked images
+            const gallery = document.querySelector('.project-gallery');
+            if (gallery) gallery.innerHTML = '';
+            if (pageData && Array.isArray(pageData.detailImages)) {
+                console.log('project.html - populating gallery with', pageData.detailImages.length, 'images');
+                window.__DETAIL_IMAGES = pageData.detailImages;
+                pageData.detailImages.forEach((src, i) => {
+                    const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
+                    const media = document.createElement(isVideo ? 'video' : 'img');
+                    // Normalize image paths to be root-absolute for pretty URL compatibility
+                    const normalizedSrc = src.startsWith('/') ? src : '/' + src;
+                    media.src = normalizedSrc;
+                    if (isVideo) {
+                        media.muted = true;
+                        media.loop = true;
+                        media.playsInline = true;
+                        media.autoplay = true;
+                    }
+                    media.alt = `Project detail media ${i + 1}`;
+                    media.className = 'detail-stack-image detail-stack-image-base';
+                    media.style.display = 'block';
+                    media.style.position = 'absolute';
+                    media.style.width = '340px';
+                    media.style.borderRadius = '8px';
+                    media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                    media.style.cursor = 'pointer';
+                    media.addEventListener('click', () => showImageModal(i));
+                    const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
+                    media.style.setProperty('--tilt', tilt);
+                    media.dataset.origTilt = parseFloat(tilt);
+                    media.style.left = 'calc(50% + 100px)';
+                    if (i === 0) media.style.top = '100px';
+                    if (i === 1) media.style.top = '450px';
+                    if (i === 2) media.style.top = '800px';
+                    if (i === 3) media.style.top = '1150px';
+                    
+                    // Add data attribute for scroll detection
+                    media.dataset.imageIndex = i;
+                    
+                    gallery.appendChild(media);
+                });
+                
+                // Set up scroll-based single image activation (spotlight effect)
+                setupImageScrollActivation();
+            }
+            }
+            // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile && pageData && Array.isArray(pageData.detailImages)) {
+                // Wait for .project-info to be populated
+                setTimeout(() => {
+                    const projectInfo = document.querySelector('.project-info');
+                    if (!projectInfo) return;
+                    // Remove any previous .mobile-gallery
+                    const oldMobileGallery = projectInfo.querySelector('.mobile-gallery');
+                    if (oldMobileGallery) oldMobileGallery.remove();
+                    // Create new .mobile-gallery
+                    const mobileGallery = document.createElement('div');
+                    mobileGallery.className = 'mobile-gallery';
+                    mobileGallery.setAttribute('aria-label', 'Mobile project gallery');
+                    // Find the meta-data <ul> (or fallback to first <p.description> or .dynamic-body)
+                    let insertAfter = projectInfo.querySelector('ul');
+                    if (!insertAfter) {
+                        // Try to find the first .description or .dynamic-body
+                        insertAfter = projectInfo.querySelector('.description') || projectInfo.querySelector('.dynamic-body');
+                        if (insertAfter) insertAfter = insertAfter.previousElementSibling;
+                    }
+                    // Insert .mobile-gallery after meta-data <ul>
+                    if (insertAfter && insertAfter.parentNode === projectInfo) {
+                        insertAfter.after(mobileGallery);
+                    } else {
+                        // Fallback: insert at the top
+                        projectInfo.prepend(mobileGallery);
+                    }
+                    // Build simple slideshow
+                    let currentIdx = 0;
+                    function renderMobileSlide(idx) {
+                        mobileGallery.innerHTML = '';
+                        const isVid = /\.(mp4|webm|ogg)$/i.test(pageData.detailImages[idx]);
+                        const media = document.createElement(isVid ? 'video' : 'img');
+                        // Normalize image paths to be root-absolute for pretty URL compatibility
+                        const normalizedSrc = pageData.detailImages[idx].startsWith('/') ? pageData.detailImages[idx] : '/' + pageData.detailImages[idx];
+                        media.src = normalizedSrc;
+                        if (isVid) {
+                            media.playsInline = true;
+                            media.autoplay = true;
+                            media.muted = true;
+                            media.loop = true;
+                        }
+                        media.alt = `Project detail media ${idx + 1} of ${pageData.detailImages.length}`;
+                        media.style.width = '100%';
+                        media.style.maxWidth = '100%';
+                        media.style.display = 'block';
+                        media.style.margin = '0 auto 12px auto';
+                        media.style.borderRadius = '8px';
+                        media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                        // Navigation controls
+                        const nav = document.createElement('div');
+                        nav.style.display = 'flex';
+                        nav.style.justifyContent = 'center';
+                        nav.style.alignItems = 'center';
+                        nav.style.gap = '18px';
+                        nav.style.marginBottom = '8px';
+                        const prevBtn = document.createElement('button');
+                        prevBtn.textContent = '◀';
+                        prevBtn.setAttribute('aria-label', 'Previous image');
+                        prevBtn.style.fontSize = '22px';
+                        prevBtn.style.background = 'none';
+                        prevBtn.style.border = 'none';
+                        prevBtn.style.cursor = 'pointer';
+                        prevBtn.style.color = '#FF0000';
+                        prevBtn.disabled = idx === 0;
+                        prevBtn.onclick = () => { if (currentIdx > 0) { currentIdx--; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        prevBtn.style.display = 'none';
+                        const nextBtn = document.createElement('button');
+                        nextBtn.textContent = '▶';
+                        nextBtn.setAttribute('aria-label', 'Next image');
+                        nextBtn.style.fontSize = '22px';
+                        nextBtn.style.background = 'none';
+                        nextBtn.style.border = 'none';
+                        nextBtn.style.cursor = 'pointer';
+                        nextBtn.style.color = '#FF0000';
+                        nextBtn.disabled = idx === pageData.detailImages.length - 1;
+                        nextBtn.onclick = () => { if (currentIdx < pageData.detailImages.length - 1) { currentIdx++; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        nextBtn.style.display = 'none';
+                        nav.appendChild(prevBtn);
+                        nav.appendChild(media);
+                        nav.appendChild(nextBtn);
+                        // Add swipe gesture handling
+                        let touchStartX = 0;
+                        media.addEventListener('touchstart', (e) => {
+                            touchStartX = e.touches[0].clientX;
+                        });
+                        media.addEventListener('touchend', (e) => {
+                            const diffX = e.changedTouches[0].clientX - touchStartX;
+                            const threshold = 50; // minimum px swipe distance
+                            if (Math.abs(diffX) > threshold) {
+                                if (diffX < 0 && currentIdx < pageData.detailImages.length - 1) {
+                                    currentIdx++;
+                                    renderMobileSlide(currentIdx);
+                                } else if (diffX > 0 && currentIdx > 0) {
+                                    currentIdx--;
+                                    renderMobileSlide(currentIdx);
+                                }
+                            }
+                        });
+                        // Disable modal trigger on mobile
+                        media.style.cursor = 'default';
+                        mobileGallery.appendChild(nav);
+                        // Optional: show image count
+                        const count = document.createElement('div');
+                        count.style.textAlign = 'center';
+                        count.style.fontSize = '13px';
+                        count.style.color = '#888';
+                        count.textContent = `${idx + 1} / ${pageData.detailImages.length}`;
+                        count.setAttribute('aria-label', `Image ${idx + 1} of ${pageData.detailImages.length}`);
+                        mobileGallery.appendChild(count);
+                    }
+                    renderMobileSlide(currentIdx);
+                }, 0);
+            }
+            
+            // Fix line breaks in code blocks after content is loaded
+            setTimeout(fixCodeBlockLineBreaks, 100);
+            // Apply line height after content is loaded
+            setTimeout(applyLineHeightToProjectInfo, 100);
+            }
+            
+            // Start waiting for menu data
+            if (staticProjectReady(currentSlug())) processProjectData();
+            else waitForMenuData();
+        });
+
+        // Modal helper
+        function setupImageScrollActivation() {
+            const images = document.querySelectorAll('.detail-stack-image');
+            if (images.length === 0) return;
+            
+            function updateActiveImage() {
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Adjust the effective "trigger point" based on scroll position
+                // When at top (scrollY = 0), use upper portion of viewport
+                // As we scroll down, gradually transition to center of viewport
+                const scrollProgress = Math.min(scrollY / (viewportHeight * 1.5), 1);
+                const triggerPoint = scrollY + (viewportHeight * (0.25 + (scrollProgress * 0.25))); // Ranges from 25% to 50% of viewport
+                
+                let closestImage = null;
+                let closestDistance = Infinity;
+                
+                // Find which image is closest to our dynamic trigger point
+                images.forEach((image) => {
+                    const rect = image.getBoundingClientRect();
+                    const imageCenter = scrollY + rect.top + (rect.height / 2);
+                    const distance = Math.abs(triggerPoint - imageCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestImage = image;
+                    }
+                });
+                
+                // Remove active class from all images
+                images.forEach(image => image.classList.remove('active'));
+                
+                // Add active class only to the closest image (if it's reasonably visible)
+                if (closestImage && closestDistance < viewportHeight) {
+                    closestImage.classList.add('active');
+                }
+            }
+            
+            // Update on scroll with throttling for performance
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveImage, 16); // ~60fps
+            });
+            
+            // Initial update
+            updateActiveImage();
+        }
+
+        function showImageModal(startIdx) {
+            const imagesArr = Array.isArray(window.__DETAIL_IMAGES) ? window.__DETAIL_IMAGES : [];
+            if (!imagesArr.length) return;
+            let currentIdx = startIdx;
+            // Prevent multiple overlays
+            if (document.querySelector('.image-modal-overlay')) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'image-modal-overlay';
+            let mediaEl;
+            function renderMedia(idx) {
+                const src = imagesArr[idx];
+                const isVid = /\.(mp4|webm|ogg)$/i.test(src);
+                if (mediaEl) mediaEl.remove();
+                mediaEl = document.createElement(isVid ? 'video' : 'img');
+                // Root-absolute path required for pretty URLs (/project/:slug/)
+                mediaEl.src = src.startsWith('/') ? src : '/' + src;
+                if (isVid) {
+                    mediaEl.autoplay = true;
+                    mediaEl.loop = true;
+                    mediaEl.playsInline = true;
+                }
+                overlay.insertBefore(mediaEl, overlay.firstChild);
+            }
+            renderMedia(currentIdx);
+
+            // Close X
+            const closeX = document.createElement('div');
+            closeX.className = 'image-modal-close';
+            closeX.textContent = '×';
+            closeX.addEventListener('click', e => { e.stopPropagation(); overlay.remove(); });
+            overlay.appendChild(closeX);
+
+            // Arrow controls
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'image-modal-arrow left';
+            leftArrow.innerHTML = '<span class="css-arrow-left"></span>';
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'image-modal-arrow right';
+            rightArrow.innerHTML = '<span class="css-arrow-right"></span>';
+            overlay.appendChild(leftArrow);
+            overlay.appendChild(rightArrow);
+
+            function updateArrows() {
+                leftArrow.classList.toggle('disabled', currentIdx === 0);
+                rightArrow.classList.toggle('disabled', currentIdx === imagesArr.length - 1);
+            }
+
+            leftArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx > 0) {
+                    currentIdx--; renderMedia(currentIdx); updateArrows();
+                }
+            });
+            rightArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx < imagesArr.length - 1) {
+                    currentIdx++; renderMedia(currentIdx); updateArrows();
+                }
+            });
+
+            updateArrows();
+
+            // Keyboard navigation
+            function handleKey(e) {
+                if (e.key === 'ArrowLeft') {
+                    leftArrow.click();
+                } else if (e.key === 'ArrowRight') {
+                    rightArrow.click();
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+
+            document.addEventListener('keydown', handleKey);
+
+            function closeModal() {
+                document.removeEventListener('keydown', handleKey);
+                overlay.remove();
+            }
+
+            // Replace previous listeners to use closeModal
+            overlay.addEventListener('click', closeModal);
+            closeX.removeEventListener('click', () => { }); // ensure no duplicate
+            closeX.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
+            document.body.appendChild(overlay);
+            // trigger animated entrance
+            requestAnimationFrame(() => {
+                overlay.classList.add('active');
+            });
+        }
+    </script>
+
+
+    <!-- Footer loaded by footer loader -->
+    <script src="/js/load_footer.js"></script>
+</body>
+</html> 

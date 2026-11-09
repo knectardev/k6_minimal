@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robert Rauschenberg Foundation: Drupal 7 to 10 Website Migration | Knectar Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Client background The Robert Rauschenberg Foundation (RRF) is a non‑profit founded by the artist Robert Rauschenberg in 1990. A pioneering figure in..." id="meta-description">
+    <meta name="keywords" content="project, portfolio, web development, design, knectar, case study">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.knectar.com/project/robert-rauschenberg-foundation/" id="og-url">
+    <meta property="og:title" content="Robert Rauschenberg Foundation: Drupal 7 to 10 Website Migration | Knectar Portfolio" id="og-title">
+    <meta property="og:description" content="Client background The Robert Rauschenberg Foundation (RRF) is a non‑profit founded by the artist Robert Rauschenberg in 1990. A pioneering figure in..." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/project_tiles/rrf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.knectar.com/project/robert-rauschenberg-foundation/" id="twitter-url">
+    <meta property="twitter:title" content="Robert Rauschenberg Foundation: Drupal 7 to 10 Website Migration | Knectar Portfolio" id="twitter-title">
+    <meta property="twitter:description" content="Client background The Robert Rauschenberg Foundation (RRF) is a non‑profit founded by the artist Robert Rauschenberg in 1990. A pioneering figure in..." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/project_tiles/rrf.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.knectar.com/project/robert-rauschenberg-foundation/" id="canonical-link">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="apple-touch-icon" href="/assets/logo.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Cookie Consent Manager -->
+    <!-- Now loaded centrally via js/consent.js -->
+    
+    <!-- Scripts -->
+    <!-- Data Manager (lazy-loading system) -->
+    <script src="/js/consent.js"></script>
+    <script src="/js/dataManager.js"></script>
+    <script src="/js/load_menu.js"></script>
+    <!-- Image Loading Enhancements -->
+    <script src="/js/image-loader.js" defer></script>
+    <!-- Highlight.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Override highlight.js styles for proper line breaks -->
+    <style>
+        /* Force line breaks for highlight.js code blocks */
+        .description-edit-wrap .description-display pre code.hljs,
+        /* Code block line height now controlled via CSS variables */
+        .description-edit-wrap .description-display pre code.hljs.language-javascript,
+        .description-edit-wrap .description-display pre code.hljs.language-python,
+        .description-edit-wrap .description-display pre code.hljs.language-html,
+        .description-edit-wrap .description-display pre code.hljs.language-css {
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+            font-family: 'Courier New', monospace !important;
+            line-height: var(--line-height-code) !important;
+        }
+        
+        .description-edit-wrap .description-display pre {
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+        
+        /* Force line breaks for highlight.js span elements */
+        .description-edit-wrap .description-display pre code.hljs span {
+            white-space: pre-wrap !important;
+            display: inline !important;
+        }
+        
+        /* Handle line breaks within highlight.js content */
+        .description-edit-wrap .description-display pre code.hljs br {
+            display: block !important;
+            content: "" !important;
+            margin-top: 0.5em !important;
+        }
+        
+        /* Nuclear option - force all text content to preserve whitespace */
+        .description-edit-wrap .description-display pre code.hljs * {
+            white-space: pre-wrap !important;
+        }
+
+        /* Make stack images clickable */
+        .detail-stack-image {
+            cursor: pointer;
+        }
+
+        /* Modal overlay for expanded images */
+        .image-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000; /* above GitHub button */
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal-overlay img,
+        .image-modal-overlay video {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .image-modal-overlay.active { opacity: 1; }
+        .image-modal-overlay.active img,
+        .image-modal-overlay.active video { transform: scale(1); }
+
+        /* Close button */
+        .image-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Arrow controls */
+        .image-modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            padding: 8px 16px;
+        }
+        .image-modal-arrow.left { left: 16px; }
+        .image-modal-arrow.right { right: 16px; }
+        .image-modal-arrow.disabled { opacity: 0.3; cursor: default; }
+        
+        /* Line spacing is now controlled centrally via CSS variables */
+        /* See css/style.css for --line-height-description and --line-height-code */
+    </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Robert Rauschenberg Foundation: Drupal 7 to 10 Website Migration","description":"Client background The Robert Rauschenberg Foundation (RRF) is a non‑profit founded by the artist Robert Rauschenberg in 1990. A pioneering figure in...","url":"https://www.knectar.com/project/robert-rauschenberg-foundation/","image":"https://www.knectar.com/project_tiles/rrf.png","author":{"@type":"Organization","name":"Knectar"}}</script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="/index.html"><img src="/assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <!-- Dynamic breadcrumbs -->
+                <div class="breadcrumbs">
+                    <a href="/index.html" class="breadcrumb-link">Home</a> &gt; <a href="/projects.html" class="breadcrumb-link">Projects</a> &gt; <a href="/projects/informational/" class="breadcrumb-link" id="crumbCategoryLink">Informational</a> &gt; <span data-field="projectTitle">Robert Rauschenberg Foundation: Drupal 7 to 10 Website Migration</span>
+                </div>
+            </header>
+            <section class="project-details">
+                <div class="project-gallery" aria-label="Project gallery">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/robert-rauschenberg-foundation_1.png" alt="Project detail media 1" data-orig-tilt="-10.00" data-image-index="0" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:100px;--tilt:-10.00deg">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/robert-rauschenberg-foundation_2.png" alt="Project detail media 2" data-orig-tilt="-3.00" data-image-index="1" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:450px;--tilt:-3.00deg">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/robert-rauschenberg-foundation_3.png" alt="Project detail media 3" data-orig-tilt="4.00" data-image-index="2" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:800px;--tilt:4.00deg">
+</div>
+                <!-- Removed static .mobile-gallery -->
+
+
+                <div class="project-info" aria-label="Project information" data-static-project="robert-rauschenberg-foundation"><h1 style="margin: 0;">Robert Rauschenberg Foundation: Drupal 7 to 10 Website Migration</h1><ul><li><span class="meta-label">Role:</span> Technical Lead, Developer</li><li><span class="meta-label">Budget:</span> $50,000 - $100,000</li><li><span class="meta-label">Technology:</span> <a href="/projects.html?technology=Drupal" class="technology-link">Drupal</a></li><li><span class="meta-label">Design Partner:</span> Knectar (Design &amp; Development)</li><li><span class="meta-label">URL:</span> <a href="https://www.rauschenbergfoundation.org/" target="_blank" rel="noopener">https://www.rauschenbergfoundation.org/</a></li></ul><div class="project-haiku">Art lives beyond time<br/>Digital archives preserve<br/>Creative spirit soars</div><div class="description"><h3 style="line-height: 2;">Client background</h3><p style="line-height: 2;">The Robert Rauschenberg Foundation (RRF) is a non‑profit founded by the artist Robert Rauschenberg in 1990. A pioneering figure in post‑war art, Rauschenberg served in the U.S. Navy before studying at the Kansas City Art Institute, the Académie Julian in Paris and Black Mountain College, and he moved to New York in 1949 where he challenged artistic conventions with his Combinesrauschenbergfoundation.org. Today the Foundation builds on his legacy and emphasizes his belief that artists can drive social changerauschenbergfoundation.org. The organization supports programs and residencies and stewards an extensive archive that preserves the most comprehensive body of information on Rauschenberg's life and careerrauschenbergfoundation.org, making it both a cultural authority and a philanthropic institution of international prestigerauschenbergfoundation.org.</p><h3 style="line-height: 2;">Project goals and challenges</h3><p style="line-height: 2;">By 2024 the Foundation's public website had grown into a complex Drupal 7 platform with dozens of content types and views. Non‑technical staff found it difficult to manage because many pages were entirely built using Views and custom templates. The site hosted more than a thousand artwork records, hundreds of archive entries and a wide range of program pages and timelines, much of which was entered through a FileMaker database. The team identified several key goals:</p><ul style="line-height: 2;"><li style="line-height: 2;">Modernize the CMS. Move from Drupal 7 to Drupal 10 to ensure long‑term support, improve security and leverage modern editing tools.</li><li style="line-height: 2;">Simplify content management. Consolidate multiple basic‑page content types and heavy Views into a smaller set of flexible blocks so that non‑developers could update pages via Drupal 10's Layout Builder.</li><li style="line-height: 2;">Integrate the FileMaker database. Use the Feeds FileMaker Module to import artwork and archive records. The existing FileMaker integration raised questions about whether artwork nodes should remain editable in Drupal or only in FileMaker and which fields could be eliminated.</li><li style="line-height: 2;">Improve user experience. Preserve the ability to filter and search artworks and archives while streamlining navigation. Migrate specialized pages—such as the chronology, exhibition history and lightboxes—and consider richer visualizations such as an interactive timeline.</li><li style="line-height: 2;">Consolidate mapping pages. On View and Public Collections pages both displayed works on maps via Pin Collection nodes; the new site needed to combine them into a single map with filterable pins while retaining the lists underneath.</li></ul><h3 style="line-height: 2;">Approach</h3><h4 style="line-height: 2;">Architecture and content strategy</h4><p style="line-height: 2;">A comprehensive content audit catalogued all Drupal 7 content types, views and templates. The audit recommended manually migrating simple pages and scripting the migration of large datasets such as artworks, series and archive entries. Content types such as Basic Page Centered, Basic Page Left Justified and Landing Page were consolidated into a single Basic Page to reduce complexity. The team also proposed using tile blocks and featured blocks to replace ad‑hoc views and create a consistent visual language for programs and collaborations pages.</p><h4 style="line-height: 2;">Drupal 10 and Layout Builder</h4><p style="line-height: 2;">Drupal 10's Layout Builder gave non‑technical editors control over page composition. On the new home page, hero images, captions and introductory text became editable blocks instead of being buried in views. News items remained automatically generated by date but were exposed as a block that editors could reorder. The artwork, artist and programs sections were similarly transformed into layout‑builder sections, making the old Homepage Sections content type obsolete.</p><h4 style="line-height: 2;">FileMaker integration via Feeds</h4><p style="line-height: 2;">Artwork and archive records originated from the Foundation's FileMaker database. To avoid manual data entry, the team used the Feeds FileMaker Module to connect Drupal 10 to the FileMaker PHP API, retrieve records and map fields to Drupal entities. The migration plan raised critical questions about which fields to retain and whether to allow edits in Drupal or force changes in FileMaker. The solution was to import core descriptive metadata (titles, dates, medium, credit lines) from FileMaker while adding a small number of Drupal‑only fields for features like exhibitions or notes that curators wanted to edit directly. Feeds setups were configured to run automatically on a schedule, ensuring that new or updated artworks and archives appeared on the site without manual intervention. A similar approach was taken for Series and Lightbox entities, allowing future automation based on FileMaker's series field.</p><h4 style="line-height: 2;">Search, filtering and mapping</h4><p style="line-height: 2;">The artwork and archive search pages remained Views because they needed sophisticated filtering by medium, year and category. Drupal 10's Search API and Facets modules were used to replace older custom search code. For the On View and Public Collections pages, the team combined the two maps into a single map component with filterable pins; different colors indicated whether a work was currently on view or part of a public collection.</p><h4 style="line-height: 2;">Chronology and exhibition history</h4><p style="line-height: 2;">The existing chronology page concatenated Chronology Section nodes into a long two‑column list, which was cumbersome for visitors and editors. The team evaluated modules like Views TimelineJS and external services such as Knight Lab's Timeline to build an interactive timeline that allows visitors to scroll through key events and search within the timeline. Exhibition history and performance history pages, previously built as Book Pages, were converted to Basic Pages with tertiary navigation items for easier management.</p><h4 style="line-height: 2;">Programs and residencies</h4><p style="line-height: 2;">Program and residency pages were turned into Basic Pages with reusable blurb blocks. For example, the residencies landing page originally built with a Landing Page content type became a basic page where editors could add blurbs highlighting the Rauschenberg Residency on Captiva, the Archives Research Residency and the Rauschenberg Residency 381. Subpages like the chef‑in‑residence program and site history were migrated manually and organized using secondary navigation.</p><h3 style="line-height: 2;">Outcomes</h3><p style="line-height: 2;">The new site delivered a streamlined editing experience and a more engaging presentation of the Foundation's collections and programs. Editors now manage hero images, news blocks and feature tiles through an intuitive drag‑and‑drop interface, eliminating the need to edit complex views. Automated imports from FileMaker ensure that the art and archive sections remain up to date without manual intervention. Consolidating content types and simplifying navigation reduce maintenance overhead and make it easier for users to find information. The combined On View/Public Collections map offers visitors a single point of entry to discover where Rauschenberg's works are exhibited worldwide, while the planned interactive timeline will bring his chronology to life. By migrating to Drupal 10 and leveraging modern modules like Feeds, Layout Builder and Search API, the Robert Rauschenberg Foundation has positioned its website to support its mission—promoting Rauschenberg's artistic and philanthropic legacyrauschenbergfoundation.org—for years to come.</p><h3 style="line-height: 2;">In summary</h3><p style="line-height: 2;">In summary, the Robert Rauschenberg Foundation's move from Drupal 7 to Drupal 10 aimed to simplify content management, improve performance, and integrate a FileMaker database using the Feeds FileMaker module. The team consolidated numerous legacy content types into a single Basic Page format and adopted Layout Builder to empower non-developers with drag-and-drop page construction. Complex Views were retained only where advanced filtering was essential, such as for the searchable artwork and archive sections.</p><p style="line-height: 2;">The integration with FileMaker automates the import of art and archive records while allowing select fields to be editable in Drupal, ensuring data integrity and curatorial flexibility. Navigation improvements include merging separate On View and Public Collections maps into a single, filterable map and converting the chronology into an interactive timeline. Overall, the project delivers a more intuitive user experience and positions the Foundation's digital presence to support its mission of promoting Rauschenberg's artistic and philanthropic legacyrauschenbergfoundation.org.</p></div><div class="project-footer-cta"><h3>Ready to preserve and celebrate artistic legacy through digital innovation?</h3><p>Let&#39;s create something timeless.</p><a href="/index.html#contact" class="cta-button">Start a Conversation</a></div></div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Fix line breaks in code blocks after highlight.js processes them
+        function fixCodeBlockLineBreaks() {
+            const codeBlocks = document.querySelectorAll('.description-edit-wrap .description-display pre code.hljs');
+            codeBlocks.forEach(codeBlock => {
+                // Find all span elements and add line breaks where needed
+                const spans = codeBlock.querySelectorAll('span');
+                spans.forEach((span, index) => {
+                    // Check if this span contains a line break
+                    if (span.textContent.includes('\n')) {
+                        // Replace \n with <br> tags
+                        span.innerHTML = span.innerHTML.replace(/\n/g, '<br>');
+                    }
+                });
+            });
+        }
+
+        // Force line-height on dynamically generated content
+        function applyLineHeightToProjectInfo() {
+            const projectInfo = document.querySelector('.project-info');
+            if (!projectInfo) return;
+            
+            // Get the CSS variable values
+            const computedStyle = getComputedStyle(document.documentElement);
+            const descriptionLineHeight = computedStyle.getPropertyValue('--line-height-description');
+            const codeLineHeight = computedStyle.getPropertyValue('--line-height-code');
+            const headingLineHeight = computedStyle.getPropertyValue('--line-height-heading');
+            
+            // Apply to all text content (excluding code blocks)
+            const textElements = projectInfo.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote, strong, em, b, i, a');
+            textElements.forEach(el => {
+                // Skip if it's a code element or inside a code block
+                if (el.closest('pre') || el.closest('code') || el.tagName === 'PRE' || el.tagName === 'CODE') {
+                    el.style.lineHeight = codeLineHeight;
+                } else if (/^H[1-6]$/.test(el.tagName)) {
+                    // Headings use the tighter heading line height
+                    el.style.lineHeight = headingLineHeight;
+                } else {
+                    el.style.lineHeight = descriptionLineHeight;
+                }
+            });
+        }
+
+        // SEO: per-project <title>, meta description, canonical and Open Graph / Twitter URLs.
+        // Without this every /project/:slug/ URL declares project.html as its canonical.
+        function updateProjectSeoTags(pageData, slug) {
+            const SITE_ORIGIN = 'https://www.knectar.com';
+            const setContent = (id, value) => {
+                const el = document.getElementById(id);
+                if (el && value) el.setAttribute('content', value);
+            };
+
+            const cleanSlug = (pageData && pageData.slug) || slug;
+            if (!cleanSlug) return;
+
+            const canonicalHref = `${SITE_ORIGIN}/project/${encodeURIComponent(cleanSlug)}/`;
+            const canonical = document.getElementById('canonical-link');
+            if (canonical) canonical.setAttribute('href', canonicalHref);
+            setContent('og-url', canonicalHref);
+            setContent('twitter-url', canonicalHref);
+
+            if (!pageData) return;
+
+            const projectTitle = pageData.projectTitle || pageData.label || '';
+            if (projectTitle) {
+                const fullTitle = `${projectTitle} | Knectar Portfolio`;
+                document.title = fullTitle;
+                setContent('og-title', fullTitle);
+                setContent('twitter-title', fullTitle);
+            }
+
+            // Build a plain-text description from the first paragraph of the page summary
+            if (pageData.pageSummary) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = pageData.pageSummary;
+                let text = (tmp.textContent || '').replace(/\s+/g, ' ').trim();
+                // Drop a leading bold label such as "Background and project goals"
+                const firstBold = tmp.querySelector('b, strong');
+                if (firstBold && text.startsWith(firstBold.textContent.trim())) {
+                    text = text.slice(firstBold.textContent.trim().length).trim();
+                }
+                if (text.length > 155) {
+                    text = text.slice(0, 152).replace(/\s+\S*$/, '') + '...';
+                }
+                if (text) {
+                    setContent('meta-description', text);
+                    setContent('og-description', text);
+                    setContent('twitter-description', text);
+                }
+            }
+        }
+
+        // Data-driven detail images logic (multiple images, random tilt)
+        document.addEventListener('DOMContentLoaded', function() {
+            function currentSlug() {
+                const urlParams = new URLSearchParams(window.location.search);
+                let slugParam = urlParams.get('item');
+                if (!slugParam) {
+                    const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+                    if (pathMatch && pathMatch[1]) slugParam = decodeURIComponent(pathMatch[1]);
+                }
+                return slugParam;
+            }
+
+            function staticProjectReady(slugParam) {
+                const info = document.querySelector('.project-info[data-static-project]');
+                return !!(info && slugParam && info.getAttribute('data-static-project') === slugParam);
+            }
+
+            function waitForMenuData() {
+                if (!window.__MENU_DATA) {
+                    setTimeout(waitForMenuData, 50);
+                    return;
+                }
+                processProjectData();
+            }
+            
+            function processProjectData() {
+            const slugParam = currentSlug();
+            if (slugParam) console.log('project.html inline script - slug:', slugParam);
+            
+            let pageData;
+            if (staticProjectReady(slugParam)) {
+                const srcs = Array.from(document.querySelectorAll('.project-gallery .detail-stack-image'))
+                    .map(function (el) { return el.getAttribute('src'); })
+                    .filter(Boolean);
+                window.__DETAIL_IMAGES = srcs;
+                pageData = { detailImages: srcs, slug: slugParam };
+                document.querySelectorAll('.project-gallery .detail-stack-image').forEach(function (media, i) {
+                    media.addEventListener('click', function () { showImageModal(i); });
+                });
+                setupImageScrollActivation();
+            } else if (slugParam) {
+                const findBySlug = (arr, slug) => {
+                    for (const entry of arr) {
+                        if (entry.url && entry.url.includes(slug)) return entry;
+                        if (entry.submenu) {
+                            const found = findBySlug(entry.submenu, slug);
+                            if (found) return found;
+                        }
+                    }
+                    return null;
+                };
+                pageData = findBySlug(window.__MENU_DATA, slugParam);
+                console.log('project.html inline script - pageData found:', !!pageData, 'detailImages:', pageData?.detailImages);
+                // Expose images for modal
+                window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
+                // SEO: give each project its own title / canonical / social tags
+                updateProjectSeoTags(pageData, slugParam);
+            // Remove old single image
+            const oldImg = document.getElementById('project-detail-image');
+            if (oldImg) oldImg.remove();
+            // Always populate .project-gallery with stacked images
+            const gallery = document.querySelector('.project-gallery');
+            if (gallery) gallery.innerHTML = '';
+            if (pageData && Array.isArray(pageData.detailImages)) {
+                console.log('project.html - populating gallery with', pageData.detailImages.length, 'images');
+                window.__DETAIL_IMAGES = pageData.detailImages;
+                pageData.detailImages.forEach((src, i) => {
+                    const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
+                    const media = document.createElement(isVideo ? 'video' : 'img');
+                    // Normalize image paths to be root-absolute for pretty URL compatibility
+                    const normalizedSrc = src.startsWith('/') ? src : '/' + src;
+                    media.src = normalizedSrc;
+                    if (isVideo) {
+                        media.muted = true;
+                        media.loop = true;
+                        media.playsInline = true;
+                        media.autoplay = true;
+                    }
+                    media.alt = `Project detail media ${i + 1}`;
+                    media.className = 'detail-stack-image detail-stack-image-base';
+                    media.style.display = 'block';
+                    media.style.position = 'absolute';
+                    media.style.width = '340px';
+                    media.style.borderRadius = '8px';
+                    media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                    media.style.cursor = 'pointer';
+                    media.addEventListener('click', () => showImageModal(i));
+                    const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
+                    media.style.setProperty('--tilt', tilt);
+                    media.dataset.origTilt = parseFloat(tilt);
+                    media.style.left = 'calc(50% + 100px)';
+                    if (i === 0) media.style.top = '100px';
+                    if (i === 1) media.style.top = '450px';
+                    if (i === 2) media.style.top = '800px';
+                    if (i === 3) media.style.top = '1150px';
+                    
+                    // Add data attribute for scroll detection
+                    media.dataset.imageIndex = i;
+                    
+                    gallery.appendChild(media);
+                });
+                
+                // Set up scroll-based single image activation (spotlight effect)
+                setupImageScrollActivation();
+            }
+            }
+            // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile && pageData && Array.isArray(pageData.detailImages)) {
+                // Wait for .project-info to be populated
+                setTimeout(() => {
+                    const projectInfo = document.querySelector('.project-info');
+                    if (!projectInfo) return;
+                    // Remove any previous .mobile-gallery
+                    const oldMobileGallery = projectInfo.querySelector('.mobile-gallery');
+                    if (oldMobileGallery) oldMobileGallery.remove();
+                    // Create new .mobile-gallery
+                    const mobileGallery = document.createElement('div');
+                    mobileGallery.className = 'mobile-gallery';
+                    mobileGallery.setAttribute('aria-label', 'Mobile project gallery');
+                    // Find the meta-data <ul> (or fallback to first <p.description> or .dynamic-body)
+                    let insertAfter = projectInfo.querySelector('ul');
+                    if (!insertAfter) {
+                        // Try to find the first .description or .dynamic-body
+                        insertAfter = projectInfo.querySelector('.description') || projectInfo.querySelector('.dynamic-body');
+                        if (insertAfter) insertAfter = insertAfter.previousElementSibling;
+                    }
+                    // Insert .mobile-gallery after meta-data <ul>
+                    if (insertAfter && insertAfter.parentNode === projectInfo) {
+                        insertAfter.after(mobileGallery);
+                    } else {
+                        // Fallback: insert at the top
+                        projectInfo.prepend(mobileGallery);
+                    }
+                    // Build simple slideshow
+                    let currentIdx = 0;
+                    function renderMobileSlide(idx) {
+                        mobileGallery.innerHTML = '';
+                        const isVid = /\.(mp4|webm|ogg)$/i.test(pageData.detailImages[idx]);
+                        const media = document.createElement(isVid ? 'video' : 'img');
+                        // Normalize image paths to be root-absolute for pretty URL compatibility
+                        const normalizedSrc = pageData.detailImages[idx].startsWith('/') ? pageData.detailImages[idx] : '/' + pageData.detailImages[idx];
+                        media.src = normalizedSrc;
+                        if (isVid) {
+                            media.playsInline = true;
+                            media.autoplay = true;
+                            media.muted = true;
+                            media.loop = true;
+                        }
+                        media.alt = `Project detail media ${idx + 1} of ${pageData.detailImages.length}`;
+                        media.style.width = '100%';
+                        media.style.maxWidth = '100%';
+                        media.style.display = 'block';
+                        media.style.margin = '0 auto 12px auto';
+                        media.style.borderRadius = '8px';
+                        media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                        // Navigation controls
+                        const nav = document.createElement('div');
+                        nav.style.display = 'flex';
+                        nav.style.justifyContent = 'center';
+                        nav.style.alignItems = 'center';
+                        nav.style.gap = '18px';
+                        nav.style.marginBottom = '8px';
+                        const prevBtn = document.createElement('button');
+                        prevBtn.textContent = '◀';
+                        prevBtn.setAttribute('aria-label', 'Previous image');
+                        prevBtn.style.fontSize = '22px';
+                        prevBtn.style.background = 'none';
+                        prevBtn.style.border = 'none';
+                        prevBtn.style.cursor = 'pointer';
+                        prevBtn.style.color = '#FF0000';
+                        prevBtn.disabled = idx === 0;
+                        prevBtn.onclick = () => { if (currentIdx > 0) { currentIdx--; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        prevBtn.style.display = 'none';
+                        const nextBtn = document.createElement('button');
+                        nextBtn.textContent = '▶';
+                        nextBtn.setAttribute('aria-label', 'Next image');
+                        nextBtn.style.fontSize = '22px';
+                        nextBtn.style.background = 'none';
+                        nextBtn.style.border = 'none';
+                        nextBtn.style.cursor = 'pointer';
+                        nextBtn.style.color = '#FF0000';
+                        nextBtn.disabled = idx === pageData.detailImages.length - 1;
+                        nextBtn.onclick = () => { if (currentIdx < pageData.detailImages.length - 1) { currentIdx++; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        nextBtn.style.display = 'none';
+                        nav.appendChild(prevBtn);
+                        nav.appendChild(media);
+                        nav.appendChild(nextBtn);
+                        // Add swipe gesture handling
+                        let touchStartX = 0;
+                        media.addEventListener('touchstart', (e) => {
+                            touchStartX = e.touches[0].clientX;
+                        });
+                        media.addEventListener('touchend', (e) => {
+                            const diffX = e.changedTouches[0].clientX - touchStartX;
+                            const threshold = 50; // minimum px swipe distance
+                            if (Math.abs(diffX) > threshold) {
+                                if (diffX < 0 && currentIdx < pageData.detailImages.length - 1) {
+                                    currentIdx++;
+                                    renderMobileSlide(currentIdx);
+                                } else if (diffX > 0 && currentIdx > 0) {
+                                    currentIdx--;
+                                    renderMobileSlide(currentIdx);
+                                }
+                            }
+                        });
+                        // Disable modal trigger on mobile
+                        media.style.cursor = 'default';
+                        mobileGallery.appendChild(nav);
+                        // Optional: show image count
+                        const count = document.createElement('div');
+                        count.style.textAlign = 'center';
+                        count.style.fontSize = '13px';
+                        count.style.color = '#888';
+                        count.textContent = `${idx + 1} / ${pageData.detailImages.length}`;
+                        count.setAttribute('aria-label', `Image ${idx + 1} of ${pageData.detailImages.length}`);
+                        mobileGallery.appendChild(count);
+                    }
+                    renderMobileSlide(currentIdx);
+                }, 0);
+            }
+            
+            // Fix line breaks in code blocks after content is loaded
+            setTimeout(fixCodeBlockLineBreaks, 100);
+            // Apply line height after content is loaded
+            setTimeout(applyLineHeightToProjectInfo, 100);
+            }
+            
+            // Start waiting for menu data
+            if (staticProjectReady(currentSlug())) processProjectData();
+            else waitForMenuData();
+        });
+
+        // Modal helper
+        function setupImageScrollActivation() {
+            const images = document.querySelectorAll('.detail-stack-image');
+            if (images.length === 0) return;
+            
+            function updateActiveImage() {
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Adjust the effective "trigger point" based on scroll position
+                // When at top (scrollY = 0), use upper portion of viewport
+                // As we scroll down, gradually transition to center of viewport
+                const scrollProgress = Math.min(scrollY / (viewportHeight * 1.5), 1);
+                const triggerPoint = scrollY + (viewportHeight * (0.25 + (scrollProgress * 0.25))); // Ranges from 25% to 50% of viewport
+                
+                let closestImage = null;
+                let closestDistance = Infinity;
+                
+                // Find which image is closest to our dynamic trigger point
+                images.forEach((image) => {
+                    const rect = image.getBoundingClientRect();
+                    const imageCenter = scrollY + rect.top + (rect.height / 2);
+                    const distance = Math.abs(triggerPoint - imageCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestImage = image;
+                    }
+                });
+                
+                // Remove active class from all images
+                images.forEach(image => image.classList.remove('active'));
+                
+                // Add active class only to the closest image (if it's reasonably visible)
+                if (closestImage && closestDistance < viewportHeight) {
+                    closestImage.classList.add('active');
+                }
+            }
+            
+            // Update on scroll with throttling for performance
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveImage, 16); // ~60fps
+            });
+            
+            // Initial update
+            updateActiveImage();
+        }
+
+        function showImageModal(startIdx) {
+            const imagesArr = Array.isArray(window.__DETAIL_IMAGES) ? window.__DETAIL_IMAGES : [];
+            if (!imagesArr.length) return;
+            let currentIdx = startIdx;
+            // Prevent multiple overlays
+            if (document.querySelector('.image-modal-overlay')) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'image-modal-overlay';
+            let mediaEl;
+            function renderMedia(idx) {
+                const src = imagesArr[idx];
+                const isVid = /\.(mp4|webm|ogg)$/i.test(src);
+                if (mediaEl) mediaEl.remove();
+                mediaEl = document.createElement(isVid ? 'video' : 'img');
+                // Root-absolute path required for pretty URLs (/project/:slug/)
+                mediaEl.src = src.startsWith('/') ? src : '/' + src;
+                if (isVid) {
+                    mediaEl.autoplay = true;
+                    mediaEl.loop = true;
+                    mediaEl.playsInline = true;
+                }
+                overlay.insertBefore(mediaEl, overlay.firstChild);
+            }
+            renderMedia(currentIdx);
+
+            // Close X
+            const closeX = document.createElement('div');
+            closeX.className = 'image-modal-close';
+            closeX.textContent = '×';
+            closeX.addEventListener('click', e => { e.stopPropagation(); overlay.remove(); });
+            overlay.appendChild(closeX);
+
+            // Arrow controls
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'image-modal-arrow left';
+            leftArrow.innerHTML = '<span class="css-arrow-left"></span>';
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'image-modal-arrow right';
+            rightArrow.innerHTML = '<span class="css-arrow-right"></span>';
+            overlay.appendChild(leftArrow);
+            overlay.appendChild(rightArrow);
+
+            function updateArrows() {
+                leftArrow.classList.toggle('disabled', currentIdx === 0);
+                rightArrow.classList.toggle('disabled', currentIdx === imagesArr.length - 1);
+            }
+
+            leftArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx > 0) {
+                    currentIdx--; renderMedia(currentIdx); updateArrows();
+                }
+            });
+            rightArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx < imagesArr.length - 1) {
+                    currentIdx++; renderMedia(currentIdx); updateArrows();
+                }
+            });
+
+            updateArrows();
+
+            // Keyboard navigation
+            function handleKey(e) {
+                if (e.key === 'ArrowLeft') {
+                    leftArrow.click();
+                } else if (e.key === 'ArrowRight') {
+                    rightArrow.click();
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+
+            document.addEventListener('keydown', handleKey);
+
+            function closeModal() {
+                document.removeEventListener('keydown', handleKey);
+                overlay.remove();
+            }
+
+            // Replace previous listeners to use closeModal
+            overlay.addEventListener('click', closeModal);
+            closeX.removeEventListener('click', () => { }); // ensure no duplicate
+            closeX.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
+            document.body.appendChild(overlay);
+            // trigger animated entrance
+            requestAnimationFrame(() => {
+                overlay.classList.add('active');
+            });
+        }
+    </script>
+
+
+    <!-- Footer loaded by footer loader -->
+    <script src="/js/load_footer.js"></script>
+</body>
+</html> 

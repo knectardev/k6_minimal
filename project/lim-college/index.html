@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIM College: College Website Refresh | Knectar Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="LIM College is a private institution in New York City focused on the business of fashion. In 2023 the college decided to refresh its public‐facing..." id="meta-description">
+    <meta name="keywords" content="project, portfolio, web development, design, knectar, case study">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.knectar.com/project/lim-college/" id="og-url">
+    <meta property="og:title" content="LIM College: College Website Refresh | Knectar Portfolio" id="og-title">
+    <meta property="og:description" content="LIM College is a private institution in New York City focused on the business of fashion. In 2023 the college decided to refresh its public‐facing..." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/project_tiles/lim.mp4">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.knectar.com/project/lim-college/" id="twitter-url">
+    <meta property="twitter:title" content="LIM College: College Website Refresh | Knectar Portfolio" id="twitter-title">
+    <meta property="twitter:description" content="LIM College is a private institution in New York City focused on the business of fashion. In 2023 the college decided to refresh its public‐facing..." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/project_tiles/lim.mp4">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.knectar.com/project/lim-college/" id="canonical-link">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="apple-touch-icon" href="/assets/logo.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Cookie Consent Manager -->
+    <!-- Now loaded centrally via js/consent.js -->
+    
+    <!-- Scripts -->
+    <!-- Data Manager (lazy-loading system) -->
+    <script src="/js/consent.js"></script>
+    <script src="/js/dataManager.js"></script>
+    <script src="/js/load_menu.js"></script>
+    <!-- Image Loading Enhancements -->
+    <script src="/js/image-loader.js" defer></script>
+    <!-- Highlight.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Override highlight.js styles for proper line breaks -->
+    <style>
+        /* Force line breaks for highlight.js code blocks */
+        .description-edit-wrap .description-display pre code.hljs,
+        /* Code block line height now controlled via CSS variables */
+        .description-edit-wrap .description-display pre code.hljs.language-javascript,
+        .description-edit-wrap .description-display pre code.hljs.language-python,
+        .description-edit-wrap .description-display pre code.hljs.language-html,
+        .description-edit-wrap .description-display pre code.hljs.language-css {
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+            font-family: 'Courier New', monospace !important;
+            line-height: var(--line-height-code) !important;
+        }
+        
+        .description-edit-wrap .description-display pre {
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+        
+        /* Force line breaks for highlight.js span elements */
+        .description-edit-wrap .description-display pre code.hljs span {
+            white-space: pre-wrap !important;
+            display: inline !important;
+        }
+        
+        /* Handle line breaks within highlight.js content */
+        .description-edit-wrap .description-display pre code.hljs br {
+            display: block !important;
+            content: "" !important;
+            margin-top: 0.5em !important;
+        }
+        
+        /* Nuclear option - force all text content to preserve whitespace */
+        .description-edit-wrap .description-display pre code.hljs * {
+            white-space: pre-wrap !important;
+        }
+
+        /* Make stack images clickable */
+        .detail-stack-image {
+            cursor: pointer;
+        }
+
+        /* Modal overlay for expanded images */
+        .image-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000; /* above GitHub button */
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal-overlay img,
+        .image-modal-overlay video {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .image-modal-overlay.active { opacity: 1; }
+        .image-modal-overlay.active img,
+        .image-modal-overlay.active video { transform: scale(1); }
+
+        /* Close button */
+        .image-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Arrow controls */
+        .image-modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            padding: 8px 16px;
+        }
+        .image-modal-arrow.left { left: 16px; }
+        .image-modal-arrow.right { right: 16px; }
+        .image-modal-arrow.disabled { opacity: 0.3; cursor: default; }
+        
+        /* Line spacing is now controlled centrally via CSS variables */
+        /* See css/style.css for --line-height-description and --line-height-code */
+    </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"LIM College: College Website Refresh","description":"LIM College is a private institution in New York City focused on the business of fashion. In 2023 the college decided to refresh its public‐facing...","url":"https://www.knectar.com/project/lim-college/","image":"https://www.knectar.com/project_tiles/lim.mp4","author":{"@type":"Organization","name":"Knectar"}}</script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="/index.html"><img src="/assets/logo.svg" alt="Knectar Logo" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <!-- Dynamic breadcrumbs -->
+                <div class="breadcrumbs">
+                    <a href="/index.html" class="breadcrumb-link">Home</a> &gt; <a href="/projects.html" class="breadcrumb-link">Projects</a> &gt; <a href="/projects/higher-education/" class="breadcrumb-link" id="crumbCategoryLink">Higher Education</a> &gt; <span data-field="projectTitle">LIM College: College Website Refresh</span>
+                </div>
+            </header>
+            <section class="project-details">
+                <div class="project-gallery" aria-label="Project gallery">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/lim-college_1.png" alt="Project detail media 1" data-orig-tilt="-10.00" data-image-index="0" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:100px;--tilt:-10.00deg">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/lim-college_2.png" alt="Project detail media 2" data-orig-tilt="-3.00" data-image-index="1" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:450px;--tilt:-3.00deg">
+<img class="detail-stack-image detail-stack-image-base" src="/project_images/lim-college_3.png" alt="Project detail media 3" data-orig-tilt="4.00" data-image-index="2" style="display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:800px;--tilt:4.00deg">
+</div>
+                <!-- Removed static .mobile-gallery -->
+
+
+                <div class="project-info" aria-label="Project information" data-static-project="lim-college"><h1 style="margin: 0;">LIM College: College Website Refresh</h1><ul><li><span class="meta-label">Role:</span> Technical Lead, Developer</li><li><span class="meta-label">Budget:</span> $50,000 - $100,000</li><li><span class="meta-label">Technology:</span> <a href="/projects.html?technology=Drupal" class="technology-link">Drupal</a></li><li><span class="meta-label">Design Partner:</span> <a href="https://www.carnegiehighered.com/" target="_blank" rel="noopener">Carnegie Dartlet </a></li><li><span class="meta-label">URL:</span> <a href="https://www.limcollege.edu/" target="_blank" rel="noopener">https://www.limcollege.edu/</a></li></ul><div class="project-haiku">Fashion meets future<br/>Style and code blend seamlessly<br/>Dreams take elegant form</div><div class="description"><p><b>Background</b><br>LIM College is a private institution in New York City focused on the business of fashion. In 2023 the college decided to refresh its public‐facing website. The existing site ran on Drupal 9 and contained an extensive body of program information, admissions and financial‑aid content, news stories and landing pages. To improve the user experience and modernize the brand without starting from scratch, LIM engaged Carnegie Higher Ed to develop the creative strategy and Knectar to implement the redesign. The guiding principle was to keep as much of the existing Drupal implementation and content intact as possible while applying an updated look and feel. This approach preserved the college's investment in content and infrastructure, kept the project within budget and minimized disruption for content editors.</p><p><b>Project objectives and creative strategy</b></p><p><b>Goals from Carnegie's assessment</b><br>During discovery sessions with LIM, Carnegie identified key problems with the legacy site: the navigation structure was confusing, program pages did not answer prospective students' questions and calls‑to‑action were buried. The creative strategy therefore set the following goals:</p><ul style="list-style-type: none; padding-left: 0;"><li style="margin-bottom: 10px;">Refine information architecture and navigation. Carnegie recommended removing the "Online Learning" link from the primary navigation, creating dedicated pages for online programs and renaming Internships+ to Careers & Internships. They also advised clarifying the relationship between Admissions & Aid and Apply to LIM so that the former served as a high‑level overview and the latter focused on the application process.</li><li style="margin-bottom: 10px;">Develop a dynamic homepage. Content models proposed by Carnegie stressed the need for an immersive homepage that introduces LIM's brand message, displays a program finder, showcases student success stories, highlights key statistics and promotes calls to action such as Request Info, Visit and Apply.</li><li style="margin-bottom: 10px;">Create persuasive program pages and a program finder. Carnegie's wireframes defined separate templates for a program finder and academic program pages. The program finder allows users to search programs by degree level, modality (on‑campus or online), area of study and career field, then presents results in a streamlined list with calls to action. The program page content model includes a snapshot with a Request for Information (RFI) form, sections on what students will learn and career outcomes, faculty profiles, alumni/student spotlights, optional student work galleries and related programs.</li><li style="margin-bottom: 10px;">Simplify enrollment messaging. The content priorities call for clear, intuitive instructions that streamline enrollment and help prospects progress through the funnel.</li><li style="margin-bottom: 10px;">Support multilingual audiences. Analytics showed that non‑English sessions were a small but meaningful segment of site traffic and concentrated on admissions, academics and visit pages. Carnegie recommended piloting overview pages in Mandarin and Spanish that summarize admissions, cost, aid and program information.</li><li style="margin-bottom: 10px;">Project‑to‑process mindset. Carnegie's plan envisioned the refresh as the beginning of an ongoing improvement cycle. Continuous enhancements—through usability testing, analytics‑informed refinements and incremental functionality—would help LIM keep its content relevant and extend the life of the site.</li></ul><p><b>Design system and writing plan</b><br>The creative strategy updated LIM's design system and defined a writing plan. New or refreshed components included two‑ and three‑column callouts, faculty feeds, image and video carousels, stat panels, testimonial panels, a social‑media feed, an embedded RFI form and an NYC gallery. Carnegie identified which top‑level pages, new pages (e.g., Undergraduate Degrees, Graduate Degrees, Online Degrees) and program pages would be rewritten. Key project metrics were established for user experience, design, functionality and content—including increasing traffic to admissions and online program pages, improving mobile performance and site search, and rewriting program pages to emphasize career outcomes.</p><p><b>Implementation approach — Knectar</b></p><p><b>Leveraging existing infrastructure</b><br>Knectar was tasked with translating Carnegie's creative vision into a functional site without rebuilding the entire platform. Our technical assessment recommended applying the new design to the existing Drupal 9 implementation rather than building a completely new front‑end. The legacy front‑end already used a modern build pipeline with a style‑guide library; by keeping class names consistent and modifying styles, Carnegie's front‑end developers could update the look without altering markup. Only pages that were entirely redesigned—such as the homepage—required new markup and twig templates.</p><p>We also evaluated which content types needed modification. Most existing content types could be retained, but the homepage and degree (program) templates required significant restructuring, and the event content type (powered by a proprietary Zensource module) would need to be replaced. The new program pages and program finder would therefore become custom templates within Drupal. Given that the Zensource modules also provided the legacy events calendar and editing theme, we planned to rebuild those functions and replace the analytics dashboard with a standard solution such as Google Analytics.</p><p><b>Building new templates and components</b><br>Working closely with Carnegie's wireframes, Knectar built three primary templates:</p><ul style="list-style-type: none; padding-left: 0;"><li style="margin-bottom: 10px;">Homepage template. We created a flexible Drupal content type for the homepage that integrates Carnegie's components: a hero banner for the brand message; a program finder block; a video testimonial gallery (Learn by Doing); an animated stats panel (Record that Speaks for Itself); an NYC photo gallery; an Instagram feed and a call‑to‑action panel. The template allows editors to assemble these sections using paragraph components, ensuring the page is dynamic yet easy to maintain.</li><li style="margin-bottom: 10px;">Program finder. The program finder uses a custom Drupal view combined with filters for degree level, modality, area of study and career field, matching Carnegie's specifications. Results are loaded asynchronously for performance and present program titles, areas of study and career paths. Each result links to its program page and includes contextual calls to action such as Request Info and Apply.</li><li style="margin-bottom: 10px;">Program page template. We replaced the legacy degree content type with a new program content type. Fields capture program snapshots, learning outcomes, career outcomes, faculty, alumni spotlights, student work galleries, featured courses and related programs. An embedded RFI form appears near the top, allowing visitors to request information without leaving the page. We migrated existing degree data into the new content type to maintain search‑engine rankings and continuity.</li></ul><p><b>Updating the design system in Drupal</b><br>To support Carnegie's refreshed design system, Knectar implemented new and updated components as Drupal paragraph types. For example, two‑ and three‑column callouts, faculty feeds and image/video carousels were re‑implemented with accessible markup. The stat panel replaced the older accolade/stat slider component, which the component inventory had identified for replacement. Similarly, we removed the old Spotlight component and replaced tabbed interfaces with accordions to address accessibility issues. The new components use modern CSS and follow WCAG 2.1 guidelines for contrast and keyboard navigation.</p><p>Global elements such as the header, navigation and footer were re‑themed to match Carnegie's typography and color palette. Navigation labels were updated (e.g., Careers & Internships) and the application and request‑information links were emphasized, reflecting Carnegie's information‑architecture recommendations. A responsive navigation menu and optimized mobile layouts improved the mobile experience, addressing the high share of mobile sessions noted in the baseline analytics.</p><p><b>Integrations and accessibility</b><br>Because LIM's enrollment process relies on lead generation, integrating RFI forms was critical. The embedded RFI component submits data directly to the college's existing CRM, enabling admissions staff to follow up with prospects. We configured the forms to respect privacy regulations and provided clear consent messaging. Search‑engine optimization was improved by implementing semantic HTML, schema.org markup on program pages, and a more robust site search backed by Drupal's search API.</p><p>Accessibility compliance was a priority throughout the implementation. In addition to replacing tabbed components with accordions, we audited all templates against WCAG 2.1 Level AA standards. Images include meaningful alternative text, carousels provide play/pause controls and ARIA labels, and navigation can be used entirely with a keyboard. Color palettes were tested for contrast, and the site supports high‑contrast mode and screen‑reader landmarks.</p><p><b>Outcomes and impact</b><br>The redesigned LIM College website launched as a collaborative effort between Carnegie Higher Ed's strategic design and Knectar's technical implementation. Key achievements include:</p><ul style="list-style-type: none; padding-left: 0;"><li style="margin-bottom: 10px;">Improved navigation and information architecture. The top‑level navigation now clearly differentiates academics, admissions, student life, careers & internships, and about sections, with dedicated pages for online and graduate programs.</li><li style="margin-bottom: 10px;">Dynamic homepage and program finder. Prospective students can quickly explore programs through the homepage program finder and filter options by degree level, modality, area of study and career field.</li><li style="margin-bottom: 10px;">Robust program pages. Each program page combines program overviews, career outcomes, faculty profiles and alumni stories, supported by embedded RFI forms. These pages help LIM articulate the value of its programs and encourage inquiries.</li><li style="margin-bottom: 10px;">Updated design system. New components—stat panels, carousels, testimonial panels, call‑to‑action panels and social media feeds—deliver an engaging experience while keeping the underlying Drupal structure intact.</li><li style="margin-bottom: 10px;">Accessibility and mobile performance. Replacing the old tab components with accordions, ensuring proper semantics and optimizing layouts for mobile devices have made the site more inclusive. Baseline analytics showed that 48 % of sessions occurred on mobile and that mobile visitors had shorter sessions; the new design directly addresses these issues.</li><li style="margin-bottom: 10px;">Foundation for continuous improvement. By preserving the Drupal architecture and implementing Carnegie's process‑oriented strategy, the project sets the stage for ongoing enhancements. Editors can manage content with familiar paragraph and layout tools, and the site can evolve with additional components or A/B‑tested changes without a wholesale rebuild.</li></ul><p><b>Acknowledgements</b><br>This case study highlights a successful collaboration between Carnegie Higher Ed and Knectar. Carnegie created the information‑architecture recommendations, content models, wireframes and writing plan that informed the redesign. Knectar implemented the project in Drupal 9, including new templates, a program finder, refreshed components, accessibility compliance and integrations. Together, these efforts produced a modern, user‑centered website that reflects LIM College's brand and supports its recruitment goals.</p></div><div class="project-footer-cta"><h3>Ready to style your institution&#39;s digital presence?</h3><p>Let&#39;s create something fashionable together.</p><a href="/index.html#contact" class="cta-button">Start a Conversation</a></div></div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Fix line breaks in code blocks after highlight.js processes them
+        function fixCodeBlockLineBreaks() {
+            const codeBlocks = document.querySelectorAll('.description-edit-wrap .description-display pre code.hljs');
+            codeBlocks.forEach(codeBlock => {
+                // Find all span elements and add line breaks where needed
+                const spans = codeBlock.querySelectorAll('span');
+                spans.forEach((span, index) => {
+                    // Check if this span contains a line break
+                    if (span.textContent.includes('\n')) {
+                        // Replace \n with <br> tags
+                        span.innerHTML = span.innerHTML.replace(/\n/g, '<br>');
+                    }
+                });
+            });
+        }
+
+        // Force line-height on dynamically generated content
+        function applyLineHeightToProjectInfo() {
+            const projectInfo = document.querySelector('.project-info');
+            if (!projectInfo) return;
+            
+            // Get the CSS variable values
+            const computedStyle = getComputedStyle(document.documentElement);
+            const descriptionLineHeight = computedStyle.getPropertyValue('--line-height-description');
+            const codeLineHeight = computedStyle.getPropertyValue('--line-height-code');
+            const headingLineHeight = computedStyle.getPropertyValue('--line-height-heading');
+            
+            // Apply to all text content (excluding code blocks)
+            const textElements = projectInfo.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote, strong, em, b, i, a');
+            textElements.forEach(el => {
+                // Skip if it's a code element or inside a code block
+                if (el.closest('pre') || el.closest('code') || el.tagName === 'PRE' || el.tagName === 'CODE') {
+                    el.style.lineHeight = codeLineHeight;
+                } else if (/^H[1-6]$/.test(el.tagName)) {
+                    // Headings use the tighter heading line height
+                    el.style.lineHeight = headingLineHeight;
+                } else {
+                    el.style.lineHeight = descriptionLineHeight;
+                }
+            });
+        }
+
+        // SEO: per-project <title>, meta description, canonical and Open Graph / Twitter URLs.
+        // Without this every /project/:slug/ URL declares project.html as its canonical.
+        function updateProjectSeoTags(pageData, slug) {
+            const SITE_ORIGIN = 'https://www.knectar.com';
+            const setContent = (id, value) => {
+                const el = document.getElementById(id);
+                if (el && value) el.setAttribute('content', value);
+            };
+
+            const cleanSlug = (pageData && pageData.slug) || slug;
+            if (!cleanSlug) return;
+
+            const canonicalHref = `${SITE_ORIGIN}/project/${encodeURIComponent(cleanSlug)}/`;
+            const canonical = document.getElementById('canonical-link');
+            if (canonical) canonical.setAttribute('href', canonicalHref);
+            setContent('og-url', canonicalHref);
+            setContent('twitter-url', canonicalHref);
+
+            if (!pageData) return;
+
+            const projectTitle = pageData.projectTitle || pageData.label || '';
+            if (projectTitle) {
+                const fullTitle = `${projectTitle} | Knectar Portfolio`;
+                document.title = fullTitle;
+                setContent('og-title', fullTitle);
+                setContent('twitter-title', fullTitle);
+            }
+
+            // Build a plain-text description from the first paragraph of the page summary
+            if (pageData.pageSummary) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = pageData.pageSummary;
+                let text = (tmp.textContent || '').replace(/\s+/g, ' ').trim();
+                // Drop a leading bold label such as "Background and project goals"
+                const firstBold = tmp.querySelector('b, strong');
+                if (firstBold && text.startsWith(firstBold.textContent.trim())) {
+                    text = text.slice(firstBold.textContent.trim().length).trim();
+                }
+                if (text.length > 155) {
+                    text = text.slice(0, 152).replace(/\s+\S*$/, '') + '...';
+                }
+                if (text) {
+                    setContent('meta-description', text);
+                    setContent('og-description', text);
+                    setContent('twitter-description', text);
+                }
+            }
+        }
+
+        // Data-driven detail images logic (multiple images, random tilt)
+        document.addEventListener('DOMContentLoaded', function() {
+            function currentSlug() {
+                const urlParams = new URLSearchParams(window.location.search);
+                let slugParam = urlParams.get('item');
+                if (!slugParam) {
+                    const pathMatch = window.location.pathname.match(/\/project\/([^\/]+)\/?$/i);
+                    if (pathMatch && pathMatch[1]) slugParam = decodeURIComponent(pathMatch[1]);
+                }
+                return slugParam;
+            }
+
+            function staticProjectReady(slugParam) {
+                const info = document.querySelector('.project-info[data-static-project]');
+                return !!(info && slugParam && info.getAttribute('data-static-project') === slugParam);
+            }
+
+            function waitForMenuData() {
+                if (!window.__MENU_DATA) {
+                    setTimeout(waitForMenuData, 50);
+                    return;
+                }
+                processProjectData();
+            }
+            
+            function processProjectData() {
+            const slugParam = currentSlug();
+            if (slugParam) console.log('project.html inline script - slug:', slugParam);
+            
+            let pageData;
+            if (staticProjectReady(slugParam)) {
+                const srcs = Array.from(document.querySelectorAll('.project-gallery .detail-stack-image'))
+                    .map(function (el) { return el.getAttribute('src'); })
+                    .filter(Boolean);
+                window.__DETAIL_IMAGES = srcs;
+                pageData = { detailImages: srcs, slug: slugParam };
+                document.querySelectorAll('.project-gallery .detail-stack-image').forEach(function (media, i) {
+                    media.addEventListener('click', function () { showImageModal(i); });
+                });
+                setupImageScrollActivation();
+            } else if (slugParam) {
+                const findBySlug = (arr, slug) => {
+                    for (const entry of arr) {
+                        if (entry.url && entry.url.includes(slug)) return entry;
+                        if (entry.submenu) {
+                            const found = findBySlug(entry.submenu, slug);
+                            if (found) return found;
+                        }
+                    }
+                    return null;
+                };
+                pageData = findBySlug(window.__MENU_DATA, slugParam);
+                console.log('project.html inline script - pageData found:', !!pageData, 'detailImages:', pageData?.detailImages);
+                // Expose images for modal
+                window.__DETAIL_IMAGES = pageData && Array.isArray(pageData.detailImages) ? pageData.detailImages : [];
+                // SEO: give each project its own title / canonical / social tags
+                updateProjectSeoTags(pageData, slugParam);
+            // Remove old single image
+            const oldImg = document.getElementById('project-detail-image');
+            if (oldImg) oldImg.remove();
+            // Always populate .project-gallery with stacked images
+            const gallery = document.querySelector('.project-gallery');
+            if (gallery) gallery.innerHTML = '';
+            if (pageData && Array.isArray(pageData.detailImages)) {
+                console.log('project.html - populating gallery with', pageData.detailImages.length, 'images');
+                window.__DETAIL_IMAGES = pageData.detailImages;
+                pageData.detailImages.forEach((src, i) => {
+                    const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
+                    const media = document.createElement(isVideo ? 'video' : 'img');
+                    // Normalize image paths to be root-absolute for pretty URL compatibility
+                    const normalizedSrc = src.startsWith('/') ? src : '/' + src;
+                    media.src = normalizedSrc;
+                    if (isVideo) {
+                        media.muted = true;
+                        media.loop = true;
+                        media.playsInline = true;
+                        media.autoplay = true;
+                    }
+                    media.alt = `Project detail media ${i + 1}`;
+                    media.className = 'detail-stack-image detail-stack-image-base';
+                    media.style.display = 'block';
+                    media.style.position = 'absolute';
+                    media.style.width = '340px';
+                    media.style.borderRadius = '8px';
+                    media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                    media.style.cursor = 'pointer';
+                    media.addEventListener('click', () => showImageModal(i));
+                    const tilt = (Math.random() * 30 - 15).toFixed(2) + 'deg';
+                    media.style.setProperty('--tilt', tilt);
+                    media.dataset.origTilt = parseFloat(tilt);
+                    media.style.left = 'calc(50% + 100px)';
+                    if (i === 0) media.style.top = '100px';
+                    if (i === 1) media.style.top = '450px';
+                    if (i === 2) media.style.top = '800px';
+                    if (i === 3) media.style.top = '1150px';
+                    
+                    // Add data attribute for scroll detection
+                    media.dataset.imageIndex = i;
+                    
+                    gallery.appendChild(media);
+                });
+                
+                // Set up scroll-based single image activation (spotlight effect)
+                setupImageScrollActivation();
+            }
+            }
+            // Only add .mobile-gallery slideshow if on mobile, and insert it inside .project-info after meta-data
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile && pageData && Array.isArray(pageData.detailImages)) {
+                // Wait for .project-info to be populated
+                setTimeout(() => {
+                    const projectInfo = document.querySelector('.project-info');
+                    if (!projectInfo) return;
+                    // Remove any previous .mobile-gallery
+                    const oldMobileGallery = projectInfo.querySelector('.mobile-gallery');
+                    if (oldMobileGallery) oldMobileGallery.remove();
+                    // Create new .mobile-gallery
+                    const mobileGallery = document.createElement('div');
+                    mobileGallery.className = 'mobile-gallery';
+                    mobileGallery.setAttribute('aria-label', 'Mobile project gallery');
+                    // Find the meta-data <ul> (or fallback to first <p.description> or .dynamic-body)
+                    let insertAfter = projectInfo.querySelector('ul');
+                    if (!insertAfter) {
+                        // Try to find the first .description or .dynamic-body
+                        insertAfter = projectInfo.querySelector('.description') || projectInfo.querySelector('.dynamic-body');
+                        if (insertAfter) insertAfter = insertAfter.previousElementSibling;
+                    }
+                    // Insert .mobile-gallery after meta-data <ul>
+                    if (insertAfter && insertAfter.parentNode === projectInfo) {
+                        insertAfter.after(mobileGallery);
+                    } else {
+                        // Fallback: insert at the top
+                        projectInfo.prepend(mobileGallery);
+                    }
+                    // Build simple slideshow
+                    let currentIdx = 0;
+                    function renderMobileSlide(idx) {
+                        mobileGallery.innerHTML = '';
+                        const isVid = /\.(mp4|webm|ogg)$/i.test(pageData.detailImages[idx]);
+                        const media = document.createElement(isVid ? 'video' : 'img');
+                        // Normalize image paths to be root-absolute for pretty URL compatibility
+                        const normalizedSrc = pageData.detailImages[idx].startsWith('/') ? pageData.detailImages[idx] : '/' + pageData.detailImages[idx];
+                        media.src = normalizedSrc;
+                        if (isVid) {
+                            media.playsInline = true;
+                            media.autoplay = true;
+                            media.muted = true;
+                            media.loop = true;
+                        }
+                        media.alt = `Project detail media ${idx + 1} of ${pageData.detailImages.length}`;
+                        media.style.width = '100%';
+                        media.style.maxWidth = '100%';
+                        media.style.display = 'block';
+                        media.style.margin = '0 auto 12px auto';
+                        media.style.borderRadius = '8px';
+                        media.style.boxShadow = '0 4px 24px rgba(0,0,0,0.20)';
+                        // Navigation controls
+                        const nav = document.createElement('div');
+                        nav.style.display = 'flex';
+                        nav.style.justifyContent = 'center';
+                        nav.style.alignItems = 'center';
+                        nav.style.gap = '18px';
+                        nav.style.marginBottom = '8px';
+                        const prevBtn = document.createElement('button');
+                        prevBtn.textContent = '◀';
+                        prevBtn.setAttribute('aria-label', 'Previous image');
+                        prevBtn.style.fontSize = '22px';
+                        prevBtn.style.background = 'none';
+                        prevBtn.style.border = 'none';
+                        prevBtn.style.cursor = 'pointer';
+                        prevBtn.style.color = '#FF0000';
+                        prevBtn.disabled = idx === 0;
+                        prevBtn.onclick = () => { if (currentIdx > 0) { currentIdx--; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        prevBtn.style.display = 'none';
+                        const nextBtn = document.createElement('button');
+                        nextBtn.textContent = '▶';
+                        nextBtn.setAttribute('aria-label', 'Next image');
+                        nextBtn.style.fontSize = '22px';
+                        nextBtn.style.background = 'none';
+                        nextBtn.style.border = 'none';
+                        nextBtn.style.cursor = 'pointer';
+                        nextBtn.style.color = '#FF0000';
+                        nextBtn.disabled = idx === pageData.detailImages.length - 1;
+                        nextBtn.onclick = () => { if (currentIdx < pageData.detailImages.length - 1) { currentIdx++; renderMobileSlide(currentIdx); } };
+                        // Hide arrow for new swipe-based navigation
+                        nextBtn.style.display = 'none';
+                        nav.appendChild(prevBtn);
+                        nav.appendChild(media);
+                        nav.appendChild(nextBtn);
+                        // Add swipe gesture handling
+                        let touchStartX = 0;
+                        media.addEventListener('touchstart', (e) => {
+                            touchStartX = e.touches[0].clientX;
+                        });
+                        media.addEventListener('touchend', (e) => {
+                            const diffX = e.changedTouches[0].clientX - touchStartX;
+                            const threshold = 50; // minimum px swipe distance
+                            if (Math.abs(diffX) > threshold) {
+                                if (diffX < 0 && currentIdx < pageData.detailImages.length - 1) {
+                                    currentIdx++;
+                                    renderMobileSlide(currentIdx);
+                                } else if (diffX > 0 && currentIdx > 0) {
+                                    currentIdx--;
+                                    renderMobileSlide(currentIdx);
+                                }
+                            }
+                        });
+                        // Disable modal trigger on mobile
+                        media.style.cursor = 'default';
+                        mobileGallery.appendChild(nav);
+                        // Optional: show image count
+                        const count = document.createElement('div');
+                        count.style.textAlign = 'center';
+                        count.style.fontSize = '13px';
+                        count.style.color = '#888';
+                        count.textContent = `${idx + 1} / ${pageData.detailImages.length}`;
+                        count.setAttribute('aria-label', `Image ${idx + 1} of ${pageData.detailImages.length}`);
+                        mobileGallery.appendChild(count);
+                    }
+                    renderMobileSlide(currentIdx);
+                }, 0);
+            }
+            
+            // Fix line breaks in code blocks after content is loaded
+            setTimeout(fixCodeBlockLineBreaks, 100);
+            // Apply line height after content is loaded
+            setTimeout(applyLineHeightToProjectInfo, 100);
+            }
+            
+            // Start waiting for menu data
+            if (staticProjectReady(currentSlug())) processProjectData();
+            else waitForMenuData();
+        });
+
+        // Modal helper
+        function setupImageScrollActivation() {
+            const images = document.querySelectorAll('.detail-stack-image');
+            if (images.length === 0) return;
+            
+            function updateActiveImage() {
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Adjust the effective "trigger point" based on scroll position
+                // When at top (scrollY = 0), use upper portion of viewport
+                // As we scroll down, gradually transition to center of viewport
+                const scrollProgress = Math.min(scrollY / (viewportHeight * 1.5), 1);
+                const triggerPoint = scrollY + (viewportHeight * (0.25 + (scrollProgress * 0.25))); // Ranges from 25% to 50% of viewport
+                
+                let closestImage = null;
+                let closestDistance = Infinity;
+                
+                // Find which image is closest to our dynamic trigger point
+                images.forEach((image) => {
+                    const rect = image.getBoundingClientRect();
+                    const imageCenter = scrollY + rect.top + (rect.height / 2);
+                    const distance = Math.abs(triggerPoint - imageCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestImage = image;
+                    }
+                });
+                
+                // Remove active class from all images
+                images.forEach(image => image.classList.remove('active'));
+                
+                // Add active class only to the closest image (if it's reasonably visible)
+                if (closestImage && closestDistance < viewportHeight) {
+                    closestImage.classList.add('active');
+                }
+            }
+            
+            // Update on scroll with throttling for performance
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveImage, 16); // ~60fps
+            });
+            
+            // Initial update
+            updateActiveImage();
+        }
+
+        function showImageModal(startIdx) {
+            const imagesArr = Array.isArray(window.__DETAIL_IMAGES) ? window.__DETAIL_IMAGES : [];
+            if (!imagesArr.length) return;
+            let currentIdx = startIdx;
+            // Prevent multiple overlays
+            if (document.querySelector('.image-modal-overlay')) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'image-modal-overlay';
+            let mediaEl;
+            function renderMedia(idx) {
+                const src = imagesArr[idx];
+                const isVid = /\.(mp4|webm|ogg)$/i.test(src);
+                if (mediaEl) mediaEl.remove();
+                mediaEl = document.createElement(isVid ? 'video' : 'img');
+                // Root-absolute path required for pretty URLs (/project/:slug/)
+                mediaEl.src = src.startsWith('/') ? src : '/' + src;
+                if (isVid) {
+                    mediaEl.autoplay = true;
+                    mediaEl.loop = true;
+                    mediaEl.playsInline = true;
+                }
+                overlay.insertBefore(mediaEl, overlay.firstChild);
+            }
+            renderMedia(currentIdx);
+
+            // Close X
+            const closeX = document.createElement('div');
+            closeX.className = 'image-modal-close';
+            closeX.textContent = '×';
+            closeX.addEventListener('click', e => { e.stopPropagation(); overlay.remove(); });
+            overlay.appendChild(closeX);
+
+            // Arrow controls
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'image-modal-arrow left';
+            leftArrow.innerHTML = '<span class="css-arrow-left"></span>';
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'image-modal-arrow right';
+            rightArrow.innerHTML = '<span class="css-arrow-right"></span>';
+            overlay.appendChild(leftArrow);
+            overlay.appendChild(rightArrow);
+
+            function updateArrows() {
+                leftArrow.classList.toggle('disabled', currentIdx === 0);
+                rightArrow.classList.toggle('disabled', currentIdx === imagesArr.length - 1);
+            }
+
+            leftArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx > 0) {
+                    currentIdx--; renderMedia(currentIdx); updateArrows();
+                }
+            });
+            rightArrow.addEventListener('click', e => {
+                e.stopPropagation();
+                if (currentIdx < imagesArr.length - 1) {
+                    currentIdx++; renderMedia(currentIdx); updateArrows();
+                }
+            });
+
+            updateArrows();
+
+            // Keyboard navigation
+            function handleKey(e) {
+                if (e.key === 'ArrowLeft') {
+                    leftArrow.click();
+                } else if (e.key === 'ArrowRight') {
+                    rightArrow.click();
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+
+            document.addEventListener('keydown', handleKey);
+
+            function closeModal() {
+                document.removeEventListener('keydown', handleKey);
+                overlay.remove();
+            }
+
+            // Replace previous listeners to use closeModal
+            overlay.addEventListener('click', closeModal);
+            closeX.removeEventListener('click', () => { }); // ensure no duplicate
+            closeX.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
+            document.body.appendChild(overlay);
+            // trigger animated entrance
+            requestAnimationFrame(() => {
+                overlay.classList.add('active');
+            });
+        }
+    </script>
+
+
+    <!-- Footer loaded by footer loader -->
+    <script src="/js/load_footer.js"></script>
+</body>
+</html> 

@@ -61,10 +61,11 @@ const PROJECT_CATEGORIES = {
 /**
  * Generate XML for a single URL entry
  */
-function generateUrlEntry(loc, priority, changefreq) {
+function generateUrlEntry(loc, priority, changefreq, lastmod) {
+  const dated = /^\d{4}-\d{2}-\d{2}$/.test(lastmod) ? lastmod : CONFIG.lastmod;
   return `  <url>
     <loc>${loc}</loc>
-    <lastmod>${CONFIG.lastmod}</lastmod>
+    <lastmod>${dated}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
@@ -117,7 +118,11 @@ function getBlogPostSlugs() {
     if (!Array.isArray(posts)) return [];
     return posts
       .filter(post => post && post.slug)
-      .map(post => ({ slug: post.slug, url: `/blog/${encodeURIComponent(post.slug)}/` }));
+      .map(post => ({
+        slug: post.slug,
+        url: `/blog/${encodeURIComponent(post.slug)}/`,
+        date: post.date
+      }));
   } catch (error) {
     console.error('Error reading blog.json:', error.message);
     return [];
@@ -217,7 +222,7 @@ function generateSitemap() {
   // Add blog post pages
   console.log('Adding blog post pages...');
   getBlogPostSlugs().forEach(post => {
-    urls.push(generateUrlEntry(CONFIG.baseUrl + post.url, BLOG_POST_CONFIG.priority, BLOG_POST_CONFIG.changefreq));
+    urls.push(generateUrlEntry(CONFIG.baseUrl + post.url, BLOG_POST_CONFIG.priority, BLOG_POST_CONFIG.changefreq, post.date));
   });
   
   // Generate final XML

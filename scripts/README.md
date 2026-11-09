@@ -28,7 +28,7 @@ scripts/generate_sitemap.bat
 - **Automatic Discovery**: Reads project data from `data/menu.json`
 - **Smart Categorization**: Automatically categorizes projects by type
 - **SEO Optimized**: Sets appropriate priorities and change frequencies
-- **Current Date**: Uses today's date as the lastmod value
+- **Current Date**: Uses today's date as the lastmod value. Blog posts use the date in `data/blog.json` instead.
 - **Comprehensive**: Includes all main pages and project pages
 
 ### Configuration
@@ -71,7 +71,9 @@ npm run generate-og-image
 
 `npm run build` generates those files and checks that they still match `data/blog.json`. `npm start` and `npm run dev` run that build. Vercel runs it too, then publishes this project directory, so publishing a post does not depend on remembering a separate generate step. `npm test` checks the files and the local HTTP response.
 
-Project pages (`/project/<slug>/` rewritten to `project.html`) still inject their body from menu JSON in the browser. That is the same kind of gap. The shared escape, URL, date, and JSON-LD helpers live in `scripts/static_html.js` so a later project generator can use them. This blog build does not generate project pages.
+`generate_project_pages.js` does the same for case studies. It reads `data/menu.json`, and lets `data/projects/<slug>.json` override that entry, then writes `/project/<slug>/index.html` and the linked list in `projects.html`. `project.html` stays an empty shell for an unknown slug. `js/script.js` and the page's own script leave a baked case study in place and still add the image stack, zoom, and haiku treatment. `projects.js` keeps the baked list and does not rebuild it. `/project.html?item=<slug>` redirects to `/project/<slug>/`.
+
+Home, about, and services already contain their text in the HTML files. They are not generated.
 
 ## Other Scripts
 

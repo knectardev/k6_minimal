@@ -27,12 +27,16 @@ app.get('/project/:slug/projects.html', (req, res) => {
 });
 
 // Pretty URL routes for local development (e.g., /project/<slug>/)
-app.get('/project/:slug', (req, res) => {
+function sendProjectPage(req, res) {
+  const slug = req.params.slug;
+  const generated = path.join(__dirname, 'project', slug, 'index.html');
+  if (slug && fs.existsSync(generated)) {
+    return res.sendFile(generated);
+  }
   res.sendFile(path.join(__dirname, 'project.html'));
-});
-app.get('/project/:slug/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'project.html'));
-});
+}
+app.get('/project/:slug', sendProjectPage);
+app.get('/project/:slug/', sendProjectPage);
 
 // Pretty routes for project category listing: /projects/<slug>/
 app.get('/projects/:cat', (req, res) => {
@@ -76,6 +80,18 @@ app.get('/services', (req, res) => {
 });
 app.get('/services/', (req, res) => {
   res.sendFile(path.join(__dirname, 'services.html'));
+});
+
+// Old query URLs share one file. Send known projects to the baked page.
+app.get('/project.html', (req, res, next) => {
+  const item = req.query.item;
+  if (typeof item === 'string' && item && !item.includes('/') && !item.includes('..')) {
+    const generated = path.join(__dirname, 'project', item, 'index.html');
+    if (fs.existsSync(generated)) {
+      return res.redirect(301, '/project/' + encodeURIComponent(item) + '/');
+    }
+  }
+  next();
 });
 
 // Serve static files (your site)

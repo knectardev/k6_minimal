@@ -497,6 +497,11 @@ async function injectPageData() {
         console.log('Found slug from query param:', slugParam);
     }
 
+    const staticInfo = document.querySelector('.project-info[data-static-project]');
+    if (staticInfo && slugParam && staticInfo.getAttribute('data-static-project') === slugParam) {
+        return;
+    }
+
     let pageData;
     let result;
     

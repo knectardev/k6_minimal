@@ -13,11 +13,11 @@
     },
     {
       "source": "/project/:slug",
-      "destination": "/project.html"
+      "destination": "/project/:slug/index.html"
     },
     {
       "source": "/project/:slug/",
-      "destination": "/project.html"
+      "destination": "/project/:slug/index.html"
     },
     {
       "source": "/blog",
@@ -53,6 +53,264 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "__static_project_redirects_start" }],
+      "destination": "/projects.html",
+      "permanent": false
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "ab_inbev" }],
+      "destination": "/project/ab_inbev/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "aier-american-institute-for-economic-research" }],
+      "destination": "/project/aier-american-institute-for-economic-research/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "carnegie-mellon-university" }],
+      "destination": "/project/carnegie-mellon-university/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "carv-resource-management" }],
+      "destination": "/project/carv-resource-management/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "chemex-coffee-maker" }],
+      "destination": "/project/chemex-coffee-maker/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "choosroozy" }],
+      "destination": "/project/choosroozy/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "clarkson-university" }],
+      "destination": "/project/clarkson-university/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "dog-door" }],
+      "destination": "/project/dog-door/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "fox-chase-cancer-research" }],
+      "destination": "/project/fox-chase-cancer-research/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "glassica-app" }],
+      "destination": "/project/glassica-app/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "guardair" }],
+      "destination": "/project/guardair/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "jack-daniels" }],
+      "destination": "/project/jack-daniels/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "kettering-university" }],
+      "destination": "/project/kettering-university/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "la-jolla-country-day-school" }],
+      "destination": "/project/la-jolla-country-day-school/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "lanshin" }],
+      "destination": "/project/lanshin/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "lewis-katz-school-of-medicine-temple-university" }],
+      "destination": "/project/lewis-katz-school-of-medicine-temple-university/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "lim-college" }],
+      "destination": "/project/lim-college/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "madison-country-day-school" }],
+      "destination": "/project/madison-country-day-school/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "massachusetts-municipal-wholesale-electric-company" }],
+      "destination": "/project/massachusetts-municipal-wholesale-electric-company/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "mit" }],
+      "destination": "/project/mit/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "monadnock-media" }],
+      "destination": "/project/monadnock-media/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "music-app-experiments" }],
+      "destination": "/project/music-app-experiments/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "northeastern-illinois-university" }],
+      "destination": "/project/northeastern-illinois-university/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "p5-projects" }],
+      "destination": "/project/p5-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "paragraphs-stats-module" }],
+      "destination": "/project/paragraphs-stats-module/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "pen-plotting-works" }],
+      "destination": "/project/pen-plotting-works/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "pioneer-valley-books" }],
+      "destination": "/project/pioneer-valley-books/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "robert-rauschenberg-foundation" }],
+      "destination": "/project/robert-rauschenberg-foundation/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "sculpture-works" }],
+      "destination": "/project/sculpture-works/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "sleep-studio" }],
+      "destination": "/project/sleep-studio/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "smartlabs" }],
+      "destination": "/project/smartlabs/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "smma-architecture" }],
+      "destination": "/project/smma-architecture/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "sparx-hockey" }],
+      "destination": "/project/sparx-hockey/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "studio-arts-consortium-international-saci-florence" }],
+      "destination": "/project/studio-arts-consortium-international-saci-florence/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "the-isabella-stewart-gardner-museum" }],
+      "destination": "/project/the-isabella-stewart-gardner-museum/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "thing-y" }],
+      "destination": "/project/thing-y/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "trillium-brewing" }],
+      "destination": "/project/trillium-brewing/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "university-of-massachusetts-amherst" }],
+      "destination": "/project/university-of-massachusetts-amherst/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "vases" }],
+      "destination": "/project/vases/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "way-finders" }],
+      "destination": "/project/way-finders/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "yale-center-for-british-art" }],
+      "destination": "/project/yale-center-for-british-art/",
+      "permanent": true
+    },
+    {
+      "source": "/project.html",
+      "has": [{ "type": "query", "key": "item", "value": "__static_project_redirects_end" }],
+      "destination": "/projects.html",
+      "permanent": false
+    },
     {
       "source": "/project/:slug/projects.html",
       "destination": "/projects.html",
@@ -115,77 +373,77 @@
     },
     {
       "source": "/portfolio/umass-humanities-and-fine-arts/",
-      "destination": "/project.html?item=university-of-massachusetts-amherst",
+      "destination": "/project/university-of-massachusetts-amherst/",
       "permanent": true
     },
     {
       "source": "/portfolio/quick-efficient-build-of-sparx-hockey-static-site/",
-      "destination": "/project.html?item=sparx-hockey",
+      "destination": "/project/sparx-hockey/",
       "permanent": true
     },
     {
       "source": "/portfolio/fox-chase-new-user-friendly-drupal-site/",
-      "destination": "/project.html?item=fox-chase-cancer-research",
+      "destination": "/project/fox-chase-cancer-research/",
       "permanent": true
     },
     {
       "source": "/portfolio/sleep-studio-ecommerce-web-design/",
-      "destination": "/project.html?item=sleep-studio",
+      "destination": "/project/sleep-studio/",
       "permanent": true
     },
     {
       "source": "/portfolio/smma-long-format-drupal-website/",
-      "destination": "/project.html?item=smma-architecture",
+      "destination": "/project/smma-architecture/",
       "permanent": true
     },
     {
       "source": "/portfolio/jack-daniels-website-project/",
-      "destination": "/project.html?item=jack-daniels",
+      "destination": "/project/jack-daniels/",
       "permanent": true
     },
     {
       "source": "/portfolio/chemexs-new-sleek-and-modern-site/",
-      "destination": "/project.html?item=chemex-coffee-maker",
+      "destination": "/project/chemex-coffee-maker/",
       "permanent": true
     },
     {
       "source": "/portfolio/saci-florence/",
-      "destination": "/project.html?item=studio-arts-consortium-international-saci-florence",
+      "destination": "/project/studio-arts-consortium-international-saci-florence/",
       "permanent": true
     },
     {
       "source": "/portfolio/website-planning-smartlabs/",
-      "destination": "/project.html?item=smartlabs",
+      "destination": "/project/smartlabs/",
       "permanent": true
     },
     {
       "source": "/portfolio/anheuser-busch-inbev-new-mi-modelo-application/",
-      "destination": "/project.html?item=ab_inbev",
+      "destination": "/project/ab_inbev/",
       "permanent": true
     },
     {
       "source": "/portfolio/temples-new-responsive-drupal-site/",
-      "destination": "/project.html?item=lewis-katz-school-of-medicine-temple-university",
+      "destination": "/project/lewis-katz-school-of-medicine-temple-university/",
       "permanent": true
     },
     {
       "source": "/portfolio/mit-university-web-development/",
-      "destination": "/project.html?item=mit",
+      "destination": "/project/mit/",
       "permanent": true
     },
     {
       "source": "/portfolio/university-web-design-mit/",
-      "destination": "/project.html?item=mit",
+      "destination": "/project/mit/",
       "permanent": true
     },
     {
       "source": "/portfolio/isabella-stewart-gardner-museum/",
-      "destination": "/project.html?item=the-isabella-stewart-gardner-museum",
+      "destination": "/project/the-isabella-stewart-gardner-museum/",
       "permanent": true
     },
     {
       "source": "/portfolio/drupal-higher-education-case-study-umass-summer/",
-      "destination": "/project.html?item=university-of-massachusetts-amherst",
+      "destination": "/project/university-of-massachusetts-amherst/",
       "permanent": true
     },
     {

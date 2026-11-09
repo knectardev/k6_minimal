@@ -1,10 +1,8 @@
 /**
  * Small HTML helpers for build-time pages.
  *
- * Blog generation uses these today. Project pages (/project/<slug>/ served from
- * project.html, with the body injected from menu JSON) have the same
- * client-rendered gap and can require this module later. Do not generate
- * project pages from here.
+ * Blog and project generation both use these. Project pages are written by
+ * scripts/generate_project_pages.js. Do not generate pages from this file.
  *
  * Trust boundary: escape text and attributes. A caller may insert an authored
  * HTML body only as element content, never inside <script>.
