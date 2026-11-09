@@ -2350,32 +2350,41 @@ a:visited {
   }
 }
 
-/* === Project Haiku === */
-.project-haiku {
+/* === Project lede (was the haiku) === */
+.project-info div.project-haiku {
     position: relative;
-    background: #f8f8f8;
-    border: 1px solid rgba(179, 179, 179, 0.1);
-    border-radius: 40px;
-    padding: 22px 36px 22px 36px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin: 12px 0 16px 0;
-    font-family: 'EB Garamond', serif;
-    font-size: 22px;
-    font-style: italic;
+    background: #f7f7f7;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 18px;
+    padding: 16px 28px 20px;
+    box-shadow: none;
+    margin: 8px 0 22px 0;
+    font-family: 'Benne', serif;
+    font-size: 1.35rem;
+    font-style: normal;
     font-weight: 400;
     text-shadow: none;
-    line-height: 1.6;
-    opacity: 0.9;
-    color: rgb(0, 0, 0);
-    transition: all 0.3s ease;
-    display: inline-block;
-    width: fit-content;
+    line-height: 1.45 !important;
+    opacity: 1;
+    color: #111;
+    display: block;
+    width: auto;
     max-width: 100%;
 }
 
-.project-haiku:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    transform: translateY(-1px);
+.project-info div.project-haiku::before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 3px;
+    margin: 0 0 12px;
+    background: var(--color-primary);
+    border-radius: 1px;
+}
+
+.project-info div.project-haiku:hover {
+    box-shadow: none;
+    transform: none;
 }
 
 /* Ensure the SVG filter is available globally */

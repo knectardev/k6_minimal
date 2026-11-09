@@ -242,3 +242,7 @@ server.js
 # Temporary files
 *.tmp
 *.temp
+
+# Local blog idea notes
+/blog/ideas_log.txt
+/notes.txt
