@@ -1366,6 +1366,11 @@ a:visited {
     line-height: 1.2;
 }
 
+.project-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
 /* Project Tile sub-heading styles */
 .project-tile .project-text p {
     margin: 0 0 var(--spacing-xs) 0;

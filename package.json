@@ -5,11 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "prestart": "npm run build",
+    "dev": "npm run build && nodemon server.js",
+    "build": "node scripts/generate_blog_pages.js && node scripts/generate_blog_pages.js --check",
     "optimize-images": "node scripts/optimize_images.js",
     "generate-sitemap": "node scripts/generate_sitemap.js",
     "generate-og-image": "node scripts/generate_og_image.js",
     "generate-blog-pages": "node scripts/generate_blog_pages.js",
+    "test": "node scripts/test_blog_pages.js",
     "deploy": "git push origin main"
   },
   "keywords": [

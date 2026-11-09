@@ -1,7 +1,9 @@
-// blog.js – renders the blog list (blog.html) and single post (blog-post.html)
-// from /data/blog.json. Deliberately independent of the project pipeline
-// (menu.json / projects.js / script.js injectPageData) so posts never leak into
-// the sidebar or the projects list.
+// blog.js – blog list (blog.html) and single post (blog/<slug>/ or blog-post.html).
+// Generated pages already contain the article text. This script enhances that
+// DOM (hero, zoom, highlighting, category filter) and does not fetch JSON.
+// It fetches /data/blog.json only when that static markup is missing.
+// Deliberately independent of the project pipeline (menu.json / projects.js /
+// script.js injectPageData) so posts never leak into the sidebar or projects list.
 
 (function () {
     const BLOG_JSON = '/data/blog.json';
@@ -93,15 +95,8 @@
     // ---------------------------------------------------------------
     function initList(posts) {
         const container = document.getElementById('blogList');
-        const filterSelect = document.getElementById('blogCategoryFilter');
-        const dropdownToggle = document.getElementById('blogDropdownToggle');
-        const dropdownOptions = document.getElementById('blogDropdownOptions');
-        const dropdownLabel = document.getElementById('blogDropdownLabel');
-        const dropdownIcon = document.getElementById('blogDropdownIcon');
-        // Own id on purpose: script.js injectPageData() removes #crumbCategoryLink on pretty URLs
-        const crumb = document.getElementById('crumbBlogCategory');
 
-        // ---- Build tiles ----
+        // Fallback only: generated pages keep the baked tiles and call bindList.
         container.innerHTML = '';
         posts.forEach((post, idx) => {
             const article = document.createElement('article');
@@ -151,12 +146,56 @@
             container.appendChild(article);
         });
 
+        bindList(container);
+    }
+
+    function upgradeTileEmbeds(container) {
+        if (prefersReducedMotion()) return;
+        const tiles = container.querySelectorAll('.project-tile[data-cover-iframe]');
+        tiles.forEach(tile => {
+            const raw = tile.getAttribute('data-cover-iframe');
+            if (!raw) return;
+            const box = tile.querySelector('.image-container');
+            if (!box || box.querySelector('iframe')) return;
+            const heading = tile.querySelector('.project-title');
+            const title = tile.getAttribute('data-cover-iframe-title') || (heading ? heading.textContent : '');
+            const src = coverIframeSrc({ coverIframe: raw }, true);
+            box.classList.add('blog-tile-embed');
+            box.innerHTML = `<iframe class="blog-tile-iframe" src="${escapeHtml(src)}" title="${escapeHtml(title)}" loading="lazy" tabindex="-1"></iframe>`;
+        });
+    }
+
+    function enhanceStaticList(container) {
+        upgradeTileEmbeds(container);
+        bindList(container);
+    }
+
+    // Filter, animation, and card clicks. Does not rebuild the tiles.
+    function bindList(container) {
+        const filterSelect = document.getElementById('blogCategoryFilter');
+        const dropdownToggle = document.getElementById('blogDropdownToggle');
+        const dropdownOptions = document.getElementById('blogDropdownOptions');
+        const dropdownLabel = document.getElementById('blogDropdownLabel');
+        const dropdownIcon = document.getElementById('blogDropdownIcon');
+        // Own id on purpose: script.js injectPageData() removes #crumbCategoryLink on pretty URLs
+        const crumb = document.getElementById('crumbBlogCategory');
         const tiles = container.querySelectorAll('.project-tile');
 
-        // ---- Populate category dropdown ----
+        tiles.forEach(tile => {
+            const link = tile.querySelector('a[href]');
+            if (!link || tile.dataset.cardClick === '1') return;
+            tile.dataset.cardClick = '1';
+            tile.style.cursor = 'pointer';
+            tile.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
+                window.location.href = link.getAttribute('href');
+            });
+        });
+
+        // ---- Populate category dropdown from the tiles already on the page ----
         const counts = {};
-        posts.forEach(p => {
-            const c = p.category || 'Uncategorized';
+        tiles.forEach(tile => {
+            const c = tile.dataset.category || 'Uncategorized';
             counts[c] = (counts[c] || 0) + 1;
         });
         const categories = Object.keys(counts).sort();
@@ -393,9 +432,31 @@
         }
     }
 
+    function enhanceStaticDetail(container) {
+        const hero = document.getElementById('blogHeroImage');
+        const crumb = document.getElementById('crumbPostTitle');
+        const post = {
+            title: crumb ? crumb.textContent : '',
+            coverIframe: container.getAttribute('data-cover-iframe') || '',
+            coverIframeTitle: container.getAttribute('data-cover-iframe-title') || '',
+            coverIframeCredit: container.getAttribute('data-cover-credit') || '',
+            coverIframeCreditUrl: container.getAttribute('data-cover-credit-url') || '',
+            coverImage: hero && hero.getAttribute('src') ? hero.getAttribute('src') : ''
+        };
+        insertMobileHero(container, post);
+        insertDesktopHero(post);
+        if (window.hljs && typeof window.hljs.highlightAll === 'function') {
+            window.hljs.highlightAll();
+        }
+    }
+
     function initDetail(posts) {
         const container = document.getElementById('blogPost');
         const slug = getPostSlug();
+        if (container && container.getAttribute('data-static-post') === slug) {
+            enhanceStaticDetail(container);
+            return;
+        }
         const post = slug ? posts.find(p => p.slug === slug) : null;
 
         if (!post) {
@@ -514,21 +575,33 @@
         initialized = true;
         markSidebarActive();
 
-        const isList = !!document.getElementById('blogList');
-        const isDetail = !!document.getElementById('blogPost');
-        if (!isList && !isDetail) return;
+        const list = document.getElementById('blogList');
+        const detail = document.getElementById('blogPost');
+        if (!list && !detail) return;
+
+        const staticList = list && list.hasAttribute('data-static-index') && list.querySelector('article.project-tile');
+        const detailSlug = detail && detail.getAttribute('data-static-post');
+        const staticDetail = !!(detail && detailSlug && detailSlug === getPostSlug());
+
+        if (staticList) enhanceStaticList(list);
+        if (staticDetail) enhanceStaticDetail(detail);
+
+        const needList = list && !staticList;
+        const needDetail = detail && !staticDetail;
+        if (!needList && !needDetail) return;
 
         fetchPosts()
             .then(posts => {
-                if (isList) initList(posts);
-                if (isDetail) initDetail(posts);
+                if (needList) initList(posts);
+                if (needDetail) initDetail(posts);
             })
             .catch(err => {
                 console.error('blog.js: failed to load posts', err);
-                const target = document.getElementById('blogList') || document.getElementById('blogPost');
-                if (target) {
-                    target.innerHTML = '<p>Sorry, the blog could not be loaded right now.</p>';
-                }
+                const target = (needList && list) || (needDetail && detail);
+                if (!target) return;
+                if (target.id === 'blogList' && target.hasAttribute('data-static-index') && target.querySelector('article')) return;
+                if (target.id === 'blogPost' && target.hasAttribute('data-static-post')) return;
+                target.innerHTML = '<p>Sorry, the blog could not be loaded right now.</p>';
             });
     }
 

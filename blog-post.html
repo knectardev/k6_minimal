@@ -92,9 +92,10 @@
                     <img id="blogHeroImage" class="detail-stack-image active blog-hero" alt="" style="display:none;" />
                 </div>
 
-                <!-- Post content; populated by /js/blog.js. Intentionally NOT .project-info
+                <!-- Article text is baked by scripts/generate_blog_pages.js.
+                     This shell stays empty for the no-file fallback. Not .project-info,
                      so script.js injectPageData() does not overwrite it. -->
-                <div class="blog-post-info" id="blogPost" aria-label="Blog post"></div>
+                <article class="blog-post-info" id="blogPost" aria-label="Blog post"></article>
             </section>
         </main>
     </div>

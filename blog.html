@@ -86,8 +86,48 @@
             </div>
 
             <!-- Blog post list -->
-            <section class="project-list" id="blogList" aria-label="Blog posts">
-                <!-- Tiles populated dynamically from /data/blog.json -->
+            <section class="project-list" id="blogList" aria-label="Blog posts" data-static-index>
+                <!-- blog:index -->
+                <article class="project-tile" data-category="Commentary">
+                    <div class="project-image">
+                        <div class="image-container" style="position: relative; width: 100%; height: 200px;">
+                            <img src="/blog_images/why-drupal-ai-tile.jpg" alt="Why Drupal, If an LLM Can Build the Site? image" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius) 0 0 var(--border-radius);">
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Commentary</span>
+                        <h2 class="project-title"><a href="/blog/why-drupal-ai/">Why Drupal, If an LLM Can Build the Site?</a></h2>
+                        <p><strong>Date:</strong> September 30, 2026</p>
+                        <p class="blog-excerpt">Generating a full-stack app is cheap. Governing tens of thousands of content entities, with real permissions and editorial workflows, is where that kind of building runs out.</p>
+                    </div>
+                </article>
+                <article class="project-tile reverse" data-category="Process">
+                    <div class="project-image">
+                        <div class="image-container" style="position: relative; width: 100%; height: 200px;">
+                            <img src="/blog_images/ai-with-production-access-tile.jpg" alt="The Risk Isn’t AI Code. It’s AI in Production. image" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius) 0 0 var(--border-radius);">
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Process</span>
+                        <h2 class="project-title"><a href="/blog/ai-with-production-access/">The Risk Isn’t AI Code. It’s AI in Production.</a></h2>
+                        <p><strong>Date:</strong> September 10, 2026</p>
+                        <p class="blog-excerpt">Instructions are not safeguards. The Hugging Face and Replit incidents show what happens when an AI agent can reach production — and the surrounding controls fail.</p>
+                    </div>
+                </article>
+                <article class="project-tile" data-category="Commentary" data-cover-iframe="/embeds/gpu-fluid.html?v=20260911d" data-cover-iframe-title="GPU Navier–Stokes fluid simulation after Amanda Ghassaei">
+                    <div class="project-image">
+                        <div class="image-container" style="position: relative; width: 100%; height: 200px;">
+                            <img src="/blog_images/scooped-by-a-cluster-tile.png" alt="Scooped by a Cluster: What the Navier–Stokes Fight Is Actually About image" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius) 0 0 var(--border-radius);">
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <span class="project-category">Commentary</span>
+                        <h2 class="project-title"><a href="/blog/scooped-by-a-cluster/">Scooped by a Cluster: What the Navier–Stokes Fight Is Actually About</a></h2>
+                        <p><strong>Date:</strong> September 10, 2026</p>
+                        <p class="blog-excerpt">When a rumor can summon ten thousand agents, the problem is no longer only who found the result first. It is whether anyone can safely think out loud.</p>
+                    </div>
+                </article>
+                <!-- /blog:index -->
             </section>
 
             <!-- Interactive Lines Section (same as home) -->
