@@ -69,7 +69,7 @@ npm run generate-og-image
 
 `generate_blog_pages.js` reads `data/blog.json` and writes the article text into `/blog/<slug>/index.html` and the post list in `blog.html`. JSON stays the source. The HTML is what a fetcher receives without running JavaScript. `js/blog.js` then enhances that markup (hero iframe, image zoom, syntax highlighting, category filter). It fetches JSON only when the static article or list is missing, which is the empty `blog-post.html` fallback.
 
-`npm run build` generates those files and checks that they still match `data/blog.json`. `npm start`, `npm run dev`, and the Vercel build command run that build, so publishing a post does not depend on remembering a separate generate step. `npm test` checks the files and the local HTTP response.
+`npm run build` generates those files and checks that they still match `data/blog.json`. `npm start` and `npm run dev` run that build. Vercel runs it too, then publishes this project directory, so publishing a post does not depend on remembering a separate generate step. `npm test` checks the files and the local HTTP response.
 
 Project pages (`/project/<slug>/` rewritten to `project.html`) still inject their body from menu JSON in the browser. That is the same kind of gap. The shared escape, URL, date, and JSON-LD helpers live in `scripts/static_html.js` so a later project generator can use them. This blog build does not generate project pages.
 
