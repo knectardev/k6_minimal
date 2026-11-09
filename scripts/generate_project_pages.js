@@ -347,6 +347,17 @@ function redirectObject(value, destination, permanent) {
     ].join('\n');
 }
 
+function nthBrace(text, index, brace, count, step) {
+    let found = 0;
+    for (let i = index; i >= 0 && i < text.length; i += step) {
+        if (text.charAt(i) === brace) {
+            found += 1;
+            if (found === count) return i;
+        }
+    }
+    return -1;
+}
+
 function replaceRedirectBlock(text, slugs) {
     const startKey = JSON.stringify(REDIRECT_START);
     const endKey = JSON.stringify(REDIRECT_END);
@@ -355,20 +366,21 @@ function replaceRedirectBlock(text, slugs) {
     if (startAt < 0 || endAt < 0 || endAt < startAt) {
         throw new Error('vercel.json is missing the static project redirect markers');
     }
-    const blockStart = text.lastIndexOf('\n    {', startAt);
-    const blockEnd = text.indexOf('\n    }', endAt);
-    if (blockStart < 0 || blockEnd < 0) throw new Error('could not bound the project redirect markers');
-    const after = blockEnd + '\n    }'.length;
+    // The marker sits inside the has-condition object, which sits inside the redirect object.
+    const open = nthBrace(text, startAt, '{', 2, -1);
+    const close = nthBrace(text, endAt, '}', 2, 1);
+    if (open < 0 || close < 0) throw new Error('could not bound the project redirect markers');
+    const lineStart = text.lastIndexOf('\n', open) + 1;
     const entries = [redirectObject(REDIRECT_START, '/projects.html', false)];
     slugs.forEach(slug => {
         entries.push(redirectObject(slug, '/project/' + encodeURIComponent(slug) + '/', true));
     });
     entries.push(redirectObject(REDIRECT_END, '/projects.html', false));
-    return text.slice(0, blockStart + 1) + entries.join(',\n') + text.slice(after);
+    return text.slice(0, lineStart) + entries.join(',\n') + text.slice(close + 1);
 }
 
 function pointLegacyDestinations(text, slugSet) {
-    return text.replace(/\/project\.html\?item=([^"&#]+)/g, function (match, slug) {
+        return text.replace(/\/project\.html\?item=([^"&#\r\n]+)/g, function (match, slug) {
         let decoded = slug;
         try {
             decoded = decodeURIComponent(slug);
