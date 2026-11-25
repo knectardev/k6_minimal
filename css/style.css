@@ -3308,6 +3308,7 @@ svg {
 /* Post body. Project descriptions use line-height 2. An essay reads closer
    to a magazine: tighter lines, and a real gap between paragraphs. */
 .blog-post-info .description {
+    font-family: var(--font-elegant);
     font-size: 16px;
 }
 
