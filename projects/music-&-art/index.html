@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music &amp; Art | Knectar Projects</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="We celebrate creativity through digital projects in music and art." id="meta-description">
+    <meta name="keywords" content="portfolio, projects, web development, design, drupal, wordpress, higher education, intranets, knectar">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.knectar.com/projects/music-%26-art/" id="og-url">
+    <meta property="og:title" content="Music &amp; Art | Knectar Projects" id="og-title">
+    <meta property="og:description" content="We celebrate creativity through digital projects in music and art." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/assets/og-image.png" id="og-image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.knectar.com/projects/music-%26-art/" id="twitter-url">
+    <meta property="twitter:title" content="Music &amp; Art | Knectar Projects" id="twitter-title">
+    <meta property="twitter:description" content="We celebrate creativity through digital projects in music and art." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/assets/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.knectar.com/projects/music-%26-art/" id="canonical-link">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="apple-touch-icon" href="/assets/logo.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+    <!-- Shared menu loader -->
+    <script src="/js/consent.js"></script>
+    <script src="/js/load_menu.js"></script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <!-- ==== MAIN CONTENT ==== -->
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="/"><img src="/assets/logo.svg" alt="" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <div class="breadcrumbs">
+                    <a href="/" class="breadcrumb-link">Home</a> &gt; <a href="/projects.html" class="breadcrumb-link" id="crumbProjects">Projects</a> &gt; <span id="crumbCategoryLink">Music &amp; Art</span>
+                </div>
+                <h1 class="page-title" id="projectsHeading">Music &amp; Art</h1>
+                <p class="page-intro" id="projectsIntro">We celebrate creativity through digital projects in music and art.</p>
+            </header>
+
+            <!-- Category filter -->
+            <div style="margin-bottom: var(--spacing-xl); max-width: 250px;" class="select-wrapper custom-select" id="categoryDropdown">
+                <button type="button" class="select-toggle" id="dropdownToggle" aria-label="Select project category" aria-expanded="false">
+                    <span class="select-icon" id="dropdownIcon"></span>
+                    <span class="select-label" id="dropdownLabel">All</span>
+                    <span class="select-caret"></span>
+                </button>
+                <ul class="select-options" id="dropdownOptions" role="listbox">
+                    <li data-value="All" role="option"><span class="option-icon"></span>All</li>
+                    <li data-value="Higher Education" role="option"><span class="option-icon"></span>Higher Education</li>
+                    <li data-value="Intranets & Portals" role="option"><span class="option-icon"></span>Intranets & Portals</li>
+                    <li data-value="Web & iOS Apps" role="option"><span class="option-icon"></span>Web & iOS Apps</li>
+                    <li data-value="Informational" role="option"><span class="option-icon"></span>Informational</li>
+                    <li data-value="E-Commerce" role="option"><span class="option-icon"></span>E-Commerce</li>
+                    <li data-value="Music & Art" role="option"><span class="option-icon"></span>Music & Art</li>
+                </ul>
+                <!-- Hidden native select for accessibility & existing JS hooks -->
+                <select id="categoryFilter" style="display:none;" aria-label="Project category filter">
+                    <option value="All">All</option>
+                    <option value="Higher Education">Higher Education</option>
+                    <option value="Intranets & Portals">Intranets & Portals</option>
+                    <option value="Web & iOS Apps">Web & iOS Apps</option>
+                    <option value="Informational">Informational</option>
+                    <option value="E-Commerce">E-Commerce</option>
+
+                    <option value="Music & Art">Music & Art</option>
+                </select>
+            </div>
+
+            <!-- Technology filter -->
+            <div style="margin-bottom: var(--spacing-xl); max-width: 250px;" class="select-wrapper custom-select" id="technologyDropdown">
+                <button type="button" class="select-toggle" id="techDropdownToggle" aria-label="Select technology filter" aria-expanded="false">
+                    <span class="select-label" id="techDropdownLabel">All</span>
+                    <span class="select-caret"></span>
+                </button>
+                <ul class="select-options" id="techDropdownOptions" role="listbox">
+                    <li data-value="All" role="option">All</li>
+                    <!-- Options populated dynamically via JS -->
+                </ul>
+                <!-- Hidden native select for accessibility & existing JS hooks -->
+                <select id="technologyFilter" style="display:none;" aria-label="Technology filter">
+                    <option value="All">All</option>
+                    <!-- Options populated dynamically via JS -->
+                </select>
+            </div>
+
+            <!-- Project list -->
+            <section class="project-list" id="projectList" aria-label="Project portfolio" data-static-projects>
+<!-- projects:index -->
+<article class="project-tile" data-category="Music &amp; Art" data-technology="JavaScript"><div class="project-image"><video src="/project_tiles/blobby.mp4" aria-label="p5.js sketches: Four studies in generative drawing" autoplay loop muted playsinline></video></div><div class="project-text"><span class="project-category">Music &amp; Art</span><h2 class="project-title"><a href="/project/p5-projects/">p5.js sketches: Four studies in generative drawing</a></h2><p><strong>Role:</strong> Concept, Design, Developer</p><p><strong>Technology:</strong> P5.js</p></div></article>
+<article class="project-tile reverse" data-category="Music &amp; Art" data-technology="Inkscape|Pen Plotter"><div class="project-image"><video src="/project_tiles/pen.mp4" aria-label="Pen plotting: From a p5.js sketch to an AxiDraw drawing" autoplay loop muted playsinline></video></div><div class="project-text"><span class="project-category">Music &amp; Art</span><h2 class="project-title"><a href="/project/pen-plotting-works/">Pen plotting: From a p5.js sketch to an AxiDraw drawing</a></h2><p><strong>Role:</strong> Concept, Design, Developer</p><p><strong>Technology:</strong> Inkscape, Pen Plotter</p></div></article>
+<article class="project-tile" data-category="Music &amp; Art" data-technology="CNC|Traditional tools"><div class="project-image"><video src="/project_tiles/cnc.mp4" aria-label="Sculpture: Experiments in Material and Flow" autoplay loop muted playsinline></video></div><div class="project-text"><span class="project-category">Music &amp; Art</span><h2 class="project-title"><a href="/project/sculpture-works/">Sculpture: Experiments in Material and Flow</a></h2><p><strong>Role:</strong> Concept, Design, Developer</p><p><strong>Technology:</strong> CNC, Traditional tools</p></div></article>
+<article class="project-tile reverse" data-category="Music &amp; Art" data-technology="Rhino 3D|Laser cutting"><div class="project-image"><video src="/project_tiles/thingy.mp4" aria-label="Thing Y: A pocket toy, from a file to a sold-out pilot" autoplay loop muted playsinline></video></div><div class="project-text"><span class="project-category">Music &amp; Art</span><h2 class="project-title"><a href="/project/thing-y/">Thing Y: A pocket toy, from a file to a sold-out pilot</a></h2><p><strong>Role:</strong> Concept, Design, Developer</p><p><strong>Technology:</strong> Rhino 3D, Laser cutting</p></div></article>
+<article class="project-tile" data-category="Music &amp; Art" data-technology="Traditional tools"><div class="project-image"><img src="/project_tiles/vase.png" alt="Vases: Test Tube Babies, a series of bud vases image" loading="lazy"></div><div class="project-text"><span class="project-category">Music &amp; Art</span><h2 class="project-title"><a href="/project/vases/">Vases: Test Tube Babies, a series of bud vases</a></h2><p><strong>Role:</strong> Concept, Design, Developer</p><p><strong>Technology:</strong> Traditional tools</p></div></article>
+<article class="project-tile reverse" data-category="Music &amp; Art" data-technology="CNC|Traditional tools"><div class="project-image"><img src="/project_tiles/dog.png" alt="Dog Door: A door sized for one dog image" loading="lazy"></div><div class="project-text"><span class="project-category">Music &amp; Art</span><h2 class="project-title"><a href="/project/dog-door/">Dog Door: A door sized for one dog</a></h2><p><strong>Role:</strong> Concept, Design, Developer</p><p><strong>Technology:</strong> CNC, Traditional tools</p></div></article>
+<!-- /projects:index -->
+            </section>
+
+            <!-- Interactive Lines Section (same as home) -->
+            <section id="interactive-lines" class="interactive-lines-section">
+                <div id="controls">
+                    <span id="clickPrompt" class="click-prompt">click spacebar to play</span>
+                    <button id="playPauseBtn" aria-label="Play/Pause animation" aria-pressed="false">
+                        <img src="/assets/simple_play.svg" alt="Play icon" class="play-icon">
+                    </button>
+                </div>
+                <div id="beatControls" role="group" aria-label="Beat controls">
+                    <div class="beatDot" data-index="0" role="button" tabindex="0" aria-label="Beat 1"></div>
+                    <div class="beatDot" data-index="1" role="button" tabindex="0" aria-label="Beat 2"></div>
+                    <div class="beatDot" data-index="2" role="button" tabindex="0" aria-label="Beat 3"></div>
+                    <div class="beatDot" data-index="3" role="button" tabindex="0" aria-label="Beat 4"></div>
+                    <div class="beatDot" data-index="4" role="button" tabindex="0" aria-label="Beat 5"></div>
+                    <div class="beatDot" data-index="5" role="button" tabindex="0" aria-label="Beat 6"></div>
+                    <div class="beatDot" data-index="6" role="button" tabindex="0" aria-label="Beat 7"></div>
+                    <div class="beatDot" data-index="7" role="button" tabindex="0" aria-label="Beat 8"></div>
+                </div>
+                <canvas id="patternCanvas" role="img" aria-label="Interactive lines animation"></canvas>
+            </section>
+        </main>
+    </div>
+
+    <!-- main site script loaded by loader -->
+    <script src="/js/projects.js"></script>
+    <script src="/js/lines.js"></script>
+    <!-- Image Loading Enhancements -->
+    <script src="/js/image-loader.js"></script>
+    <!-- Footer loaded by footer loader -->
+    <script src="/js/load_footer.js"></script>
+</body>
+</html> 

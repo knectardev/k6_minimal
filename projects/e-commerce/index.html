@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce | Knectar Projects</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Our e-commerce solutions empower businesses to grow online." id="meta-description">
+    <meta name="keywords" content="portfolio, projects, web development, design, drupal, wordpress, higher education, intranets, knectar">
+    <meta name="author" content="Knectar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.knectar.com/projects/e-commerce/" id="og-url">
+    <meta property="og:title" content="E-Commerce | Knectar Projects" id="og-title">
+    <meta property="og:description" content="Our e-commerce solutions empower businesses to grow online." id="og-description">
+    <meta property="og:image" content="https://www.knectar.com/assets/og-image.png" id="og-image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="Knectar">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.knectar.com/projects/e-commerce/" id="twitter-url">
+    <meta property="twitter:title" content="E-Commerce | Knectar Projects" id="twitter-title">
+    <meta property="twitter:description" content="Our e-commerce solutions empower businesses to grow online." id="twitter-description">
+    <meta property="twitter:image" content="https://www.knectar.com/assets/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.knectar.com/projects/e-commerce/" id="canonical-link">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="apple-touch-icon" href="/assets/logo.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+    <!-- Shared menu loader -->
+    <script src="/js/consent.js"></script>
+    <script src="/js/load_menu.js"></script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8X9HLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <!-- ==== MAIN CONTENT ==== -->
+        <main class="main-content">
+            <header class="page-header">
+                <div class="mobile-header-top">
+                    <div class="logo logo-mobile">
+                        <a href="/"><img src="/assets/logo.svg" alt="" class="logo-icon">KNECTAR</a>
+                    </div>
+                    <button class="hamburger" id="hamburger-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <div class="breadcrumbs">
+                    <a href="/" class="breadcrumb-link">Home</a> &gt; <a href="/projects.html" class="breadcrumb-link" id="crumbProjects">Projects</a> &gt; <span id="crumbCategoryLink">E-Commerce</span>
+                </div>
+                <h1 class="page-title" id="projectsHeading">E-Commerce</h1>
+                <p class="page-intro" id="projectsIntro">Our e-commerce solutions empower businesses to grow online.</p>
+            </header>
+
+            <!-- Category filter -->
+            <div style="margin-bottom: var(--spacing-xl); max-width: 250px;" class="select-wrapper custom-select" id="categoryDropdown">
+                <button type="button" class="select-toggle" id="dropdownToggle" aria-label="Select project category" aria-expanded="false">
+                    <span class="select-icon" id="dropdownIcon"></span>
+                    <span class="select-label" id="dropdownLabel">All</span>
+                    <span class="select-caret"></span>
+                </button>
+                <ul class="select-options" id="dropdownOptions" role="listbox">
+                    <li data-value="All" role="option"><span class="option-icon"></span>All</li>
+                    <li data-value="Higher Education" role="option"><span class="option-icon"></span>Higher Education</li>
+                    <li data-value="Intranets & Portals" role="option"><span class="option-icon"></span>Intranets & Portals</li>
+                    <li data-value="Web & iOS Apps" role="option"><span class="option-icon"></span>Web & iOS Apps</li>
+                    <li data-value="Informational" role="option"><span class="option-icon"></span>Informational</li>
+                    <li data-value="E-Commerce" role="option"><span class="option-icon"></span>E-Commerce</li>
+                    <li data-value="Music & Art" role="option"><span class="option-icon"></span>Music & Art</li>
+                </ul>
+                <!-- Hidden native select for accessibility & existing JS hooks -->
+                <select id="categoryFilter" style="display:none;" aria-label="Project category filter">
+                    <option value="All">All</option>
+                    <option value="Higher Education">Higher Education</option>
+                    <option value="Intranets & Portals">Intranets & Portals</option>
+                    <option value="Web & iOS Apps">Web & iOS Apps</option>
+                    <option value="Informational">Informational</option>
+                    <option value="E-Commerce">E-Commerce</option>
+
+                    <option value="Music & Art">Music & Art</option>
+                </select>
+            </div>
+
+            <!-- Technology filter -->
+            <div style="margin-bottom: var(--spacing-xl); max-width: 250px;" class="select-wrapper custom-select" id="technologyDropdown">
+                <button type="button" class="select-toggle" id="techDropdownToggle" aria-label="Select technology filter" aria-expanded="false">
+                    <span class="select-label" id="techDropdownLabel">All</span>
+                    <span class="select-caret"></span>
+                </button>
+                <ul class="select-options" id="techDropdownOptions" role="listbox">
+                    <li data-value="All" role="option">All</li>
+                    <!-- Options populated dynamically via JS -->
+                </ul>
+                <!-- Hidden native select for accessibility & existing JS hooks -->
+                <select id="technologyFilter" style="display:none;" aria-label="Technology filter">
+                    <option value="All">All</option>
+                    <!-- Options populated dynamically via JS -->
+                </select>
+            </div>
+
+            <!-- Project list -->
+            <section class="project-list" id="projectList" aria-label="Project portfolio" data-static-projects>
+<!-- projects:index -->
+<article class="project-tile" data-category="E-Commerce" data-technology="Shopify"><div class="project-image"><video src="/project_tiles/chemex.mp4" aria-label="Chemex: A Shopify catalog for a brewer people already know" autoplay loop muted playsinline></video></div><div class="project-text"><span class="project-category">E-Commerce</span><h2 class="project-title"><a href="/project/chemex-coffee-maker/">Chemex: A Shopify catalog for a brewer people already know</a></h2><p><strong>Role:</strong> Technical Lead, Developer</p><p><strong>Technology:</strong> Shopify</p></div></article>
+<article class="project-tile reverse" data-category="E-Commerce" data-technology="Shopify"><div class="project-image"><img src="/project_tiles/guardair.png" alt="Guardair: A Shopify catalog for industrial safety tools image" loading="lazy"></div><div class="project-text"><span class="project-category">E-Commerce</span><h2 class="project-title"><a href="/project/guardair/">Guardair: A Shopify catalog for industrial safety tools</a></h2><p><strong>Role:</strong> Technical Lead, Developer</p><p><strong>Technology:</strong> Shopify</p></div></article>
+<article class="project-tile" data-category="E-Commerce" data-technology="Shopify"><div class="project-image"><img src="/project_tiles/pvb.jpg" alt="Pioneer Valley Books: A Shopify store for K–6 literacy image" loading="lazy"></div><div class="project-text"><span class="project-category">E-Commerce</span><h2 class="project-title"><a href="/project/pioneer-valley-books/">Pioneer Valley Books: A Shopify store for K–6 literacy</a></h2><p><strong>Role:</strong> Technical Lead, Developer</p><p><strong>Technology:</strong> Shopify</p></div></article>
+<article class="project-tile reverse" data-category="E-Commerce" data-technology="Magento"><div class="project-image"><img src="/project_tiles/sleep.png" alt="Sleep Studio: A Magento store for a mattress line image" loading="lazy"></div><div class="project-text"><span class="project-category">E-Commerce</span><h2 class="project-title"><a href="/project/sleep-studio/">Sleep Studio: A Magento store for a mattress line</a></h2><p><strong>Role:</strong> Technical Lead, Developer</p><p><strong>Technology:</strong> Magento</p></div></article>
+<article class="project-tile" data-category="E-Commerce" data-technology="Shopify"><div class="project-image"><video src="/project_tiles/sparx_hockey.mp4" aria-label="Sparx Hockey: A Shopify store for a skate sharpener" autoplay loop muted playsinline></video></div><div class="project-text"><span class="project-category">E-Commerce</span><h2 class="project-title"><a href="/project/sparx-hockey/">Sparx Hockey: A Shopify store for a skate sharpener</a></h2><p><strong>Role:</strong> Technical Lead, Developer</p><p><strong>Technology:</strong> Shopify</p></div></article>
+<article class="project-tile reverse" data-category="E-Commerce" data-technology="Shopify"><div class="project-image"><img src="/project_tiles/trillium.webp" alt="Trillium Brewing: A Shopify store for more than one taproom image" loading="lazy"></div><div class="project-text"><span class="project-category">E-Commerce</span><h2 class="project-title"><a href="/project/trillium-brewing/">Trillium Brewing: A Shopify store for more than one taproom</a></h2><p><strong>Role:</strong> Technical Lead, Developer</p><p><strong>Technology:</strong> Shopify</p></div></article>
+<article class="project-tile" data-category="E-Commerce" data-technology="Shopify"><div class="project-image"><img src="/project_tiles/lanshin.png" alt="Lanshin: A Shopify store the staff can run image" loading="lazy"></div><div class="project-text"><span class="project-category">E-Commerce</span><h2 class="project-title"><a href="/project/lanshin/">Lanshin: A Shopify store the staff can run</a></h2><p><strong>Role:</strong> Technical Lead, Developer</p><p><strong>Technology:</strong> Shopify</p></div></article>
+<!-- /projects:index -->
+            </section>
+
+            <!-- Interactive Lines Section (same as home) -->
+            <section id="interactive-lines" class="interactive-lines-section">
+                <div id="controls">
+                    <span id="clickPrompt" class="click-prompt">click spacebar to play</span>
+                    <button id="playPauseBtn" aria-label="Play/Pause animation" aria-pressed="false">
+                        <img src="/assets/simple_play.svg" alt="Play icon" class="play-icon">
+                    </button>
+                </div>
+                <div id="beatControls" role="group" aria-label="Beat controls">
+                    <div class="beatDot" data-index="0" role="button" tabindex="0" aria-label="Beat 1"></div>
+                    <div class="beatDot" data-index="1" role="button" tabindex="0" aria-label="Beat 2"></div>
+                    <div class="beatDot" data-index="2" role="button" tabindex="0" aria-label="Beat 3"></div>
+                    <div class="beatDot" data-index="3" role="button" tabindex="0" aria-label="Beat 4"></div>
+                    <div class="beatDot" data-index="4" role="button" tabindex="0" aria-label="Beat 5"></div>
+                    <div class="beatDot" data-index="5" role="button" tabindex="0" aria-label="Beat 6"></div>
+                    <div class="beatDot" data-index="6" role="button" tabindex="0" aria-label="Beat 7"></div>
+                    <div class="beatDot" data-index="7" role="button" tabindex="0" aria-label="Beat 8"></div>
+                </div>
+                <canvas id="patternCanvas" role="img" aria-label="Interactive lines animation"></canvas>
+            </section>
+        </main>
+    </div>
+
+    <!-- main site script loaded by loader -->
+    <script src="/js/projects.js"></script>
+    <script src="/js/lines.js"></script>
+    <!-- Image Loading Enhancements -->
+    <script src="/js/image-loader.js"></script>
+    <!-- Footer loaded by footer loader -->
+    <script src="/js/load_footer.js"></script>
+</body>
+</html> 
