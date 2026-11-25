@@ -34,8 +34,6 @@ const PAGE_CONFIG = {
   'projects.html': { priority: '0.9', changefreq: 'weekly' },
   'blog.html': { priority: '0.7', changefreq: 'weekly' },
   'lines.html': { priority: '0.6', changefreq: 'monthly' },
-  'contact.html': { priority: '0.8', changefreq: 'monthly' },
-  'contact_confirmation.html': { priority: '0.3', changefreq: 'yearly' },
   'privacy-policy.html': { priority: '0.3', changefreq: 'yearly' },
   'resume/resume_static.html': { priority: '0.7', changefreq: 'monthly' }
 };
@@ -54,7 +52,6 @@ const PROJECT_CATEGORIES = {
   'Web & iOS Apps': { priority: '0.7', changefreq: 'monthly', slug: 'web-&-ios-apps' },
   'Informational': { priority: '0.7', changefreq: 'monthly', slug: 'informational' },
   'E-Commerce': { priority: '0.7', changefreq: 'monthly', slug: 'e-commerce' },
-  'Programming & Technical': { priority: '0.6', changefreq: 'monthly', slug: 'programming-&-technical' },
   'Music & Art': { priority: '0.6', changefreq: 'monthly', slug: 'music-&-art' }
 };
 

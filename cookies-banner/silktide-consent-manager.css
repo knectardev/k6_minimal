@@ -274,7 +274,7 @@
   gap: 16px;
 }
 
-#silktide-modal h1 {
+#silktide-modal h2 {
   font-family: var(--fontFamily);
   color: var(--textColor);
   font-size: 24px;

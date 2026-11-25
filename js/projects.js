@@ -273,30 +273,40 @@ function initProjects() {
         // Trigger entrance animation for visible tiles
         animateVisibleTiles();
 
-        // Update address bar without reloading page
-        // Prefer pretty path for category-only selections
-        let newUrl;
-        if (currentCat !== 'All' && (currentTech === 'All')) {
-            // Map category label to proper slug
-            const categoryToSlug = {
-                'Higher Education': 'higher-education',
-                'Intranets & Portals': 'intranets-&-portals',
-                'Web & iOS Apps': 'web-&-ios-apps',
-                'Informational': 'informational',
-                'E-Commerce': 'e-commerce',
-                'Music & Art': 'music-&-art'
-            };
-            const slug = categoryToSlug[currentCat] || currentCat.toLowerCase().replace(/\s+/g, '-');
-            newUrl = `/projects/${encodeURIComponent(slug)}/`;
-        } else {
-            newUrl = `/projects.html${queryString}`;
-        }
-        // Update URL if we're on the projects page (either projects.html or pretty URL)
+        // Category paths are separate documents. Technology filters stay on this
+        // document and are marked noindex by updateCanonicalTags.
+        const categoryToSlug = {
+            'Higher Education': 'higher-education',
+            'Intranets & Portals': 'intranets-&-portals',
+            'Web & iOS Apps': 'web-&-ios-apps',
+            'Informational': 'informational',
+            'E-Commerce': 'e-commerce',
+            'Music & Art': 'music-&-art'
+        };
         const currentPath = window.location.pathname;
-        if (currentPath === '/projects.html' || currentPath.startsWith('/projects/')) {
-            // Preserve hash (if any)
+        const onList = currentPath === '/projects.html' || currentPath.startsWith('/projects/');
+        if (currentCat !== 'All' && currentTech === 'All') {
+            const slug = categoryToSlug[currentCat] || currentCat.toLowerCase().replace(/\s+/g, '-');
+            const newUrl = `/projects/${encodeURIComponent(slug)}/`;
+            const decodePath = (value) => {
+                try { return decodeURIComponent(value); } catch (err) { return value; }
+            };
+            const here = decodePath(currentPath.replace(/\/$/, ''));
+            const there = decodePath(newUrl.replace(/\/$/, ''));
+            if (onList && here !== there) {
+                window.location.assign(newUrl);
+                return;
+            }
+        } else if (onList) {
             const hash = window.location.hash || '';
-            history.replaceState(null, '', newUrl + hash);
+            if (currentPath === '/projects.html' || currentPath.endsWith('/projects.html')) {
+                history.replaceState(null, '', `/projects.html${queryString}` + hash);
+            } else if (queryString) {
+                history.replaceState(null, '', currentPath + queryString + hash);
+            } else {
+                window.location.assign('/projects.html');
+                return;
+            }
         }
 
         // Update custom dropdown UI
@@ -381,33 +391,17 @@ function initProjects() {
     // Initial animation on page load
     animateVisibleTiles();
 
-    // Update canonical/social URLs to reflect current filter as canonicalized parameters
+    // The full index canonical stays on /projects.html. Category documents keep
+    // the canonical baked into their HTML. Query-string filters are not indexed.
     function updateCanonicalTags() {
-        const currentCat = filterSelect.value;
-        const currentTech = techFilterSelect ? techFilterSelect.value : 'All';
-        
-        // Use pretty URLs for category-only selections, query params for combined filters
-        let canonicalHref;
-        if (currentCat !== 'All' && currentTech === 'All') {
-            // Map category label to proper slug
-            const categoryToSlug = {
-                'Higher Education': 'higher-education',
-                'Intranets & Portals': 'intranets-&-portals',
-                'Web & iOS Apps': 'web-&-ios-apps',
-                'Informational': 'informational',
-                'E-Commerce': 'e-commerce',
-                'Music & Art': 'music-&-art'
-            };
-            const slug = categoryToSlug[currentCat] || currentCat.toLowerCase().replace(/\s+/g, '-');
-            canonicalHref = `${window.location.origin}/projects/${encodeURIComponent(slug)}/`;
-        } else {
-            const queryParts = [];
-            if (currentCat !== 'All') queryParts.push(`category=${encodeURIComponent(currentCat)}`);
-            if (currentTech !== 'All') queryParts.push(`technology=${encodeURIComponent(currentTech)}`);
-            const qs = queryParts.length ? `?${queryParts.join('&')}` : '';
-            canonicalHref = `${window.location.origin}/projects.html${qs}`;
-        }
-        
+        const params = new URLSearchParams(window.location.search);
+        const queryFilter = params.has('technology') || params.has('category');
+        const categoryPath = /\/projects\/[^/]+\/?$/i.test(window.location.pathname);
+        const robots = document.querySelector('meta[name="robots"]');
+        if (robots) robots.setAttribute('content', queryFilter ? 'noindex, follow' : 'index, follow');
+        if (categoryPath && !queryFilter) return;
+
+        const canonicalHref = 'https://www.knectar.com/projects.html';
         const can = document.getElementById('canonical-link');
         if (can) can.setAttribute('href', canonicalHref);
         const og = document.getElementById('og-url');
@@ -533,6 +527,8 @@ function buildTilesFromData(menu) {
 
 function renderCategoryDescription(menu, currentCat) {
     if (!currentCat || currentCat === 'All') return;
+    const intro = document.getElementById('projectsIntro');
+    if (intro && intro.textContent.trim()) return;
     const cat = menu.find(item => item.label === currentCat);
     if (!cat || !cat.categoryDescription) return;
     const container = document.getElementById('projectList');

@@ -108,16 +108,49 @@ function visibleText(html) {
 
 function excerptFromSummary(html) {
     const cleaned = cleanLegacyContent(html || '');
-    let text = visibleText(cleaned);
-    const bold = cleaned.match(/<(?:b|strong)[^>]*>([\s\S]*?)<\/(?:b|strong)>/i);
+    const withoutHeadings = String(cleaned).replace(/<h[1-6][^>]*>[\s\S]*?<\/h[1-6]>/gi, ' ');
+    let text = visibleText(withoutHeadings);
+    const bold = withoutHeadings.match(/<(?:b|strong)[^>]*>([\s\S]*?)<\/(?:b|strong)>/i);
     if (bold) {
         const label = visibleText(bold[1]);
         if (label && text.indexOf(label) === 0) text = text.slice(label.length).trim();
     }
-    if (text.length > 155) {
-        text = text.slice(0, 152).replace(/\s+\S*$/, '') + '...';
-    }
-    return text;
+    return trimMeta(text);
+}
+
+function trimMeta(text) {
+    const clean = String(text || '').replace(/\s+/g, ' ').trim();
+    if (clean.length > 160) return clean.slice(0, 157).replace(/\s+\S*$/, '') + '...';
+    return clean;
+}
+
+function metaDescription(project) {
+    const haiku = String(project.project_haiku || '').replace(/\s+/g, ' ').trim();
+    if (haiku) return trimMeta(haiku);
+    return excerptFromSummary(project.pageSummary || '');
+}
+
+function isVideoUrl(url) {
+    return /\.(mp4|webm|ogg)$/i.test(String(url || '').split('?')[0]);
+}
+
+function imageType(url) {
+    const file = String(url || '').split('?')[0].toLowerCase();
+    if (file.endsWith('.jpg') || file.endsWith('.jpeg')) return 'image/jpeg';
+    if (file.endsWith('.webp')) return 'image/webp';
+    if (file.endsWith('.gif')) return 'image/gif';
+    return 'image/png';
+}
+
+function socialImage(project) {
+    const cover = absoluteUrl(ORIGIN, project.coverImage || '');
+    if (cover && !isVideoUrl(cover)) return { url: cover, type: imageType(cover) };
+    return { url: DEFAULT_IMAGE, type: 'image/png' };
+}
+
+function mediaLabel(title, index) {
+    const name = String(title || 'Project').replace(/\s+/g, ' ').trim() || 'Project';
+    return name + ', image ' + (index + 1);
 }
 
 function validSlug(slug) {
@@ -180,16 +213,13 @@ function footerCtaHtml(raw) {
         heading = parts[0].trim();
         body = parts.slice(1).join(':').trim();
     }
-    return '<div class="project-footer-cta"><h3>' + escapeHtml(heading) + '</h3><p>' + escapeHtml(body) + '</p><a href="/index.html#contact" class="cta-button">Start a Conversation</a></div>';
+    return '<div class="project-footer-cta"><h3>' + escapeHtml(heading) + '</h3><p>' + escapeHtml(body) + '</p><a href="/#contact" class="cta-button">Start a Conversation</a></div>';
 }
 
 function projectInfoHtml(project) {
     const title = project.projectTitle || project.label || project.slug;
     const techs = String(project.technology || '').split(',').map(part => part.trim()).filter(Boolean);
-    const techHtml = techs.map(tech => {
-        const href = '/projects.html?technology=' + encodeURIComponent(tech);
-        return '<a href="' + escapeAttr(href) + '" class="technology-link">' + escapeHtml(tech) + '</a>';
-    }).join(', ');
+    const techHtml = techs.map(tech => escapeHtml(tech)).join(', ');
     const partnerUrl = safeUrl(project.designPartnerUrl);
     const partner = project.designPartner
         ? (partnerUrl
@@ -230,11 +260,12 @@ function galleryHtml(project) {
         const tilt = ((i * 7) - 10).toFixed(2);
         const top = tops[i] || (100 + i * 350) + 'px';
         const style = 'display:block;position:absolute;width:340px;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.20);cursor:pointer;left:calc(50% + 100px);top:' + top + ';--tilt:' + tilt + 'deg';
-        const isVideo = /\.(mp4|webm|ogg)$/i.test(url.split('?')[0]);
+        const label = mediaLabel(project.projectTitle || project.label || project.slug, i);
+        const isVideo = isVideoUrl(url);
         if (isVideo) {
-            return '<video class="detail-stack-image detail-stack-image-base" src="' + escapeAttr(url) + '" data-orig-tilt="' + tilt + '" data-image-index="' + i + '" style="' + style + '" muted loop playsinline autoplay></video>';
+            return '<video class="detail-stack-image detail-stack-image-base" src="' + escapeAttr(url) + '" aria-label="' + escapeAttr(label) + '" data-orig-tilt="' + tilt + '" data-image-index="' + i + '" style="' + style + '" muted loop playsinline autoplay></video>';
         }
-        return '<img class="detail-stack-image detail-stack-image-base" src="' + escapeAttr(url) + '" alt="Project detail media ' + (i + 1) + '" data-orig-tilt="' + tilt + '" data-image-index="' + i + '" style="' + style + '">';
+        return '<img class="detail-stack-image detail-stack-image-base" src="' + escapeAttr(url) + '" alt="' + escapeAttr(label) + '" data-orig-tilt="' + tilt + '" data-image-index="' + i + '" style="' + style + '">';
     }).filter(Boolean).join('\n');
 }
 
@@ -251,10 +282,10 @@ function renderProject(template, project) {
     const title = project.projectTitle || project.label || project.slug;
     const fullTitle = title + ' | Knectar Portfolio';
     const canonical = canonicalProjectUrl(project.slug);
-    const excerpt = excerptFromSummary(project.pageSummary || '');
+    const excerpt = metaDescription(project);
     const category = project.parentLabel || 'Projects';
-    const cover = absoluteUrl(ORIGIN, project.coverImage || (project.detailImages && project.detailImages[0]) || '');
-    const image = cover || DEFAULT_IMAGE;
+    const social = socialImage(project);
+    const image = social.url;
 
     let html = template;
     html = html.replace(/<title>[^<]*<\/title>/, '<title>' + escapeHtml(fullTitle) + '</title>');
@@ -263,12 +294,14 @@ function renderProject(template, project) {
     html = setAttr(html, 'twitter-url', 'content', canonical);
     html = setAttr(html, 'og-title', 'content', fullTitle);
     html = setAttr(html, 'twitter-title', 'content', fullTitle);
+    html = setAttr(html, 'og-image', 'content', social.url);
+    html = setAttr(html, 'twitter-image', 'content', social.url);
+    html = setAttr(html, 'og-image-type', 'content', social.type);
     if (excerpt) {
         html = setAttr(html, 'meta-description', 'content', excerpt);
         html = setAttr(html, 'og-description', 'content', excerpt);
         html = setAttr(html, 'twitter-description', 'content', excerpt);
     }
-    html = html.split(DEFAULT_IMAGE).join(image);
 
     const crumb = '&gt; <a href="' + escapeAttr(categoryHref(project.parentLabel)) + '" class="breadcrumb-link" id="crumbCategoryLink">' + escapeHtml(category) + '</a> &gt; <span data-field="projectTitle">' + escapeHtml(title) + '</span>';
     const crumbFrom = '&gt; <a href="#" class="breadcrumb-link" id="crumbCategoryLink"></a> &gt; <span data-field="projectTitle"></span>';
@@ -293,7 +326,8 @@ function renderProject(template, project) {
         description: excerpt || title,
         url: canonical,
         image: image,
-        author: { '@type': 'Organization', name: 'Knectar' }
+        author: { '@type': 'Organization', name: 'Knectar', url: ORIGIN + '/' },
+        creator: { '@type': 'Organization', name: 'Knectar', url: ORIGIN + '/' }
     });
     if (html.indexOf('</head>') === -1) throw new Error('template is missing </head>');
     html = html.replace('</head>', ld + '\n</head>');
@@ -309,7 +343,7 @@ function tileHtml(project, index) {
     const isVideo = cover && /\.(mp4|webm|ogg)$/i.test(cover.split('?')[0]);
     let media = '';
     if (isVideo) {
-        media = '<video src="' + escapeAttr(cover) + '" autoplay loop muted playsinline></video>';
+        media = '<video src="' + escapeAttr(cover) + '" aria-label="' + escapeAttr(title) + '" autoplay loop muted playsinline></video>';
     } else if (cover) {
         media = '<img src="' + escapeAttr(cover) + '" alt="' + escapeAttr(title + ' image') + '" loading="lazy">';
     }
@@ -418,6 +452,78 @@ function removeStale(slugs) {
     });
 }
 
+function firstSentence(text) {
+    const clean = String(text || '').replace(/\s+/g, ' ').trim();
+    if (!clean) return '';
+    const match = clean.match(/^[\s\S]*?[.!?](?=\s|$)/);
+    return match ? match[0].trim() : clean;
+}
+
+function setInner(html, id, text) {
+    const re = new RegExp('(<([a-z0-9]+)[^>]*\\sid="' + id + '"[^>]*>)[\\s\\S]*?(</\\2>)', 'i');
+    if (!re.test(html)) throw new Error('template is missing #' + id);
+    return html.replace(re, '$1' + escapeHtml(text) + '$3');
+}
+
+function categoryDescriptions() {
+    const menu = JSON.parse(fs.readFileSync(MENU_JSON, 'utf8'));
+    const map = {};
+    menu.forEach(item => {
+        if (!item || !CATEGORY_SLUGS[item.label]) return;
+        map[item.label] = firstSentence(item.categoryDescription || '');
+    });
+    return map;
+}
+
+function filterTiles(indexHtml, label) {
+    const start = indexHtml.indexOf(INDEX_START);
+    const end = indexHtml.indexOf(INDEX_END);
+    if (start === -1 || end === -1 || end < start) {
+        throw new Error('projects.html is missing project index markers');
+    }
+    const wanted = 'data-category="' + escapeAttr(label) + '"';
+    const tiles = indexHtml.slice(start + INDEX_START.length, end)
+        .split('\n')
+        .filter(line => line.indexOf(wanted) !== -1)
+        .map((line, i) => {
+            const base = line.replace(' class="project-tile reverse"', ' class="project-tile"');
+            if (i % 2 === 1) return base.replace(' class="project-tile"', ' class="project-tile reverse"');
+            return base;
+        });
+    return indexHtml.slice(0, start + INDEX_START.length) + '\n' + tiles.join('\n') + '\n' + indexHtml.slice(end);
+}
+
+function renderCategory(indexHtml, label, description) {
+    const slug = CATEGORY_SLUGS[label];
+    const canonical = ORIGIN + categoryHref(label);
+    const title = label + ' | Knectar Projects';
+    const summary = description || ('Projects in ' + label + ' designed and built by Knectar.');
+    let html = filterTiles(indexHtml, label);
+    html = html.replace(/<title>[^<]*<\/title>/, '<title>' + escapeHtml(title) + '</title>');
+    html = setAttr(html, 'meta-description', 'content', summary);
+    html = setAttr(html, 'canonical-link', 'href', canonical);
+    html = setAttr(html, 'og-url', 'content', canonical);
+    html = setAttr(html, 'twitter-url', 'content', canonical);
+    html = setAttr(html, 'og-title', 'content', title);
+    html = setAttr(html, 'twitter-title', 'content', title);
+    html = setAttr(html, 'og-description', 'content', summary);
+    html = setAttr(html, 'twitter-description', 'content', summary);
+    html = setInner(html, 'projectsHeading', label);
+    html = setInner(html, 'projectsIntro', summary);
+    html = setInner(html, 'crumbCategoryLink', label);
+    return { slug: slug, html: html };
+}
+
+function renderCategories(indexHtml) {
+    const descriptions = categoryDescriptions();
+    const pages = {};
+    Object.keys(CATEGORY_SLUGS).forEach(label => {
+        const page = renderCategory(indexHtml, label, descriptions[label]);
+        pages[page.slug] = page.html;
+    });
+    return pages;
+}
+
 function renderAll() {
     const template = fs.readFileSync(TEMPLATE, 'utf8');
     const projects = collectProjects();
@@ -425,10 +531,12 @@ function renderAll() {
     projects.forEach(project => {
         pages[project.slug] = renderProject(template, project);
     });
+    const index = renderIndex(fs.readFileSync(PROJECTS_HTML, 'utf8'), projects);
     return {
         projects,
         pages,
-        index: renderIndex(fs.readFileSync(PROJECTS_HTML, 'utf8'), projects),
+        index,
+        categories: renderCategories(index),
         vercel: renderVercel(fs.readFileSync(VERCEL_JSON, 'utf8'), projects)
     };
 }
@@ -448,8 +556,34 @@ function compareToDisk(rendered) {
         });
     }
     if (fs.readFileSync(PROJECTS_HTML, 'utf8') !== rendered.index) diffs.push('projects.html');
+    Object.keys(rendered.categories).forEach(slug => {
+        const file = path.join(ROOT, 'projects', slug, 'index.html');
+        if (!fs.existsSync(file) || fs.readFileSync(file, 'utf8') !== rendered.categories[slug]) {
+            diffs.push('projects/' + slug + '/index.html');
+        }
+    });
+    const categoryDir = path.join(ROOT, 'projects');
+    if (fs.existsSync(categoryDir)) {
+        fs.readdirSync(categoryDir).forEach(name => {
+            const index = path.join(categoryDir, name, 'index.html');
+            if (fs.existsSync(index) && !rendered.categories[name]) diffs.push('stale projects/' + name + '/index.html');
+        });
+    }
     if (fs.readFileSync(VERCEL_JSON, 'utf8') !== rendered.vercel) diffs.push('vercel.json');
     return diffs;
+}
+
+function removeStaleCategories(slugs) {
+    const categoryDir = path.join(ROOT, 'projects');
+    if (!fs.existsSync(categoryDir)) return;
+    fs.readdirSync(categoryDir).forEach(name => {
+        const dir = path.join(categoryDir, name);
+        if (!fs.statSync(dir).isDirectory()) return;
+        if (slugs.has(name)) return;
+        const index = path.join(dir, 'index.html');
+        if (fs.existsSync(index)) fs.unlinkSync(index);
+        if (fs.readdirSync(dir).length === 0) fs.rmdirSync(dir);
+    });
 }
 
 function main() {
@@ -471,6 +605,11 @@ function main() {
     });
     removeStale(new Set(rendered.projects.map(project => project.slug)));
     if (writeIfChanged(PROJECTS_HTML, rendered.index)) written += 1;
+    Object.keys(rendered.categories).forEach(slug => {
+        const file = path.join(ROOT, 'projects', slug, 'index.html');
+        if (writeIfChanged(file, rendered.categories[slug])) written += 1;
+    });
+    removeStaleCategories(new Set(Object.keys(rendered.categories)));
     if (writeIfChanged(VERCEL_JSON, rendered.vercel)) written += 1;
     console.log('Wrote project pages for ' + rendered.projects.length + ' projects (' + written + ' files changed).');
 }

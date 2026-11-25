@@ -739,8 +739,7 @@ function buildProjectInfoHTML(data) {
     if (data.technology) {
         // Support multiple technologies separated by comma
         const techs = data.technology.split(',').map(t => t.trim()).filter(Boolean);
-        const techLinks = techs.map(t => `<a href="/projects.html?technology=${encodeURIComponent(t)}" class="tech-link">${t}</a>`).join(', ');
-        rows.push(`<li><strong>TECHNOLOGY:</strong> ${techLinks}</li>`);
+        rows.push(`<li><strong>TECHNOLOGY:</strong> ${techs.join(', ')}</li>`);
     }
     if (data.years) rows.push(`<li><strong>YEARS:</strong> ${data.years}</li>`);
     if (data.designPartner || data.design_partner) {

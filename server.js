@@ -14,6 +14,9 @@ app.use((req, res, next) => {
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  if (process.env.NODE_ENV === 'production') {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
   next();
 });
 
@@ -39,11 +42,19 @@ app.get('/project/:slug', sendProjectPage);
 app.get('/project/:slug/', sendProjectPage);
 
 // Pretty routes for project category listing: /projects/<slug>/
-app.get('/projects/:cat', (req, res) => {
+function sendCategoryPage(req, res) {
+  const cat = req.params.cat;
+  if (cat && !cat.includes('..') && !cat.includes('/') && !cat.includes('\\')) {
+    const generated = path.join(__dirname, 'projects', cat, 'index.html');
+    if (fs.existsSync(generated)) return res.sendFile(generated);
+  }
   res.sendFile(path.join(__dirname, 'projects.html'));
-});
-app.get('/projects/:cat/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'projects.html'));
+}
+app.get('/projects/:cat', sendCategoryPage);
+app.get('/projects/:cat/', sendCategoryPage);
+
+app.get('/index.html', (req, res) => {
+  res.redirect(301, '/');
 });
 
 // Pretty routes for blog: /blog/ (list) and /blog/<slug>/ (post)

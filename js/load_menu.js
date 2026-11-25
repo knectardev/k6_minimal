@@ -116,7 +116,7 @@
 
     const logo = document.createElement('div');
     logo.className = 'logo logo-desktop logo-active';
-    logo.innerHTML = '<a href="/index.html"><img src="/assets/logo.svg" class="logo-icon" alt="">KNECTAR</a>';
+    logo.innerHTML = '<a href="/"><img src="/assets/logo.svg" class="logo-icon" alt="">KNECTAR</a>';
 
     const nav = document.createElement('nav');
     nav.className = 'main-nav';
