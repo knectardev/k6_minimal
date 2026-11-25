@@ -1,4 +1,4 @@
-// Cookie consent (Silktide) + Google Consent Mode v2 + GTM
+// Cookie consent (Silktide) + Google Consent Mode v2 + GA4 + GTM
 // Must load in <head> before any other Google tags.
 
 (function () {
@@ -119,6 +119,20 @@
     ads_data_redaction: !adsGranted,
     url_passthrough: true,
   });
+
+  // --- Google tag (GA4) for www.knectar.com ---
+  // Consent default above must run before this config.
+  const GA_MEASUREMENT_ID = 'G-Q9HS1JB5SV';
+  (function (d, id) {
+    var s = d.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    var f = d.getElementsByTagName('script')[0];
+    f.parentNode.insertBefore(s, f);
+  })(document, GA_MEASUREMENT_ID);
+
+  gtag('js', new Date());
+  gtag('config', GA_MEASUREMENT_ID, { send_page_view: true });
 
   // --- Google Tag Manager ---
   (function (w, d, s, l, i) {
