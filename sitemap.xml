@@ -331,6 +331,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.knectar.com/blog/cheap-feature/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.knectar.com/blog/why-drupal-ai/</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
