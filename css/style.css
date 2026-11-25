@@ -2351,7 +2351,8 @@ a:visited {
 }
 
 /* === Project lede (was the haiku) === */
-.project-info div.project-haiku {
+.project-info div.project-haiku,
+.blog-post-info div.project-haiku {
     position: relative;
     background: #f7f7f7;
     border: 1px solid rgba(0, 0, 0, 0.06);
@@ -2372,7 +2373,8 @@ a:visited {
     max-width: 100%;
 }
 
-.project-info div.project-haiku::before {
+.project-info div.project-haiku::before,
+.blog-post-info div.project-haiku::before {
     content: "";
     display: block;
     width: 2rem;
@@ -2382,7 +2384,8 @@ a:visited {
     border-radius: 1px;
 }
 
-.project-info div.project-haiku:hover {
+.project-info div.project-haiku:hover,
+.blog-post-info div.project-haiku:hover {
     box-shadow: none;
     transform: none;
 }
@@ -3302,20 +3305,40 @@ svg {
     font-size: 13px;
 }
 
-/* Post body */
-.blog-post-info .description,
-.blog-post-info .description * {
-    line-height: var(--line-height-description);
+/* Post body. Project descriptions use line-height 2. An essay reads closer
+   to a magazine: tighter lines, and a real gap between paragraphs. */
+.blog-post-info .description {
     font-size: 16px;
 }
 
 .blog-post-info .description p,
 .blog-post-info .description li {
-    margin-bottom: 0.5em;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.blog-post-info .description p {
+    margin: 0 0 1.35em;
+}
+
+.blog-post-info .description li {
+    margin-bottom: 0.4em;
+}
+
+.blog-post-info .description h2,
+.blog-post-info .description h3 {
+    line-height: 1.25;
+    margin: 1.75em 0 0.6em;
+}
+
+.blog-post-info .description div.project-haiku {
+    font-size: 1.35rem;
+    line-height: 1.45;
 }
 
 .blog-post-info .description ul,
 .blog-post-info .description ol {
+    margin: 0 0 1.35em;
     padding-left: 1.25em;
 }
 
