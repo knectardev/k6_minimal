@@ -54,6 +54,16 @@
   ],
   "redirects": [
     {
+      "source": "/blog/cheap-feature",
+      "destination": "/blog/waterfall-at-the-speed-of-ai/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheap-feature/",
+      "destination": "/blog/waterfall-at-the-speed-of-ai/",
+      "permanent": true
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true

@@ -64,6 +64,9 @@ app.get('/blog', (req, res) => {
 app.get('/blog/', (req, res) => {
   res.sendFile(path.join(__dirname, 'blog.html'));
 });
+app.get(['/blog/cheap-feature', '/blog/cheap-feature/'], (req, res) => {
+  res.redirect(301, '/blog/waterfall-at-the-speed-of-ai/');
+});
 app.get('/blog/:slug', (req, res) => {
   const generated = path.join(__dirname, 'blog', req.params.slug, 'index.html');
   if (fs.existsSync(generated)) {
